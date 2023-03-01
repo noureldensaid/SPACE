@@ -9,5 +9,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         print("v2")
         print("v3")
+        print("v2 Zatona")
     }
 }
