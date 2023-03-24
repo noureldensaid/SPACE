@@ -3,11 +3,13 @@ package com.spc.space.ui.main.home
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.spc.space.R
 import com.spc.space.adapters.HomeAdapter
 import com.spc.space.databinding.FragmentHomeBinding
@@ -29,6 +31,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         binding.apply {
             homeHotFeaturedRv.apply {
                 adapter = homeAdapter
+                layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
             }
         }
 

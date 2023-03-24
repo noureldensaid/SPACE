@@ -37,13 +37,14 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
-                android:layout_marginVertical="@dimen/dimens_medium_16dp"
+                android:layout_marginTop="@dimen/dimens_medium_16dp"
                 android:background="@drawable/search_background"
                 android:focusable="false"
                 android:inputType="text"
                 android:maxLines="1"
                 android:paddingHorizontal="@dimen/dimens_small_8dp"
                 app:iconifiedByDefault="false"
+                app:layout_constraintBottom_toTopOf="@id/search_filters_chip_group"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/user_location"
@@ -51,19 +52,73 @@
                 app:queryHint="Search"
                 tools:ignore="RtlSymmetry" />
 
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/search_filters_chip_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@id/explore_fragment_rv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/home_search_tv"
+                app:singleLine="true"
+                app:singleSelection="true">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/popular_chip"
+                    style="@style/CustomChipStyle"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dimens_medium_16dp"
+                     android:padding="@dimen/dimens_large_32dp"
+                    android:text="All"
+                    android:textAlignment="center"
+                    android:textColor="@color/off_white"
+                    android:textSize="@dimen/dimens_medium_16dp"
+                    android:textStyle="bold"
+                    app:chipCornerRadius="@dimen/dimens_small_8dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/nearby_chip"
+                    style="@style/CustomChipStyle"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dimens_medium_16dp"
+                     android:padding="@dimen/dimens_large_32dp"
+                    android:text="Nearby"
+                    android:textAlignment="center"
+                    android:textColor="@color/off_white"
+                    android:textSize="@dimen/dimens_medium_16dp"
+                    android:textStyle="bold"
+                    app:chipCornerRadius="@dimen/dimens_small_8dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/top_rated_chip"
+                    style="@style/CustomChipStyle"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dimens_medium_16dp"
+                    android:padding="@dimen/dimens_large_32dp"
+                    android:text="Popular"
+                    android:textAlignment="center"
+                    android:textColor="@color/off_white"
+                    android:textSize="@dimen/dimens_medium_16dp"
+                    android:textStyle="bold"
+                    app:chipCornerRadius="@dimen/dimens_small_8dp" />
+
+            </com.google.android.material.chip.ChipGroup>
+
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/explore_fragment_rv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/dimens_medium_16dp"
-                android:layout_marginTop="@dimen/dimens_medium_16dp"
                 android:clipToPadding="false"
                 android:paddingBottom="48dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="@id/home_search_tv"
-                app:layout_constraintTop_toBottomOf="@id/home_search_tv"
+                app:layout_constraintTop_toBottomOf="@id/search_filters_chip_group"
                 tools:listitem="@layout/workspace_details_rv_items" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,6 +21,7 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
                 onItemClickListener?.invoke(item)
             }
             binding.apply {
+              //  offerPercentage.text = item.user.username
                 Glide.with(itemView)
                     .load(item.urls.regular)
                     .transition(DrawableTransitionOptions.withCrossFade())
