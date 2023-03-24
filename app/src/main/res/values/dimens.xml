@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Paddings and margins -->
+    <dimen name="dimens_tiny_4dp">4dp</dimen>
+    <dimen name="dimens_small_8dp">8dp</dimen>
+    <dimen name="dimens_medium_16dp">16dp</dimen>
+    <dimen name="dimens_large_32dp">32dp</dimen>
+    <dimen name="dimens_huge_64dp">64dp</dimen>
+
+    <!-- Common text sizes -->
+    <dimen name="material_text_button_14sp">14sp</dimen>
+    <dimen name="material_text_menu_14sp">14sp</dimen>
+    <dimen name="material_text_caption_12sp">12sp</dimen>
+    <dimen name="material_text_body1_14sp">14sp</dimen>
+    <dimen name="material_text_body2_13sp">13sp</dimen>
+    <dimen name="material_text_subhead_16sp">16sp</dimen>
+    <dimen name="material_text_title_20sp">20sp</dimen>
+    <dimen name="material_text_headline_24sp">24sp</dimen>
+    <dimen name="material_text_display1_34sp">34sp</dimen>
+
+    <!-- fix bottom nav bar " don't touch it " -->
+    <dimen name="design_bottom_navigation_height" tools:override="true">63dp</dimen>
+
+</resources>

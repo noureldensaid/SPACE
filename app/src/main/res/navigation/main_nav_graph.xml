@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.spc.space.ui.main.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/exploreFragment"
+        android:name="com.spc.space.ui.main.explore.chooseWorkspace.ExploreFragment"
+        android:label="fragment_explore"
+        tools:layout="@layout/fragment_explore" />
+    <fragment
+        android:id="@+id/bookingsFragment"
+        android:name="com.spc.space.ui.main.bookings.BookingsFragment"
+        android:label="fragment_bookings"
+        tools:layout="@layout/fragment_bookings" />
+    <fragment
+        android:id="@+id/favouritesFragment"
+        android:name="com.spc.space.ui.main.favourites.FavouritesFragment"
+        android:label="fragment_favourites"
+        tools:layout="@layout/fragment_favourites" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.spc.space.ui.main.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+
+</navigation>

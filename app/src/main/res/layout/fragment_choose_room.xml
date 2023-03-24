@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.main.explore.chooseRoom.ChooseRoomFragment">
+
+    <TextView
+        android:id="@+id/room_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimens_medium_16dp"
+        android:layout_marginTop="16dp"
+        android:text="O-space"
+        android:textColor="@color/dark_blue"
+        android:textSize="@dimen/material_text_display1_34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/room_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/dimens_large_32dp"
+        android:layout_marginStart="@dimen/dimens_medium_16dp"
+        android:text="Rooms"
+        android:textColor="@color/dark_blue"
+        android:textSize="@dimen/material_text_headline_24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/room_name" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rooms_rv"
+        app:layout_constraintTop_toBottomOf="@id/room_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="@dimen/dimens_medium_16dp"
+        app:layout_constraintStart_toStartOf="@id/room_title"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/workspace_rooms_rv_items" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

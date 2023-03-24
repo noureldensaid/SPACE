@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:backgroundTint="@color/white"
+    app:cardCornerRadius="@dimen/dimens_medium_16dp"
+    app:cardElevation="@dimen/dimens_tiny_4dp"
+    app:cardUseCompatPadding="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/room_iv"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_favorite" />
+
+        <TextView
+            android:id="@+id/room_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimens_medium_16dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="Hall 1"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/material_text_title_20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/room_type"
+            app:layout_constraintStart_toEndOf="@+id/room_iv"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="166dp" />
+
+        <TextView
+            android:id="@+id/room_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="Meetings room"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/room_capacity"
+            app:layout_constraintStart_toStartOf="@id/room_name"
+            app:layout_constraintTop_toBottomOf="@+id/room_name"
+            tools:layout_editor_absoluteX="166dp" />
+
+
+        <TextView
+            android:id="@+id/room_capacity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="10 guest"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/open_today_text"
+            app:layout_constraintStart_toStartOf="@id/room_name"
+            app:layout_constraintTop_toBottomOf="@+id/room_type"
+            tools:layout_editor_absoluteX="166dp" />
+
+
+        <TextView
+            android:id="@+id/open_today_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Open today"
+            android:textColor="@color/black"
+            android:textSize="@dimen/material_text_subhead_16sp"
+            app:layout_constraintBottom_toTopOf="@+id/room_time"
+            app:layout_constraintStart_toStartOf="@id/room_name"
+            app:layout_constraintTop_toBottomOf="@+id/room_capacity" />
+
+        <TextView
+            android:id="@+id/room_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_clock"
+            android:drawablePadding="@dimen/dimens_tiny_4dp"
+            android:drawableTint="@color/dark_blue"
+            android:text="09:30 to 19:00"
+
+            android:textColor="@color/black"
+            android:textSize="@dimen/material_text_subhead_16sp"
+            app:layout_constraintBottom_toTopOf="@+id/room_price"
+            app:layout_constraintStart_toStartOf="@id/room_name"
+            app:layout_constraintTop_toBottomOf="@+id/open_today_text"
+            tools:layout_editor_absoluteX="166dp" />
+
+        <TextView
+            android:id="@+id/room_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="From 20 EGP/HOUR"
+            android:textColor="@color/dark_blue"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/room_time"
+            app:layout_constraintTop_toBottomOf="@+id/room_time" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
