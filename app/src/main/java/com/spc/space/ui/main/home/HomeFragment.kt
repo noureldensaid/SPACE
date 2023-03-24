@@ -7,8 +7,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.spc.space.R
-import com.spc.space.adapters.FindNearbyAdapter
 import com.spc.space.adapters.HomeAdapter
 import com.spc.space.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -43,6 +43,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 //            val intent = Intent(requireContext(), WorkSpaceDetailsActivity::class.java)
 //            intent.putExtra("key", it)
 //            startActivity(intent)
+
+            val data = Bundle()
+            data.putParcelable("data", it)
+            findNavController().navigate(R.id.action_homeFragment_to_book_flow, data)
+
         }
     }
 

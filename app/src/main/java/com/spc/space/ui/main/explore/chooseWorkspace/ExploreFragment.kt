@@ -39,7 +39,10 @@ class ExploreFragment : Fragment(R.layout.fragment_explore) {
 //            val intent = Intent(requireContext(), WorkSpaceDetailsActivity::class.java)
 //            intent.putExtra("key", it)
 //            startActivity(intent)
-         }
+            val data = Bundle()
+            data.putParcelable("data", it)
+            findNavController().navigate(R.id.action_exploreFragment_to_book_flow, data)
+        }
     }
 
     override fun onDestroyView() {

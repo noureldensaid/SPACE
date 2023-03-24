@@ -1,4 +1,4 @@
-package com.spc.space
+package com.spc.space.di
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
