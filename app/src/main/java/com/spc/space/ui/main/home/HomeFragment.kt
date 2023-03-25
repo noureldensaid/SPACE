@@ -3,12 +3,10 @@ package com.spc.space.ui.main.home
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.spc.space.R
 import com.spc.space.adapters.HomeAdapter
@@ -30,8 +28,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         binding.apply {
             homeHotFeaturedRv.apply {
-                adapter = homeAdapter
+                setHasFixedSize(true)
                 layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+                adapter = homeAdapter
             }
         }
 
