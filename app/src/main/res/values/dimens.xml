@@ -16,6 +16,8 @@
     <dimen name="material_text_subhead_16sp">16sp</dimen>
     <dimen name="material_text_title_20sp">20sp</dimen>
     <dimen name="material_text_headline_24sp">24sp</dimen>
+    <dimen name="headerTextSize">25sp</dimen>
+
     <dimen name="material_text_display1_34sp">34sp</dimen>
 
     <!-- fix bottom nav bar " don't touch it " -->

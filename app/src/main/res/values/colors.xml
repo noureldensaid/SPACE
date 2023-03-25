@@ -15,4 +15,9 @@
     <color name="pastel_blue">#B0C6D4</color>
     <color name="white_lilac">#F8F7FC</color>
     <color name="gray_shade">#333333</color>
+
+    <color name="contentBodyColor">#000</color>
+    <color name="contentTextColor">#fff</color>
+    <color name="miniTitle">#fff</color>
+
 </resources>

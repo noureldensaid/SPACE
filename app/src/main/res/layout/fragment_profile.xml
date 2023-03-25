@@ -1,14 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.main.profile.ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="30dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profileCircleImageView"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/ic_dummy_user" />
+
+            <TextView
+                android:id="@+id/usernameTextView"
+                style="@style/viewParent.headerText"
+                android:layout_marginTop="20dp"
+                android:layout_toEndOf="@id/profileCircleImageView"
+                android:text="Nour Morgan"
+                android:textSize="18sp" />
+
+            <TextView
+                style="@style/viewParent.headerText"
+                android:layout_below="@id/usernameTextView"
+                android:layout_toEndOf="@id/profileCircleImageView"
+                android:text="Edit personal details"
+                android:textColor="#5D5C5C"
+                android:textSize="16sp" />
+
+            <ImageView
+                style="@style/viewParent"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_more" />
+
+        </RelativeLayout>
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/darkModeSwitch"
+            style="@style/settingsText"
+            android:drawableLeft="@drawable/ic_dark_mode"
+            android:text="Dark Mode"
+            android:textColor="@color/dark_blue" />
+
+        <TextView
+            style="@style/viewParent.headerText.settingsMiniTitle"
+            android:text="Profile" />
+
+        <TextView
+            style="@style/viewParent.headerText.settingsTextIcon"
+            android:text="Edit Profile"
+            android:textColor="@color/dark_blue"
+            app:drawableStartCompat="@drawable/ic_edit_profile" />
+
+        <TextView
+            style="@style/viewParent.headerText.settingsTextIcon"
+            android:layout_marginTop="10dp"
+            android:text="Change Password"
+            android:textColor="@color/dark_blue"
+            app:drawableStartCompat="@drawable/ic_change_psw" />
+
+        <TextView
+            style="@style/viewParent.headerText.settingsMiniTitle"
+            android:text="Notifications" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            style="@style/settingsText"
+            android:checked="true"
+            android:drawableStart="@drawable/ic_notification_ring"
+            android:text="Notifications"
+            android:textColor="@color/dark_blue" />
+
+        <TextView
+            style="@style/viewParent.headerText.settingsMiniTitle"
+            android:text="Regional" />
+
+        <TextView
+            style="@style/viewParent.headerText.settingsTextIcon"
+            android:text="Logout"
+            android:textColor="@color/dark_blue"
+            app:drawableStartCompat="@drawable/ic_logout" />
+
+
+        <TextView
+            style="@style/viewParent.headerText.settingsMiniTitle"
+            android:text="App version \n 1.0.0"
+            android:textAlignment="center" />
+
+    </LinearLayout>
+
+</ScrollView>
