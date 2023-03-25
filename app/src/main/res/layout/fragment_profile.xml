@@ -51,7 +51,8 @@
         <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/darkModeSwitch"
             style="@style/settingsText"
-            android:drawableLeft="@drawable/ic_dark_mode"
+            android:drawableStart="@drawable/ic_dark_mode"
+            android:drawableTint="@color/dark_blue"
             android:text="Dark Mode"
             android:textColor="@color/dark_blue" />
 
@@ -63,14 +64,16 @@
             style="@style/viewParent.headerText.settingsTextIcon"
             android:text="Edit Profile"
             android:textColor="@color/dark_blue"
-            app:drawableStartCompat="@drawable/ic_edit_profile" />
+            app:drawableStartCompat="@drawable/ic_edit_profile"
+            app:drawableTint="@color/dark_blue" />
 
         <TextView
             style="@style/viewParent.headerText.settingsTextIcon"
             android:layout_marginTop="10dp"
             android:text="Change Password"
             android:textColor="@color/dark_blue"
-            app:drawableStartCompat="@drawable/ic_change_psw" />
+            app:drawableStartCompat="@drawable/ic_change_psw"
+            app:drawableTint="@color/dark_blue" />
 
         <TextView
             style="@style/viewParent.headerText.settingsMiniTitle"
@@ -80,6 +83,7 @@
             style="@style/settingsText"
             android:checked="true"
             android:drawableStart="@drawable/ic_notification_ring"
+            android:drawableTint="@color/dark_blue"
             android:text="Notifications"
             android:textColor="@color/dark_blue" />
 
@@ -89,15 +93,18 @@
 
         <TextView
             style="@style/viewParent.headerText.settingsTextIcon"
+
             android:text="Logout"
             android:textColor="@color/dark_blue"
-            app:drawableStartCompat="@drawable/ic_logout" />
+            app:drawableStartCompat="@drawable/ic_logout"
+            app:drawableTint="@color/dark_blue" />
 
 
         <TextView
             style="@style/viewParent.headerText.settingsMiniTitle"
-            android:text="App version \n 1.0.0"
-            android:textAlignment="center" />
+            android:layout_marginTop="50dp"
+            android:gravity="center|bottom"
+            android:text="App version \n 1.0.0" />
 
     </LinearLayout>
 
