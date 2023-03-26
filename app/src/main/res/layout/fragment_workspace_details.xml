@@ -8,6 +8,7 @@
     tools:context=".ui.main.explore.workspaceDetails.WorkspaceDetailsFragment">
 
     <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -129,7 +130,7 @@
             <FrameLayout
                 android:id="@+id/google_map"
                 android:layout_width="match_parent"
-                android:layout_height="400dp"
+                android:layout_height="350dp"
                 android:layout_marginHorizontal="@dimen/dimens_medium_16dp"
                 android:layout_marginTop="@dimen/dimens_large_32dp"
                 android:background="@drawable/ic_location_pin"
@@ -138,19 +139,21 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/workspace_price" />
 
-
-            <Button
-                android:id="@+id/pick_room_btn"
-                android:layout_marginVertical="@dimen/dimens_large_32dp"
-                android:layout_width="match_parent"
-                app:layout_constraintTop_toBottomOf="@id/google_map"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_height="wrap_content"
-                android:text="Pick a room" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </ScrollView>
+
+
+    <Button
+        android:id="@+id/pick_room_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dimens_medium_16dp"
+        android:text="Pick a room"
+        android:textSize="@dimen/material_text_subhead_16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

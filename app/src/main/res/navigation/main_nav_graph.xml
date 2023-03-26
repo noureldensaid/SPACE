@@ -9,7 +9,7 @@
         android:id="@+id/homeFragment"
         android:name="com.spc.space.ui.main.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_book_flow"
             app:destination="@id/book_flow" />
@@ -18,7 +18,7 @@
         android:id="@+id/exploreFragment"
         android:name="com.spc.space.ui.main.explore.chooseWorkspace.ExploreFragment"
         android:label="fragment_explore"
-        tools:layout="@layout/fragment_explore" >
+        tools:layout="@layout/fragment_explore">
         <action
             android:id="@+id/action_exploreFragment_to_book_flow"
             app:destination="@id/book_flow" />
@@ -38,18 +38,23 @@
         android:name="com.spc.space.ui.main.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
-    <navigation android:id="@+id/book_flow"
+    <navigation
+        android:id="@+id/book_flow"
         app:startDestination="@id/workspaceDetailsFragment">
         <fragment
             android:id="@+id/chooseRoomFragment"
             android:name="com.spc.space.ui.main.explore.chooseRoom.ChooseRoomFragment"
             android:label="fragment_choose_room"
-            tools:layout="@layout/fragment_choose_room" />
+            tools:layout="@layout/fragment_choose_room">
+            <action
+                android:id="@+id/action_chooseRoomFragment_to_roomDetailsFragment"
+                app:destination="@id/roomDetailsFragment" />
+        </fragment>
         <fragment
             android:id="@+id/workspaceDetailsFragment"
             android:name="com.spc.space.ui.main.explore.workspaceDetails.WorkspaceDetailsFragment"
             android:label="fragment_workspace_details"
-            tools:layout="@layout/fragment_workspace_details" >
+            tools:layout="@layout/fragment_workspace_details">
             <action
                 android:id="@+id/action_workspaceDetailsFragment_to_chooseRoomFragment"
                 app:destination="@id/chooseRoomFragment" />
@@ -57,6 +62,25 @@
                 android:name="data"
                 app:argType="com.spc.space.models.UnsplashPhoto" />
         </fragment>
+        <fragment
+            android:id="@+id/roomDetailsFragment"
+            android:name="com.spc.space.ui.main.explore.roomDetails.RoomDetailsFragment"
+            android:label="fragment_room_details"
+            tools:layout="@layout/fragment_room_details" >
+            <action
+                android:id="@+id/action_roomDetailsFragment_to_roomBookingFragment"
+                app:destination="@id/roomBookingFragment" />
+            <argument
+                android:name="roomData"
+                app:argType="com.spc.space.models.UnsplashPhoto" />
+        </fragment>
+        <fragment
+            android:id="@+id/roomBookingFragment"
+            android:name="com.spc.space.ui.main.explore.roomBooking.RoomBookingFragment"
+            android:label="fragment_room_booking"
+            tools:layout="@layout/fragment_room_booking" />
+
     </navigation>
+
 
 </navigation>

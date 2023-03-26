@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="30dp">
+        android:padding="24dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -27,24 +27,12 @@
             <TextView
                 android:id="@+id/usernameTextView"
                 style="@style/viewParent.headerText"
-                android:layout_marginTop="20dp"
+                android:layout_centerVertical="true"
+                android:layout_marginHorizontal="@dimen/dimens_medium_16dp"
+                android:layout_marginVertical="@dimen/dimens_medium_16dp"
                 android:layout_toEndOf="@id/profileCircleImageView"
                 android:text="Nour Morgan"
                 android:textSize="18sp" />
-
-            <TextView
-                style="@style/viewParent.headerText"
-                android:layout_below="@id/usernameTextView"
-                android:layout_toEndOf="@id/profileCircleImageView"
-                android:text="Edit personal details"
-                android:textColor="#5D5C5C"
-                android:textSize="16sp" />
-
-            <ImageView
-                style="@style/viewParent"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/ic_more" />
 
         </RelativeLayout>
 
@@ -53,6 +41,7 @@
             style="@style/settingsText"
             android:drawableStart="@drawable/ic_dark_mode"
             android:drawableTint="@color/dark_blue"
+            android:padding="@dimen/dimens_small_8dp"
             android:text="Dark Mode"
             android:textColor="@color/dark_blue" />
 
@@ -62,6 +51,7 @@
 
         <TextView
             style="@style/viewParent.headerText.settingsTextIcon"
+            android:padding="@dimen/dimens_small_8dp"
             android:text="Edit Profile"
             android:textColor="@color/dark_blue"
             app:drawableStartCompat="@drawable/ic_edit_profile"
@@ -70,9 +60,30 @@
         <TextView
             style="@style/viewParent.headerText.settingsTextIcon"
             android:layout_marginTop="10dp"
+            android:padding="@dimen/dimens_small_8dp"
             android:text="Change Password"
             android:textColor="@color/dark_blue"
             app:drawableStartCompat="@drawable/ic_change_psw"
+            app:drawableTint="@color/dark_blue" />
+
+        <TextView
+            style="@style/viewParent.headerText.settingsTextIcon"
+
+            android:layout_marginTop="10dp"
+            android:padding="@dimen/dimens_small_8dp"
+            android:text="Ask to be a host"
+            android:textColor="@color/dark_blue"
+            app:drawableStartCompat="@drawable/ic_ask_to_be_host"
+            app:drawableTint="@color/dark_blue" />
+
+        <TextView
+            style="@style/viewParent.headerText.settingsTextIcon"
+
+            android:layout_marginTop="10dp"
+            android:padding="@dimen/dimens_small_8dp"
+            android:text="Report a problem"
+            android:textColor="@color/dark_blue"
+            app:drawableStartCompat="@drawable/ic_report"
             app:drawableTint="@color/dark_blue" />
 
         <TextView
@@ -81,9 +92,11 @@
 
         <androidx.appcompat.widget.SwitchCompat
             style="@style/settingsText"
+
             android:checked="true"
             android:drawableStart="@drawable/ic_notification_ring"
             android:drawableTint="@color/dark_blue"
+            android:padding="@dimen/dimens_small_8dp"
             android:text="Notifications"
             android:textColor="@color/dark_blue" />
 
@@ -92,8 +105,8 @@
             android:text="Regional" />
 
         <TextView
-            style="@style/viewParent.headerText.settingsTextIcon"
-
+            style="@style/viewParent.headerText.logoutText"
+            android:padding="@dimen/dimens_small_8dp"
             android:text="Logout"
             android:textColor="@color/dark_blue"
             app:drawableStartCompat="@drawable/ic_logout"
@@ -102,7 +115,7 @@
 
         <TextView
             style="@style/viewParent.headerText.settingsMiniTitle"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="20dp"
             android:gravity="center|bottom"
             android:text="App version \n 1.0.0" />
 

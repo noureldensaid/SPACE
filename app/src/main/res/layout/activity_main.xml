@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/round_corners"
         app:chainUseRtl="true"
-        app:itemIconSize="28dp"
+        app:itemIconSize="30dp"
         android:visibility="visible"
         app:itemIconTint="@null"
         app:itemRippleColor="@android:color/transparent"

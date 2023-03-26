@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.main.explore.roomDetails.RoomDetailsFragment">
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/workspace_iv"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:src="@drawable/error_placeholder"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/room_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/dimens_medium_16dp"
+                android:layout_marginStart="@dimen/dimens_medium_16dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="Hall 1"
+                android:textColor="@color/dark_blue"
+                android:textSize="@dimen/material_text_title_20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/workspace_iv" />
+
+            <TextView
+                android:id="@+id/room_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/dimens_medium_16dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="Celopatra,Alexandria"
+                android:textColor="@color/dark_blue"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@id/room_name"
+                app:layout_constraintTop_toBottomOf="@id/room_name" />
+
+            <TextView
+                android:id="@+id/working_hours_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/dimens_medium_16dp"
+                android:text="@string/working_hours"
+                android:textColor="@color/dark_blue"
+                android:textSize="@dimen/material_text_subhead_16sp"
+                app:layout_constraintStart_toStartOf="@id/room_type"
+                app:layout_constraintTop_toBottomOf="@id/room_type" />
+
+            <TextView
+                android:id="@+id/workspace_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/dimens_small_8dp"
+                android:drawableStart="@drawable/ic_clock"
+                android:drawablePadding="@dimen/dimens_tiny_4dp"
+                android:drawableTint="@color/dark_blue"
+                android:text="09:30 to 19:00"
+                android:textColor="@color/dark_blue"
+                android:textSize="@dimen/material_text_subhead_16sp"
+                app:layout_constraintStart_toStartOf="@id/working_hours_text"
+                app:layout_constraintTop_toBottomOf="@id/working_hours_text" />
+
+            <TextView
+                android:id="@+id/room_capacity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dimens_medium_16dp"
+                android:text="20 guests"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/workspace_price"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/workspace_iv" />
+
+            <TextView
+                android:id="@+id/workspace_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="From 20 EGP/HOUR"
+                android:textColor="@color/dark_blue"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/workspace_time"
+                app:layout_constraintEnd_toEndOf="@id/room_capacity" />
+
+            <TextView
+                android:id="@+id/amenities_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/dimens_medium_16dp"
+                android:layout_marginStart="@dimen/dimens_medium_16dp"
+                android:text="Amenities"
+                android:textColor="@color/dark_blue"
+                android:textSize="@dimen/material_text_title_20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/workspace_time" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/search_filters_chip_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dimens_medium_16dp"
+                app:layout_constraintStart_toStartOf="@id/amenities_title"
+                app:layout_constraintTop_toBottomOf="@id/amenities_title"
+                app:singleLine="false"
+                app:singleSelection="true">
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/off_white"
+                    android:clickable="false"
+                    android:text="Printer, Scanner and Photocopeir"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/material_text_subhead_16sp"
+                    app:chipCornerRadius="@dimen/dimens_small_8dp"
+                    app:chipIcon="@drawable/ic_printer" />
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/off_white"
+                    android:clickable="false"
+                    android:text="Wifi"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/material_text_subhead_16sp"
+                    app:chipCornerRadius="@dimen/dimens_small_8dp"
+                    app:chipIcon="@drawable/ic_wifi" />
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/off_white"
+                    android:clickable="false"
+                    android:text="LED screens"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/material_text_subhead_16sp"
+                    app:chipCornerRadius="@dimen/dimens_small_8dp"
+                    app:chipIcon="@drawable/ic_monitor" />
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/off_white"
+                    android:clickable="false"
+                    android:text="Pantry"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/material_text_subhead_16sp"
+                    app:chipCornerRadius="@dimen/dimens_small_8dp"
+                    app:chipIcon="@drawable/ic_pantry" />
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white_lilac"
+                    android:clickable="false"
+                    android:text="Projector"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/material_text_subhead_16sp"
+                    app:chipCornerRadius="@dimen/dimens_small_8dp"
+                    app:chipIcon="@drawable/ic_projector" />
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/off_white"
+                    android:clickable="false"
+                    android:text="IT Support"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/material_text_subhead_16sp"
+                    app:chipCornerRadius="@dimen/dimens_small_8dp"
+                    app:chipIcon="@drawable/ic_it" />
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/off_white"
+                    android:clickable="false"
+                    android:text="Writing Board"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/material_text_subhead_16sp"
+                    app:chipCornerRadius="@dimen/dimens_small_8dp"
+                    app:chipIcon="@drawable/ic_board" />
+
+            </com.google.android.material.chip.ChipGroup>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dimens_medium_16dp"
+        android:text="Select Date"
+        android:textSize="@dimen/material_text_subhead_16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

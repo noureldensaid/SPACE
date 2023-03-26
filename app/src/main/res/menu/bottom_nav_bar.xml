@@ -5,7 +5,6 @@
         android:icon="@drawable/ic_explore"
         android:title="@string/explore" />
 
-
     <item
         android:id="@+id/bookingsFragment"
         android:icon="@drawable/ic_bookings"
