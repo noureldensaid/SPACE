@@ -65,6 +65,7 @@
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/popular_chip"
+                    android:checked="true"
                     style="@style/CustomChipStyle"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
