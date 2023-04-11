@@ -5,7 +5,11 @@
     <dimen name="dimens_small_8dp">8dp</dimen>
     <dimen name="dimens_medium_16dp">16dp</dimen>
     <dimen name="dimens_large_32dp">32dp</dimen>
+    <dimen name="dimens_large_24dp">24dp</dimen>
     <dimen name="dimens_huge_64dp">64dp</dimen>
+     <dimen name="dimens_btn_corner_radius_10dp">10dp</dimen>
+    <dimen name="dimens_100dp">100dp</dimen>
+
 
     <!-- Common text sizes -->
     <dimen name="material_text_button_14sp">14sp</dimen>
@@ -17,8 +21,9 @@
     <dimen name="material_text_title_20sp">20sp</dimen>
     <dimen name="material_text_headline_24sp">24sp</dimen>
     <dimen name="headerTextSize">25sp</dimen>
-
+     <dimen name="material_text_headline_32sp">32sp</dimen>
     <dimen name="material_text_display1_34sp">34sp</dimen>
+
 
     <!-- fix bottom nav bar " don't touch it " -->
     <dimen name="design_bottom_navigation_height" tools:override="true">63dp</dimen>

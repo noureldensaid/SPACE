@@ -8,4 +8,39 @@
     <string name="favourites">Favourites</string>
     <string name="profile">Profile</string>
     <string name="working_hours">Working hours</string>
+    <string name="welcome_to">Welcome to</string>
+    <string name="Space">Space</string>
+    <string name="welcome_caption1">work and organize events with\
+ friends outside the office to get rid \
+ of boredom</string>
+    <string name="find_work_space">Find Working Space</string>
+    <string name="near_you">Near you</string>
+
+    <string name="welcome_caption2">find coworking space easily and\
+ quickly through this application </string>
+
+    <string name="book_room_ws"><![CDATA[Book a Room & Workspace]]></string>
+    <string name="on_demand">On-Demand</string>
+    <string name="welcome_caption3">Create your event by determining \
+the place that has been provided</string>
+    <string name="welcome">Welcome,</string>
+    <string name="please_login_first">Please Login First</string>
+
+
+    <string name="enter_your_email"><font size="36">Email</font></string>
+    <string name="enter_your_password">Password</string>
+    <string name="forget_password">Forget Password?</string>
+    <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="login">Login</string>
+    <string name="dont_have_acc">Don\'t Have Account yet?</string>
+    <string name="Register">Register</string>
+    <string name="register_to_access">Register To Access</string>
+    <string name="enter_your_name">Username</string>
+    <string name="enter_your_password_again">Verify Password</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_up_with_google">Sign up with Google</string>
+    <string name="already_have_acc">Already have an account?</string>
+    <string name="sign_in">Sign in</string>
+
+
 </resources>

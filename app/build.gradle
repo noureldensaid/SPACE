@@ -96,6 +96,14 @@ dependencies {
     implementation 'com.google.android.material:material:1.9.0-alpha02'
     // circular image
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+    //lotti animations
+    implementation "com.airbnb.android:lottie:3.4.0"
+    // slider
+    implementation 'com.github.denzcoskun:ImageSlideshow:0.1.0'
+    //  preferences DataStore
+    implementation "androidx.datastore:datastore-preferences:1.0.0"
+    // On boarding dots
+    implementation 'com.tbuonomo:dotsindicator:4.3'
 
 
 }

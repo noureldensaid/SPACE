@@ -16,13 +16,18 @@
         android:theme="@style/Theme.Space"
         tools:targetApi="31">
         <activity
-            android:name=".ui.main.MainActivity"
-            android:exported="true"
-            android:windowSoftInputMode="adjustPan">
+            android:name=".ui.auth.AuthActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan" />
     </application>
+
 </manifest>

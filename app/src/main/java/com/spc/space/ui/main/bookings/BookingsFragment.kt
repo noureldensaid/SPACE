@@ -3,13 +3,10 @@ package com.spc.space.ui.main.bookings
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.Lifecycle
 import com.google.android.material.tabs.TabLayoutMediator
 import com.spc.space.R
 import com.spc.space.adapters.ViewPagerAdapter
 import com.spc.space.databinding.FragmentBookingsBinding
-import com.spc.space.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -19,13 +16,18 @@ class BookingsFragment : Fragment(R.layout.fragment_bookings) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentBookingsBinding.bind(view)
-        setUpViewPager(childFragmentManager,lifecycle)
+        setUpViewPager()
 
     }
 
-    private fun setUpViewPager(fragmentManager: FragmentManager, lifecycle: Lifecycle) {
+    private fun setUpViewPager() {
+        val list = arrayListOf(
+            UpcomingBookingsFragment(),
+            CanceledBookingsFragment(),
+            BookingsHistoryFragment()
+        )
         binding.apply {
-            val adapter = ViewPagerAdapter(fragmentManager, lifecycle)
+            val adapter = ViewPagerAdapter(list, childFragmentManager, lifecycle)
             bookingsViewPager.adapter = adapter
             TabLayoutMediator(tabLayout, bookingsViewPager) { tab, position ->
                 when (position) {

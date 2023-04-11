@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.auth.registration.SignUpFragment">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edit_text_name"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimens_large_24dp"
+        android:layout_marginTop="@dimen/dimens_small_8dp"
+        android:hint="@string/enter_your_name"
+        app:boxBackgroundColor="@color/baby_blue"
+        app:boxCornerRadiusBottomEnd="@dimen/dimens_small_8dp"
+        app:boxCornerRadiusBottomStart="@dimen/dimens_small_8dp"
+        app:boxCornerRadiusTopEnd="@dimen/dimens_small_8dp"
+        app:boxCornerRadiusTopStart="@dimen/dimens_small_8dp"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="@dimen/dimens_tiny_4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edit_text_email_register"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimens_large_24dp"
+        android:layout_marginTop="@dimen/dimens_medium_16dp"
+        android:hint="@string/enter_your_email"
+        app:boxBackgroundColor="@color/baby_blue"
+        app:boxCornerRadiusBottomEnd="@dimen/dimens_small_8dp"
+        app:boxCornerRadiusBottomStart="@dimen/dimens_small_8dp"
+        app:boxCornerRadiusTopEnd="@dimen/dimens_small_8dp"
+        app:boxCornerRadiusTopStart="@dimen/dimens_small_8dp"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="@dimen/dimens_tiny_4dp"
+        app:layout_constraintStart_toStartOf="@id/edit_text_name"
+        app:layout_constraintTop_toBottomOf="@id/edit_text_name">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edit_text_password_register"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimens_large_24dp"
+        android:layout_marginTop="@dimen/dimens_medium_16dp"
+        android:hint="@string/enter_your_password"
+        app:boxBackgroundColor="@color/baby_blue"
+        app:boxCornerRadiusBottomEnd="@dimen/dimens_small_8dp"
+        app:boxCornerRadiusBottomStart="@dimen/dimens_small_8dp"
+        app:boxCornerRadiusTopEnd="@dimen/dimens_small_8dp"
+        app:boxCornerRadiusTopStart="@dimen/dimens_small_8dp"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="@dimen/dimens_tiny_4dp"
+        app:layout_constraintStart_toStartOf="@id/edit_text_email_register"
+        app:layout_constraintTop_toBottomOf="@id/edit_text_email_register"
+        app:passwordToggleEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edit_text_password_again_register"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimens_large_24dp"
+        android:layout_marginTop="@dimen/dimens_medium_16dp"
+        android:hint="@string/enter_your_password_again"
+        app:boxBackgroundColor="@color/baby_blue"
+        app:boxCornerRadiusBottomEnd="@dimen/dimens_small_8dp"
+        app:boxCornerRadiusBottomStart="@dimen/dimens_small_8dp"
+        app:boxCornerRadiusTopEnd="@dimen/dimens_small_8dp"
+        app:boxCornerRadiusTopStart="@dimen/dimens_small_8dp"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="@dimen/dimens_tiny_4dp"
+        app:layout_constraintStart_toStartOf="@id/edit_text_password_register"
+        app:layout_constraintTop_toBottomOf="@id/edit_text_password_register"
+        app:passwordToggleEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_sign_up"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimens_large_24dp"
+        android:layout_marginTop="@dimen/dimens_large_32dp"
+        android:text="@string/sign_up"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/material_text_subhead_16sp"
+        android:textStyle="bold"
+        app:cornerRadius="@dimen/dimens_medium_16dp"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text_password_again_register" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

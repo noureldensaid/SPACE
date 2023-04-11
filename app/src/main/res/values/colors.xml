@@ -5,9 +5,8 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
     <color name="off_white">#FAF9F6</color>
+
 
     <!-- Our Customize colors here. -->
     <color name="dark_blue">#132666</color>
@@ -15,6 +14,15 @@
     <color name="pastel_blue">#B0C6D4</color>
     <color name="white_lilac">#F8F7FC</color>
     <color name="gray_shade">#333333</color>
+    <color name="baby_blue">#EFF1FA</color>
+    <color name="black">#0A0706</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="ghost_white">#F5F5F8</color>
+    <color name="orange">#FA4A0C</color>
+    <color name="Light_grayish_red">#EFEEEE</color>
+    <color name="gray_shade_95">#F2F2F2</color>
+    <color name="gray">#9EA1AB</color>
+
 
     <color name="contentBodyColor">#000</color>
     <color name="contentTextColor">#fff</color>
