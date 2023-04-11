@@ -29,13 +29,14 @@
         android:id="@+id/btn_get_started"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/dimens_large_32dp"
+        android:layout_marginHorizontal="65dp"
+        android:layout_marginTop="@dimen/dimens_medium_16dp"
         android:padding="@dimen/dimens_medium_16dp"
-        android:text="Get Started"
+        android:text="Skip"
         android:textAllCaps="false"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:cornerRadius="@dimen/dimens_medium_16dp"
+        app:cornerRadius="24dp"
         app:elevation="4dp" />
 
 </LinearLayout>
