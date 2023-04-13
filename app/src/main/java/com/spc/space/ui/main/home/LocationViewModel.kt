@@ -33,22 +33,18 @@ class LocationViewModel(application: Application) : AndroidViewModel(application
             val location: Location = task.result
             if (location != null) {
                 _location.postValue(location)
-                getCityName()
+                getCityName(location)
                 // provideNewLocation()
             } else {
-                Log.e("null location", "fetchLocation: ", )
+                Log.e("null location", "fetchLocation: ")
             }
         }
     }
 
 
-
-
-
-
-    private fun getCityName() {
-        val lat = _location.value?.latitude
-        val lng = _location.value?.longitude
+    private fun getCityName(location: Location) {
+        val lat = location.latitude
+        val lng = location.longitude
         var address = ""
         var countryName = ""
         val geoCoder = Geocoder(context, Locale.getDefault())

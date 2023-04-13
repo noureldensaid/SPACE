@@ -11,11 +11,13 @@ import com.spc.space.R
 import com.spc.space.adapters.ExploreAdapter
 import com.spc.space.databinding.FragmentExploreBinding
 import com.spc.space.ui.main.home.HomeFragmentViewModel
+import com.spc.space.ui.main.home.LocationViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ExploreFragment : Fragment(R.layout.fragment_explore) {
     private val viewModel by viewModels<HomeFragmentViewModel>()
+    private val locationViewModel by viewModels<LocationViewModel>()
     private var _binding: FragmentExploreBinding? = null
     private val binding get() = _binding!!
     private lateinit var exploreAdapter: ExploreAdapter
@@ -23,6 +25,11 @@ class ExploreFragment : Fragment(R.layout.fragment_explore) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentExploreBinding.bind(view)
+
+        locationViewModel.fetchLocation()
+        locationViewModel.place.observe(viewLifecycleOwner, Observer {
+            binding.userLocation.text = it
+        })
 
         exploreAdapter = ExploreAdapter()
 
