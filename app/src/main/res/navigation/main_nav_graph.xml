@@ -61,12 +61,15 @@
             <argument
                 android:name="data"
                 app:argType="com.spc.space.models.UnsplashPhoto" />
+            <action
+                android:id="@+id/action_workspaceDetailsFragment_to_googleMapFragment"
+                app:destination="@id/googleMapFragment" />
         </fragment>
         <fragment
             android:id="@+id/roomDetailsFragment"
             android:name="com.spc.space.ui.main.explore.roomDetails.RoomDetailsFragment"
             android:label="fragment_room_details"
-            tools:layout="@layout/fragment_room_details" >
+            tools:layout="@layout/fragment_room_details">
             <action
                 android:id="@+id/action_roomDetailsFragment_to_roomBookingFragment"
                 app:destination="@id/roomBookingFragment" />
@@ -79,6 +82,15 @@
             android:name="com.spc.space.ui.main.explore.roomBooking.RoomBookingFragment"
             android:label="fragment_room_booking"
             tools:layout="@layout/fragment_room_booking" />
+        <fragment
+            android:id="@+id/googleMapFragment"
+            android:name="com.spc.space.ui.main.explore.workspaceDetails.GoogleMapFragment"
+            android:label="fragment_google_map"
+            tools:layout="@layout/fragment_google_map" >
+            <argument
+                android:name="wsLocation"
+                app:argType="string" />
+        </fragment>
 
     </navigation>
 

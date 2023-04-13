@@ -2,6 +2,10 @@ package com.spc.space.di
 
 import android.content.Context
 import androidx.room.Room
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationRequest
+import com.google.android.gms.location.LocationServices
+import com.google.android.gms.location.LocationSettingsRequest
 import com.spc.space.data.local.UnsplashDatabase
 import com.spc.space.data.remote.UnsplashApi
 import com.spc.space.utils.Constants
@@ -16,6 +20,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
+
 //1
 @Module
 //2
