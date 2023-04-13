@@ -34,8 +34,8 @@ class WorkspaceDetailsFragment : Fragment(R.layout.fragment_workspace_details) {
 
 
         locationViewModel.location.observe(viewLifecycleOwner, Observer {
-            destLat = it.latitude
-            destLng = it.longitude
+            destLat = it?.latitude ?: 0.0
+            destLng = it?.longitude ?: 0.0
             Log.e("location", "$destLat -- $destLng")
         })
 
