@@ -41,6 +41,15 @@ the place that has been provided</string>
     <string name="sign_up_with_google">Sign up with Google</string>
     <string name="already_have_acc">Already have an account?</string>
     <string name="sign_in">Sign in</string>
+    <string name="book_your_office_easily">Book your office easily now</string>
+    <string name="submit">Submit</string>
+    <string name="enter_your_registered_email">Enter your registered email</string>
+    <string name="new_password">New Password</string>
+    <string name="enter_different_password">Enter a different password with the previous</string>
+    <string name="verfiy_new_password">Verify New Password</string>
+    <string name="reset_pass">Reset Password</string>
+    <string name="success">Success</string>
+    <string name="congratulations_your_pass_has_been_changed">Congratulations your pass has been changed</string>
 
 
 </resources>

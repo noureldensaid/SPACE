@@ -1,8 +1,10 @@
 package com.spc.space.ui.auth.registration
 
+import android.animation.Animator
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.tabs.TabLayoutMediator
 import com.spc.space.R
 import com.spc.space.adapters.ViewPagerAdapter
@@ -18,6 +20,14 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentRegistrationBinding.bind(view)
         setUpViewPager()
+
+        binding.lottieOfficeAnim.addAnimatorListener(object : Animator.AnimatorListener {
+            override fun onAnimationStart(p0: Animator) {}
+            override fun onAnimationEnd(p0: Animator) {}
+
+            override fun onAnimationCancel(p0: Animator) {}
+            override fun onAnimationRepeat(p0: Animator) {}
+        })
     }
 
     private fun setUpViewPager() {

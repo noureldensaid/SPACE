@@ -32,7 +32,7 @@
         android:layout_marginHorizontal="65dp"
         android:layout_marginTop="@dimen/dimens_medium_16dp"
         android:padding="@dimen/dimens_medium_16dp"
-        android:text="Skip"
+        android:text="Get Start"
         android:textAllCaps="false"
         android:textSize="18sp"
         android:textStyle="bold"

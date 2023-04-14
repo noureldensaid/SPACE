@@ -14,15 +14,25 @@ class WelcomePlaceholderFragment : Fragment(R.layout.fragment_welcome_placeholde
     private var _binding: FragmentWelcomePlaceholderBinding? = null
     private val binding get() = _binding!!
     lateinit var welcomeViewPagerAdapter: ViewPagerAdapter
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentWelcomePlaceholderBinding.bind(view)
+
+      //  val welcomeThirdFragment = WelcomeThirdFragment()
 
         binding.btnGetStarted.setOnClickListener {
             findNavController().navigate(R.id.action_welcomePlaceholderFragment_to_registrationFragment)
         }
 
         setUpViewPager()
+
+
+
+
+
+
 
     }
 
@@ -36,6 +46,9 @@ class WelcomePlaceholderFragment : Fragment(R.layout.fragment_welcome_placeholde
         binding.apply {
             viewPager.adapter = adapter
             dotsIndicator.attachTo(viewPager)
+
         }
+
     }
+
 }

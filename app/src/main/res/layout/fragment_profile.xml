@@ -31,7 +31,7 @@
                 android:layout_marginHorizontal="@dimen/dimens_medium_16dp"
                 android:layout_marginVertical="@dimen/dimens_medium_16dp"
                 android:layout_toEndOf="@id/profileCircleImageView"
-                android:text="Nour Morgan"
+                android:text="Lio messi"
                 android:textSize="18sp" />
 
         </RelativeLayout>

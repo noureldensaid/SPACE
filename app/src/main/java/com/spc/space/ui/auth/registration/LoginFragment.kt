@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.spc.space.R
 import com.spc.space.databinding.FragmentLoginBinding
 import com.spc.space.ui.main.MainActivity
@@ -17,6 +18,12 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentLoginBinding.bind(view)
+
+        binding.forgotPassTextView.setOnClickListener {
+            findNavController().navigate(R.id.action_registrationFragment_to_forgetPasswordFragment)
+        }
+
+
 
         binding.btnLogin.setOnClickListener {
             startActivity(Intent(activity, MainActivity::class.java))

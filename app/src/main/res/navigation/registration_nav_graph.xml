@@ -9,7 +9,11 @@
         android:id="@+id/registrationFragment"
         android:name="com.spc.space.ui.auth.registration.RegistrationFragment"
         android:label="fragment_registration"
-        tools:layout="@layout/fragment_registration" />
+        tools:layout="@layout/fragment_registration" >
+        <action
+            android:id="@+id/action_registrationFragment_to_forgetPasswordFragment"
+            app:destination="@id/forgetPasswordFragment" />
+    </fragment>
     <fragment
         android:id="@+id/lottiLoadingFragment"
         android:name="com.spc.space.ui.auth.onboarding.splashscreen.LottiLoadingFragment"
@@ -26,6 +30,45 @@
         tools:layout="@layout/fragment_welcome_placeholder" >
         <action
             android:id="@+id/action_welcomePlaceholderFragment_to_registrationFragment"
+            app:destination="@id/registrationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/forgetPasswordFragment"
+        android:name="com.spc.space.ui.auth.registration.ForgetPassword.ForgetPasswordFragment"
+        android:label="fragment_forget_password"
+        tools:layout="@layout/fragment_forget_password" >
+        <action
+            android:id="@+id/action_forgetPasswordFragment_to_registrationFragment"
+            app:destination="@id/registrationFragment" />
+        <action
+            android:id="@+id/action_forgetPasswordFragment_to_OTPFragment"
+            app:destination="@id/OTPFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/OTPFragment"
+        android:name="com.spc.space.ui.auth.registration.ForgetPassword.OTPFragment"
+        android:label="fragment_o_t_p"
+        tools:layout="@layout/fragment_o_t_p" >
+        <action
+            android:id="@+id/action_OTPFragment_to_changePasswordFragment"
+            app:destination="@id/changePasswordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="com.spc.space.ui.auth.registration.ChangePassword.ChangePasswordFragment"
+        android:label="fragment_change_password"
+        tools:layout="@layout/fragment_change_password" >
+        <action
+            android:id="@+id/action_changePasswordFragment_to_successNewPassFragment"
+            app:destination="@id/successNewPassFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/successNewPassFragment"
+        android:name="com.spc.space.ui.auth.registration.ChangePassword.SuccessNewPassFragment"
+        android:label="fragment_success_new_pass"
+        tools:layout="@layout/fragment_success_new_pass" >
+        <action
+            android:id="@+id/action_successNewPassFragment_to_registrationFragment"
             app:destination="@id/registrationFragment" />
     </fragment>
 </navigation>
