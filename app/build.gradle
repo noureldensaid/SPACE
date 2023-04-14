@@ -106,6 +106,12 @@ dependencies {
     implementation 'com.tbuonomo:dotsindicator:4.3'
     // fused location provider
     implementation 'com.google.android.gms:play-services-location:21.0.1'
+    // ticker
+    implementation 'com.github.kshitijskumar:Ticker:1.0.0'
+    // calendar
+    implementation 'com.applandeo:material-calendar-view:1.9.0-rc03'
+
+
 }
 kapt {
     correctErrorTypes true
