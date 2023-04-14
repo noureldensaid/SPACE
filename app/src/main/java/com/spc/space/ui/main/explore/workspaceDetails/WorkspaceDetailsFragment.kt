@@ -28,14 +28,14 @@ class WorkspaceDetailsFragment : Fragment(R.layout.fragment_workspace_details) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentWorkspaceDetailsBinding.bind(view)
         val data = args.data
-        var destLat = 0.0
-        var destLng = 0.0
+        var destLat:Double? = 0.0
+        var destLng :Double?= 0.0
         locationViewModel.fetchLocation()
 
 
         locationViewModel.location.observe(viewLifecycleOwner, Observer {
-            destLat = it?.latitude ?: 0.0
-            destLng = it?.longitude ?: 0.0
+            destLat = it?.latitude
+            destLng = it?.longitude
             Log.e("location", "$destLat -- $destLng")
         })
 
