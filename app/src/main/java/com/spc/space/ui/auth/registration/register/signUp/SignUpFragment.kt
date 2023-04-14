@@ -1,40 +1,32 @@
-package com.spc.space.ui.auth.registration
+package com.spc.space.ui.auth.registration.register.signUp
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import com.spc.space.R
-import com.spc.space.databinding.FragmentLoginBinding
+import com.spc.space.databinding.FragmentSignUpBinding
 import com.spc.space.ui.main.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class LoginFragment : Fragment(R.layout.fragment_login) {
-    private var _binding: FragmentLoginBinding? = null
+class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
+    private var _binding: FragmentSignUpBinding? = null
     private val binding get() = _binding!!
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = FragmentLoginBinding.bind(view)
+        _binding = FragmentSignUpBinding.bind(view)
 
-        binding.forgotPassTextView.setOnClickListener {
-            findNavController().navigate(R.id.action_registrationFragment_to_forgetPasswordFragment)
-        }
-
-
-
-        binding.btnLogin.setOnClickListener {
+        binding.btnSignUp.setOnClickListener {
             startActivity(Intent(activity, MainActivity::class.java))
             activity?.finish()
-         }
+        }
     }
 
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
     }
-
 
 }

@@ -28,12 +28,12 @@
         app:chainUseRtl="true"
         app:itemIconSize="30dp"
         android:visibility="visible"
+        android:fontFamily="@font/lato_bold"
         app:itemIconTint="@null"
         app:itemRippleColor="@android:color/transparent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_nav_bar" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

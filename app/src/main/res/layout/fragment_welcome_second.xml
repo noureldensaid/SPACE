@@ -7,47 +7,31 @@
     tools:context=".ui.auth.onboarding.welcomeScreens.WelcomeSecondFragment">
 
 
-    <ImageView
-        android:id="@+id/img_view_welcome2"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/img_view_welcome"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="300dp"
+        android:padding="@dimen/dimens_medium_16dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/welcome_img_two"
+        android:src="@drawable/ic_welcome_second"
+        app:layout_constraintBottom_toTopOf="@id/text_view_welcome_caption"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/text_view_find_work_space"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dimens_large_24dp"
-        android:text="@string/find_work_space"
-        android:textColor="@color/dark_blue"
-        android:textSize="@dimen/material_text_headline_24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_view_welcome2" />
 
     <TextView
-        android:id="@+id/text_view_near_you"
-        android:layout_width="wrap_content"
+        android:fontFamily="@font/lato_bold"
+        android:id="@+id/text_view_welcome_caption"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/near_you"
-        android:textColor="@color/dark_blue"
-        android:textSize="@dimen/material_text_display1_34sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/text_view_find_work_space"
-        app:layout_constraintTop_toBottomOf="@id/text_view_find_work_space" />
-
-    <TextView
-        android:id="@+id/text_view_welcome_caption2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dimens_tiny_4dp"
         android:text="@string/welcome_caption2"
-        android:textSize="@dimen/material_text_body1_14sp"
-        app:layout_constraintStart_toStartOf="@id/text_view_find_work_space"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_near_you" />
+        android:textAlignment="center"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_view_welcome" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,28 +6,15 @@
     android:layout_height="match_parent"
     android:background="@color/ghost_white"
     android:orientation="vertical"
-    tools:context=".ui.auth.registration.RegistrationFragment">
-
+    tools:context=".ui.auth.registration.register.RegistrationFragment">
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottie_office_anim"
-        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="200dp"
+        android:background="@color/white"
         app:lottie_autoPlay="true"
         app:lottie_rawRes="@raw/lottie_office" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:gravity="center"
-        android:text="@string/book_your_office_easily"
-        android:textColor="@color/dark_blue"
-        android:textStyle="bold"
-        android:textSize="@dimen/material_text_subhead_16sp"
-
-        />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"

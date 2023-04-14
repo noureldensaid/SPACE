@@ -1,4 +1,4 @@
-package com.spc.space.ui.auth.registration.ChangePassword
+package com.spc.space.ui.auth.registration.changePassword
 
 import android.os.Bundle
 import android.view.View

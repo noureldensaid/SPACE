@@ -31,6 +31,7 @@
                 android:layout_marginHorizontal="@dimen/dimens_medium_16dp"
                 android:layout_marginVertical="@dimen/dimens_medium_16dp"
                 android:layout_toEndOf="@id/profileCircleImageView"
+                android:fontFamily="@font/lato_bold"
                 android:text="Lio messi"
                 android:textSize="18sp" />
 
@@ -47,10 +48,12 @@
 
         <TextView
             style="@style/viewParent.headerText.settingsMiniTitle"
+            android:fontFamily="@font/lato_bold"
             android:text="Profile" />
 
         <TextView
             style="@style/viewParent.headerText.settingsTextIcon"
+            android:fontFamily="@font/lato_bold"
             android:padding="@dimen/dimens_small_8dp"
             android:text="Edit Profile"
             android:textColor="@color/dark_blue"
@@ -60,6 +63,7 @@
         <TextView
             style="@style/viewParent.headerText.settingsTextIcon"
             android:layout_marginTop="10dp"
+            android:fontFamily="@font/lato_bold"
             android:padding="@dimen/dimens_small_8dp"
             android:text="Change Password"
             android:textColor="@color/dark_blue"
@@ -68,8 +72,8 @@
 
         <TextView
             style="@style/viewParent.headerText.settingsTextIcon"
-
             android:layout_marginTop="10dp"
+            android:fontFamily="@font/lato_bold"
             android:padding="@dimen/dimens_small_8dp"
             android:text="Ask to be a host"
             android:textColor="@color/dark_blue"
@@ -78,8 +82,8 @@
 
         <TextView
             style="@style/viewParent.headerText.settingsTextIcon"
-
             android:layout_marginTop="10dp"
+            android:fontFamily="@font/lato_bold"
             android:padding="@dimen/dimens_small_8dp"
             android:text="Report a problem"
             android:textColor="@color/dark_blue"
@@ -88,11 +92,11 @@
 
         <TextView
             style="@style/viewParent.headerText.settingsMiniTitle"
+            android:fontFamily="@font/lato_bold"
             android:text="Notifications" />
 
         <androidx.appcompat.widget.SwitchCompat
             style="@style/settingsText"
-
             android:checked="true"
             android:drawableStart="@drawable/ic_notification_ring"
             android:drawableTint="@color/dark_blue"
@@ -102,23 +106,16 @@
 
         <TextView
             style="@style/viewParent.headerText.settingsMiniTitle"
+            android:fontFamily="@font/lato_bold"
             android:text="Regional" />
 
         <TextView
             style="@style/viewParent.headerText.logoutText"
+            android:fontFamily="@font/lato_bold"
             android:padding="@dimen/dimens_small_8dp"
             android:text="Logout"
             android:textColor="@color/dark_blue"
             app:drawableStartCompat="@drawable/ic_logout"
             app:drawableTint="@color/dark_blue" />
-
-
-        <TextView
-            style="@style/viewParent.headerText.settingsMiniTitle"
-            android:layout_marginTop="20dp"
-            android:gravity="center|bottom"
-            android:text="App version \n 1.0.0" />
-
     </LinearLayout>
-
 </ScrollView>

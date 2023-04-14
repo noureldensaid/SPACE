@@ -23,7 +23,7 @@ class LottiLoadingFragment : Fragment(R.layout.fragment_lotti_loading) {
 
             override fun onAnimationEnd(p0: Animator) {
                 // --> todo authentication function and finish login activity
-                findNavController().navigate(R.id.action_lottiLoadingFragment_to_welcomePlaceholderFragment)
+                findNavController().navigate(R.id.action_lottiLoadingFragment_to_welcomeViewPagerFragment)
 
             }
 

@@ -1,14 +1,15 @@
-package com.spc.space.ui.auth.registration
+package com.spc.space.ui.auth.registration.register
 
 import android.animation.Animator
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import com.google.android.material.tabs.TabLayoutMediator
 import com.spc.space.R
 import com.spc.space.adapters.ViewPagerAdapter
 import com.spc.space.databinding.FragmentRegistrationBinding
+import com.spc.space.ui.auth.registration.register.login.LoginFragment
+import com.spc.space.ui.auth.registration.register.signUp.SignUpFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

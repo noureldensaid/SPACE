@@ -8,6 +8,7 @@
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
+        android:fontFamily="@font/lato_bold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

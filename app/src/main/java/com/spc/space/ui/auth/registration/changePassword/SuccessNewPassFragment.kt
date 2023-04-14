@@ -1,9 +1,8 @@
-package com.spc.space.ui.auth.registration.ChangePassword
+package com.spc.space.ui.auth.registration.changePassword
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
-import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.spc.space.R
 

@@ -1,4 +1,4 @@
-package com.spc.space.ui.auth.registration.ForgetPassword
+package com.spc.space.ui.auth.registration.forgetPassword
 
 import android.os.Bundle
 import android.text.Editable
@@ -7,15 +7,15 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.spc.space.R
-import com.spc.space.databinding.FragmentOTPBinding
+import com.spc.space.databinding.FragmentOtpBinding
 
-class OTPFragment : Fragment(R.layout.fragment_o_t_p) {
-    private var _binding: FragmentOTPBinding? = null
+class OtpFragment : Fragment(R.layout.fragment_otp) {
+    private var _binding: FragmentOtpBinding? = null
     private val binding get() = _binding!!
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = FragmentOTPBinding.bind(view)
+        _binding = FragmentOtpBinding.bind(view)
 
 
 //
@@ -116,8 +116,10 @@ class OTPFragment : Fragment(R.layout.fragment_o_t_p) {
 //            }
 //        })
 
-        val otpEditTexts = arrayOf(binding.otpEditText1, binding.otpEditText2, binding.otpEditText3,
-            binding.otpEditText4, binding.otpEditText5, binding.otpEditText6)
+        val otpEditTexts = arrayOf(
+            binding.otpEditText1, binding.otpEditText2, binding.otpEditText3,
+            binding.otpEditText4, binding.otpEditText5, binding.otpEditText6
+        )
 
         for (i in 0 until otpEditTexts.size) {
             otpEditTexts[i].addTextChangedListener(object : TextWatcher {
@@ -131,7 +133,12 @@ class OTPFragment : Fragment(R.layout.fragment_o_t_p) {
                     }
                 }
 
-                override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+                override fun beforeTextChanged(
+                    s: CharSequence,
+                    start: Int,
+                    count: Int,
+                    after: Int
+                ) {
                 }
 
                 override fun afterTextChanged(s: Editable) {
@@ -143,8 +150,8 @@ class OTPFragment : Fragment(R.layout.fragment_o_t_p) {
                     for (editText in otpEditTexts) {
                         enteredOtp.append(editText.text.toString())
                     }
-                    if (isValidOtp(enteredOtp.toString())){
-                        findNavController().navigate(R.id.action_OTPFragment_to_changePasswordFragment)
+                    if (isValidOtp(enteredOtp.toString())) {
+                        findNavController().navigate(R.id.action_OtpFragment_to_changePasswordFragment)
                     }
 
                 }
@@ -152,10 +159,15 @@ class OTPFragment : Fragment(R.layout.fragment_o_t_p) {
         }
 
 
-
     }
+
     fun isValidOtp(otp: String): Boolean {
 
         return otp.length == 6
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

@@ -11,7 +11,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="8dp">
 
         <ImageView
             android:id="@+id/workspace_iv"
@@ -30,6 +31,7 @@
             android:layout_marginStart="@dimen/dimens_small_8dp"
             android:layout_marginTop="@dimen/dimens_medium_16dp"
             android:ellipsize="end"
+            android:fontFamily="@font/lato_black"
             android:maxLines="2"
             android:text="WorkSpace"
             android:textColor="@android:color/black"
@@ -44,6 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ellipsize="end"
+            android:fontFamily="@font/lato_regular"
             android:maxLines="2"
             android:text="Celopatra,Alexandria"
             android:textColor="@android:color/black"
@@ -56,6 +59,7 @@
             android:id="@+id/working_hours_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/lato_regular"
             android:text="@string/working_hours"
             android:textColor="@color/black"
             android:textSize="@dimen/material_text_subhead_16sp"
@@ -70,6 +74,7 @@
             android:drawableStart="@drawable/ic_clock"
             android:drawablePadding="@dimen/dimens_tiny_4dp"
             android:drawableTint="@color/dark_blue"
+            android:fontFamily="@font/lato_regular"
             android:text="09:30 to 19:00"
             android:textColor="@color/black"
             android:textSize="@dimen/material_text_subhead_16sp"
@@ -96,6 +101,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/dimens_medium_16dp"
+            android:fontFamily="@font/lato_bold"
             android:text="From 20 EGP/HOUR"
             android:textColor="@color/dark_blue"
             android:textSize="16sp"

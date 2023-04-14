@@ -28,6 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dimens_medium_16dp"
             android:ellipsize="end"
+            android:fontFamily="@font/lato_black"
             android:maxLines="2"
             android:text="Hall 1"
             android:textColor="@android:color/black"
@@ -43,6 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ellipsize="end"
+            android:fontFamily="@font/lato_bold"
             android:maxLines="2"
             android:text="Meetings room"
             android:textColor="@android:color/black"
@@ -58,6 +60,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ellipsize="end"
+            android:fontFamily="@font/lato_regular"
             android:maxLines="2"
             android:text="10 guest"
             android:textSize="18sp"
@@ -71,6 +74,7 @@
             android:id="@+id/open_today_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/lato_regular"
             android:text="Open today"
             android:textColor="@color/black"
             android:textSize="@dimen/material_text_subhead_16sp"
@@ -85,8 +89,8 @@
             android:drawableStart="@drawable/ic_clock"
             android:drawablePadding="@dimen/dimens_tiny_4dp"
             android:drawableTint="@color/dark_blue"
+            android:fontFamily="@font/lato_regular"
             android:text="09:30 to 19:00"
-
             android:textColor="@color/black"
             android:textSize="@dimen/material_text_subhead_16sp"
             app:layout_constraintBottom_toTopOf="@+id/room_price"
@@ -99,6 +103,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:fontFamily="@font/lato_bold"
             android:text="From 20 EGP/HOUR"
             android:textColor="@color/dark_blue"
             android:textSize="16sp"
@@ -106,7 +111,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@id/room_time"
             app:layout_constraintTop_toBottomOf="@+id/room_time" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

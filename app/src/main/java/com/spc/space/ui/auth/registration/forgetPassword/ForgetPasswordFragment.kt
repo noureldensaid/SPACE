@@ -1,16 +1,11 @@
-package com.spc.space.ui.auth.registration.ForgetPassword
+package com.spc.space.ui.auth.registration.forgetPassword
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.spc.space.R
 import com.spc.space.databinding.FragmentForgetPasswordBinding
-import com.spc.space.databinding.FragmentLoginBinding
-import com.spc.space.ui.main.MainActivity
 
 
 class ForgetPasswordFragment : Fragment(R.layout.fragment_forget_password) {
@@ -26,7 +21,7 @@ class ForgetPasswordFragment : Fragment(R.layout.fragment_forget_password) {
         }
 
         binding.btnSubmit.setOnClickListener{
-            findNavController().navigate(R.id.action_forgetPasswordFragment_to_OTPFragment)
+            findNavController().navigate(R.id.action_forgetPasswordFragment_to_OtpFragment)
         }
 
 

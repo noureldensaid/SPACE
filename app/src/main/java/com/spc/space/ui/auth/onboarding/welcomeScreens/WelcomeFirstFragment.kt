@@ -7,8 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.spc.space.R
-import com.spc.space.databinding.FragmentWelcomePlaceholderBinding
-import dagger.hilt.android.AndroidEntryPoint
+ import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
