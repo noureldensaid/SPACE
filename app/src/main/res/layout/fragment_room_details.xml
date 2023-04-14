@@ -216,6 +216,7 @@
     </ScrollView>
 
     <Button
+        android:id="@+id/btn_select_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/dimens_medium_16dp"

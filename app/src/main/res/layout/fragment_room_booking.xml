@@ -1,14 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/dimens_medium_16dp"
     tools:context=".ui.main.explore.roomBooking.RoomBookingFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+    <com.applandeo.materialcalendarview.CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:dateTextAppearance="@android:style/TextAppearance.DeviceDefault"
+        android:theme="@style/Theme.Space"
+        android:weekDayTextAppearance="@android:style/TextAppearance.DeviceDefault"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:todayLabelColor="@color/dark_blue"
+        app:type="one_day_picker" />
+
+
+    <com.example.ticker.core.ui.Ticker
+        android:id="@+id/set_from_time_picker"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:scaleX="0.6"
+        android:scaleY="0.6"
+        android:theme="@style/Theme.Space"
+        app:hoursFormat="hours12"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/set_to_time_picker"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calendarView"
+        app:shouldAmSelected="true" />
+
+    <com.example.ticker.core.ui.Ticker
+        android:id="@+id/set_to_time_picker"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:scaleX="0.6"
+        android:scaleY="0.6"
+        android:theme="@style/Theme.Space"
+        app:hoursFormat="hours12"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/set_from_time_picker"
+        app:layout_constraintTop_toBottomOf="@+id/calendarView"
+        app:shouldAmSelected="true" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

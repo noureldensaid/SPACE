@@ -48,7 +48,20 @@
         <item name="android:drawableEnd">@drawable/ic_more</item>
     </style>
 
-    <style name="viewParent.headerText.logoutText" parent="settingsText"/>
+    <style name="viewParent.headerText.logoutText" parent="settingsText" />
 
+
+<!--   calendar-->
+    <style name="CalenderViewCustom" parent="Theme.AppCompat">
+        <item name="colorAccent">#DF7599</item>
+        <item name="colorPrimary">@color/dark_blue</item>
+        <item name="android:textColorPrimary">@color/dark_blue</item>
+    </style>
+
+    <!--    time picker-->
+    <style name="TimePickerTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorPrimary">#DF7599</item>
+         <item name="colorAccent">@color/dark_blue</item>
+    </style>
 
 </resources>
