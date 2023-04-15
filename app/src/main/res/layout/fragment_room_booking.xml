@@ -42,13 +42,12 @@
         app:layout_constraintTop_toBottomOf="@+id/calendarView" />
 
 
-    <com.google.android.material.textfield.TextInputLayout
+    <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/checkIn_et"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimens_medium_16dp"
-        android:focusable="false"
+        android:focusable="true"
         android:hint="Check in"
         android:textAlignment="center"
         app:boxBackgroundColor="@color/baby_blue"
@@ -58,21 +57,14 @@
         app:boxCornerRadiusTopStart="@dimen/dimens_small_8dp"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="1dp"
+        android:textColorHint="@color/black"
+        android:background="@drawable/check_time_picker_background"
         app:layout_constraintStart_toStartOf="@id/time_range"
-        app:layout_constraintTop_toBottomOf="@id/time_range">
+        app:layout_constraintTop_toBottomOf="@id/time_range"/>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fontFamily="@font/lato_regular"
-            android:hint="Check in"
-            android:textColor="@color/gray" />
 
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
+    <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/checkOut_et"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:focusable="false"
@@ -85,18 +77,12 @@
         app:boxCornerRadiusTopStart="@dimen/dimens_small_8dp"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="1dp"
+        android:textColorHint="@color/black"
+        android:background="@drawable/check_time_picker_background"
+        app:layout_constraintBottom_toBottomOf="@+id/checkIn_et"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/checkIn_et"
-        app:layout_constraintTop_toTopOf="@id/checkIn_et">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fontFamily="@font/lato_regular"
-            android:hint="Check out"
-            android:textColor="@color/gray" />
-
-    </com.google.android.material.textfield.TextInputLayout>
+        app:layout_constraintTop_toTopOf="@id/checkIn_et" />
 
     <TextView
         android:id="@+id/number_of_person"

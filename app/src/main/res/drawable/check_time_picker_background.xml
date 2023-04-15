@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/baby_blue" />
+
+    <corners
+        android:topLeftRadius="@dimen/dimens_small_8dp"
+        android:topRightRadius="@dimen/dimens_small_8dp"
+        android:bottomLeftRadius="@dimen/dimens_small_8dp"
+        android:bottomRightRadius="@dimen/dimens_small_8dp"
+        />
+    <padding
+        android:bottom="@dimen/dimens_small_8dp"
+        android:left="@dimen/dimens_medium_16dp"
+        android:right="@dimen/dimens_medium_16dp"
+        android:top="@dimen/dimens_small_8dp"/>
+</shape>
