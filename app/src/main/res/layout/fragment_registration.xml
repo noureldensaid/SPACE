@@ -15,7 +15,7 @@
         android:background="@color/white"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
-        app:lottie_rawRes="@raw/lottie_office" />
+        app:lottie_rawRes="@raw/lottie_register" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"

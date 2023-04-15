@@ -12,7 +12,7 @@
         android:title="@string/explore" />
 
     <item
-        android:id="@+id/bookingsFragment"
+        android:id="@+id/bookingsViewPagerFragment"
         android:icon="@drawable/ic_bookings"
         android:title="@string/bookings" />
 

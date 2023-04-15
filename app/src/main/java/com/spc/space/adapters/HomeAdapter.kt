@@ -24,8 +24,7 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
               //  offerPercentage.text = item.user.username
                 Glide.with(itemView)
                     .load(item.urls.regular)
-                    .transition(DrawableTransitionOptions.withCrossFade())
-                    .transform(CenterCrop(), RoundedCorners(24))
+                     .transform(CenterCrop(), RoundedCorners(24))
                     .error(R.drawable.error_placeholder)
                     .placeholder(R.drawable.placeholder)
                     .into(workspaceIv)

@@ -20,7 +20,7 @@
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
         android:layout_marginBottom="@dimen/dimens_huge_64dp"
-        app:lottie_rawRes="@raw/lottie_sad_emotion" />
+        app:lottie_rawRes="@raw/lottie_failed" />
 
     <TextView
         android:id="@+id/tv_cant_book"

@@ -1,6 +1,5 @@
 package com.spc.space.ui.main
 
-import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
 import android.location.LocationManager
@@ -18,7 +17,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.spc.space.R
 import com.spc.space.databinding.ActivityMainBinding
 import com.spc.space.ui.main.home.LocationViewModel
-import com.spc.space.utils.Constants
 import com.spc.space.utils.Constants.Companion.PERMISSION_ID
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -67,7 +65,7 @@ class MainActivity : AppCompatActivity() {
                     View.VISIBLE
                 R.id.exploreFragment -> binding.bottomNavigationView.visibility = View.VISIBLE
                 R.id.profileFragment -> binding.bottomNavigationView.visibility = View.VISIBLE
-                R.id.bookingsFragment -> binding.bottomNavigationView.visibility = View.VISIBLE
+                R.id.bookingsViewPagerFragment -> binding.bottomNavigationView.visibility = View.VISIBLE
 
                 else -> binding.bottomNavigationView.visibility = View.GONE
             }

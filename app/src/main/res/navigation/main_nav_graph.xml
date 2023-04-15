@@ -24,11 +24,6 @@
             app:destination="@id/book_flow" />
     </fragment>
     <fragment
-        android:id="@+id/bookingsFragment"
-        android:name="com.spc.space.ui.main.bookings.BookingsFragment"
-        android:label="fragment_bookings"
-        tools:layout="@layout/fragment_bookings" />
-    <fragment
         android:id="@+id/favouritesFragment"
         android:name="com.spc.space.ui.main.favourites.FavouritesFragment"
         android:label="fragment_favourites"
@@ -38,6 +33,11 @@
         android:name="com.spc.space.ui.main.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/bookingsViewPagerFragment"
+        android:name="com.spc.space.ui.main.bookings.BookingsViewPagerFragment"
+        android:label="fragment_bookings_viewpager"
+        tools:layout="@layout/fragment_bookings_viewpager" />
     <navigation
         android:id="@+id/book_flow"
         app:startDestination="@id/workspaceDetailsFragment">
@@ -103,7 +103,13 @@
             android:id="@+id/successBookingFragment"
             android:name="com.spc.space.ui.main.bookings.SuccessBookingFragment"
             android:label="fragment_success_booking"
-            tools:layout="@layout/fragment_success_booking" />
+            tools:layout="@layout/fragment_scucess_booking">
+            <action
+                android:id="@+id/action_successBookingFragment_to_main_nav_graph"
+                app:destination="@id/main_nav_graph"
+                app:popUpTo="@id/main_nav_graph"
+                app:popUpToInclusive="true" />
+        </fragment>
         <fragment
             android:id="@+id/failedBookingFragment"
             android:name="com.spc.space.ui.main.bookings.FailedBookingFragment"
@@ -111,6 +117,4 @@
             tools:layout="@layout/fragment_failed_booking" />
 
     </navigation>
-
-
 </navigation>

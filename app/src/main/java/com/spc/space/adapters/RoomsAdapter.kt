@@ -28,8 +28,7 @@ class RoomsAdapter : RecyclerView.Adapter<RoomsAdapter.ViewHolder>() {
                 roomPrice.text = "From 20 EGP/HOUR"
                 Glide.with(itemView)
                     .load(item.urls.regular)
-                    .transition(DrawableTransitionOptions.withCrossFade())
-                    .transform(CenterCrop(), RoundedCorners(24))
+                     .transform(CenterCrop(), RoundedCorners(24))
                     .error(R.drawable.error_placeholder)
                     .placeholder(R.drawable.placeholder)
                     .into(roomIv)
