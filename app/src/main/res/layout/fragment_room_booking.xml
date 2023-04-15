@@ -159,6 +159,7 @@
 
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_review_bookings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="72dp"

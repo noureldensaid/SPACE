@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.auth.registration.changePassword.SuccessNewPassFragment">
-
+    tools:context=".ui.main.bookings.SuccessBookingFragment">
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottie_success_anim"
@@ -22,35 +21,38 @@
         app:lottie_rawRes="@raw/lottie_success" />
 
     <TextView
-        android:id="@+id/tv_success"
+        android:id="@+id/tv_booking_success"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/success"
+        android:text="@string/Booking_Successful"
         android:textStyle="bold"
         android:textColor="@color/dark_blue"
         android:textSize="@dimen/material_text_subhead_16sp"
         android:layout_margin="@dimen/dimens_btn_corner_radius_10dp"
         app:layout_constraintEnd_toEndOf="@+id/lottie_success_anim"
         app:layout_constraintStart_toStartOf="@+id/lottie_success_anim"
-        app:layout_constraintTop_toBottomOf="@+id/lottie_success_anim" />
+        app:layout_constraintTop_toBottomOf="@+id/lottie_success_anim"
+        android:fontFamily="@font/lato_bold"/>
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/congratulations_your_pass_has_been_changed"
+        android:text="@string/congratulations_your_booking_has_been_confirmed"
         android:textSize="@dimen/material_text_button_14sp"
+        android:fontFamily="@font/lato_bold"
         app:layout_constraintEnd_toEndOf="@+id/lottie_success_anim"
         app:layout_constraintStart_toStartOf="@+id/lottie_success_anim"
-        app:layout_constraintTop_toBottomOf="@+id/tv_success" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_booking_success" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_sign_in"
+        android:id="@+id/btn_go_bookings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/lato_bold"
         android:layout_marginHorizontal="@dimen/dimens_huge_64dp"
         android:padding="@dimen/dimens_medium_16dp"
-        android:text="@string/sign_in"
+        android:text="@string/go_to_bookings"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="@dimen/material_text_subhead_16sp"

@@ -1,25 +1,25 @@
-package com.spc.space.ui.auth.registration.changePassword
+package com.spc.space.ui.main.bookings
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.spc.space.R
-
+import com.spc.space.databinding.FragmentSuccessBookingBinding
 import com.spc.space.databinding.FragmentSuccessNewPassBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SuccessNewPassFragment : Fragment(R.layout.fragment_success_new_pass) {
-    private var _binding: FragmentSuccessNewPassBinding? = null
+class SuccessBookingFragment : Fragment(R.layout.fragment_success_booking) {
+    private var _binding: FragmentSuccessBookingBinding? = null
     private val binding get() = _binding!!
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = FragmentSuccessNewPassBinding.bind(view)
+        _binding = FragmentSuccessBookingBinding.bind(view)
 
-        binding.btnSignIn.setOnClickListener {
-            findNavController().navigate(R.id.action_successNewPassFragment_to_registrationFragment)
-        }
+
     }
-}
 
+}

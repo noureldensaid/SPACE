@@ -6,8 +6,9 @@ import android.view.View
 import androidx.navigation.fragment.findNavController
 import com.spc.space.R
 import com.spc.space.databinding.FragmentForgetPasswordBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class ForgetPasswordFragment : Fragment(R.layout.fragment_forget_password) {
     private var _binding: FragmentForgetPasswordBinding? = null
     private val binding get() = _binding!!

@@ -50,6 +50,12 @@ the place that has been provided</string>
     <string name="reset_pass">Reset Password</string>
     <string name="success">Success</string>
     <string name="congratulations_your_pass_has_been_changed">Congratulations your pass has been changed</string>
+    <string name="Booking_Successful">Booking Successful</string>
+    <string name="congratulations_your_booking_has_been_confirmed">congratulations your  booking has been confirmed</string>
+    <string name="go_to_bookings">Go to Bookings</string>
+    <string name="cannot_book">Cannot Book</string>
+    <string name="Booking_failed">Booking Failed</string>
+    <string name="try_again">Try Again</string>
 
 
 </resources>

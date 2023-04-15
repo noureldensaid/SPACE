@@ -6,6 +6,7 @@ import android.text.format.DateFormat.is24HourFormat
 import android.view.View
 import android.widget.EditText
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import com.spc.space.R
@@ -24,7 +25,6 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
         setupCalender()
         //check in time picker
         setuptimePicker(binding.checkInEt)
-
         //check out time picker
         setuptimePicker(binding.checkOutEt)
 //        binding.checkOutEt.setOnClickListener {
@@ -33,6 +33,9 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
 //                binding.checkOutEt.hint = ""
 //            }
 //        }
+        binding.btnReviewBookings.setOnClickListener {
+            findNavController().navigate(R.id.action_roomBookingFragment_to_failedBookingFragment)
+        }
 
     }
 

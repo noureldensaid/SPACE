@@ -8,7 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.spc.space.R
 import com.spc.space.databinding.FragmentOtpBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class OtpFragment : Fragment(R.layout.fragment_otp) {
     private var _binding: FragmentOtpBinding? = null
     private val binding get() = _binding!!

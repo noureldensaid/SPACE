@@ -81,16 +81,34 @@
             android:id="@+id/roomBookingFragment"
             android:name="com.spc.space.ui.main.explore.roomBooking.RoomBookingFragment"
             android:label="fragment_room_booking"
-            tools:layout="@layout/fragment_room_booking" />
+            tools:layout="@layout/fragment_room_booking">
+            <action
+                android:id="@+id/action_roomBookingFragment_to_successBookingFragment"
+                app:destination="@id/successBookingFragment" />
+            <action
+                android:id="@+id/action_roomBookingFragment_to_failedBookingFragment"
+                app:destination="@id/failedBookingFragment" />
+        </fragment>
         <fragment
             android:id="@+id/googleMapFragment"
             android:name="com.spc.space.ui.main.explore.workspaceDetails.GoogleMapFragment"
             android:label="fragment_google_map"
-            tools:layout="@layout/fragment_google_map" >
+            tools:layout="@layout/fragment_google_map">
             <argument
                 android:name="wsLocation"
                 app:argType="string" />
         </fragment>
+
+        <fragment
+            android:id="@+id/successBookingFragment"
+            android:name="com.spc.space.ui.main.bookings.SuccessBookingFragment"
+            android:label="fragment_success_booking"
+            tools:layout="@layout/fragment_success_booking" />
+        <fragment
+            android:id="@+id/failedBookingFragment"
+            android:name="com.spc.space.ui.main.bookings.FailedBookingFragment"
+            android:label="fragment_failed_booking"
+            tools:layout="@layout/fragment_failed_booking" />
 
     </navigation>
 
