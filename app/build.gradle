@@ -110,6 +110,8 @@ dependencies {
     implementation 'com.github.kshitijskumar:Ticker:1.0.0'
     // calendar
     implementation 'com.applandeo:material-calendar-view:1.9.0-rc03'
+    // time range picker
+    implementation 'nl.joery.timerangepicker:timerangepicker:1.0.0'
 
 
 }
