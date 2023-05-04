@@ -15,6 +15,24 @@
             app:destination="@id/book_flow" />
     </fragment>
     <fragment
+        android:id="@+id/editProfileFragment"
+        android:label="Edit Profile"
+        android:name="com.spc.space.ui.main.profile.EditProfile"
+        tools:layout="@layout/fragment_edit_profile2"
+        />
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:label="change password"
+        android:name="com.spc.space.ui.main.profile.ChangePassword"
+        tools:layout="@layout/fragment_change_password2"
+        />
+    <fragment
+        android:id="@+id/reportProblemFragment"
+        android:label="Report Problem"
+        android:name="com.spc.space.ui.main.profile.ReportProblem"
+        tools:layout="@layout/fragment_report_problem"
+        />
+    <fragment
         android:id="@+id/exploreFragment"
         android:name="com.spc.space.ui.main.explore.chooseWorkspace.ExploreFragment"
         android:label="fragment_explore"
@@ -32,7 +50,21 @@
         android:id="@+id/profileFragment"
         android:name="com.spc.space.ui.main.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile"
+        >
+        <action android:id="@+id/action_profileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment"
+            />
+        <action android:id="@+id/action_profileFragment_to_changePasswordFragment"
+            app:destination="@id/changePasswordFragment"
+            />
+        <action android:id="@+id/action_profileFragment_to_reportProblemFragment"
+            app:destination="@id/reportProblemFragment"
+            />
+
+
+    </fragment>
+
     <fragment
         android:id="@+id/bookingsViewPagerFragment"
         android:name="com.spc.space.ui.main.bookings.BookingsViewPagerFragment"

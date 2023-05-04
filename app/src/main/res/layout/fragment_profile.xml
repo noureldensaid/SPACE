@@ -53,6 +53,7 @@
 
         <TextView
             style="@style/viewParent.headerText.settingsTextIcon"
+            android:id="@+id/editProfileText"
             android:fontFamily="@font/lato_bold"
             android:padding="@dimen/dimens_small_8dp"
             android:text="Edit Profile"
@@ -62,6 +63,7 @@
 
         <TextView
             style="@style/viewParent.headerText.settingsTextIcon"
+            android:id="@+id/changePasswordText"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/lato_bold"
             android:padding="@dimen/dimens_small_8dp"
@@ -82,6 +84,7 @@
 
         <TextView
             style="@style/viewParent.headerText.settingsTextIcon"
+            android:id="@+id/reportProblem"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/lato_bold"
             android:padding="@dimen/dimens_small_8dp"
