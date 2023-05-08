@@ -41,23 +41,23 @@ class DataStoreRepository @Inject constructor(
     }
 
 
-//    suspend fun saveUserName(value: String) {
-//        val preferencesKey = stringPreferencesKey(USER_INFO)
-//        context.dataStore.edit { userDataPreferences ->
-//            userDataPreferences[preferencesKey] = value
-//        }
-//    }
+    suspend fun saveUserName(value: String) {
+        val preferencesKey = stringPreferencesKey(USER_INFO)
+        context.dataStore.edit { userDataPreferences ->
+            userDataPreferences[preferencesKey] = value
+        }
+    }
 
-//    suspend fun getUserName(): String? {
-//        return try {
-//            val preferencesKey = stringPreferencesKey(USER_INFO)
-//            val userDataPreferences = context.dataStore.data.first()
-//            userDataPreferences[preferencesKey]
-//        } catch (e: Exception) {
-//            e.printStackTrace()
-//            null
-//        }
-//    }
+    suspend fun getUserName(): String? {
+        return try {
+            val preferencesKey = stringPreferencesKey(USER_INFO)
+            val userDataPreferences = context.dataStore.data.first()
+            userDataPreferences[preferencesKey]
+        } catch (e: Exception) {
+            e.printStackTrace()
+            null
+        }
+    }
 
     suspend fun clearToken() {
         context.dataStore.edit { preferences ->

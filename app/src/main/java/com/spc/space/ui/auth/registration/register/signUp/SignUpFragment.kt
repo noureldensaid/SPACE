@@ -47,7 +47,7 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
         signUpViewModel.signUpResponse.observe(viewLifecycleOwner, Observer { signUpResponse ->
             when (signUpResponse.message) {
                 "Added Successfully" -> {
-//                    dataStoreViewModel.saveUserInfo(signUpResponse)
+                    dataStoreViewModel.saveUserName(signUpResponse.savedUser.userName)
                     findNavController().navigate(R.id.action_signUpFragment_to_loginFragment)
                 }
                 "Validation error" -> {

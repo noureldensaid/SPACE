@@ -20,28 +20,27 @@ class DataStoreViewModel @Inject constructor(
     val token: LiveData<String?> = _token
 
 
-    private val _userInfo: MutableLiveData<String?> = MutableLiveData()
-    val userInfo: LiveData<String?> = _userInfo
+    private val _userName: MutableLiveData<String?> = MutableLiveData()
+    val userName: LiveData<String?> = _userName
 
     init {
         getToken()
-        Log.e("user info", ":${userInfo.value} ")
+        getUserName()
     }
 
-//    fun saveUserInfo(response: SignUpResponse)  {
-//         _userInfo.value = User(
-//            email = response.savedUser.email,
-//            password = response.savedUser.password,
-//            userName = response.savedUser.userName,
-//            userToken = _token.value,
-//            favorites = response.savedUser.favorites
-//        )
-////        Log.e("USER INFO", "saveUserInfo: ${_userInfo.userName}")
-////        Log.e("USER INFO LIVE DATA", "saveUserInfo: ${_userInfo.value?.userName}")
-////        _userInfo.postValue(result)
-////        return result
-//    }
+    fun saveUserName(userName: String) {
+        viewModelScope.launch {
+            dataStoreRepository.saveUserName(userName)
+        }
+    }
 
+    private fun getUserName() {
+        viewModelScope.launch {
+            val result = dataStoreRepository.getUserName()
+            if (result != null) _userName.postValue(result)
+            else _userName.postValue("null")
+        }
+    }
 
 
     fun saveToken(userToken: String) {

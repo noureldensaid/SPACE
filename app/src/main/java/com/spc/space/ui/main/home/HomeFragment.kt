@@ -27,12 +27,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentHomeBinding.bind(view)
-//        val userName = dataStoreViewModel.userInfo.value?.userName
-//
-//        dataStoreViewModel.userInfo.observe(viewLifecycleOwner, Observer {
-//            binding.userName.text = "Hello, $userName"
-//            Log.e("UserName", "onViewCreated: ${it.userName}")
-//        })
+
+         dataStoreViewModel.userName.observe(viewLifecycleOwner, Observer {
+            binding.userName.text = "Hello, $it"
+            Log.e("UserName", "onViewCreated: ${it}")
+        })
 
         val homeAdapter = HomeAdapter()
 
