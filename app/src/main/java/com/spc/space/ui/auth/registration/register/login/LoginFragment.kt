@@ -42,7 +42,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                     else -> {
                         Toast.makeText(
                             context,
-                            "Please Confirm your email first",
+                            "Invalid Email or Password",
                             Toast.LENGTH_LONG
                         ).show()
                     }
