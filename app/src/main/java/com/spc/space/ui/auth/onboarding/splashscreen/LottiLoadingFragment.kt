@@ -11,15 +11,15 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.spc.space.R
 import com.spc.space.databinding.FragmentLottiLoadingBinding
-import com.spc.space.ui.auth.registration.register.login.LoginViewModel
+import com.spc.space.ui.DataStoreViewModel
 import com.spc.space.ui.main.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class LottiLoadingFragment : Fragment(R.layout.fragment_lotti_loading) {
+    private val dataStoreViewModel: DataStoreViewModel by viewModels()
     private var _binding: FragmentLottiLoadingBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: LoginViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -29,11 +29,11 @@ class LottiLoadingFragment : Fragment(R.layout.fragment_lotti_loading) {
 
             override fun onAnimationEnd(p0: Animator) {
                 // -->  authentication function and finish login activity
-                viewModel.token.observe(viewLifecycleOwner, Observer {
+                dataStoreViewModel.token.observe(viewLifecycleOwner, Observer {
                     if (it != null) {
                         startActivity(Intent(activity, MainActivity::class.java))
                         activity?.finish()
-                        Log.e("token value", "onAnimationEnd: ${viewModel.token.value}")
+                        Log.e("token value", "onAnimationEnd: ${dataStoreViewModel.token.value}")
                     } else {
                         findNavController().navigate(R.id.action_lottiLoadingFragment_to_welcomeViewPagerFragment)
                     }

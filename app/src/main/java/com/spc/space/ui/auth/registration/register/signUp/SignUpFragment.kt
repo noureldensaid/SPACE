@@ -10,11 +10,13 @@ import androidx.navigation.fragment.findNavController
 import com.spc.space.R
 import com.spc.space.databinding.FragmentSignUpBinding
 import com.spc.space.models.auth.signUp.SignUpRequest
+import com.spc.space.ui.DataStoreViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
-    private val viewModel: SignUpViewModel by viewModels()
+    private val signUpViewModel: SignUpViewModel by viewModels()
+    private val dataStoreViewModel: DataStoreViewModel by viewModels()
     private var _binding: FragmentSignUpBinding? = null
     private val binding get() = _binding!!
 
@@ -33,7 +35,7 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
 
                 if (username.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty() && confirmPassword.isNotEmpty()) {
                     val request = SignUpRequest(username, email, password, confirmPassword)
-                    viewModel.signUp(request)
+                    signUpViewModel.signUp(request)
                 }
             }
             alreadyHaveAccountTv.setOnClickListener {
@@ -42,9 +44,10 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
 
         }
 
-        viewModel.signUpResponse.observe(viewLifecycleOwner, Observer {
-            when (it.message) {
+        signUpViewModel.signUpResponse.observe(viewLifecycleOwner, Observer { signUpResponse ->
+            when (signUpResponse.message) {
                 "Added Successfully" -> {
+//                    dataStoreViewModel.saveUserInfo(signUpResponse)
                     findNavController().navigate(R.id.action_signUpFragment_to_loginFragment)
                 }
                 "Validation error" -> {

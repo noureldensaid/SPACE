@@ -1,6 +1,5 @@
 package com.spc.space.ui.auth.registration.register.login
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -14,15 +13,16 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
-    private val authRepository: AuthRepository
+    private val authRepository: AuthRepository,
+    // private val dataStoreRepository: DataStoreRepository,
 ) : ViewModel() {
 
-    init {
-        getToken()
-    }
-
-    private val _token: MutableLiveData<String?> = MutableLiveData()
-    val token: LiveData<String?> = _token
+//    init {
+//        getToken()
+//    }
+//
+//    private val _token: MutableLiveData<String?> = MutableLiveData()
+//    val token: LiveData<String?> = _token
 
 
     private val _signInResponse: MutableLiveData<SignInResponse> = MutableLiveData()
@@ -38,29 +38,29 @@ class LoginViewModel @Inject constructor(
         }
     }
 
-    fun saveToken(token: String) {
-        viewModelScope.launch {
-            authRepository.saveToken("token", token)
-        }
-    }
-
-    private fun getToken() {
-        viewModelScope.launch {
-            try {
-                val tokenResponse = authRepository.getToken("token")
-                if (tokenResponse != null) _token.value = tokenResponse
-                else _token.value = null
-            } catch (e: Exception) {
-                Log.e(" token error", "validateToken: Invalid token")
-            }
-        }
-    }
-
-    fun clearToken() {
-        viewModelScope.launch {
-            authRepository.clearToken()
-            _token.value = null
-        }
-    }
+//    fun saveToken(token: String) {
+//        viewModelScope.launch {
+//            dataStoreRepository.saveToken("token", token)
+//        }
+//    }
+//
+//    private fun getToken() {
+//        viewModelScope.launch {
+//            try {
+//                val tokenResponse = dataStoreRepository.getToken("token")
+//                if (tokenResponse != null) _token.value = tokenResponse
+//                else _token.value = null
+//            } catch (e: Exception) {
+//                Log.e(" token error", "validateToken: Invalid token")
+//            }
+//        }
+//    }
+//
+//    fun clearToken() {
+//        viewModelScope.launch {
+//            dataStoreRepository.clearToken()
+//            _token.value = null
+//        }
+//    }
 
 }

@@ -1,4 +1,4 @@
-package com.spc.space.models
+package com.spc.space.models.fake
 
 import android.os.Parcelable
 import androidx.room.Embedded
@@ -13,9 +13,7 @@ data class UnsplashPhoto(
     @PrimaryKey
     val id: String,
     @Embedded
-    val urls: Urls,
-    @Embedded
-    val user: User
+    val urls: Urls
 ) : Parcelable {
 
     @Parcelize
@@ -26,12 +24,4 @@ data class UnsplashPhoto(
         val small: String,
         val thumb: String,
     ) : Parcelable
-
-    @Parcelize
-    data class User(
-        val name: String,
-        val username: String
-    ) : Parcelable {
-        val attributionUrl get() = "https://unsplash.com/$username?utm_source=ImageSearchApp&utm_medium=referral"
-    }
 }

@@ -1,7 +1,6 @@
 package com.spc.space.data.remote
 
-import com.spc.space.models.UnsplashPhoto
-import com.spc.space.models.UnsplashResponse
+import com.spc.space.models.fake.UnsplashResponse
 import com.spc.space.utils.Constants.ACCESS_KEY
  import retrofit2.Response
 import retrofit2.http.GET

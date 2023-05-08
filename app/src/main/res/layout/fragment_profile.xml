@@ -52,8 +52,8 @@
             android:text="Profile" />
 
         <TextView
-            style="@style/viewParent.headerText.settingsTextIcon"
             android:id="@+id/editProfileText"
+            style="@style/viewParent.headerText.settingsTextIcon"
             android:fontFamily="@font/lato_bold"
             android:padding="@dimen/dimens_small_8dp"
             android:text="Edit Profile"
@@ -62,8 +62,8 @@
             app:drawableTint="@color/dark_blue" />
 
         <TextView
-            style="@style/viewParent.headerText.settingsTextIcon"
             android:id="@+id/changePasswordText"
+            style="@style/viewParent.headerText.settingsTextIcon"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/lato_bold"
             android:padding="@dimen/dimens_small_8dp"
@@ -83,8 +83,8 @@
             app:drawableTint="@color/dark_blue" />
 
         <TextView
-            style="@style/viewParent.headerText.settingsTextIcon"
             android:id="@+id/reportProblem"
+            style="@style/viewParent.headerText.settingsTextIcon"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/lato_bold"
             android:padding="@dimen/dimens_small_8dp"
@@ -113,6 +113,7 @@
             android:text="Regional" />
 
         <TextView
+            android:id="@+id/logout_btn"
             style="@style/viewParent.headerText.logoutText"
             android:fontFamily="@font/lato_bold"
             android:padding="@dimen/dimens_small_8dp"

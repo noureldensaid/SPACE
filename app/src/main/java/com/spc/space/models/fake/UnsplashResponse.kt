@@ -1,4 +1,4 @@
-package com.spc.space.models
+package com.spc.space.models.fake
 
 data class UnsplashResponse(
     val results: List<UnsplashPhoto>,

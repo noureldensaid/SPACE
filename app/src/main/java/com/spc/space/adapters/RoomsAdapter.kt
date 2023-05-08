@@ -8,10 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.spc.space.R
 import com.spc.space.databinding.WorkspaceRoomsRvItemsBinding
-import com.spc.space.models.UnsplashPhoto
+import com.spc.space.models.fake.UnsplashPhoto
 
 class RoomsAdapter : RecyclerView.Adapter<RoomsAdapter.ViewHolder>() {
     inner class ViewHolder(private val binding: WorkspaceRoomsRvItemsBinding) :

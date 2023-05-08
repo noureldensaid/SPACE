@@ -59,8 +59,8 @@ class WorkspaceDetailsFragment : Fragment(R.layout.fragment_workspace_details) {
             // directions format =>
             // "https://www.google.com/maps/dir/?api=1&origin=37.4220,-122.0841&destination=37.8199,-122.4783"
 
-            // el origin mkan el user
-            // el destination mkan el ws
+            // el origin makan el user
+            // el destination makan el ws
             //
             val wsLocation =
                 "https://www.google.com/maps/dir/?api=1&origin=$destLat,$destLng&destination=31.246053526480758,29.97454506864482"

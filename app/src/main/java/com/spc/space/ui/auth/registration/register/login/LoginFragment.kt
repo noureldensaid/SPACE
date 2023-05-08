@@ -11,12 +11,14 @@ import androidx.navigation.fragment.findNavController
 import com.spc.space.R
 import com.spc.space.databinding.FragmentLoginBinding
 import com.spc.space.models.auth.signIn.SignInRequest
+import com.spc.space.ui.DataStoreViewModel
 import com.spc.space.ui.main.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class LoginFragment : Fragment(R.layout.fragment_login) {
-    private val viewModel: LoginViewModel by viewModels()
+    private val loginViewModel: LoginViewModel by viewModels()
+    private val dataStoreViewModel: DataStoreViewModel by viewModels()
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
 
@@ -24,11 +26,11 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentLoginBinding.bind(view)
 
-        viewModel.signInResponse.observe(viewLifecycleOwner, Observer {
+        loginViewModel.signInResponse.observe(viewLifecycleOwner, Observer {
             if (it != null) {
                 when (it.message) {
                     "Welcome" -> {
-                        viewModel.saveToken(it.token)
+                        dataStoreViewModel.saveToken(it.token)
                         startActivity(Intent(activity, MainActivity::class.java))
                         activity?.finish()
                     }
@@ -56,7 +58,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                 val password = passwordEt.editText?.text.toString().trim()
                 if (email.isNotEmpty() && password.isNotEmpty()) {
                     val request = SignInRequest(email, password)
-                    viewModel.signIn(request)
+                    loginViewModel.signIn(request)
                 }
             }
         }

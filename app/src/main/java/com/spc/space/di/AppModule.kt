@@ -5,7 +5,7 @@ import androidx.room.Room
 import com.spc.space.data.local.UnsplashDatabase
 import com.spc.space.data.remote.SpaceApi
 import com.spc.space.data.remote.UnsplashApi
-import com.spc.space.data.repository.AuthRepository
+import com.spc.space.data.repository.DataStoreRepository
 import com.spc.space.utils.Constants.BASE_URL
 import com.spc.space.utils.Constants.SPACE_API_BASE_URL
 import com.spc.space.utils.Constants.UNSPLASH_DATABASE
@@ -33,15 +33,12 @@ object AppModule {
         .create(SpaceApi::class.java)
 
 
-    // inject the repo as it contains context reference
+    //inject the repo as it contains context reference
     @Singleton
     @Provides
     fun provideDataStoreRepository(
         @ApplicationContext context: Context,
-        spaceApi: SpaceApi
-    ): AuthRepository = AuthRepository(
-        context, spaceApi
-    )
+    ): DataStoreRepository = DataStoreRepository(context)
 
 
     // FAKE

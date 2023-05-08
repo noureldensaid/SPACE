@@ -1,7 +1,5 @@
 package com.spc.space.utils
 
-import androidx.datastore.preferences.core.stringPreferencesKey
-
 object Constants {
     const val UNSPLASH_DATABASE = "unsplash_database"
     const val UNSPLASH_PHOTO_TABLE = "unsplash_photo_table"
@@ -10,4 +8,5 @@ object Constants {
     const val PERMISSION_ID = 2023
     const val SPACE_API_BASE_URL = "https://space-depolyment.vercel.app/api/v1/"
     const val USER_TOKEN = "user_token"
+    const val USER_INFO = "user_info"
 }

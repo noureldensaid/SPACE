@@ -9,7 +9,7 @@
 
 
     <TextView
-        android:id="@+id/welcome_user"
+        android:id="@+id/user_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ellipsize="end"
@@ -17,7 +17,7 @@
         android:maxLines="1"
         android:paddingHorizontal="@dimen/dimens_medium_16dp"
         android:paddingBottom="@dimen/dimens_small_8dp"
-        android:text="Hello,Nour"
+        android:text="Hello,"
         android:textColor="@color/gray_shade"
         android:textSize="@dimen/material_text_title_20sp"
         android:textStyle="bold"
@@ -35,8 +35,8 @@
         android:text="Get things done !"
         android:textColor="@color/gray_shade"
         android:textSize="@dimen/material_text_title_20sp"
-        app:layout_constraintStart_toStartOf="@id/welcome_user"
-        app:layout_constraintTop_toBottomOf="@id/welcome_user" />
+        app:layout_constraintStart_toStartOf="@id/user_name"
+        app:layout_constraintTop_toBottomOf="@id/user_name" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"

@@ -17,6 +17,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.spc.space.R
 import com.spc.space.databinding.ActivityMainBinding
 import com.spc.space.ui.main.home.LocationViewModel
+import com.spc.space.utils.Constants
 import com.spc.space.utils.Constants.PERMISSION_ID
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -32,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         setUpNavigation()
         getLocation()
+//        Log.e("USER_TOKEN", "onCreate: ${Constants.USER_TOKEN}" )
 
     }
 

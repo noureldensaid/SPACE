@@ -2,7 +2,7 @@ package com.spc.space.data.local
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.spc.space.models.UnsplashPhoto
+import com.spc.space.models.fake.UnsplashPhoto
 
 @Dao
 interface UnsplashPhotoDao {

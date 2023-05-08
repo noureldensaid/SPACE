@@ -13,11 +13,13 @@ import com.denzcoskun.imageslider.models.SlideModel
 import com.spc.space.R
 import com.spc.space.adapters.HomeAdapter
 import com.spc.space.databinding.FragmentHomeBinding
+import com.spc.space.ui.DataStoreViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {
-    private val viewModel by viewModels<HomeFragmentViewModel>()
+    private val homeFragmentViewModel: HomeFragmentViewModel by viewModels()
+    private val dataStoreViewModel: DataStoreViewModel by viewModels()
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
@@ -25,6 +27,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentHomeBinding.bind(view)
+//        val userName = dataStoreViewModel.userInfo.value?.userName
+//
+//        dataStoreViewModel.userInfo.observe(viewLifecycleOwner, Observer {
+//            binding.userName.text = "Hello, $userName"
+//            Log.e("UserName", "onViewCreated: ${it.userName}")
+//        })
 
         val homeAdapter = HomeAdapter()
 
@@ -38,7 +46,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
 
         // viewModel.getData()
-        viewModel.data.observe(viewLifecycleOwner, Observer { data ->
+        homeFragmentViewModel.data.observe(viewLifecycleOwner, Observer { data ->
             Log.e("size ", data.size.toString());
             homeAdapter.differ.submitList(data)
         })
