@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/ghost_white"
     tools:context=".ui.auth.onboarding.welcomeScreens.WelcomeViewPagerFragment">
 
@@ -22,22 +21,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/dimens_large_24dp"
         app:dotsColor="@color/dark_blue"
         app:dotsCornerRadius="4dp"
         app:dotsSize="8dp"
-         app:dotsSpacing="4dp"
-        app:layout_constraintTop_toBottomOf="@id/viewPager"
-        android:layout_marginBottom="@dimen/dimens_large_24dp"
+        app:dotsSpacing="4dp"
         app:dotsWidthFactor="2.5"
         app:layout_constraintBottom_toTopOf="@+id/btn_get_started"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewPager" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_get_started"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="65dp"
+        android:layout_marginBottom="@dimen/dimens_medium_16dp"
         android:padding="@dimen/dimens_medium_16dp"
         android:text="Get Start"
         android:textAllCaps="false"
@@ -45,7 +45,6 @@
         android:textStyle="bold"
         app:cornerRadius="24dp"
         app:elevation="4dp"
-        android:layout_marginBottom="@dimen/dimens_medium_16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

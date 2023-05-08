@@ -9,7 +9,11 @@
     <dimen name="dimens_huge_64dp">64dp</dimen>
      <dimen name="dimens_btn_corner_radius_10dp">10dp</dimen>
     <dimen name="dimens_100dp">100dp</dimen>
+     <dimen name="newsMoreTextSize">12sp</dimen>
+    <dimen name="loginCardRadius">20dp</dimen>
+    <dimen name="loginViewsMargin">20dp</dimen>
 
+    <dimen name="signup_text_margin_top">10dp</dimen>
 
     <!-- Common text sizes -->
     <dimen name="material_text_button_14sp">14sp</dimen>

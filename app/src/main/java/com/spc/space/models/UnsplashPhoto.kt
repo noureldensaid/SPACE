@@ -4,7 +4,7 @@ import android.os.Parcelable
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.spc.space.utils.Constants.Companion.UNSPLASH_PHOTO_TABLE
+ import com.spc.space.utils.Constants.UNSPLASH_PHOTO_TABLE
 import kotlinx.parcelize.Parcelize
 
 @Entity(tableName = UNSPLASH_PHOTO_TABLE)

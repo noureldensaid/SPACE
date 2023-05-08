@@ -8,6 +8,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.denzcoskun.imageslider.constants.ScaleTypes
+import com.denzcoskun.imageslider.models.SlideModel
 import com.spc.space.R
 import com.spc.space.adapters.HomeAdapter
 import com.spc.space.databinding.FragmentHomeBinding
@@ -51,12 +53,23 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             findNavController().navigate(R.id.action_homeFragment_to_book_flow, data)
 
         }
+
+        setUpImageSlider()
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
+
+    private fun setUpImageSlider() {
+        val imageUrls: List<SlideModel> = listOf(
+            SlideModel("https://images.unsplash.com/photo-1587275599725-96b7cfa577eb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80"),
+            SlideModel("https://plus.unsplash.com/premium_photo-1668383778587-3439a506fdc2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"),
+            SlideModel("https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80")
+        )
+        binding.imageSlider.setImageList(imageUrls, ScaleTypes.CENTER_CROP)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
         _binding = null
     }
-
 
 }

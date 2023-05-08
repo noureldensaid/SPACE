@@ -6,15 +6,6 @@
     app:startDestination="@id/lottiLoadingFragment">
 
     <fragment
-        android:id="@+id/registrationFragment"
-        android:name="com.spc.space.ui.auth.registration.register.RegistrationFragment"
-        android:label="fragment_registration"
-        tools:layout="@layout/fragment_registration">
-        <action
-            android:id="@+id/action_registrationFragment_to_forgetPasswordFragment"
-            app:destination="@id/forgetPasswordFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/lottiLoadingFragment"
         android:name="com.spc.space.ui.auth.onboarding.splashscreen.LottiLoadingFragment"
         android:label="fragment_lotti_loading"
@@ -29,8 +20,8 @@
         android:label="fragment_welcome_placeholder"
         tools:layout="@layout/fragment_welcome_viewpager">
         <action
-            android:id="@+id/action_welcomeViewPagerFragment_to_registrationFragment"
-            app:destination="@id/registrationFragment" />
+            android:id="@+id/action_WelcomeViewPagerFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
     </fragment>
     <fragment
         android:id="@+id/forgetPasswordFragment"
@@ -38,11 +29,11 @@
         android:label="fragment_forget_password"
         tools:layout="@layout/fragment_forget_password">
         <action
-            android:id="@+id/action_forgetPasswordFragment_to_registrationFragment"
-            app:destination="@id/registrationFragment" />
-        <action
             android:id="@+id/action_forgetPasswordFragment_to_OtpFragment"
             app:destination="@id/OtpFragment" />
+        <action
+            android:id="@+id/action_forgetPasswordFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/OtpFragment"
@@ -68,7 +59,25 @@
         android:label="fragment_success_new_pass"
         tools:layout="@layout/fragment_success_new_pass">
         <action
-            android:id="@+id/action_successNewPassFragment_to_registrationFragment"
-            app:destination="@id/registrationFragment" />
+            android:id="@+id/action_successNewPassFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.spc.space.ui.auth.registration.register.signUp.SignUpFragment"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_signUpFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.spc.space.ui.auth.registration.register.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_forgetPasswordFragment"
+            app:destination="@id/forgetPasswordFragment" />
     </fragment>
 </navigation>

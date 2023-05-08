@@ -18,7 +18,7 @@ class SuccessNewPassFragment : Fragment(R.layout.fragment_success_new_pass) {
         _binding = FragmentSuccessNewPassBinding.bind(view)
 
         binding.btnSignIn.setOnClickListener {
-            findNavController().navigate(R.id.action_successNewPassFragment_to_registrationFragment)
+            findNavController().navigate(R.id.action_successNewPassFragment_to_loginFragment)
         }
     }
 }

@@ -1,8 +1,9 @@
 package com.spc.space.ui.auth
 
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
-import android.view.Window
+import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
@@ -23,7 +24,6 @@ class AuthActivity : AppCompatActivity() {
         setUpNavigation()
     }
 
-
     private fun setUpNavigation() {
         authNavController =
             (supportFragmentManager.findFragmentById(R.id.auth_fragment_container) as NavHostFragment)
@@ -35,12 +35,5 @@ class AuthActivity : AppCompatActivity() {
             findNavController(R.id.main_fragment_container)
         return navController.navigateUp()
     }
-
-    fun updateStatusBarColor(color: String) {
-        val window: Window = window
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-        window.statusBarColor = Color.parseColor(color)
-    }
-
 
 }

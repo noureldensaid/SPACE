@@ -18,7 +18,7 @@ class ForgetPasswordFragment : Fragment(R.layout.fragment_forget_password) {
         _binding = FragmentForgetPasswordBinding.bind(view)
 
         binding.signInTextView.setOnClickListener{
-            findNavController().navigate(R.id.action_forgetPasswordFragment_to_registrationFragment)
+            findNavController().navigate(R.id.action_forgetPasswordFragment_to_loginFragment)
         }
 
         binding.btnSubmit.setOnClickListener{

@@ -23,7 +23,7 @@ class WelcomeViewPagerFragment : Fragment(R.layout.fragment_welcome_viewpager) {
         setUpViewPager()
 
         binding.btnGetStarted.setOnClickListener {
-            findNavController().navigate(R.id.action_welcomeViewPagerFragment_to_registrationFragment)
+            findNavController().navigate(R.id.action_WelcomeViewPagerFragment_to_signUpFragment)
         }
     }
 

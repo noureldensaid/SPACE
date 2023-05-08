@@ -18,13 +18,13 @@
         android:id="@+id/editProfileFragment"
         android:label="Edit Profile"
         android:name="com.spc.space.ui.main.profile.EditProfile"
-        tools:layout="@layout/fragment_edit_profile2"
+        tools:layout="@layout/fragment_edit_profile"
         />
     <fragment
         android:id="@+id/changePasswordFragment"
         android:label="change password"
         android:name="com.spc.space.ui.main.profile.ChangePassword"
-        tools:layout="@layout/fragment_change_password2"
+        tools:layout="@layout/fragment_change_password"
         />
     <fragment
         android:id="@+id/reportProblemFragment"

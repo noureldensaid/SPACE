@@ -7,8 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.spc.space.R
-import com.spc.space.databinding.FragmentEditProfile2Binding
-import com.spc.space.databinding.FragmentReportProblemBinding
+ import com.spc.space.databinding.FragmentReportProblemBinding
 
 class ReportProblem: Fragment(R.layout.fragment_report_problem) {
     private var _binding: FragmentReportProblemBinding? = null

@@ -29,14 +29,14 @@ the place that has been provided</string>
 
     <string name="enter_your_email"><font size="36">Email</font></string>
     <string name="enter_your_password">Password</string>
-    <string name="forget_password">Forget Password?</string>
+    <string name="forget_password">Forgot Password?</string>
     <string name="sign_in_with_google">Sign in with Google</string>
     <string name="login">Login</string>
     <string name="dont_have_acc">Don\'t Have Account yet?</string>
     <string name="Register">Register</string>
     <string name="register_to_access">Register To Access</string>
     <string name="enter_your_name">Username</string>
-    <string name="enter_your_password_again">Verify Password</string>
+    <string name="enter_your_password_again">Confirm Password</string>
     <string name="sign_up">Sign Up</string>
     <string name="sign_up_with_google">Sign up with Google</string>
     <string name="already_have_acc">Already have an account?</string>
@@ -57,5 +57,9 @@ the place that has been provided</string>
     <string name="Booking_failed">Booking Failed</string>
     <string name="try_again">Try Again</string>
 
-
+    <string name="register">REGISTER</string>
+    <string name="login_email_hint">Email</string>
+    <string name="login_password_hint">Password</string>
+    <string name="signup_login_hint">Already have an account? Sign In</string>
+    <string name="login_signup_hint">Don\'t have an account? Sign Up</string>
 </resources>

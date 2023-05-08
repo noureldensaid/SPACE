@@ -1,16 +1,20 @@
 package com.spc.space.ui.auth.registration.register.signUp
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.spc.space.R
 import com.spc.space.databinding.FragmentSignUpBinding
-import com.spc.space.ui.main.MainActivity
+import com.spc.space.models.auth.signUp.SignUpRequest
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
+    private val viewModel: SignUpViewModel by viewModels()
     private var _binding: FragmentSignUpBinding? = null
     private val binding get() = _binding!!
 
@@ -18,10 +22,47 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentSignUpBinding.bind(view)
 
-        binding.btnSignUp.setOnClickListener {
-            startActivity(Intent(activity, MainActivity::class.java))
-            activity?.finish()
+
+        //  get sign up data the wrap it in sign up request
+        binding.apply {
+            signUpBtn.setOnClickListener {
+                val username = usernameEt.editText?.text.toString().trim()
+                val email = emailEt.editText?.text.toString().trim()
+                val password = passwordEt.editText?.text.toString().trim()
+                val confirmPassword = confirmPasswordEt.editText?.text.toString().trim()
+
+                if (username.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty() && confirmPassword.isNotEmpty()) {
+                    val request = SignUpRequest(username, email, password, confirmPassword)
+                    viewModel.signUp(request)
+                }
+            }
+            alreadyHaveAccountTv.setOnClickListener {
+                findNavController().navigate(R.id.action_signUpFragment_to_loginFragment)
+            }
+
         }
+
+        viewModel.signUpResponse.observe(viewLifecycleOwner, Observer {
+            when (it.message) {
+                "Added Successfully" -> {
+                    findNavController().navigate(R.id.action_signUpFragment_to_loginFragment)
+                }
+                "Validation error" -> {
+                    Toast.makeText(
+                        context,
+                        "Not matching pattern",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+                else -> {
+                    Toast.makeText(
+                        context,
+                        "Invalid Inputs",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            }
+        })
     }
 
     override fun onDestroy() {

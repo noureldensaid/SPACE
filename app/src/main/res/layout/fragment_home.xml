@@ -7,99 +7,95 @@
     android:paddingVertical="@dimen/dimens_medium_16dp"
     tools:context=".ui.main.home.HomeFragment">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+
+    <TextView
+        android:id="@+id/welcome_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:fontFamily="@font/lato_bold"
+        android:maxLines="1"
+        android:paddingHorizontal="@dimen/dimens_medium_16dp"
+        android:paddingBottom="@dimen/dimens_small_8dp"
+        android:text="Hello,Nour"
+        android:textColor="@color/gray_shade"
+        android:textSize="@dimen/material_text_title_20sp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:drawableTintMode="multiply"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/welcome_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato_bold"
+        android:paddingHorizontal="@dimen/dimens_medium_16dp"
+        android:text="Get things done !"
+        android:textColor="@color/gray_shade"
+        android:textSize="@dimen/material_text_title_20sp"
+        app:layout_constraintStart_toStartOf="@id/welcome_user"
+        app:layout_constraintTop_toBottomOf="@id/welcome_user" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="@dimen/dimens_medium_16dp"
+        android:backgroundTint="@color/off_white"
+        android:elevation="8dp"
+        android:visibility="visible"
+        app:cardCornerRadius="16dp"
+        app:layout_constraintBottom_toTopOf="@id/hot_featured_title"
+        app:layout_constraintEnd_toEndOf="@id/welcome_title"
+        app:layout_constraintStart_toStartOf="@id/welcome_title"
+        app:layout_constraintTop_toBottomOf="@id/welcome_title">
 
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <com.denzcoskun.imageslider.ImageSlider
+            android:id="@+id/imageSlider"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            app:iss_auto_cycle="true"
+            app:iss_corner_radius="8"
+            app:iss_delay="0"
+            app:iss_error_image="@android:color/darker_gray"
+            app:iss_period="1000"
+            app:iss_placeholder="@android:color/darker_gray"
+            app:iss_selected_dot="@drawable/default_selected_dot"
+            app:iss_unselected_dot="@drawable/default_unselected_dot" />
 
-            <TextView
-                android:fontFamily="@font/lato_bold"
-                android:id="@+id/welcome_user"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dimens_large_32dp"
-                android:layout_marginTop="@dimen/dimens_medium_16dp"
-                android:drawableStart="@drawable/ic_account"
-                android:drawablePadding="@dimen/dimens_small_8dp"
-                android:drawableTintMode="multiply"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="Hello,Nour"
-                android:textColor="@color/gray_shade"
-                android:textSize="@dimen/material_text_title_20sp"
-                android:textStyle="bold"
-                android:visibility="visible"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+    </androidx.cardview.widget.CardView>
 
-            <TextView
-                android:fontFamily="@font/lato_bold"
-                android:id="@+id/welcom_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Get things done !"
-                android:textColor="@color/gray_shade"
-                android:textSize="@dimen/material_text_title_20sp"
-                app:layout_constraintStart_toStartOf="@id/welcome_user"
-                app:layout_constraintTop_toBottomOf="@id/welcome_user" />
+    <TextView
+        android:id="@+id/hot_featured_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_hot_fire"
+        android:drawablePadding="@dimen/dimens_tiny_4dp"
+        android:fontFamily="@font/lato_black"
+        android:paddingHorizontal="@dimen/dimens_medium_16dp"
+        android:paddingVertical="@dimen/dimens_medium_16dp"
+        android:text="Hot Featured"
+        android:textColor="@color/dark_blue"
+        android:textSize="@dimen/material_text_title_20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/home_hot_featured_rv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardView" />
 
-            <androidx.appcompat.widget.SearchView
-                android:id="@+id/home_search_tv"
-                android:fontFamily="@font/lato_bold"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="24dp"
-                android:layout_marginVertical="@dimen/dimens_medium_16dp"
-                android:background="@drawable/search_background"
-                android:focusable="false"
-                android:inputType="text"
-                android:maxLines="1"
-                android:paddingHorizontal="@dimen/dimens_small_8dp"
-                app:iconifiedByDefault="false"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/welcom_title"
-                app:queryBackground="@null"
-                app:queryHint="Search"
-                tools:ignore="RtlSymmetry" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/home_hot_featured_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="84dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/hot_featured_title"
+        app:layout_constraintTop_toBottomOf="@id/hot_featured_title"
+        tools:itemCount="2"
+        tools:listitem="@layout/workspace_home_rv_items" />
 
-            <TextView
-                android:fontFamily="@font/lato_black"
-                android:id="@+id/hot_featured_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimens_medium_16dp"
-                android:drawableStart="@drawable/ic_hot_fire"
-                android:drawablePadding="@dimen/dimens_tiny_4dp"
-                android:text="Hot Featured"
-                android:textColor="@color/dark_blue"
-                android:textSize="@dimen/material_text_title_20sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@id/home_hot_featured_rv"
-                app:layout_constraintStart_toStartOf="@id/home_search_tv"
-                app:layout_constraintTop_toBottomOf="@id/home_search_tv" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/home_hot_featured_rv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                 android:paddingBottom="48dp"
-                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@id/hot_featured_title"
-                app:layout_constraintTop_toBottomOf="@id/hot_featured_title"
-                 tools:itemCount="2"
-                tools:listitem="@layout/workspace_home_rv_items" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

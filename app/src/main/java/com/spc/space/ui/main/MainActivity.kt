@@ -17,7 +17,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.spc.space.R
 import com.spc.space.databinding.ActivityMainBinding
 import com.spc.space.ui.main.home.LocationViewModel
-import com.spc.space.utils.Constants.Companion.PERMISSION_ID
+import com.spc.space.utils.Constants.PERMISSION_ID
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
