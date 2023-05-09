@@ -13,9 +13,6 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import okhttp3.Interceptor
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
@@ -24,52 +21,12 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
-    @HttpHeaderInterceptor
-    @Singleton
-    @Provides
-    fun provideHeaderTokenInterceptor(dataStoreRepo: DataStoreRepository): Interceptor {
-//        val token = dataStoreRepo.getToken()
-        return Interceptor {
-            val oldRequest = it.request()
-
-            val request = oldRequest.newBuilder().apply {
-//                if (token != null)
-//                    addHeader("authorization", "Bearer__$token")
-            }
-            it.proceed(request.build())
-        }
-    }
-
-    @HttpLogginInterceptor
-    @Singleton
-    @Provides
-    fun provideLoggingInterceptor(): HttpLoggingInterceptor {
-        return HttpLoggingInterceptor().apply {
-            setLevel(HttpLoggingInterceptor.Level.BODY)
-        }
-    }
-
-    @OkhttpClientQualifier
-    @Singleton
-    @Provides
-    fun provideOkHttpClient(
-        @HttpLogginInterceptor logging: HttpLoggingInterceptor,
-        @HttpHeaderInterceptor tokenInterceptor: Interceptor
-    ): OkHttpClient {
-        return OkHttpClient.Builder()
-            .addInterceptor(logging)
-            .addInterceptor(tokenInterceptor)
-            .build()
-
-    }
-
     // inject retrofit
     @Singleton
     @Provides
-    fun provideSpaceApi(@OkhttpClientQualifier client: OkHttpClient): SpaceApi = Retrofit.Builder()
+    fun provideSpaceApi(): SpaceApi = Retrofit.Builder()
         .baseUrl(SPACE_API_BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
-        .client(client)
         .build()
         .create(SpaceApi::class.java)
 

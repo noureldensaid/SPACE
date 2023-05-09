@@ -1,6 +1,5 @@
 package com.spc.space.data.remote
 
-import com.spc.space.models.WorkSpaceRooms.RoomsResponse
 import com.spc.space.models.auth.signIn.SignInRequest
 import com.spc.space.models.auth.signIn.SignInResponse
 import com.spc.space.models.auth.signUp.SignUpRequest
@@ -25,12 +24,13 @@ interface SpaceApi {
     @POST("auth/signIn")
     suspend fun signIn(@Body request: SignInRequest): SignInResponse
 
+    // get all workspaces
+    // don't forget to add Bearer__ before passing the token --> Bearer__$token
+
     @GET("workingSpace/getWorkSpaces")
-    suspend fun getWorkSpaces(@Header("authorization") token:String): Response<WorkspacesResponse>
-
-   // @GET("workingSpace/room/getRoomsForSpecificWs/64571537c4c24946ffe9f89a")
-    //suspend fun getWorkSpaceRoom(): Response<RoomsResponse>
-
+    suspend fun getWorkSpaces(
+        @Header("authorization") token: String
+    ): Response<WorkspacesResponse>
 
 
 }
