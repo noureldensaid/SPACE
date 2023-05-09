@@ -5,6 +5,7 @@ import com.spc.space.models.auth.signIn.SignInResponse
 import com.spc.space.models.auth.signUp.SignUpRequest
 import com.spc.space.models.auth.signUp.SignUpResponse
 import com.spc.space.models.workspace.WorkSpaceResponse
+import com.spc.space.models.workspaceRoom.workSpaceRoomResponse
 import retrofit2.http.*
 
 interface SpaceApi {
@@ -28,15 +29,11 @@ interface SpaceApi {
     ): WorkSpaceResponse
 
 
-
-
-
-
-
-
-
-
-
+    // get specific room for a certain workspace
+    @GET("room/getRoomsForSpecificWs/{workspaceId}")
+    suspend fun getRoomsForWorkspace(
+        @Path("workspaceId") workspaceId: String
+    ): workSpaceRoomResponse
 
 
 }

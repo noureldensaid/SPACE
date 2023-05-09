@@ -17,5 +17,8 @@ class Repository @Inject constructor(
 
     suspend fun getWorkspaces(token: String) = spaceApi.getWorkspaces(token)
 
+    suspend fun getRoomsForWorkspace(workspaceId: String) = spaceApi.getRoomsForWorkspace(workspaceId)
+
+
 
 }

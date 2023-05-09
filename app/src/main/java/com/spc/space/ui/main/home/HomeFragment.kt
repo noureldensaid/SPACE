@@ -28,9 +28,17 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentHomeBinding.bind(view)
 
-        // PUT WORKSPACE NAME AND PHOTO IN GRID RV
+        //todo PUT WORKSPACE NAME AND PHOTO IN GRID RV ,
+        // then when user click on grid it shows workspace details
         val token = dataStoreViewModel.token.value.toString()
         homeFragmentViewModel.getWorkspaces("Bearer__$token")
+
+        homeFragmentViewModel.workSpace.observe(viewLifecycleOwner, Observer {
+            //todo send workspace list to the adapter
+            // change adapter used class in diff util
+            // submit list<workspace> to adpater
+
+        })
 
 
         dataStoreViewModel.userName.observe(viewLifecycleOwner, Observer {
