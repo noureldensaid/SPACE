@@ -25,6 +25,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         _binding = FragmentProfileBinding.bind(view)
 
         binding.apply {
+            userName.text = dataStoreViewModel.userName.value?.capitalize()
             editProfileText.setOnClickListener {
                 findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToEditProfileFragment())
             }

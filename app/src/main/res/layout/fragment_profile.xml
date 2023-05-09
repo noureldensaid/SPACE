@@ -25,7 +25,7 @@
                 android:src="@drawable/ic_dummy_user" />
 
             <TextView
-                android:id="@+id/usernameTextView"
+                android:id="@+id/userName"
                 style="@style/viewParent.headerText"
                 android:layout_centerVertical="true"
                 android:layout_marginHorizontal="@dimen/dimens_medium_16dp"

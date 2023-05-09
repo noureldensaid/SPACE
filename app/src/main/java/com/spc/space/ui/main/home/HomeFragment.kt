@@ -29,7 +29,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         _binding = FragmentHomeBinding.bind(view)
 
          dataStoreViewModel.userName.observe(viewLifecycleOwner, Observer {
-            binding.userName.text = "Hello, $it"
+            binding.userName.text = "Hello, ${it?.capitalize()}"
             Log.e("UserName", "onViewCreated: ${it}")
         })
 
