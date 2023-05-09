@@ -26,7 +26,7 @@ class RoomDetailsFragment : Fragment(R.layout.fragment_room_details) {
         val roomData = args.roomData
         binding.apply {
             Glide.with(view)
-                .load(roomData.urls.regular)
+                .load(roomData.images?.get(0))
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .transform(CenterCrop(), RoundedCorners(24))
                 .error(R.drawable.error_placeholder)

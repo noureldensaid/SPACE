@@ -43,7 +43,7 @@ class WorkspaceDetailsFragment : Fragment(R.layout.fragment_workspace_details) {
 
         binding.apply {
             Glide.with(view)
-                .load(data.urls.regular)
+                .load(data.images?.get(0))
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .transform(CenterCrop(), RoundedCorners(24))
                 .error(R.drawable.error_placeholder)

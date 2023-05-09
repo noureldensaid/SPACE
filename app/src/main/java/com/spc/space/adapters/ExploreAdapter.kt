@@ -1,4 +1,5 @@
 package com.spc.space.adapters
+
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
@@ -10,23 +11,26 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.spc.space.R
 import com.spc.space.databinding.WorkspaceDetailsRvItemsBinding
 import com.spc.space.models.fake.UnsplashPhoto
+import com.spc.space.models.fake.UnsplashResponse
+import com.spc.space.models.workspaces.WorkSpaceItem
 
 class ExploreAdapter : RecyclerView.Adapter<ExploreAdapter.ViewHolder>() {
     inner class ViewHolder(private val binding: WorkspaceDetailsRvItemsBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: UnsplashPhoto) {
+        fun bind(item: WorkSpaceItem) {
             itemView.setOnClickListener {
                 onItemClickListener?.invoke(item)
             }
             binding.apply {
-                workspaceName.text = "O-Space"
-                workspaceLocation.text = "Louran,Alexandria"
-                workingHoursText.text = "Working Hours"
-                workspaceTime.text = "09:30 to 19:00"
-                workspacePrice.text = "From 20 EGP/HOUR"
+                workspaceName.text = item.name
+//                workspaceLocation.text = item.
+                  //workingHoursText.text =
+
+               workspaceTime.text = "${item.workSpaceSchedule?.openingTime} to ${item.workSpaceSchedule?.closingTime}"
+                //workspacePrice.text = item.
                 Glide.with(itemView)
-                    .load(item.urls.regular)
-                     .transform(CenterCrop(), RoundedCorners(24))
+                    .load(item.images?.get(0))
+                    .transform(CenterCrop(), RoundedCorners(24))
                     .error(R.drawable.error_placeholder)
                     .placeholder(R.drawable.placeholder)
                     .into(workspaceIv)
@@ -34,12 +38,12 @@ class ExploreAdapter : RecyclerView.Adapter<ExploreAdapter.ViewHolder>() {
         }
     }
 
-    private val differCallback = object : DiffUtil.ItemCallback<UnsplashPhoto>() {
-        override fun areItemsTheSame(oldItem: UnsplashPhoto, newItem: UnsplashPhoto): Boolean {
-            return oldItem.urls.regular == newItem.urls.regular
+    private val differCallback = object : DiffUtil.ItemCallback<WorkSpaceItem>() {
+        override fun areItemsTheSame(oldItem: WorkSpaceItem, newItem: WorkSpaceItem): Boolean {
+            return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: UnsplashPhoto, newItem: UnsplashPhoto): Boolean {
+        override fun areContentsTheSame(oldItem: WorkSpaceItem, newItem: WorkSpaceItem): Boolean {
             return oldItem == newItem
         }
     }
@@ -55,7 +59,7 @@ class ExploreAdapter : RecyclerView.Adapter<ExploreAdapter.ViewHolder>() {
         )
     }
 
-    var onItemClickListener: ((UnsplashPhoto) -> Unit)? = null
+    var onItemClickListener: ((WorkSpaceItem) -> Unit)? = null
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = differ.currentList[position]
         holder.bind(item)

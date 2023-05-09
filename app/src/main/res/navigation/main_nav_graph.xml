@@ -92,7 +92,7 @@
                 app:destination="@id/chooseRoomFragment" />
             <argument
                 android:name="data"
-                app:argType="com.spc.space.models.fake.UnsplashPhoto" />
+                app:argType="com.spc.space.models.workspaces.WorkSpaceItem" />
             <action
                 android:id="@+id/action_workspaceDetailsFragment_to_googleMapFragment"
                 app:destination="@id/googleMapFragment" />
@@ -107,7 +107,7 @@
                 app:destination="@id/roomBookingFragment" />
             <argument
                 android:name="roomData"
-                app:argType="com.spc.space.models.fake.UnsplashPhoto" />
+                app:argType="com.spc.space.models.workspaces.WorkSpaceItem" />
         </fragment>
         <fragment
             android:id="@+id/roomBookingFragment"
