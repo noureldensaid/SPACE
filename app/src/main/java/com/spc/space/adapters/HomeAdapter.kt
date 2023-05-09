@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.spc.space.R
- import com.spc.space.databinding.WorkspaceHomeRvItemsBinding
+import com.spc.space.databinding.WorkspaceHomeRvItemsBinding
 import com.spc.space.models.fake.UnsplashPhoto
 
 class HomeAdapter : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
@@ -20,10 +20,10 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
                 onItemClickListener?.invoke(item)
             }
             binding.apply {
-              //  offerPercentage.text = item.user.username
+                //  offerPercentage.text = item.user.username
                 Glide.with(itemView)
                     .load(item.urls.regular)
-                     .transform(CenterCrop(), RoundedCorners(24))
+                    .transform(CenterCrop(), RoundedCorners(24))
                     .error(R.drawable.error_placeholder)
                     .placeholder(R.drawable.placeholder)
                     .into(workspaceIv)

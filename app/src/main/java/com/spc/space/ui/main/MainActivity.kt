@@ -16,8 +16,8 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.spc.space.R
 import com.spc.space.databinding.ActivityMainBinding
+import com.spc.space.ui.DataStoreViewModel
 import com.spc.space.ui.main.home.LocationViewModel
-import com.spc.space.utils.Constants
 import com.spc.space.utils.Constants.PERMISSION_ID
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -25,7 +25,8 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     private lateinit var mainNavController: NavController
-    private val locationViewModel by viewModels<LocationViewModel>()
+    private val dataStoreViewModel: DataStoreViewModel by viewModels()
+    private val locationViewModel: LocationViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,14 +34,20 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         setUpNavigation()
         getLocation()
-//        Log.e("USER_TOKEN", "onCreate: ${Constants.USER_TOKEN}" )
+        Log.e("USER_TOKEN", "onCreate: ${dataStoreViewModel.token}")
+
 
     }
 
+    companion object {
 
 
 
-    private fun getLocation(){
+
+     }
+
+
+    private fun getLocation() {
         if (checkPermission()) {
             if (isLocationEnabled()) {
                 locationViewModel.fetchLocation()
@@ -67,7 +74,8 @@ class MainActivity : AppCompatActivity() {
                     View.VISIBLE
                 R.id.exploreFragment -> binding.bottomNavigationView.visibility = View.VISIBLE
                 R.id.profileFragment -> binding.bottomNavigationView.visibility = View.VISIBLE
-                R.id.bookingsViewPagerFragment -> binding.bottomNavigationView.visibility = View.VISIBLE
+                R.id.bookingsViewPagerFragment -> binding.bottomNavigationView.visibility =
+                    View.VISIBLE
 
                 else -> binding.bottomNavigationView.visibility = View.GONE
             }

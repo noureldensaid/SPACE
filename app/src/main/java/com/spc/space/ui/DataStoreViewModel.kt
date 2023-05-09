@@ -16,12 +16,15 @@ class DataStoreViewModel @Inject constructor(
 ) : ViewModel() {
 
 
+
     private val _token: MutableLiveData<String?> = MutableLiveData()
     val token: LiveData<String?> = _token
 
 
     private val _userName: MutableLiveData<String?> = MutableLiveData()
     val userName: LiveData<String?> = _userName
+
+
 
     init {
         getToken()

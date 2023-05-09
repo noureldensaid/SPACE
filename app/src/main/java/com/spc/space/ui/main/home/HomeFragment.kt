@@ -28,7 +28,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentHomeBinding.bind(view)
 
-         dataStoreViewModel.userName.observe(viewLifecycleOwner, Observer {
+        // PUT WORKSPACE NAME AND PHOTO IN GRID RV
+        val token = dataStoreViewModel.token.value.toString()
+        homeFragmentViewModel.getWorkspaces("Bearer__$token")
+
+
+        dataStoreViewModel.userName.observe(viewLifecycleOwner, Observer {
             binding.userName.text = "Hello, ${it?.capitalize()}"
             Log.e("UserName", "onViewCreated: ${it}")
         })

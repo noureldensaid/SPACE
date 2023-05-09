@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.spc.space.data.repository.Repository
 import com.spc.space.models.fake.UnsplashPhoto
+import com.spc.space.models.workspace.WorkSpaceResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -18,6 +19,10 @@ class HomeFragmentViewModel @Inject constructor(
 
     private val _data: MutableLiveData<List<UnsplashPhoto>> = MutableLiveData()
     val data: LiveData<List<UnsplashPhoto>> = _data
+
+
+    private val _workSpace: MutableLiveData<WorkSpaceResponse> = MutableLiveData()
+    val workSpace: LiveData<WorkSpaceResponse> = _workSpace
 
     init {
         getData()
@@ -36,4 +41,15 @@ class HomeFragmentViewModel @Inject constructor(
         }
     }
 
+    fun getWorkspaces(token: String) = viewModelScope.launch {
+        try {
+            val response = repository.getWorkspaces(token)
+            if (response != null) {
+                _workSpace.postValue(response)
+                Log.e("workspace fetched", "getWorkspaces: Great")
+            } else Log.e("workspace request", "getData: Failed")
+        } catch (ex: Exception) {
+            Log.e("TAG", ex.message.toString());
+        }
+    }
 }
