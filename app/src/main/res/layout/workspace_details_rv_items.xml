@@ -33,7 +33,7 @@
             android:paddingHorizontal="@dimen/dimens_medium_16dp"
             android:text="WorkSpace"
             android:textColor="@android:color/black"
-            android:textSize="@dimen/material_text_title_20sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/workspace_location"
             app:layout_constraintStart_toEndOf="@id/workspace_iv"
@@ -41,16 +41,15 @@
 
         <TextView
             android:id="@+id/workspace_location"
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:fontFamily="@font/lato_regular"
-            android:maxLines="2"
+            android:maxLines="1"
             android:paddingHorizontal="@dimen/dimens_medium_16dp"
             android:text="Celopatra,Alexandria"
             android:textColor="@android:color/black"
-            android:textSize="18sp"
+            android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/working_hours_text"
             app:layout_constraintStart_toStartOf="@id/workspace_name"
             app:layout_constraintTop_toBottomOf="@+id/workspace_name" />
