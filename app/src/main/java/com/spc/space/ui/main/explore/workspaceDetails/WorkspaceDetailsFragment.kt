@@ -21,63 +21,72 @@ import dagger.hilt.android.AndroidEntryPoint
 class WorkspaceDetailsFragment : Fragment(R.layout.fragment_workspace_details) {
     private var _binding: FragmentWorkspaceDetailsBinding? = null
     private val binding get() = _binding!!
-    private val locationViewModel by viewModels<LocationViewModel>()
+    private val locationViewModel: LocationViewModel by viewModels()
     private val args: WorkspaceDetailsFragmentArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentWorkspaceDetailsBinding.bind(view)
-        val data = args.data
-        var destLat:Double? = 0.0
-        var destLng :Double?= 0.0
+        // user locations
+        var destLat: Double? = 0.0
+        var destLng: Double? = 0.0
+        // workspace data
+        val workSpaceItem = args.data
+
         locationViewModel.fetchLocation()
-
-
         locationViewModel.location.observe(viewLifecycleOwner, Observer {
             destLat = it?.latitude
             destLng = it?.longitude
             Log.e("location", "$destLat -- $destLng")
         })
 
-
-
         binding.apply {
-            Glide.with(view)
-                .load(data.urls.regular)
-                .transition(DrawableTransitionOptions.withCrossFade())
-                .transform(CenterCrop(), RoundedCorners(24))
-                .error(R.drawable.error_placeholder)
-                .placeholder(R.drawable.placeholder)
-                .into(workspaceIv)
+            workSpaceItem?.let {
+                Glide.with(view)
+                    .load(it.images?.firstOrNull())
+                    .transition(DrawableTransitionOptions.withCrossFade())
+                    .transform(CenterCrop(), RoundedCorners(24))
+                    .error(R.drawable.error_placeholder)
+                    .placeholder(R.drawable.placeholder)
+                    .into(workspaceIv)
+
+                name.text = it.name
+                workspaceRegion.text = it.location.region
+                workspaceRatingBar.rating = it.avgRate.plus(0.5).toFloat()
+                workspaceTime.text =
+                    it.schedule.openingTime + " to " + it.schedule.closingTime
+            }
+            googleMap.setOnClickListener {
+                // directions format =>
+                // "https://www.google.com/maps/dir/?api=1&origin=37.4220,-122.0841&destination=37.8199,-122.4783"
+                // el origin makan el user
+                // el destination makan el ws
+
+                val wsLocation =
+                    "https://www.google.com/maps/dir/?api=1&origin=$destLat,$destLng&destination=${workSpaceItem.location.latitude},${workSpaceItem.location.longitude}"
+
+                val args = Bundle()
+                args.putString("wsLocation", wsLocation)
+                findNavController().navigate(
+                    R.id.action_workspaceDetailsFragment_to_googleMapFragment,
+                    args
+                )
+            }
+            pickRoomBtn.setOnClickListener {
+                // send ws id to get it's specific rooms
+                val args = Bundle()
+                args.putParcelable("workspace", workSpaceItem)
+                findNavController().navigate(
+                    R.id.action_workspaceDetailsFragment_to_chooseRoomFragment,
+                    args
+                )
+            }
         }
-
-        binding.pickRoomBtn.setOnClickListener {
-            findNavController().navigate(R.id.action_workspaceDetailsFragment_to_chooseRoomFragment)
-        }
-
-        binding.googleMap.setOnClickListener {
-            // directions format =>
-            // "https://www.google.com/maps/dir/?api=1&origin=37.4220,-122.0841&destination=37.8199,-122.4783"
-
-            // el origin makan el user
-            // el destination makan el ws
-            //
-            val wsLocation =
-                "https://www.google.com/maps/dir/?api=1&origin=$destLat,$destLng&destination=31.246053526480758,29.97454506864482"
-
-            val args = Bundle()
-            args.putString("wsLocation", wsLocation)
-            findNavController().navigate(
-                R.id.action_workspaceDetailsFragment_to_googleMapFragment,
-                args
-            )
-        }
-
     }
 
 
-    override fun onDestroyView() {
-        super.onDestroyView()
+    override fun onDestroy() {
+        super.onDestroy()
         _binding = null
     }
 }

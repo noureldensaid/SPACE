@@ -81,6 +81,10 @@
             <action
                 android:id="@+id/action_chooseRoomFragment_to_roomDetailsFragment"
                 app:destination="@id/roomDetailsFragment" />
+            <argument
+                android:name="workspace"
+                app:argType="com.spc.space.models.workspace.WorkSpaceItem"
+                app:nullable="true" />
         </fragment>
         <fragment
             android:id="@+id/workspaceDetailsFragment"
@@ -92,7 +96,7 @@
                 app:destination="@id/chooseRoomFragment" />
             <argument
                 android:name="data"
-                app:argType="com.spc.space.models.fake.UnsplashPhoto" />
+                app:argType="com.spc.space.models.workspace.WorkSpaceItem" />
             <action
                 android:id="@+id/action_workspaceDetailsFragment_to_googleMapFragment"
                 app:destination="@id/googleMapFragment" />
@@ -107,7 +111,7 @@
                 app:destination="@id/roomBookingFragment" />
             <argument
                 android:name="roomData"
-                app:argType="com.spc.space.models.fake.UnsplashPhoto" />
+                app:argType="com.spc.space.models.workspaceRoom.RoomItem" />
         </fragment>
         <fragment
             android:id="@+id/roomBookingFragment"

@@ -17,13 +17,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:fontFamily="@font/lato_bold"
-        android:id="@+id/room_name"
+        android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginVertical="@dimen/dimens_medium_16dp"
         android:layout_marginStart="@dimen/dimens_medium_16dp"
         android:ellipsize="end"
+        android:fontFamily="@font/lato_bold"
         android:maxLines="2"
         android:text="WorkSpace"
         android:textColor="@android:color/black"
@@ -33,34 +33,33 @@
         app:layout_constraintTop_toBottomOf="@id/workspace_iv" />
 
     <TextView
-        android:fontFamily="@font/lato_bold"
-        android:id="@+id/room_type"
+        android:id="@+id/workspace_region"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginVertical="@dimen/dimens_medium_16dp"
         android:ellipsize="end"
+        android:fontFamily="@font/lato_bold"
         android:maxLines="2"
         android:text="Celopatra,Alexandria"
         android:textColor="@android:color/black"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@id/room_name"
-        app:layout_constraintTop_toBottomOf="@id/room_name" />
+        app:layout_constraintStart_toStartOf="@id/name"
+        app:layout_constraintTop_toBottomOf="@id/name" />
 
     <TextView
         android:id="@+id/working_hours_text"
-        android:fontFamily="@font/lato_bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginVertical="@dimen/dimens_medium_16dp"
+        android:fontFamily="@font/lato_bold"
         android:text="@string/working_hours"
         android:textColor="@color/black"
         android:textSize="@dimen/material_text_subhead_16sp"
-        app:layout_constraintStart_toStartOf="@id/room_type"
-        app:layout_constraintTop_toBottomOf="@id/room_type"
+        app:layout_constraintStart_toStartOf="@id/workspace_region"
+        app:layout_constraintTop_toBottomOf="@id/workspace_region"
         tools:layout_editor_absoluteY="309dp" />
 
     <TextView
-        android:fontFamily="@font/lato_bold"
         android:id="@+id/workspace_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -68,6 +67,7 @@
         android:drawableStart="@drawable/ic_clock"
         android:drawablePadding="@dimen/dimens_tiny_4dp"
         android:drawableTint="@color/dark_blue"
+        android:fontFamily="@font/lato_bold"
         android:text="09:30 to 19:00"
         android:textColor="@color/black"
         android:textSize="@dimen/material_text_subhead_16sp"
@@ -75,7 +75,7 @@
         app:layout_constraintTop_toBottomOf="@id/working_hours_text" />
 
     <ImageButton
-        android:id="@+id/buttonF"
+        android:id="@+id/addFav_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@null"
@@ -84,7 +84,7 @@
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/workspace_ratingBar"
-        app:layout_constraintTop_toTopOf="@+id/room_name" />
+        app:layout_constraintTop_toTopOf="@+id/name" />
 
     <RatingBar
         android:id="@+id/workspace_ratingBar"
@@ -99,13 +99,13 @@
         android:stepSize="0.5"
         app:layout_constraintBottom_toTopOf="@+id/workspace_price"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonF" />
+        app:layout_constraintTop_toBottomOf="@+id/addFav_btn" />
 
     <TextView
-        android:fontFamily="@font/lato_bold"
         android:id="@+id/workspace_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/lato_bold"
         android:text="From 20 EGP/HOUR"
         android:textColor="@color/dark_blue"
         android:textSize="16sp"

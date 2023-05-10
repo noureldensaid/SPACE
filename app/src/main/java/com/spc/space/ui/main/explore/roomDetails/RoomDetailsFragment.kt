@@ -25,13 +25,23 @@ class RoomDetailsFragment : Fragment(R.layout.fragment_room_details) {
 
         val roomData = args.roomData
         binding.apply {
-            Glide.with(view)
-                .load(roomData.urls.regular)
-                .transition(DrawableTransitionOptions.withCrossFade())
-                .transform(CenterCrop(), RoundedCorners(24))
-                .error(R.drawable.error_placeholder)
-                .placeholder(R.drawable.placeholder)
-                .into(workspaceIv)
+            if (roomData != null) {
+                Glide.with(view)
+                    .load(roomData.roomImages?.firstOrNull())
+                    .transition(DrawableTransitionOptions.withCrossFade())
+                    .transform(CenterCrop(), RoundedCorners(24))
+                    .error(R.drawable.error_placeholder)
+                    .placeholder(R.drawable.placeholder)
+                    .into(workspaceIv)
+
+
+                roomName.text = roomData.roomName?.lowercase()?.capitalize()
+                roomCapacity.text = "${roomData.capacity.toString()} guests"
+                roomType.text = roomData.type?.capitalize()
+
+
+            }
+
         }
 
         binding.btnSelectDate.setOnClickListener {

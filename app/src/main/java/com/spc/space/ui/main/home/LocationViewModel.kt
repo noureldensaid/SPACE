@@ -20,6 +20,9 @@ import javax.inject.Inject
 @HiltViewModel
 class LocationViewModel @Inject constructor(application: Application) :
     AndroidViewModel(application) {
+
+
+
     // don't worry
      @SuppressLint("StaticFieldLeak")
      private val context = getApplication<Application>().applicationContext

@@ -4,8 +4,8 @@ import com.spc.space.models.auth.signIn.SignInRequest
 import com.spc.space.models.auth.signIn.SignInResponse
 import com.spc.space.models.auth.signUp.SignUpRequest
 import com.spc.space.models.auth.signUp.SignUpResponse
-import com.spc.space.models.workspace.WorkSpaceResponse
-import com.spc.space.models.workspaceRoom.workSpaceRoomResponse
+import com.spc.space.models.workspace.WorkspacesResponse
+import com.spc.space.models.workspaceRoom.RoomResponse
 import retrofit2.http.*
 
 interface SpaceApi {
@@ -19,21 +19,23 @@ interface SpaceApi {
 
     // sign in
     @POST("auth/signIn")
-    suspend fun signIn(@Body request: SignInRequest): SignInResponse
+    suspend fun signIn(
+        @Body request: SignInRequest
+    ): SignInResponse
 
     // get all workspaces
     // don't forget to add Bearer__ before passing the token --> Bearer__$token
     @GET("workingSpace/getWorkSpaces")
     suspend fun getWorkspaces(
         @Header("authorization") userToken: String,
-    ): WorkSpaceResponse
+    ): WorkspacesResponse
 
 
     // get specific room for a certain workspace
     @GET("room/getRoomsForSpecificWs/{workspaceId}")
     suspend fun getRoomsForWorkspace(
         @Path("workspaceId") workspaceId: String
-    ): workSpaceRoomResponse
+    ): RoomResponse
 
 
 }

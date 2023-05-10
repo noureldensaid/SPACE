@@ -28,15 +28,22 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentHomeBinding.bind(view)
 
+        val homeAdapter = HomeAdapter()
+
+
         //todo PUT WORKSPACE NAME AND PHOTO IN GRID RV ,
         // then when user click on grid it shows workspace details
         val token = dataStoreViewModel.token.value.toString()
         homeFragmentViewModel.getWorkspaces("Bearer__$token")
 
-        homeFragmentViewModel.workSpace.observe(viewLifecycleOwner, Observer {
+        homeFragmentViewModel.workSpace.observe(viewLifecycleOwner, Observer { data ->
             //todo send workspace list to the adapter
             // change adapter used class in diff util
             // submit list<workspace> to adpater
+
+
+            Log.e("size ", data.workSpace?.size.toString());
+            homeAdapter.differ.submitList(data.workSpace)
 
         })
 
@@ -46,7 +53,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             Log.e("UserName", "onViewCreated: ${it}")
         })
 
-        val homeAdapter = HomeAdapter()
 
         binding.apply {
             homeHotFeaturedRv.apply {
@@ -57,11 +63,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
 
 
+        //UNSPLASH
         // viewModel.getData()
-        homeFragmentViewModel.data.observe(viewLifecycleOwner, Observer { data ->
-            Log.e("size ", data.size.toString());
-            homeAdapter.differ.submitList(data)
-        })
+//        homeFragmentViewModel.data.observe(viewLifecycleOwner, Observer { data ->
+//            Log.e("size ", data.size.toString());
+//            homeAdapter.differ.submitList(data)
+//        })
 
         homeAdapter.onItemClickListener = {
 //            val intent = Intent(requireContext(), WorkSpaceDetailsActivity::class.java)

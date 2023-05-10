@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
             if (isLocationEnabled()) {
                 locationViewModel.fetchLocation()
             } else {
-                Toast.makeText(this, "Please Turn on Your device Location", Toast.LENGTH_SHORT)
+                Toast.makeText(this, "Please Turn on Your device WorkspaceLocation", Toast.LENGTH_SHORT)
                     .show()
             }
         } else {

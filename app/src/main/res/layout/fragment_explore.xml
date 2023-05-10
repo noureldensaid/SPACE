@@ -117,12 +117,11 @@
                 android:id="@+id/explore_fragment_rv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/dimens_medium_16dp"
-                android:clipToPadding="false"
+                 android:clipToPadding="false"
                 android:paddingBottom="48dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@id/home_search_tv"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/search_filters_chip_group"
                 tools:listitem="@layout/workspace_details_rv_items" />
         </androidx.constraintlayout.widget.ConstraintLayout>
