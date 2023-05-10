@@ -162,7 +162,7 @@
                 android:layout_marginHorizontal="72dp"
                 android:fontFamily="@font/lato_bold"
                 android:padding="@dimen/dimens_medium_16dp"
-                android:text="Confirm Booking"
+                android:text="Book Now !"
                 android:textAllCaps="false"
                 app:cornerRadius="@dimen/dimens_large_24dp"
                 app:layout_constraintBottom_toBottomOf="parent"

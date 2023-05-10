@@ -54,7 +54,6 @@ interface SpaceApi {
 
     // Favs api feh mshakel lesa sebko menha
 
-
     //TODO : ADD WORKSPACE TO FAVS
     @PUT("favorite/addFavorites/{workspaceId}")
     fun addToFavorites(

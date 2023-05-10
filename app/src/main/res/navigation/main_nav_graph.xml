@@ -124,6 +124,9 @@
             <action
                 android:id="@+id/action_roomBookingFragment_to_failedBookingFragment"
                 app:destination="@id/failedBookingFragment" />
+            <argument
+                android:name="roomData"
+                app:argType="com.spc.space.models.workspaceRoom.RoomItem" />
         </fragment>
         <fragment
             android:id="@+id/googleMapFragment"
