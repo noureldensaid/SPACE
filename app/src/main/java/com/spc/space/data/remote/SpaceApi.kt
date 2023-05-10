@@ -7,10 +7,10 @@ import com.spc.space.models.auth.signUp.SignUpResponse
 import com.spc.space.models.createBooking.CreateBookingRequest
 import com.spc.space.models.createBooking.CreateBookingResponse
 import com.spc.space.models.favs.AddFavoritesResponse
+import com.spc.space.models.favs.DeleteFavoritesResponse
 import com.spc.space.models.favs.GetFavoritesResponse
 import com.spc.space.models.workspace.WorkspacesResponse
 import com.spc.space.models.workspaceRoom.RoomResponse
-import retrofit2.Call
 import retrofit2.http.*
 
 interface SpaceApi {
@@ -74,7 +74,5 @@ interface SpaceApi {
     fun removeFromFavorites(
         @Header("authorization") userToken: String,
         @Path("workspaceId") workspaceId: String
-    ): Call<Any> // Replace `Any` with the response data class if available
-
-
+    ): DeleteFavoritesResponse
 }
