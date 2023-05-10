@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.text.format.DateFormat.is24HourFormat
 import android.view.View
 import android.widget.EditText
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.timepicker.MaterialTimePicker
@@ -12,6 +13,7 @@ import com.google.android.material.timepicker.TimeFormat
 import com.spc.space.R
 import com.spc.space.databinding.FragmentRoomBookingBinding
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.SimpleDateFormat
 import java.util.*
 
 @AndroidEntryPoint
@@ -27,8 +29,16 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
         //check out time picker
         setupTimePicker(binding.checkOutEt)
 
+
         binding.btnConfirmBookings.setOnClickListener {
-            findNavController().navigate(R.id.action_roomBookingFragment_to_successBookingFragment)
+            val checkInTime = binding.checkInEt.text.toString()
+            val checkOutTime = binding.checkOutEt.text.toString()
+
+            if (isTimeAfter(checkInTime, checkOutTime)) {
+                findNavController().navigate(R.id.action_roomBookingFragment_to_successBookingFragment)
+            } else {
+                Toast.makeText(requireContext(), "Check-out time must be after check-in time", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -76,6 +86,16 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
         }
     }
 
+
+    // Function to compare two time strings in the format "hh:mm AM/PM"
+    private fun isTimeAfter(time1: String, time2: String): Boolean {
+        val format = SimpleDateFormat("hh:mm a", Locale.getDefault())
+        val parsedTime1 = format.parse(time1)
+        val parsedTime2 = format.parse(time2)
+        return parsedTime1?.before(parsedTime2) ?: false
+    }
+
+
     @SuppressLint("UseCompatLoadingForDrawables")
     private fun setupCalender() {
         val forwardIcon = resources.getDrawable(R.drawable.ic_calendar_arrow_forward)
@@ -90,6 +110,5 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
         super.onDestroy()
         _binding = null
     }
-
 
 }

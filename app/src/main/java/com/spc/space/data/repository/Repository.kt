@@ -8,12 +8,7 @@ import javax.inject.Singleton
 class Repository @Inject constructor(
     private val spaceApi: SpaceApi,
 ) {
-
-
     suspend fun getWorkspaces(token: String) = spaceApi.getWorkspaces(token)
-
     suspend fun getRoomsForWorkspace(workspaceId: String) =
         spaceApi.getRoomsForWorkspace(workspaceId)
-
-
 }

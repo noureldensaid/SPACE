@@ -40,7 +40,6 @@ class DataStoreRepository @Inject constructor(
         }
     }
 
-
     suspend fun saveUserName(value: String) {
         val preferencesKey = stringPreferencesKey(USER_INFO)
         context.dataStore.edit { userDataPreferences ->
