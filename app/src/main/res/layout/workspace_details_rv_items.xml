@@ -25,14 +25,16 @@
 
         <TextView
             android:id="@+id/workspace_name"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:fontFamily="@font/lato_black"
             android:maxLines="2"
             android:paddingHorizontal="@dimen/dimens_medium_16dp"
+            android:paddingBottom="@dimen/dimens_tiny_4dp"
             android:text="WorkSpace"
-            android:textColor="@android:color/black"
+            android:textColor="@color/dark_blue"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/workspace_location"
@@ -41,12 +43,14 @@
 
         <TextView
             android:id="@+id/workspace_location"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:fontFamily="@font/lato_regular"
             android:maxLines="1"
             android:paddingHorizontal="@dimen/dimens_medium_16dp"
+            android:paddingBottom="@dimen/dimens_tiny_4dp"
             android:text="Celopatra,Alexandria"
             android:textColor="@android:color/black"
             android:textSize="16sp"
@@ -56,6 +60,7 @@
 
         <TextView
             android:id="@+id/working_hours_text"
+            android:paddingBottom="@dimen/dimens_tiny_4dp"
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -70,8 +75,8 @@
 
         <TextView
             android:id="@+id/workspace_time"
-
             android:layout_width="wrap_content"
+
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/ic_clock"
             android:drawablePadding="@dimen/dimens_tiny_4dp"
@@ -81,6 +86,7 @@
             android:gravity="center_vertical"
             android:maxLines="1"
             android:paddingHorizontal="@dimen/dimens_medium_16dp"
+            android:paddingBottom="@dimen/dimens_tiny_4dp"
             android:text="09:30 to 19:00"
             android:textColor="@color/black"
             android:textSize="@dimen/material_text_subhead_16sp"
@@ -90,12 +96,14 @@
 
         <RatingBar
             android:id="@+id/workspace_ratingBar"
+
             style="?android:attr/ratingBarStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:isIndicator="true"
             android:numStars="5"
             android:paddingHorizontal="@dimen/dimens_medium_16dp"
+            android:paddingBottom="@dimen/dimens_tiny_4dp"
             android:progressTint="#ffff8800"
             android:stepSize="1"
             app:layout_constraintBottom_toTopOf="@+id/workspace_price"

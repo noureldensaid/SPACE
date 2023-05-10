@@ -15,6 +15,7 @@ data class RoomItem(
     @SerializedName("_id")
     val id: String? = null,
     val capacity: Int? = null,
+    val price: Int? = null,
     val roomImages: List<String>? = emptyList(),
     val roomName: String? = null,
     val roomNumber: String? = null,

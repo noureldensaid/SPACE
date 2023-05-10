@@ -55,10 +55,12 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         binding.apply {
             signInBtn.setOnClickListener {
                 val email = emailEt.editText?.text.toString().trim()
+                val username = usernameEt.editText?.text.toString().trim()
                 val password = passwordEt.editText?.text.toString().trim()
-                if (email.isNotEmpty() && password.isNotEmpty()) {
+                if (email.isNotEmpty() && username.isNotEmpty() && password.isNotEmpty()) {
                     val request = SignInRequest(email, password)
                     loginViewModel.signIn(request)
+                    dataStoreViewModel.saveUserName(username)
                 }
             }
         }
