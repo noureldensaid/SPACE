@@ -16,28 +16,8 @@ class ExploreFragmentViewModel @Inject constructor(
     private val repository: Repository
 ) : ViewModel() {
 
-    //    private val _data: MutableLiveData<List<UnsplashPhoto>> = MutableLiveData()
-//    val data: LiveData<List<UnsplashPhoto>> = _data
     private val _workSpace: MutableLiveData<WorkspacesResponse> = MutableLiveData()
     val workSpace: LiveData<WorkspacesResponse> = _workSpace
-
-    init {
-//        getData()
-    }
-
-
-//    private fun getData() = viewModelScope.launch {
-//        try {
-//            val response = repository.getData()
-//            if (response.isSuccessful) {
-//                _data.postValue(response.body()?.results)
-//                Log.e("Great request", "getData: Great")
-//            } else Log.e("Failed request", "getData: Failed")
-//        } catch (ex: Exception) {
-//            Log.e("TAG", ex.message.toString());
-//        }
-//    }
-
 
     fun getWorkspaces(token: String) = viewModelScope.launch {
         try {
@@ -50,6 +30,5 @@ class ExploreFragmentViewModel @Inject constructor(
             Log.e("TAG", ex.message.toString());
         }
     }
-
 
 }

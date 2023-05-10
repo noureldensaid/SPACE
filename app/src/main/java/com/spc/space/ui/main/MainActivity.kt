@@ -39,14 +39,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    companion object {
-
-
-
-
-     }
-
-
     private fun getLocation() {
         if (checkPermission()) {
             if (isLocationEnabled()) {

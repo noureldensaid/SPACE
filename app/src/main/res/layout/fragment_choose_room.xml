@@ -6,48 +6,65 @@
     android:layout_height="match_parent"
     tools:context=".ui.main.explore.chooseRoom.ChooseRoomFragment">
 
-    <TextView
-        android:id="@+id/workspace_name_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/dimens_medium_16dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/lato_bold"
-        android:text="O-space"
-        android:textColor="@color/dark_blue"
-        android:textSize="@dimen/material_text_display1_34sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/room_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimens_large_32dp"
-        android:fontFamily="@font/lato_bold"
-        android:paddingHorizontal="@dimen/dimens_medium_16dp"
-        android:text="Rooms"
-        android:textColor="@color/dark_blue"
-        android:textSize="@dimen/material_text_headline_24sp"
-        app:layout_constraintBottom_toTopOf="@id/rooms_rv"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/workspace_name_title" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rooms_rv"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/dimens_small_8dp"
-        android:clipToPadding="false"
-        android:orientation="vertical"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/room_title"
-        tools:listitem="@layout/workspace_rooms_rv_items" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/workspace_name_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dimens_medium_16dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/lato_bold"
+                android:text="O-space"
+                android:textColor="@color/dark_blue"
+                android:textSize="@dimen/material_text_display1_34sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/room_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimens_large_32dp"
+                android:fontFamily="@font/lato_bold"
+                android:paddingHorizontal="@dimen/dimens_medium_16dp"
+                android:text="Rooms"
+                android:textColor="@color/dark_blue"
+                android:textSize="@dimen/material_text_headline_24sp"
+                app:layout_constraintBottom_toTopOf="@id/rooms_rv"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/workspace_name_title" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rooms_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dimens_small_8dp"
+                android:clipToPadding="false"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/dimens_large_32dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/room_title"
+                tools:listitem="@layout/workspace_rooms_rv_items" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

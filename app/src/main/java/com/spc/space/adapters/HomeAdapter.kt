@@ -10,8 +10,7 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.spc.space.R
 import com.spc.space.databinding.WorkspaceHomeRvItemsBinding
-import com.spc.space.models.fake.UnsplashPhoto
-import com.spc.space.models.workspace.WorkSpaceItem
+ import com.spc.space.models.workspace.WorkSpaceItem
 
 class HomeAdapter : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
     inner class ViewHolder(private val binding: WorkspaceHomeRvItemsBinding) :

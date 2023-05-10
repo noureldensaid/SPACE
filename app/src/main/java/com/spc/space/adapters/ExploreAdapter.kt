@@ -21,10 +21,11 @@ class ExploreAdapter : RecyclerView.Adapter<ExploreAdapter.ViewHolder>() {
             }
             binding.apply {
                 workspaceName.text = item.name?.lowercase()?.capitalize()
-                workspaceLocation.text = "Louran,Alexandria"
+                workspaceLocation.text = "${item.location.region},${item.location.city}"
                 workingHoursText.text = "Working Hours"
-                workspaceTime.text = "09:30 to 19:00"
+                workspaceTime.text = "${item.schedule.openingTime} to ${item.schedule.closingTime}"
                 workspacePrice.text = "From 20 EGP/HOUR"
+                workspaceRatingBar.rating = item.avgRate.plus(1).toFloat()
                 Glide.with(itemView)
                     .load(item.images?.firstOrNull())
                     .transform(CenterCrop(), RoundedCorners(24))

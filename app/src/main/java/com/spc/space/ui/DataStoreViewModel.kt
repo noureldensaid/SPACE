@@ -15,15 +15,11 @@ class DataStoreViewModel @Inject constructor(
     private val dataStoreRepository: DataStoreRepository
 ) : ViewModel() {
 
-
-
     private val _token: MutableLiveData<String?> = MutableLiveData()
     val token: LiveData<String?> = _token
 
-
     private val _userName: MutableLiveData<String?> = MutableLiveData()
     val userName: LiveData<String?> = _userName
-
 
 
     init {
@@ -44,7 +40,6 @@ class DataStoreViewModel @Inject constructor(
             else _userName.postValue("null")
         }
     }
-
 
     fun saveToken(userToken: String) {
         viewModelScope.launch {
