@@ -36,27 +36,30 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
         //check out time picker
         setupTimePicker(binding.checkOutEt)
 
-        val time1 = binding.checkInEt.text.toString()
-        val time2 = binding.checkOut.text.toString()
         val datte = getSelectedDay()
 
 
-        //TODO EL TIME BYB2A FADY LEEH 7TA BA3D MA E5TAR ??
 
         binding.btnConfirmBookings.setOnClickListener {
-            Log.e("time1", time1.toString())
-            Log.e("time2", time2.toString())
-            Log.e("date", datte)
+
+            val time1 = binding.checkInEt.text.toString()
+            val time2 = binding.checkOutEt.text.toString()
+            val date = getSelectedDay()
+
+//            Log.e("time1", time1.toString())
+//            Log.e("time2", time2.toString())
+//            Log.e("date", datte)
+
             if (time1.isNotBlank() && time2.isNotBlank()) {
-                val checkInTime = parseTime(binding.checkOutEt.text.toString())
-                val checkOutTime = parseTime(binding.checkInEt.text.toString())
-                val date = getSelectedDay()
+                val checkInTime = parseTime(binding.checkInEt.text.toString())
+                val checkOutTime = parseTime(binding.checkOutEt.text.toString())
                 val startTime = date + 'T' + checkInTime
                 val endTime = date + 'T' + checkOutTime
                 val roomId = ""
                 val userToken = ""
                 val isTimeCorrect = isTimeAfter(time1, time2)
-
+                Log.e("startTime", startTime)
+                Log.e("endTime", endTime)
 
                 if (isTimeCorrect) {
                     findNavController().navigate(R.id.action_roomBookingFragment_to_successBookingFragment)

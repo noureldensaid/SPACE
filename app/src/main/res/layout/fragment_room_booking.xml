@@ -45,7 +45,7 @@
             app:layout_constraintTop_toBottomOf="@+id/calendarView">
 
             <TextView
-                android:id="@+id/time_range"
+                android:id="@+id/start_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dimens_large_24dp"
@@ -59,7 +59,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/check_out"
+                android:id="@+id/end_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
@@ -68,8 +68,8 @@
                 android:textColor="@color/dark_blue"
                 android:textSize="@dimen/dimens_medium_16dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/time_range"
-                app:layout_constraintTop_toTopOf="@+id/time_range" />
+                app:layout_constraintStart_toEndOf="@+id/start_text"
+                app:layout_constraintTop_toTopOf="@+id/start_text" />
 
 
             <androidx.appcompat.widget.AppCompatEditText
@@ -88,10 +88,9 @@
                 app:boxCornerRadiusTopStart="@dimen/dimens_small_8dp"
                 app:boxStrokeColor="@color/pastel_blue"
                 app:boxStrokeWidth="0dp"
-
                 app:boxStrokeWidthFocused="1dp"
-                app:layout_constraintStart_toStartOf="@id/time_range"
-                app:layout_constraintTop_toBottomOf="@id/time_range" />
+                app:layout_constraintStart_toStartOf="@id/start_text"
+                app:layout_constraintTop_toBottomOf="@id/start_text" />
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/checkOut_et"
@@ -110,7 +109,7 @@
                 app:boxStrokeWidth="0dp"
                 app:boxStrokeWidthFocused="1dp"
                 app:layout_constraintBottom_toBottomOf="@+id/checkIn_et"
-                app:layout_constraintStart_toStartOf="@+id/check_out"
+                app:layout_constraintStart_toStartOf="@+id/end_text"
                 app:layout_constraintTop_toTopOf="@id/checkIn_et" />
 
             <TextView
