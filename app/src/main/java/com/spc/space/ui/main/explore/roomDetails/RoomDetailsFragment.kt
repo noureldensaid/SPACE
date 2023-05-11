@@ -45,7 +45,12 @@ class RoomDetailsFragment : Fragment(R.layout.fragment_room_details) {
         }
 
         binding.btnSelectDate.setOnClickListener {
-            findNavController().navigate(R.id.action_roomDetailsFragment_to_roomBookingFragment)
+            val args = Bundle()
+            args.putParcelable("roomData", roomData)
+            findNavController().navigate(
+                R.id.action_roomDetailsFragment_to_roomBookingFragment,
+                args
+            )
         }
 
     }

@@ -9,13 +9,16 @@ import android.view.View
 import android.widget.EditText
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.applandeo.materialcalendarview.EventDay
 import com.applandeo.materialcalendarview.listeners.OnDayClickListener
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import com.spc.space.R
 import com.spc.space.databinding.FragmentRoomBookingBinding
+import com.spc.space.ui.DataStoreViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.time.LocalDate
@@ -24,11 +27,17 @@ import java.util.*
 @RequiresApi(Build.VERSION_CODES.O)
 @AndroidEntryPoint
 class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
+    private val dataStoreViewModel: DataStoreViewModel by viewModels()
+    private val args: RoomBookingFragmentArgs by navArgs()
     private var _binding: FragmentRoomBookingBinding? = null
     private val binding get() = _binding!!
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentRoomBookingBinding.bind(view)
+        val roomData = args.roomData
+        val roomId = roomData.id
+        val userToken = dataStoreViewModel.token.value
 
         setupCalender()
         //check in time picker
@@ -36,7 +45,6 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
         //check out time picker
         setupTimePicker(binding.checkOutEt)
 
-        val datte = getSelectedDay()
 
 
 
@@ -46,9 +54,8 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
             val time2 = binding.checkOutEt.text.toString()
             val date = getSelectedDay()
 
-//            Log.e("time1", time1.toString())
-//            Log.e("time2", time2.toString())
-//            Log.e("date", datte)
+            Log.e("roomId", roomId.toString())
+            Log.e("token", userToken.toString())
 
             if (time1.isNotBlank() && time2.isNotBlank()) {
                 val checkInTime = parseTime(binding.checkInEt.text.toString())
