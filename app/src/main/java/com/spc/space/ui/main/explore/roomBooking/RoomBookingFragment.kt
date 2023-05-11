@@ -31,15 +31,16 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
 
 
         binding.btnConfirmBookings.setOnClickListener {
-            val checkInTime = binding.checkInEt.text.toString()
+             val checkInTime = binding.checkInEt.text.toString()
             val checkOutTime = binding.checkOutEt.text.toString()
 
             if (isTimeAfter(checkInTime, checkOutTime)) {
                 findNavController().navigate(R.id.action_roomBookingFragment_to_successBookingFragment)
             } else {
-                Toast.makeText(requireContext(), "Check-out time must be after check-in time", Toast.LENGTH_SHORT).show()
+                binding.tvCheckTimeErr.visibility=View.VISIBLE
             }
         }
+
     }
 
     private fun setupTimePicker(editText: EditText) {
@@ -98,12 +99,44 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
 
     @SuppressLint("UseCompatLoadingForDrawables")
     private fun setupCalender() {
+        val calendar = Calendar.getInstance()
+        val yesterday = Calendar.getInstance()
+        yesterday.add(Calendar.DATE, -1)
+        yesterday.set(Calendar.HOUR_OF_DAY, 0)
+        yesterday.set(Calendar.MINUTE, 0)
+        yesterday.set(Calendar.SECOND, 0)
+        yesterday.set(Calendar.MILLISECOND, 0)
+
+        binding.calendarView.setMinimumDate(yesterday)
+        binding.calendarView.setDisabledDays(getDisabledDays(yesterday))
         val forwardIcon = resources.getDrawable(R.drawable.ic_calendar_arrow_forward)
         val previousIcon = resources.getDrawable(R.drawable.ic_calendar_arrow_previous)
         binding.calendarView.apply {
             setForwardButtonImage(forwardIcon)
             setPreviousButtonImage(previousIcon)
         }
+    }
+
+    private fun getDisabledDays(calendar: Calendar): List<Calendar> {
+        val disabledDays = ArrayList<Calendar>()
+        val today = Calendar.getInstance()
+        today.set(Calendar.HOUR_OF_DAY, 0)
+        today.set(Calendar.MINUTE, 0)
+        today.set(Calendar.SECOND, 0)
+        today.set(Calendar.MILLISECOND, 0)
+
+//        val yesterday = Calendar.getInstance()
+//        yesterday.add(Calendar.DATE, -1)
+//        yesterday.set(Calendar.HOUR_OF_DAY, 0)
+//        yesterday.set(Calendar.MINUTE, 0)
+//        yesterday.set(Calendar.SECOND, 0)
+//        yesterday.set(Calendar.MILLISECOND, 0)
+
+        while (calendar.before(today)) {
+            disabledDays.add(calendar.clone() as Calendar)
+            calendar.add(Calendar.DATE, 1)
+        }
+        return disabledDays
     }
 
     override fun onDestroy() {
