@@ -5,8 +5,9 @@ import com.google.gson.annotations.SerializedName
 data class CreateBookingRequest(
     @SerializedName("room")
     val roomId: String,
-    val endTime: String,
-    val startTime: String
+    val startTime: String,
+    val endTime: String
+
 )
 
 //{

@@ -18,6 +18,7 @@ import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import com.spc.space.R
 import com.spc.space.databinding.FragmentRoomBookingBinding
+import com.spc.space.models.createBooking.CreateBookingRequest
 import com.spc.space.ui.DataStoreViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
@@ -28,6 +29,7 @@ import java.util.*
 @AndroidEntryPoint
 class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
     private val dataStoreViewModel: DataStoreViewModel by viewModels()
+    private val roomBookingViewModel: RoomBookingViewModel by viewModels()
     private val args: RoomBookingFragmentArgs by navArgs()
     private var _binding: FragmentRoomBookingBinding? = null
     private val binding get() = _binding!!
@@ -44,6 +46,8 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
         setupTimePicker(binding.checkInEt)
         //check out time picker
         setupTimePicker(binding.checkOutEt)
+
+//        roomBookingViewModel.booking.observe(viewLifecycleOwner,  {  })
 
 
 
@@ -67,9 +71,14 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
                 val isTimeCorrect = isTimeAfter(time1, time2)
                 Log.e("startTime", startTime)
                 Log.e("endTime", endTime)
+                val bookingRequest=CreateBookingRequest(roomId,startTime,endTime)
 
                 if (isTimeCorrect) {
-                    findNavController().navigate(R.id.action_roomBookingFragment_to_successBookingFragment)
+                    createBooking(userToken,bookingRequest)
+
+
+
+                   // findNavController().navigate(R.id.action_roomBookingFragment_to_successBookingFragment)
                 } else {
                     binding.tvCheckTimeErr.visibility = View.VISIBLE
                     Log.e("startTime", startTime.toString())
@@ -80,6 +89,8 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
             }
 
         }
+
+        
 
     }
 
@@ -208,6 +219,10 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
             calendar.add(Calendar.DATE, 1)
         }
         return disabledDays
+    }
+
+    private fun createBooking(userToken:String, bookingRequest: CreateBookingRequest){
+        roomBookingViewModel.createBooking(userToken,bookingRequest)
     }
 
     override fun onDestroy() {
