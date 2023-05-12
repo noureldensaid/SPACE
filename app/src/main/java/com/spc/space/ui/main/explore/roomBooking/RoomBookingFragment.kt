@@ -52,13 +52,16 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
 
 
         roomBookingViewModel.booking.observe(viewLifecycleOwner, Observer {
-            Log.e("booking", it.message)
-            when (it.message) {
-                "Room is currently booked" -> {
-                    binding.tvCheckTimeErr.text = "Room is currently busy"
-                    binding.tvCheckTimeErr.visibility = View.VISIBLE
-                }
+            if (it != null) {
+                Log.e("bookingId", it.addedBooking!!.id)
+                Log.e("booking", it.message)
+                when (it.message) {
+                    "Room is currently booked" -> {
+                        binding.tvCheckTimeErr.text = "Room is currently busy"
+                        binding.tvCheckTimeErr.visibility = View.VISIBLE
+                    }
 
+                }
             }
         })
         roomBookingViewModel.validBooking.observe(viewLifecycleOwner, Observer {
