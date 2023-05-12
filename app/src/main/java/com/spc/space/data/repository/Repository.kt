@@ -17,4 +17,18 @@ class Repository @Inject constructor(
     suspend fun createBooking(token: String, bookingRequest: CreateBookingRequest) =
         spaceApi.createBooking("Bearer__$token", bookingRequest)
 
+
+    suspend fun addToFavorites(token: String, workspaceId: String) =
+        spaceApi.addToFavorites("Bearer__$token", workspaceId)
+
+
+    suspend fun removeFromFavorites(token: String, workspaceId: String) =
+        spaceApi.removeFromFavorites("Bearer__$token", workspaceId)
+
+
+    suspend fun getFav (token: String)= spaceApi.getFavorites("Bearer__$token")
+
+
+
+
 }

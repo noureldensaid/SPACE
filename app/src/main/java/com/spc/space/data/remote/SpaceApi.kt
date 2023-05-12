@@ -52,8 +52,6 @@ interface SpaceApi {
     ): CreateBookingResponse
 
 
-    // Favs api feh mshakel lesa sebko menha
-
     //TODO : ADD WORKSPACE TO FAVS
     @PUT("favorite/addFavorites/{workspaceId}")
     suspend fun addToFavorites(
