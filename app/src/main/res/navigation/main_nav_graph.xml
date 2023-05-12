@@ -16,22 +16,19 @@
     </fragment>
     <fragment
         android:id="@+id/editProfileFragment"
-        android:label="Edit Profile"
         android:name="com.spc.space.ui.main.profile.EditProfile"
-        tools:layout="@layout/fragment_edit_profile"
-        />
+        android:label="Edit Profile"
+        tools:layout="@layout/fragment_edit_profile" />
     <fragment
         android:id="@+id/changePasswordFragment"
-        android:label="change password"
         android:name="com.spc.space.ui.main.profile.ChangePassword"
-        tools:layout="@layout/fragment_change_password"
-        />
+        android:label="change password"
+        tools:layout="@layout/fragment_change_password" />
     <fragment
         android:id="@+id/reportProblemFragment"
-        android:label="Report Problem"
         android:name="com.spc.space.ui.main.profile.ReportProblem"
-        tools:layout="@layout/fragment_report_problem"
-        />
+        android:label="Report Problem"
+        tools:layout="@layout/fragment_report_problem" />
     <fragment
         android:id="@+id/exploreFragment"
         android:name="com.spc.space.ui.main.explore.chooseWorkspace.ExploreFragment"
@@ -50,17 +47,16 @@
         android:id="@+id/profileFragment"
         android:name="com.spc.space.ui.main.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile"
-        >
-        <action android:id="@+id/action_profileFragment_to_editProfileFragment"
-            app:destination="@id/editProfileFragment"
-            />
-        <action android:id="@+id/action_profileFragment_to_changePasswordFragment"
-            app:destination="@id/changePasswordFragment"
-            />
-        <action android:id="@+id/action_profileFragment_to_reportProblemFragment"
-            app:destination="@id/reportProblemFragment"
-            />
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_changePasswordFragment"
+            app:destination="@id/changePasswordFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_reportProblemFragment"
+            app:destination="@id/reportProblemFragment" />
 
 
     </fragment>
@@ -108,7 +104,9 @@
             tools:layout="@layout/fragment_room_details">
             <action
                 android:id="@+id/action_roomDetailsFragment_to_roomBookingFragment"
-                app:destination="@id/roomBookingFragment" />
+                app:destination="@id/roomBookingFragment"
+                app:popUpTo="@id/book_flow"
+                app:popUpToInclusive="true" />
         </fragment>
         <fragment
             android:id="@+id/roomBookingFragment"
@@ -119,8 +117,9 @@
                 android:id="@+id/action_roomBookingFragment_to_successBookingFragment"
                 app:destination="@id/successBookingFragment" />
             <action
-                android:id="@+id/action_roomBookingFragment_to_failedBookingFragment"
-                app:destination="@id/failedBookingFragment" />
+                android:id="@+id/action_roomBookingFragment_pop_including_book_flow"
+                app:popUpTo="@id/book_flow"
+                app:popUpToInclusive="true" />
         </fragment>
         <fragment
             android:id="@+id/googleMapFragment"
@@ -147,7 +146,13 @@
             android:id="@+id/failedBookingFragment"
             android:name="com.spc.space.ui.main.bookings.FailedBookingFragment"
             android:label="fragment_failed_booking"
-            tools:layout="@layout/fragment_failed_booking" />
+            tools:layout="@layout/fragment_failed_booking">
+            <action
+                android:id="@+id/action__failed_booking_to_main_nav_graph"
+                app:destination="@id/main_nav_graph"
+                app:popUpTo="@id/main_nav_graph"
+                app:popUpToInclusive="true" />
+        </fragment>
 
     </navigation>
 </navigation>

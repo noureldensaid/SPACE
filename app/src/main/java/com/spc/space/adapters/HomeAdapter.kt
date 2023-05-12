@@ -10,7 +10,7 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.spc.space.R
 import com.spc.space.databinding.WorkspaceHomeRvItemsBinding
- import com.spc.space.models.workspace.WorkSpaceItem
+import com.spc.space.models.workspace.WorkSpaceItem
 
 class HomeAdapter : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
     inner class ViewHolder(private val binding: WorkspaceHomeRvItemsBinding) :
@@ -22,10 +22,9 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
             binding.apply {
                 //  offerPercentage.text = item.user.username
                 workspaceInfo.text = item.name?.lowercase()?.capitalize()
-
                 Glide.with(itemView)
-                    .load(item.images?.get(0))
-                    .transform(CenterCrop(), RoundedCorners(24))
+                    .load(item.images?.firstOrNull())
+                    .transform(CenterCrop())
                     .error(R.drawable.error_placeholder)
                     .placeholder(R.drawable.placeholder)
                     .into(workspaceIv)

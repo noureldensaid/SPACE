@@ -149,14 +149,17 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
     private fun confirmBooking(startTime: String, endTime: String) {
         val roomData = arguments?.getParcelable<RoomItem>("roomData")
         val dialogBinding = layoutInflater.inflate(R.layout.confirm_booking_dialog, null)
+
         dialog = Dialog(requireContext())
         dialog.setContentView(dialogBinding)
         dialog.setCancelable(false)
+        dialog.setCanceledOnTouchOutside(false)
 
         val duration = calculateDuration(startTime, endTime).toInt()
         dialogBinding.findViewById<TextView>(R.id.message_body_price)
             .setText("Total price = ${roomData?.price?.toInt()?.times(duration)?.toInt()} L.E")
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
         val btnYes = dialogBinding.findViewById<Button>(R.id.btnYes).setOnClickListener {
             dialog.dismiss()
             findNavController().navigate(R.id.action_roomBookingFragment_to_successBookingFragment)
@@ -164,6 +167,8 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
         val btnNo = dialogBinding.findViewById<Button>(R.id.btnNo).setOnClickListener {
             dialog.dismiss()
             cancelBooking()
+            findNavController().navigate(R.id.action_roomBookingFragment_pop_including_book_flow)
+            dialog.dismiss()
         }
         dialog.show()
     }
@@ -181,6 +186,7 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
                 }
             }
         })
+        dialog.dismiss()
     }
 
     private fun isBookingValid(
@@ -344,15 +350,10 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
         return duration.toMinutes().toDouble() / 60.0
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        dialog.dismiss()
-    }
 
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
-        dialog = Dialog(requireContext())
         dialog.dismiss()
     }
 }
