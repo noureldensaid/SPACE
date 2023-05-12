@@ -13,21 +13,24 @@ import javax.inject.Inject
 
 @HiltViewModel
 class FavouritesViewModel @Inject constructor(
-    private  val repository: Repository
- ): ViewModel(){
+    private val repository: Repository
+) : ViewModel() {
 
-     private val _favourites :MutableLiveData<GetFavoritesResponse> = MutableLiveData()
-     val favourites :LiveData<GetFavoritesResponse> =_favourites
+    private val _favourites: MutableLiveData<GetFavoritesResponse> = MutableLiveData()
+    val favourites: LiveData<GetFavoritesResponse> = _favourites
 
-    fun getFavorites(token:String) = viewModelScope.launch {
+    fun getFavorites(token: String) = viewModelScope.launch {
         try {
             val response = repository.getFavorites(token)
-            if (response != null){
+            if (response != null) {
                 _favourites.postValue(response)
-                Log.e("Great request", "getData: Great")
-            } else Log.e("Failed request", "getData: Failed")
+                Log.e("fav fetched ? ", "done")
+            } else Log.e("fav fetched", " Failed")
         } catch (ex: Exception) {
             Log.e("TAG", ex.message.toString());
-            }
         }
     }
+
+
+
+}
