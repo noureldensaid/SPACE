@@ -29,6 +29,7 @@ import com.spc.space.models.workspaceRoom.RoomItem
 import com.spc.space.ui.DataStoreViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
+import java.time.Duration
 import java.time.LocalTime
 import java.time.OffsetDateTime
 import java.time.format.DateTimeFormatter
@@ -97,6 +98,9 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
         binding.btnConfirmBookings.setOnClickListener {
             val time1 = binding.checkInEt.text.toString()
             val time2 = binding.checkOutEt.text.toString()
+            val wsOpenTime = wsData?.schedule?.openingTime
+            val wsCloseTime = wsData?.schedule?.closingTime
+
             var startTime = ""
             var endTime = ""
             var isTimeCorrect = false
@@ -105,7 +109,12 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
 
 
             if (time1.isNotBlank() && time2.isNotBlank()) {
-                isBookingValid(time1, time2) // time 1 > open time && time 2 < close
+                isBookingValid(
+                    convertTimeTo24Hour(time1),
+                    convertTimeTo24Hour(time2),
+                    wsOpenTime!!,
+                    wsCloseTime!!
+                ) // time 1 > open time && time 2 < close
                 roomBookingViewModel.date.observe(viewLifecycleOwner, Observer { date ->
                     val checkInTime = parseTime(time1)
                     val checkOutTime = parseTime(time2)
@@ -134,7 +143,10 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
                         when (it.message) {
                             "Done" -> {
                                 // show dialog and show price if YES save booking details and navigate
-                                confirmBooking()
+                                confirmBooking(
+                                    convertTimeTo24Hour(time1),
+                                    convertTimeTo24Hour(time2),
+                                )
                             }
                         }
                     })
@@ -151,18 +163,20 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
 
 
     @SuppressLint("MissingInflatedId")
-    private fun confirmBooking() {
+    private fun confirmBooking(startTime: String, endTime: String) {
         val roomData = arguments?.getParcelable<RoomItem>("roomData")
-
         val dialogBinding = layoutInflater.inflate(R.layout.confirm_booking_dialog, null)
         dialog = Dialog(requireContext())
         dialog.setContentView(dialogBinding)
         dialog.setCancelable(false)
+
+        val duration = calculateDuration(startTime, endTime).toInt()
         dialogBinding.findViewById<TextView>(R.id.message_body_price)
-            .setText("Total price = ${roomData?.price?.toInt()?.times(5)?.toInt()}")
+            .setText("Total price = ${roomData?.price?.toInt()?.times(duration)?.toInt()}")
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         val btnYes = dialogBinding.findViewById<Button>(R.id.btnYes).setOnClickListener {
             findNavController().navigate(R.id.action_roomBookingFragment_to_successBookingFragment)
+            dialog.dismiss()
 
         }
         val btnNo = dialogBinding.findViewById<Button>(R.id.btnNo).setOnClickListener {
@@ -172,44 +186,40 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
     }
 
 
-    private fun isBookingValid(time1: String, time2: String): Boolean {
-        val wsData = arguments?.getParcelable<WorkSpaceItem>("wsData")
+    private fun isBookingValid(
+        startTime: String,
+        endTime: String,
+        openTime: String,
+        closeTime: String
+    ): Boolean {
+        val startTime24 = LocalTime.parse(startTime)
+        val endTime24 = LocalTime.parse(endTime)
+        val openTime24 = LocalTime.parse(openTime)
+        val closeTime24 = LocalTime.parse(closeTime)
 
-        val timeFormat12 = DateTimeFormatter.ofPattern("h:mm a")
-        val timeFormat24 = DateTimeFormatter.ofPattern("HH:mm")
 
-        val startTime = LocalTime.parse(time1, timeFormat12)
-        val endTime = LocalTime.parse(time2, timeFormat12)
-        val openTime = LocalTime.parse(wsData?.schedule?.openingTime.toString(), timeFormat24)
-        val closeTime = LocalTime.parse(wsData?.schedule?.closingTime.toString(), timeFormat24)
-        Log.e("openTime", wsData?.schedule?.openingTime.toString())
-
-        // Convert the start and end times to 24-hour clock format
-        val startTime24 =
-            if (startTime.hour == 12 && startTime.minute == 0 && startTime.format(timeFormat12)
-                    .endsWith("AM")
-            ) {
-                LocalTime.MIDNIGHT
-            } else if (startTime.format(timeFormat12).endsWith("PM")) {
-                startTime.plusHours(12)
-            } else {
-                startTime
-            }
-        val endTime24 =
-            if (endTime.hour == 12 && endTime.minute == 0 && endTime.format(timeFormat12)
-                    .endsWith("AM")
-            ) {
-                LocalTime.MIDNIGHT
-            } else if (endTime.format(timeFormat12).endsWith("PM")) {
-                endTime.plusHours(12)
-            } else {
-                endTime
-            }
-
-        roomBookingViewModel.validBooking.value =
-            startTime24.isAfter(openTime) && endTime24.isBefore(closeTime)
-        return startTime24.isAfter(openTime) && endTime24.isBefore(closeTime)
+        val result =
+            startTime24.isAfterOrEqual(openTime24) && endTime24.isBeforeOrEqual(closeTime24)
+        roomBookingViewModel.validBooking.value = result
+        return result
     }
+
+    // Extension functions to add isAfterOrEqual and isBeforeOrEqual methods to LocalTime class
+    private fun LocalTime.isAfterOrEqual(other: LocalTime): Boolean {
+        return this == other || this.isAfter(other)
+    }
+
+    private fun LocalTime.isBeforeOrEqual(other: LocalTime): Boolean {
+        return this == other || this.isBefore(other)
+    }
+
+    private fun convertTimeTo24Hour(time12: String): String {
+        val formatter12 = DateTimeFormatter.ofPattern("h:mm a")
+        val formatter24 = DateTimeFormatter.ofPattern("HH:mm")
+        val time24 = LocalTime.parse(time12, formatter12).format(formatter24)
+        return time24
+    }
+
 
     private fun addTwoHours(dateTimeStr: String): String {
         val inputFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssZ")
@@ -338,6 +348,12 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
         return disabledDays
     }
 
+    fun calculateDuration(startTime: String, endTime: String): Double {
+        val start = LocalTime.parse(startTime)
+        val end = LocalTime.parse(endTime)
+        val duration = Duration.between(start, end)
+        return duration.toMinutes().toDouble() / 60.0
+    }
 
     override fun onDestroy() {
         super.onDestroy()
