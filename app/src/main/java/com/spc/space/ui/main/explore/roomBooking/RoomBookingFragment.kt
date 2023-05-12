@@ -50,6 +50,13 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentRoomBookingBinding.bind(view)
 
+        val roomData = arguments?.getParcelable<RoomItem>("roomData")
+        val wsData = arguments?.getParcelable<WorkSpaceItem>("wsData")
+        val userToken = dataStoreViewModel.token.value.toString()
+
+        setupCalender()
+        setupTimePicker(binding.checkInEt)
+        setupTimePicker(binding.checkOutEt)
 
         roomBookingViewModel.booking.observe(viewLifecycleOwner, Observer {
             if (it != null) {
@@ -71,94 +78,69 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
             }
         })
 
-
-//        getSelectedDay { newDate ->
-//            date = newDate
-//            Log.e("data in vm changed to", "onResume: $date ")
-//            Log.e("vm date", "onViewCreated:${roomBookingViewModel.date.value} ")
-//        }
-        Log.e("vm date", "onViewCreated:${roomBookingViewModel.date.value} ")
-
-        val roomData = arguments?.getParcelable<RoomItem>("roomData")
-        val wsData = arguments?.getParcelable<WorkSpaceItem>("wsData")
-
-
-        val roomId = roomData?.id.toString()
-        //   Log.e("roomId", roomId)
-        val userToken = dataStoreViewModel.token.value.toString()
-
-        setupCalender()
-        //    Log.e("On created : date", defaultDate)
-        //check in time picker
-        setupTimePicker(binding.checkInEt)
-        //check out time picker
-        setupTimePicker(binding.checkOutEt)
-
-
-
         binding.btnConfirmBookings.setOnClickListener {
-            val time1 = binding.checkInEt.text.toString()
-            val time2 = binding.checkOutEt.text.toString()
-            val wsOpenTime = wsData?.schedule?.openingTime
-            val wsCloseTime = wsData?.schedule?.closingTime
+            makeBooking(wsData, roomData, userToken)
+        }
+    }
 
-            var startTime = ""
-            var endTime = ""
-            var isTimeCorrect = false
+
+    private fun makeBooking(wsData: WorkSpaceItem?, roomData: RoomItem?, userToken: String) {
+        val time1 = binding.checkInEt.text.toString()
+        val time2 = binding.checkOutEt.text.toString()
+        val wsOpenTime = wsData?.schedule?.openingTime
+        val wsCloseTime = wsData?.schedule?.closingTime
+        var startTime = ""
+        var endTime = ""
+        var isTimeCorrect = false
+
+        getSelectedDay()
+        if (time1.isNotBlank() && time2.isNotBlank()) {
+            isBookingValid(
+                convertTimeTo24Hour(time1),
+                convertTimeTo24Hour(time2),
+                wsOpenTime!!,
+                wsCloseTime!!
+            ) // time 1 > open time && time 2 < close
+            roomBookingViewModel.date.observe(viewLifecycleOwner, Observer { date ->
+                val checkInTime = parseTime(time1)
+                val checkOutTime = parseTime(time2)
+                startTime = date.toString() + 'T' + checkInTime
+                endTime = date.toString() + 'T' + checkOutTime
+                isTimeCorrect = isTimeAfter(time1, time2)
+            })
+        } else {
+            roomBookingViewModel.validBooking.value = false
+        }
+
+        // time is correct and checkIn > ws open time
+        if (isTimeCorrect) {
             getSelectedDay()
+            val roomId = roomData?.id!!
+            val bookingRequest =
+                CreateBookingRequest(roomId, addTwoHours(startTime), addTwoHours(endTime))
 
+            if (roomBookingViewModel.validBooking.value == true) {
+                roomBookingViewModel.createBooking(userToken, bookingRequest)
+                Log.e("start", addTwoHours(startTime))
+                Log.e("end", addTwoHours(endTime))
+                Log.e("roomId", "onViewCreated: $roomId")
 
-
-            if (time1.isNotBlank() && time2.isNotBlank()) {
-                isBookingValid(
-                    convertTimeTo24Hour(time1),
-                    convertTimeTo24Hour(time2),
-                    wsOpenTime!!,
-                    wsCloseTime!!
-                ) // time 1 > open time && time 2 < close
-                roomBookingViewModel.date.observe(viewLifecycleOwner, Observer { date ->
-                    val checkInTime = parseTime(time1)
-                    val checkOutTime = parseTime(time2)
-                    startTime = date.toString() + 'T' + checkInTime
-                    endTime = date.toString() + 'T' + checkOutTime
-                    isTimeCorrect = isTimeAfter(time1, time2)
+                roomBookingViewModel.booking.observe(viewLifecycleOwner, Observer {
+                    when (it.message) {
+                        "Done" -> {
+                            // show dialog and show price if YES save booking details and navigate
+                            confirmBooking(
+                                convertTimeTo24Hour(time1),
+                                convertTimeTo24Hour(time2),
+                            )
+                        }
+                    }
                 })
             } else {
-                roomBookingViewModel.validBooking.value = false
+                Log.e("wrong range", "onViewCreated: wrong range")
             }
-
-
-            // time is correct and checkIn > ws open time
-            if (isTimeCorrect) {
-                getSelectedDay()
-                val bookingRequest =
-                    CreateBookingRequest(roomId, addTwoHours(startTime), addTwoHours(endTime))
-
-                if (roomBookingViewModel.validBooking.value == true) {
-                    roomBookingViewModel.createBooking(userToken, bookingRequest)
-                    Log.e("start", addTwoHours(startTime))
-                    Log.e("end", addTwoHours(endTime))
-                    Log.e("roomId", "onViewCreated: $roomId")
-
-                    roomBookingViewModel.booking.observe(viewLifecycleOwner, Observer {
-                        when (it.message) {
-                            "Done" -> {
-                                // show dialog and show price if YES save booking details and navigate
-                                confirmBooking(
-                                    convertTimeTo24Hour(time1),
-                                    convertTimeTo24Hour(time2),
-                                )
-                            }
-                        }
-                    })
-
-
-                } else {
-                    Log.e("wrong range", "onViewCreated: wrong range")
-                }
-            } else {
-                roomBookingViewModel.validBooking.value = false
-            }
+        } else {
+            roomBookingViewModel.validBooking.value = false
         }
     }
 
@@ -176,13 +158,12 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
             .setText("Total price = ${roomData?.price?.toInt()?.times(duration)?.toInt()} L.E")
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         val btnYes = dialogBinding.findViewById<Button>(R.id.btnYes).setOnClickListener {
-            findNavController().navigate(R.id.action_roomBookingFragment_to_successBookingFragment)
             dialog.dismiss()
-
+            findNavController().navigate(R.id.action_roomBookingFragment_to_successBookingFragment)
         }
         val btnNo = dialogBinding.findViewById<Button>(R.id.btnNo).setOnClickListener {
-            cancelBooking()
             dialog.dismiss()
+            cancelBooking()
         }
         dialog.show()
     }
@@ -213,7 +194,6 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
         val openTime24 = LocalTime.parse(openTime)
         val closeTime24 = LocalTime.parse(closeTime)
 
-
         val result =
             startTime24.isAfterOrEqual(openTime24) && endTime24.isBeforeOrEqual(closeTime24)
         roomBookingViewModel.validBooking.value = result
@@ -236,7 +216,6 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
         return time24
     }
 
-
     private fun addTwoHours(dateTimeStr: String): String {
         val inputFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssZ")
         val outputFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssZ")
@@ -254,7 +233,6 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
         return outputFormat.format(date!!)
     }
 
-
     private fun getSelectedDay() {
         binding.calendarView.setOnDayClickListener(object : OnDayClickListener {
             override fun onDayClick(eventDay: EventDay) {
@@ -268,7 +246,6 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
             }
         })
     }
-
 
     private fun setupTimePicker(editText: EditText) {
         editText.setOnFocusChangeListener { _, hasFocus ->
@@ -308,7 +285,8 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
             val amPm = if (hour < 12) "AM" else "PM"
             val formattedHour =
                 if (hour == 0) "12" else if (hour <= 12) hour.toString() else (hour - 12).toString()
-            chosenTime = String.format(Locale.getDefault(), "%s:%02d %s", formattedHour, min, amPm)
+            chosenTime =
+                String.format(Locale.getDefault(), "%s:%02d %s", formattedHour, min, amPm)
             // Invoke the callback with the chosen time
             callback(chosenTime)
         }
@@ -330,11 +308,9 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
         calendar.apply {
             setForwardButtonImage(forwardIcon)
             setPreviousButtonImage(previousIcon)
-
         }
         removePreviousDays()
     }
-
 
     private fun removePreviousDays() {
         val previousDays = Calendar.getInstance()
@@ -345,10 +321,7 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
         previousDays.set(Calendar.MILLISECOND, 0)
         binding.calendarView.setMinimumDate(previousDays)
         binding.calendarView.setDisabledDays(getDisabledDays(previousDays))
-
-
     }
-
 
     private fun getDisabledDays(calendar: Calendar): List<Calendar> {
         val disabledDays = ArrayList<Calendar>()
@@ -382,6 +355,4 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
         dialog = Dialog(requireContext())
         dialog.dismiss()
     }
-
-
 }
