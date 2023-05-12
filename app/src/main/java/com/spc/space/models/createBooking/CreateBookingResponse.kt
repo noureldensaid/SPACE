@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class CreateBookingResponse(
     val message: String,
-    val addedBooking: AddedBooking
+    val addedBooking: AddedBooking?
 )
 
 data class AddedBooking(

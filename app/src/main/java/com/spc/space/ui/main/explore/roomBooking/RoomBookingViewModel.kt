@@ -23,6 +23,8 @@ class RoomBookingViewModel @Inject constructor(
 
     var date: MutableLiveData<String> = MutableLiveData()
 
+    var validBooking: MutableLiveData<Boolean> = MutableLiveData(true)
+
     private val _booking: MutableLiveData<CreateBookingResponse> = MutableLiveData()
     val booking: LiveData<CreateBookingResponse> = _booking
 
@@ -31,7 +33,7 @@ class RoomBookingViewModel @Inject constructor(
     }
 
 
-      private fun getTodayDate() {
+    private fun getTodayDate() {
         viewModelScope.launch {
             val currentDate = LocalDate.now()
             val y = currentDate.year
@@ -49,10 +51,15 @@ class RoomBookingViewModel @Inject constructor(
                 val response = repository.createBooking(userToken, bookingRequest)
                 if (response != null) {
                     _booking.postValue(response)
-                    Log.e("booking req created", "BookingReq: Great")
-                } else Log.e("booking request", "getData: Failed")
+                    Log.e("booking req created", response.message)
+                } else Log.e("booking request", response.message)
             } catch (ex: Exception) {
-                Log.e("booking request", "getData: Failed")
+                _booking.postValue(
+                    CreateBookingResponse(
+                        message = "Room is currently booked",
+                        null
+                    )
+                )
                 Log.e("TAG", ex.message.toString());
             }
         }
