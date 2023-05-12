@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         setUpNavigation()
         getLocation()
-        Log.e("USER_TOKEN", "onCreate: ${dataStoreViewModel.token}")
+        Log.e("USER_TOKEN", "onCreate: ${dataStoreViewModel.token.value}")
 
 
     }

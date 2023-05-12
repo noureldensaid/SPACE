@@ -109,9 +109,6 @@
             <action
                 android:id="@+id/action_roomDetailsFragment_to_roomBookingFragment"
                 app:destination="@id/roomBookingFragment" />
-            <argument
-                android:name="roomData"
-                app:argType="com.spc.space.models.workspaceRoom.RoomItem" />
         </fragment>
         <fragment
             android:id="@+id/roomBookingFragment"

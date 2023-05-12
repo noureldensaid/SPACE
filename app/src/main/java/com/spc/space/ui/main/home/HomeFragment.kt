@@ -34,7 +34,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         //todo PUT WORKSPACE NAME AND PHOTO IN GRID RV ,
         // then when user click on grid it shows workspace details
         val token = dataStoreViewModel.token.value.toString()
-        homeFragmentViewModel.getWorkspaces("Bearer__$token")
+        homeFragmentViewModel.getWorkspaces(token)
 
         homeFragmentViewModel.workSpace.observe(viewLifecycleOwner, Observer { data ->
             //todo send workspace list to the adapter

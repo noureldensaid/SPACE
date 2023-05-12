@@ -21,8 +21,7 @@ class RoomsAdapter : RecyclerView.Adapter<RoomsAdapter.ViewHolder>() {
                 roomName.text = item.roomName?.lowercase()?.capitalize()
                 roomType.text = item.type?.capitalize()
                 roomCapacity.text = "${item.capacity} guests"
-                roomTime.text = "09:30 to 19:00"
-                roomPrice.text = "From ${item.price} EGP/HOUR"
+                 roomPrice.text = "From ${item.price} EGP/HOUR"
                 Glide.with(itemView)
                     .load(item.roomImages?.firstOrNull())
                     .transform(CenterCrop(), RoundedCorners(24))

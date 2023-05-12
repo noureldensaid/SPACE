@@ -74,14 +74,16 @@
                 app:layout_constraintTop_toBottomOf="@id/room_type" />
 
             <TextView
-                android:id="@+id/workspace_time"
+                android:id="@+id/room_open_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="@dimen/dimens_small_8dp"
                 android:drawableStart="@drawable/ic_clock"
                 android:drawablePadding="@dimen/dimens_tiny_4dp"
                 android:drawableTint="@color/dark_blue"
+                android:ellipsize="end"
                 android:fontFamily="@font/lato_regular"
+                android:gravity="center_vertical"
                 android:text="09:30 to 19:00"
                 android:textColor="@color/dark_blue"
                 android:textSize="@dimen/material_text_subhead_16sp"
@@ -97,12 +99,12 @@
                 android:text="20 guests"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/workspace_price"
+                app:layout_constraintBottom_toTopOf="@+id/room_price_per_hour"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/workspace_iv" />
 
             <TextView
-                android:id="@+id/workspace_price"
+                android:id="@+id/room_price_per_hour"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/lato_bold"
@@ -110,7 +112,7 @@
                 android:textColor="@color/dark_blue"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/workspace_time"
+                app:layout_constraintBottom_toBottomOf="@+id/room_open_time"
                 app:layout_constraintEnd_toEndOf="@id/room_capacity" />
 
             <TextView
@@ -125,7 +127,7 @@
                 android:textSize="@dimen/material_text_title_20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/workspace_time" />
+                app:layout_constraintTop_toBottomOf="@id/room_open_time" />
 
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/search_filters_chip_group"

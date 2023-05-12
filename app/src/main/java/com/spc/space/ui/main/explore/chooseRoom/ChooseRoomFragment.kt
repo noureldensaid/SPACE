@@ -38,17 +38,19 @@ class ChooseRoomFragment : Fragment(R.layout.fragment_choose_room) {
         roomsAdapter = RoomsAdapter()
         binding.roomsRv.apply {
             adapter = roomsAdapter
-         }
+        }
         chooseRoomViewModel.rooms.observe(viewLifecycleOwner, Observer {
             Log.e("size ", it.room?.size.toString());
             roomsAdapter.differ.submitList(it.room)
         })
         roomsAdapter.onItemClickListener = {
-            val roomData = Bundle()
-            roomData.putParcelable("roomData", it)
+            val bundle = Bundle().apply {
+                putParcelable("roomData", it)
+                putParcelable("wsData", workSpaceItem)
+            }
             findNavController().navigate(
                 R.id.action_chooseRoomFragment_to_roomDetailsFragment,
-                roomData
+                bundle
             )
         }
     }

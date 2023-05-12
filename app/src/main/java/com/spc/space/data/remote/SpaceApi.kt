@@ -45,7 +45,7 @@ interface SpaceApi {
 
     //TODO : CREATE A BOOKING
     @POST("booking/createBooking")
-    fun createBooking(
+    suspend fun createBooking(
         // don't forget to add Bearer__ before passing the token --> Bearer__$token
         @Header("authorization") userToken: String,
         @Body request: CreateBookingRequest
@@ -56,7 +56,7 @@ interface SpaceApi {
 
     //TODO : ADD WORKSPACE TO FAVS
     @PUT("favorite/addFavorites/{workspaceId}")
-    fun addToFavorites(
+    suspend fun addToFavorites(
         @Header("authorization") userToken: String,
         @Path("workspaceId") workspaceId: String
     ): AddFavoritesResponse // Replace `Any` with the response data class if available
@@ -64,13 +64,13 @@ interface SpaceApi {
 
     //TODO : GET FAVOURITES
     @GET("favorite/getFavorites")
-    fun getFavorites(
+    suspend fun getFavorites(
         @Header("authorization") userToken: String
     ): GetFavoritesResponse
 
     //TODO : REMOVE WORK SPACE FROM FAVS BY SWIPING AND SHOW A SNAK BAR TO UNDO
     @PUT("favorite/removeFavorites/{workspaceId}")
-    fun removeFromFavorites(
+    suspend fun removeFromFavorites(
         @Header("authorization") userToken: String,
         @Path("workspaceId") workspaceId: String
     ): DeleteFavoritesResponse

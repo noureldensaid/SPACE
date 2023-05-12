@@ -4,26 +4,28 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.spc.space.R
 import com.spc.space.databinding.FragmentRoomDetailsBinding
+import com.spc.space.models.workspace.WorkSpaceItem
+import com.spc.space.models.workspaceRoom.RoomItem
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class RoomDetailsFragment : Fragment(R.layout.fragment_room_details) {
     private var _binding: FragmentRoomDetailsBinding? = null
     private val binding get() = _binding!!
-    private val args: RoomDetailsFragmentArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentRoomDetailsBinding.bind(view)
 
-        val roomData = args.roomData
+        val roomData = arguments?.getParcelable<RoomItem>("roomData")
+        val wsData = arguments?.getParcelable<WorkSpaceItem>("wsData")
+
         binding.apply {
             if (roomData != null) {
                 Glide.with(view)
@@ -34,10 +36,12 @@ class RoomDetailsFragment : Fragment(R.layout.fragment_room_details) {
                     .placeholder(R.drawable.placeholder)
                     .into(workspaceIv)
 
-
+                roomOpenTime.text =
+                    "${wsData?.schedule?.openingTime} to ${wsData?.schedule?.closingTime}"
                 roomName.text = roomData.roomName?.lowercase()?.capitalize()
                 roomCapacity.text = "${roomData.capacity.toString()} guests"
                 roomType.text = roomData.type?.capitalize()
+                roomPricePerHour.text = "From ${roomData.price}/Hour"
 
 
             }

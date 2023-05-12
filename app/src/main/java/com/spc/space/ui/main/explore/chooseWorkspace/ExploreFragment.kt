@@ -33,7 +33,7 @@ class ExploreFragment : Fragment(R.layout.fragment_explore) {
         // then when user click on grid it shows workspace details
         val token = dataStoreViewModel.token.value.toString()
 
-        exploreFragmentViewModel.getWorkspaces("Bearer__$token")
+        exploreFragmentViewModel.getWorkspaces(token)
 
         exploreFragmentViewModel.workSpace.observe(viewLifecycleOwner, Observer { data ->
             //todo send workspace list to the adapter

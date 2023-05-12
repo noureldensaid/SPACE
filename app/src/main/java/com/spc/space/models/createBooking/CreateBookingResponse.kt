@@ -1,12 +1,15 @@
 package com.spc.space.models.createBooking
 
+import com.google.gson.annotations.SerializedName
+
 data class CreateBookingResponse(
-    val addedBooking: AddedBooking,
-    val message: String
+    val message: String,
+    val addedBooking: AddedBooking
 )
+
 data class AddedBooking(
-    val __v: Int,
-    val _id: String,
+    @SerializedName("_id")
+    val id: String,
     val createdAt: String,
     val dateCreated: String,
     val duration: Double,
