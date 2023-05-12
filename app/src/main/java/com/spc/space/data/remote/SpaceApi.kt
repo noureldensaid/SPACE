@@ -4,6 +4,7 @@ import com.spc.space.models.auth.signIn.SignInRequest
 import com.spc.space.models.auth.signIn.SignInResponse
 import com.spc.space.models.auth.signUp.SignUpRequest
 import com.spc.space.models.auth.signUp.SignUpResponse
+import com.spc.space.models.cancelBooking.CancelBookingsResponse
 import com.spc.space.models.createBooking.CreateBookingRequest
 import com.spc.space.models.createBooking.CreateBookingResponse
 import com.spc.space.models.favs.AddFavoritesResponse
@@ -51,6 +52,12 @@ interface SpaceApi {
         @Body request: CreateBookingRequest
     ): CreateBookingResponse
 
+
+     @PUT("booking/CancelBooking/{bookingId}")
+    suspend fun cancelBooking(
+        @Header("authorization") userToken: String,
+        @Path("bookingId") bookingId: String
+    ): CancelBookingsResponse
 
     //TODO : ADD WORKSPACE TO FAVS
     @PUT("favorite/addFavorites/{workspaceId}")

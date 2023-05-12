@@ -53,8 +53,6 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
 
         roomBookingViewModel.booking.observe(viewLifecycleOwner, Observer {
             if (it != null) {
-                Log.e("bookingId", it.addedBooking!!.id)
-                Log.e("booking", it.message)
                 when (it.message) {
                     "Room is currently booked" -> {
                         binding.tvCheckTimeErr.text = "Room is currently busy"
@@ -175,7 +173,7 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
 
         val duration = calculateDuration(startTime, endTime).toInt()
         dialogBinding.findViewById<TextView>(R.id.message_body_price)
-            .setText("Total price = ${roomData?.price?.toInt()?.times(duration)?.toInt()}")
+            .setText("Total price = ${roomData?.price?.toInt()?.times(duration)?.toInt()} L.E")
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         val btnYes = dialogBinding.findViewById<Button>(R.id.btnYes).setOnClickListener {
             findNavController().navigate(R.id.action_roomBookingFragment_to_successBookingFragment)
@@ -183,11 +181,26 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
 
         }
         val btnNo = dialogBinding.findViewById<Button>(R.id.btnNo).setOnClickListener {
+            cancelBooking()
             dialog.dismiss()
         }
         dialog.show()
     }
 
+    private fun cancelBooking() {
+        val bookingId = roomBookingViewModel.booking.value?.addedBooking?.id.toString()
+        val token = dataStoreViewModel.token.value.toString()
+        roomBookingViewModel.cancelBooking(token, bookingId)
+        roomBookingViewModel.bookingCanceled.observe(viewLifecycleOwner, Observer {
+            if (it != null) {
+                when (it.message) {
+                    "Cancelled" -> {
+                        Log.e("Cancelled", "confirmBooking: Cancelled")
+                    }
+                }
+            }
+        })
+    }
 
     private fun isBookingValid(
         startTime: String,
@@ -351,11 +364,16 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
         return disabledDays
     }
 
-    fun calculateDuration(startTime: String, endTime: String): Double {
+    private fun calculateDuration(startTime: String, endTime: String): Double {
         val start = LocalTime.parse(startTime)
         val end = LocalTime.parse(endTime)
         val duration = Duration.between(start, end)
         return duration.toMinutes().toDouble() / 60.0
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        dialog.dismiss()
     }
 
     override fun onDestroy() {

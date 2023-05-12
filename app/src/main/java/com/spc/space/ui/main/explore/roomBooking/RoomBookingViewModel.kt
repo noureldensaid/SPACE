@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.spc.space.data.repository.Repository
+import com.spc.space.models.cancelBooking.CancelBookingsResponse
 import com.spc.space.models.createBooking.CreateBookingRequest
 import com.spc.space.models.createBooking.CreateBookingResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -20,6 +21,9 @@ import javax.inject.Inject
 class RoomBookingViewModel @Inject constructor(
     private val repository: Repository
 ) : ViewModel() {
+
+    private val _bookingCanceled: MutableLiveData<CancelBookingsResponse> = MutableLiveData()
+    val bookingCanceled: LiveData<CancelBookingsResponse> = _bookingCanceled
 
     var date: MutableLiveData<String> = MutableLiveData()
 
@@ -63,5 +67,20 @@ class RoomBookingViewModel @Inject constructor(
                 Log.e("TAG", ex.message.toString());
             }
         }
+
+
+    fun cancelBooking(userToken: String, bookingId: String) =
+        viewModelScope.launch {
+            try {
+                val response = repository.cancelBooking(userToken, bookingId)
+                if (response != null) {
+                    _bookingCanceled.postValue(response)
+                    Log.e("booking canceled ? ", response.message)
+                } else Log.e("booking canceled ? ", response.message)
+            } catch (ex: Exception) {
+                Log.e("ERROR", ex.message.toString());
+            }
+        }
+
 
 }

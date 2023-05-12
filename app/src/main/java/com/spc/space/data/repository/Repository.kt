@@ -18,6 +18,9 @@ class Repository @Inject constructor(
         spaceApi.createBooking("Bearer__$token", bookingRequest)
 
 
+    suspend fun cancelBooking(token: String, bookingId: String) =
+        spaceApi.cancelBooking("Bearer__$token", bookingId)
+
     suspend fun addToFavorites(token: String, workspaceId: String) =
         spaceApi.addToFavorites("Bearer__$token", workspaceId)
 
@@ -26,9 +29,7 @@ class Repository @Inject constructor(
         spaceApi.removeFromFavorites("Bearer__$token", workspaceId)
 
 
-    suspend fun getFav (token: String)= spaceApi.getFavorites("Bearer__$token")
-
-
+    suspend fun getFav(token: String) = spaceApi.getFavorites("Bearer__$token")
 
 
 }

@@ -2,6 +2,8 @@ package com.spc.space.di
 
 import android.content.Context
 import androidx.room.Room
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.spc.space.data.remote.SpaceApi
 import com.spc.space.data.repository.DataStoreRepository
 import com.spc.space.utils.Constants.SPACE_API_BASE_URL
@@ -19,12 +21,16 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
+
+
     // inject retrofit
     @Singleton
     @Provides
     fun provideSpaceApi(): SpaceApi = Retrofit.Builder()
         .baseUrl(SPACE_API_BASE_URL)
-        .addConverterFactory(GsonConverterFactory.create())
+        .addConverterFactory(GsonConverterFactory.create(
+            GsonBuilder().setLenient().create()
+        ))
         .build()
         .create(SpaceApi::class.java)
 
