@@ -32,19 +32,10 @@
                 android:layout_marginVertical="@dimen/dimens_medium_16dp"
                 android:layout_toEndOf="@id/profileCircleImageView"
                 android:fontFamily="@font/lato_bold"
-                android:text="Lio messi"
+                android:text="Nour"
                 android:textSize="18sp" />
 
         </RelativeLayout>
-
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/darkModeSwitch"
-            style="@style/settingsText"
-            android:drawableStart="@drawable/ic_dark_mode"
-            android:drawableTint="@color/dark_blue"
-            android:padding="@dimen/dimens_small_8dp"
-            android:text="Dark Mode"
-            android:textColor="@color/dark_blue" />
 
         <TextView
             style="@style/viewParent.headerText.settingsMiniTitle"

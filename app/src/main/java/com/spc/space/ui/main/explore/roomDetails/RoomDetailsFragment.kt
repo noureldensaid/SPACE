@@ -34,11 +34,11 @@ class RoomDetailsFragment : Fragment(R.layout.fragment_room_details) {
                     .transform(CenterCrop(), RoundedCorners(24))
                     .error(R.drawable.error_placeholder)
                     .placeholder(R.drawable.placeholder)
-                    .into(workspaceIv)
+                    .into(chosenRoomIv)
 
                 roomOpenTime.text =
                     "${wsData?.schedule?.openingTime} to ${wsData?.schedule?.closingTime}"
-                roomName.text = roomData.roomName?.lowercase()?.capitalize()
+                chosenRoomName.text = roomData.roomName?.lowercase()?.capitalize()
                 roomCapacity.text = "${roomData.capacity.toString()} guests"
                 roomType.text = roomData.type?.capitalize()
                 roomPricePerHour.text = "From ${roomData.price}/Hour"

@@ -10,49 +10,49 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/custome_border">
+        android:layout_height="wrap_content">
 
 
         <TextView
-            android:id="@+id/workspace_name"
+            android:id="@+id/booked_workspace_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimens_medium_16dp"
             android:ellipsize="end"
             android:fontFamily="@font/lato_black"
             android:maxLines="2"
             android:paddingHorizontal="@dimen/dimens_medium_16dp"
+            android:paddingVertical="@dimen/dimens_medium_16dp"
             android:paddingTop="@dimen/dimens_small_8dp"
             android:paddingBottom="@dimen/dimens_tiny_4dp"
             android:text="WorkSpace"
             android:textColor="@color/dark_blue"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:layout_marginStart="@dimen/dimens_medium_16dp"
-            app:layout_constraintBottom_toTopOf="@+id/room_name"
+            app:layout_constraintBottom_toTopOf="@+id/booked_room_name"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/room_name"
+            android:id="@+id/booked_room_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ellipsize="end"
-            android:fontFamily="@font/lato_regular"
+            android:fontFamily="@font/lato_bold"
             android:maxLines="1"
             android:paddingHorizontal="@dimen/dimens_medium_16dp"
             android:paddingBottom="@dimen/dimens_tiny_4dp"
-            android:text="Room :"
+            android:text="Room"
             android:textColor="@android:color/black"
             android:textSize="@dimen/material_text_title_20sp"
-            app:layout_constraintBottom_toTopOf="@id/workspace_time"
+            app:layout_constraintBottom_toTopOf="@id/duration"
 
-            app:layout_constraintStart_toStartOf="@id/workspace_name"
-            app:layout_constraintTop_toBottomOf="@id/workspace_name" />
+            app:layout_constraintStart_toStartOf="@id/booked_workspace_name"
+            app:layout_constraintTop_toBottomOf="@id/booked_workspace_name" />
 
 
         <TextView
-            android:id="@+id/workspace_time"
+            android:id="@+id/duration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/ic_clock"
@@ -63,13 +63,14 @@
             android:gravity="center_vertical"
             android:maxLines="1"
             android:paddingHorizontal="@dimen/dimens_medium_16dp"
+            android:paddingVertical="@dimen/dimens_medium_16dp"
             android:paddingBottom="@dimen/dimens_tiny_4dp"
             android:text="09:30 to 19:00"
             android:textColor="@color/black"
             android:textSize="@dimen/material_text_subhead_16sp"
             app:layout_constraintBottom_toTopOf="@+id/workspace_price"
-            app:layout_constraintStart_toStartOf="@+id/workspace_name"
-            app:layout_constraintTop_toBottomOf="@+id/room_name" />
+            app:layout_constraintStart_toStartOf="@+id/booked_workspace_name"
+            app:layout_constraintTop_toBottomOf="@+id/booked_room_name" />
 
         <TextView
             android:id="@+id/workspace_price"
@@ -77,36 +78,43 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/lato_bold"
             android:paddingHorizontal="@dimen/dimens_medium_16dp"
-            android:paddingBottom="@dimen/dimens_small_8dp"
-            android:text=" Price : 70 EGP"
+            android:paddingBottom="16dp"
+            android:text="Total price: 70 EGP"
             android:textColor="@color/dark_blue"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/btn_cancel_book"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/duration"
+            app:layout_constraintTop_toBottomOf="@+id/duration" />
 
-            app:layout_constraintStart_toStartOf="@id/workspace_time"
-            app:layout_constraintTop_toBottomOf="@+id/workspace_time" />
-
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_cancel_book"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dimens_medium_16dp"
+            android:layout_marginBottom="@dimen/dimens_medium_16dp"
             android:backgroundTint="#D3362A"
             android:text="Cancel Booking"
+            app:cornerRadius="@dimen/dimens_medium_16dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintEnd_toEndOf="@+id/cardView2"
+            app:layout_constraintStart_toStartOf="@+id/cardView2" />
 
-        <Button
-            android:id="@+id/btn_report"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/baby_blue"
-            android:text="Report Problem"
-            android:textColor="@color/dark_blue"
-            app:layout_constraintBottom_toBottomOf="parent"
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView2"
+            android:layout_width="180dp"
+            android:layout_height="100dp"
+            android:layout_margin="@dimen/dimens_medium_16dp"
+            app:cardCornerRadius="@dimen/dimens_large_24dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_cancel_book"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btn_cancel_book" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/empty_box" />
+        </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

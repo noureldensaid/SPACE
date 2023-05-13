@@ -21,19 +21,24 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class BookingsHistoryFragment : Fragment(R.layout.fragment_bookings_history) {
-    private var _binding: FragmentBookingsHistoryBinding? = null
-    private val binding get() = _binding!!
     private val bookingHistoryViewModel: BookingsHistoryViewModel by viewModels()
     private val dataStoreViewModel: DataStoreViewModel by viewModels()
+    private var _binding: FragmentBookingsHistoryBinding? = null
+    private val binding get() = _binding!!
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentBookingsHistoryBinding.bind(view)
+
         val token = dataStoreViewModel.token.value.toString()
         val bookingsHistoryAdapter = BookingsHistoryAdapter()
 
         bookingHistoryViewModel.getBookingsHistory(token)
+
+        binding.historyRv.apply {
+            adapter = bookingsHistoryAdapter
+        }
 
         bookingHistoryViewModel.bookingsHistory.observe(viewLifecycleOwner, Observer { data ->
 
@@ -43,9 +48,7 @@ class BookingsHistoryFragment : Fragment(R.layout.fragment_bookings_history) {
         })
 
 
-        binding.historyRv.apply {
-            adapter = bookingsHistoryAdapter
-        }
+
 
 
     }

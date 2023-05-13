@@ -9,7 +9,8 @@ import javax.inject.Singleton
 class Repository @Inject constructor(
     private val spaceApi: SpaceApi,
 ) {
-    suspend fun getWorkspaces(token: String) = spaceApi.getWorkspaces("Bearer__$token")
+    suspend fun getWorkspaces(token: String) =
+        spaceApi.getWorkspaces("Bearer__$token")
 
     suspend fun getRoomsForWorkspace(workspaceId: String) =
         spaceApi.getRoomsForWorkspace(workspaceId)
@@ -21,7 +22,11 @@ class Repository @Inject constructor(
     suspend fun cancelBooking(token: String, bookingId: String) =
         spaceApi.cancelBooking("Bearer__$token", bookingId)
 
-    suspend fun getBookingsHistory(token: String) = spaceApi.getBookingHistory("Bearer__$token")
+    suspend fun getBookingsHistory(token: String) =
+        spaceApi.getBookingsHistory("Bearer__$token")
+
+    suspend fun getCanceledBookingsHistory(token: String) =
+        spaceApi.getCanceledBookingsHistory("Bearer__$token")
 
 
     suspend fun addToFavorites(token: String, workspaceId: String) =

@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.spc.space.databinding.BookingHistoryRvItemsBinding
-import com.spc.space.models.BookingsHistory.History
+import com.spc.space.models.bookingsHistory.History
 
 class BookingsHistoryAdapter : RecyclerView.Adapter<BookingsHistoryAdapter.ViewHolder>() {
 
@@ -15,10 +15,11 @@ class BookingsHistoryAdapter : RecyclerView.Adapter<BookingsHistoryAdapter.ViewH
         fun bind(item: History) {
 
             binding.apply {
-                //workspaceName.text = item.name?.lowercase()?.capitalize()
-                roomName.text = "Room : ${item.room?.lowercase()?.capitalize()}"
-                workspacePrice.text = "${item.price.toString()} EGP/HOUR"
-                workspaceTime.text = "${item.startTime} to ${item.endTime}"
+//                item.name?.lowercase()?.capitalize()
+                bookedWorkspaceName.text = "Ws name"
+                bookedRoomName.text = "Room Name"
+                workspacePrice.text = "${item.price.toInt()} EGP"
+                duration.text = " ${item.duration.toInt()} Hour(s)"
 
 
             }

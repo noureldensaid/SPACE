@@ -1,11 +1,12 @@
 package com.spc.space.data.remote
 
-import com.spc.space.models.BookingsHistory.BookingHistoryResponse
 import com.spc.space.models.auth.signIn.SignInRequest
 import com.spc.space.models.auth.signIn.SignInResponse
 import com.spc.space.models.auth.signUp.SignUpRequest
 import com.spc.space.models.auth.signUp.SignUpResponse
+import com.spc.space.models.bookingsHistory.BookingHistoryResponse
 import com.spc.space.models.cancelBooking.CancelBookingsResponse
+import com.spc.space.models.canceledBookingsHistory.CanceledBookingsHistory
 import com.spc.space.models.createBooking.CreateBookingRequest
 import com.spc.space.models.createBooking.CreateBookingResponse
 import com.spc.space.models.favs.AddFavoritesResponse
@@ -54,18 +55,23 @@ interface SpaceApi {
     ): CreateBookingResponse
 
 
-     @PUT("booking/CancelBooking/{bookingId}")
+    @PUT("booking/CancelBooking/{bookingId}")
     suspend fun cancelBooking(
         @Header("authorization") userToken: String,
         @Path("bookingId") bookingId: String
     ): CancelBookingsResponse
 
 
-    @GET("booking/getBookingHistoryToUser")
-    suspend fun getBookingHistory(
+    @GET("booking/getBookingsHistoryToUser")
+    suspend fun getBookingsHistory(
         @Header("authorization") userToken: String
     ): BookingHistoryResponse
 
+
+    @GET("booking/cancelledBookingsHistoryToUser")
+    suspend fun getCanceledBookingsHistory(
+        @Header("authorization") userToken: String
+    ): CanceledBookingsHistory
 
 
     //TODO : ADD WORKSPACE TO FAVS

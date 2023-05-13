@@ -23,7 +23,7 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/workspace_iv"
+                android:id="@+id/chosen_room_iv"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
                 android:src="@drawable/error_placeholder"
@@ -32,7 +32,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/workspace_location"
+                android:id="@+id/chosen_room_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="@dimen/dimens_medium_16dp"
@@ -45,7 +45,7 @@
                 android:textSize="@dimen/material_text_title_20sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/workspace_iv" />
+                app:layout_constraintTop_toBottomOf="@id/chosen_room_iv" />
 
             <TextView
                 android:id="@+id/room_type"
@@ -58,8 +58,8 @@
                 android:text="Celopatra,Alexandria"
                 android:textColor="@color/dark_blue"
                 android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="@id/workspace_location"
-                app:layout_constraintTop_toBottomOf="@id/workspace_location" />
+                app:layout_constraintStart_toStartOf="@id/chosen_room_name"
+                app:layout_constraintTop_toBottomOf="@id/chosen_room_name" />
 
             <TextView
                 android:id="@+id/working_hours_text"
@@ -101,7 +101,7 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/room_price_per_hour"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/workspace_iv" />
+                app:layout_constraintTop_toBottomOf="@+id/chosen_room_iv" />
 
             <TextView
                 android:id="@+id/room_price_per_hour"
