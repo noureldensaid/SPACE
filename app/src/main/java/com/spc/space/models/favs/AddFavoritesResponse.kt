@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName
 data class AddFavoritesResponse(
     val message: String,
     @SerializedName("updated")
-    val item: Items
+    val item: Items?
 )
 
 data class Items(
