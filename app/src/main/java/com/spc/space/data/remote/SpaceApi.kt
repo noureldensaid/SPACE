@@ -1,5 +1,6 @@
 package com.spc.space.data.remote
 
+import com.spc.space.models.BookingsHistory.BookingHistoryResponse
 import com.spc.space.models.auth.signIn.SignInRequest
 import com.spc.space.models.auth.signIn.SignInResponse
 import com.spc.space.models.auth.signUp.SignUpRequest
@@ -58,6 +59,14 @@ interface SpaceApi {
         @Header("authorization") userToken: String,
         @Path("bookingId") bookingId: String
     ): CancelBookingsResponse
+
+
+    @GET("booking/getBookingHistoryToUser")
+    suspend fun getBookingHistory(
+        @Header("authorization") userToken: String
+    ): BookingHistoryResponse
+
+
 
     //TODO : ADD WORKSPACE TO FAVS
     @PUT("favorite/addFavorites/{workspaceId}")

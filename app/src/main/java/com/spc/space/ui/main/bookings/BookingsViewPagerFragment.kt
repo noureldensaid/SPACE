@@ -22,8 +22,8 @@ class BookingsViewPagerFragment : Fragment(R.layout.fragment_bookings_viewpager)
 
     private fun setUpViewPager() {
         val list = arrayListOf(
-            BookingsFragment(),
-            BookingsHistoryFragment()
+            BookingsHistoryFragment(),
+            CanceledBookingsFragment()
         )
         binding.apply {
             val adapter = ViewPagerAdapter(list, childFragmentManager, lifecycle)
@@ -34,7 +34,7 @@ class BookingsViewPagerFragment : Fragment(R.layout.fragment_bookings_viewpager)
                         tab.text = "Bookings"
                     }
                     1 -> {
-                        tab.text = "History"
+                        tab.text = "Canceled"
                     }
                 }
             }.attach()

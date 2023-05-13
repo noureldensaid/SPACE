@@ -16,6 +16,7 @@ class RoomsAdapter : RecyclerView.Adapter<RoomsAdapter.ViewHolder>() {
     inner class ViewHolder(private val binding: WorkspaceRoomsRvItemsBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: RoomItem) {
+
             itemView.setOnClickListener { onItemClickListener?.invoke(item) }
             binding.apply {
                 roomName.text = item.roomName?.lowercase()?.capitalize()
