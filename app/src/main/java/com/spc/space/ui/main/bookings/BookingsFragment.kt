@@ -5,4 +5,5 @@ import com.spc.space.R
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class UpcomingBookingsFragment : Fragment(R.layout.fragment_upcoming_bookings) {}
+class BookingsFragment : Fragment(R.layout.fragment_bookings) {
+}

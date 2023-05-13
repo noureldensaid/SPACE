@@ -46,14 +46,14 @@
             app:layout_constraintTop_toBottomOf="@id/confirm_msg" />
 
         <Button
-            android:layout_marginHorizontal="@dimen/dimens_medium_16dp"
             android:id="@+id/btnNo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimens_medium_16dp"
             android:layout_marginTop="16dp"
             android:backgroundTint="#333"
             android:fontFamily="@font/lato_bold"
-            android:text="Cancel"
+            android:text="Pick another room"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="14sp"
@@ -63,10 +63,10 @@
             app:layout_constraintTop_toBottomOf="@+id/message_body_price" />
 
         <Button
-            android:layout_marginHorizontal="@dimen/dimens_medium_16dp"
             android:id="@+id/btnYes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimens_medium_16dp"
             android:fontFamily="@font/lato_bold"
             android:text="Proceed"
             android:textAllCaps="false"

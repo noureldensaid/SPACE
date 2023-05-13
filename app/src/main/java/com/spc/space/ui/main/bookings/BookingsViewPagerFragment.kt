@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayoutMediator
 import com.spc.space.R
 import com.spc.space.adapters.ViewPagerAdapter
- import com.spc.space.databinding.FragmentBookingsViewpagerBinding
+import com.spc.space.databinding.FragmentBookingsViewpagerBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -22,8 +22,7 @@ class BookingsViewPagerFragment : Fragment(R.layout.fragment_bookings_viewpager)
 
     private fun setUpViewPager() {
         val list = arrayListOf(
-            UpcomingBookingsFragment(),
-            CanceledBookingsFragment(),
+            BookingsFragment(),
             BookingsHistoryFragment()
         )
         binding.apply {
@@ -32,12 +31,9 @@ class BookingsViewPagerFragment : Fragment(R.layout.fragment_bookings_viewpager)
             TabLayoutMediator(tabLayout, bookingsViewPager) { tab, position ->
                 when (position) {
                     0 -> {
-                        tab.text = "Upcoming"
+                        tab.text = "Bookings"
                     }
                     1 -> {
-                        tab.text = "Canceled"
-                    }
-                    2 -> {
                         tab.text = "History"
                     }
                 }
