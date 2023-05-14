@@ -2,6 +2,7 @@ package com.spc.space.data.repository
 
 import com.spc.space.data.remote.SpaceApi
 import com.spc.space.models.createBooking.CreateBookingRequest
+import com.spc.space.models.createReviewRequest.CreateReviewRequest
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -37,9 +38,14 @@ class Repository @Inject constructor(
         spaceApi.removeFromFavorites("Bearer__$token", workspaceId)
 
 
-    suspend fun getFavorites (token: String)= spaceApi.getFavorites("Bearer__$token")
+    suspend fun getFavorites(token: String) = spaceApi.getFavorites("Bearer__$token")
 
-
+    suspend fun createReview(
+        token: String,
+        workspaceId: String,
+        createReviewRequest: CreateReviewRequest
+    ) =
+        spaceApi.createReview("Bearer__$token", workspaceId, createReviewRequest)
 
 
 }

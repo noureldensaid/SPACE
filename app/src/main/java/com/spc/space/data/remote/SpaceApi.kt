@@ -9,6 +9,8 @@ import com.spc.space.models.cancelBooking.CancelBookingsResponse
 import com.spc.space.models.canceledBookingsHistory.CanceledBookingsHistory
 import com.spc.space.models.createBooking.CreateBookingRequest
 import com.spc.space.models.createBooking.CreateBookingResponse
+import com.spc.space.models.createReviewRequest.CreateReviewRequest
+import com.spc.space.models.createReviewRequest.CreateReviewResponse
 import com.spc.space.models.favs.AddFavoritesResponse
 import com.spc.space.models.favs.DeleteFavoritesResponse
 import com.spc.space.models.favs.GetFavoritesResponse
@@ -46,7 +48,6 @@ interface SpaceApi {
     ): RoomResponse
 
 
-    //TODO : CREATE A BOOKING
     @POST("booking/createBooking")
     suspend fun createBooking(
         // don't forget to add Bearer__ before passing the token --> Bearer__$token
@@ -74,7 +75,6 @@ interface SpaceApi {
     ): CanceledBookingsHistory
 
 
-    //TODO : ADD WORKSPACE TO FAVS
     @PUT("favorite/addFavorites/{workspaceId}")
     suspend fun addToFavorites(
         @Header("authorization") userToken: String,
@@ -82,16 +82,25 @@ interface SpaceApi {
     ): AddFavoritesResponse // Replace `Any` with the response data class if available
 
 
-    //TODO : GET FAVOURITES
     @GET("favorite/getFavorites")
     suspend fun getFavorites(
         @Header("authorization") userToken: String
     ): GetFavoritesResponse
 
-    //TODO : REMOVE WORK SPACE FROM FAVS BY SWIPING AND SHOW A SNAK BAR TO UNDO
     @PUT("favorite/removeFavorites/{workspaceId}")
     suspend fun removeFromFavorites(
         @Header("authorization") userToken: String,
         @Path("workspaceId") workspaceId: String
     ): DeleteFavoritesResponse
+
+
+    @POST("workingSpace/createReview/{workspaceId}")
+    suspend fun createReview(
+        @Header("authorization") userToken: String,
+        @Path("workspaceId") workspaceId: String,
+        @Body requestBody: CreateReviewRequest,
+    ): CreateReviewResponse
 }
+
+
+
