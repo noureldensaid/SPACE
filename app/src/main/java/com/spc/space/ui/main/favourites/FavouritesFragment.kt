@@ -1,9 +1,10 @@
 package com.spc.space.ui.main.favourites
 
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.CheckBox
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -16,6 +17,7 @@ import com.spc.space.databinding.FragmentFavouritesBinding
 import com.spc.space.ui.DataStoreViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
+@RequiresApi(Build.VERSION_CODES.O)
 @AndroidEntryPoint
 class FavouritesFragment : Fragment(R.layout.fragment_favourites) {
     private var _binding: FragmentFavouritesBinding? = null
@@ -29,7 +31,6 @@ class FavouritesFragment : Fragment(R.layout.fragment_favourites) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentFavouritesBinding.bind(view)
         favouriteAdapter = FavouriteAdapter()
-
 
 
         val token = dataStoreViewModel.token.value.toString()

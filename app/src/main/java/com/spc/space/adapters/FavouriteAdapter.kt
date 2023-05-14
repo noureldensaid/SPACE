@@ -1,7 +1,9 @@
 package com.spc.space.adapters
 
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -11,7 +13,9 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.spc.space.R
 import com.spc.space.databinding.FavouriteRvItemBinding
 import com.spc.space.models.favs.Favorite
+import com.spc.space.utils.Helper
 
+@RequiresApi(Build.VERSION_CODES.O)
 class FavouriteAdapter : RecyclerView.Adapter<FavouriteAdapter.ViewHolder>() {
     inner class ViewHolder(private val binding: FavouriteRvItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -19,8 +23,12 @@ class FavouriteAdapter : RecyclerView.Adapter<FavouriteAdapter.ViewHolder>() {
         fun bind(item: Favorite) {
             binding.apply {
                 workspaceName.text = item.name?.lowercase()?.capitalize()
-                workspaceLocation.text = "${item.location.region},${item.location.city}"
-                workspaceTime.text = "09:30 to 19:00"
+                workspaceLocation.text = "${item.location.region}, ${item.location.city}"
+                workspaceTime.text =
+                    Helper.convert24To12(item.schedule.openingTime) + " to " + Helper.convert24To12(
+                        item.schedule.closingTime)
+                workspaceRatingBar.rating = item.avgRate.toFloat()
+
                 Glide.with(itemView)
                     .load(item.images.firstOrNull())
                     .transform(CenterCrop(), RoundedCorners(24))

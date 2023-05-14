@@ -26,4 +26,13 @@ object Helper {
         return "$month $day, $year"
     }
 
+    fun convert24To12(time24: String): String {
+        val parts = time24.split(":")
+        val hour = parts[0].toInt()
+        val minute = parts[1].toInt()
+        val ampm = if (hour < 12) "am" else "pm"
+        val hour12 = if (hour % 12 == 0) 12 else hour % 12
+        return String.format("%d:%02d %s", hour12, minute, ampm)
+    }
+
 }
