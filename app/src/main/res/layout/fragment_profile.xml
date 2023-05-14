@@ -47,7 +47,7 @@
             style="@style/viewParent.headerText.settingsTextIcon"
             android:fontFamily="@font/lato_bold"
             android:padding="@dimen/dimens_small_8dp"
-            android:text="Edit Profile"
+            android:text="Edit profile"
             android:textColor="@color/dark_blue"
             app:drawableStartCompat="@drawable/ic_edit_profile"
             app:drawableTint="@color/dark_blue" />
@@ -58,7 +58,7 @@
             android:layout_marginTop="10dp"
             android:fontFamily="@font/lato_bold"
             android:padding="@dimen/dimens_small_8dp"
-            android:text="Change Password"
+            android:text="Change password"
             android:textColor="@color/dark_blue"
             app:drawableStartCompat="@drawable/ic_change_psw"
             app:drawableTint="@color/dark_blue" />

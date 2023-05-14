@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.spc.space.R
 import com.spc.space.databinding.FragmentProfileBinding
@@ -24,8 +25,11 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentProfileBinding.bind(view)
 
+        dataStoreViewModel.userName.observe(viewLifecycleOwner, Observer {
+            binding.userName.text = it.toString()
+        })
+
         binding.apply {
-            userName.text = dataStoreViewModel.userName.value?.capitalize()
             editProfileText.setOnClickListener {
                 findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToEditProfileFragment())
             }
@@ -36,11 +40,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToReportProblemFragment())
             }
             logoutBtn.setOnClickListener { logout() }
-
-
         }
-
-
     }
 
 
@@ -64,7 +64,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
-        dialog = Dialog(requireContext())
         dialog.dismiss()
     }
 

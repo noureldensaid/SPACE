@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 data class DeleteFavoritesResponse(
     val message: String,
     @SerializedName("updated")
-    val deletedItem: DeletedItem
+    val deletedItem: DeletedItem?
 )
 
 data class DeletedItem(

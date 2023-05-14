@@ -16,8 +16,8 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.spc.space.R
 import com.spc.space.databinding.FragmentWorkspaceDetailsBinding
-import com.spc.space.models.workspace.WorkSpaceItem
 import com.spc.space.ui.DataStoreViewModel
+import com.spc.space.ui.main.favourites.FavouritesViewModel
 import com.spc.space.ui.main.home.LocationViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -25,14 +25,12 @@ import dagger.hilt.android.AndroidEntryPoint
 class WorkspaceDetailsFragment : Fragment(R.layout.fragment_workspace_details) {
     private var _binding: FragmentWorkspaceDetailsBinding? = null
     private val binding get() = _binding!!
-    ///
-    private var isFavorite = false
-    /////
-    private val workspaceDetailsViewModel :WorkSpaceDetailsViewModel by viewModels()
-    ///////
+    private val workspaceDetailsViewModel: WorkSpaceDetailsViewModel by viewModels()
+    private val favouritesViewModel: FavouritesViewModel by viewModels()
     private val dataStoreViewModel: DataStoreViewModel by viewModels()
     private val locationViewModel: LocationViewModel by viewModels()
     private val args: WorkspaceDetailsFragmentArgs by navArgs()
+    private var isFavorite = false
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -43,6 +41,8 @@ class WorkspaceDetailsFragment : Fragment(R.layout.fragment_workspace_details) {
         var destLng: Double? = 0.0
         // workspace data
         val workSpaceItem = args.data
+
+        val userToken = dataStoreViewModel.token.value.toString()
 
         locationViewModel.fetchLocation()
         locationViewModel.location.observe(viewLifecycleOwner, Observer {
@@ -92,27 +92,20 @@ class WorkspaceDetailsFragment : Fragment(R.layout.fragment_workspace_details) {
                     args
                 )
             }
+            addFavBtn.setOnClickListener {
+                isFavorite = !isFavorite
+                if (isFavorite) {
+                    binding.addFavBtn.setImageResource(R.drawable.red_fav_ic)
+
+                    // hat require anotation
+                    favouritesViewModel.addFavourites(userToken, workSpaceItem!!.id!!)
+                } else {
+                    binding.addFavBtn.setImageResource(R.drawable.ic_add_fav)
+                }
+
+
+            }
         }
-
-        val userToken = dataStoreViewModel.token.value.toString()
-/////////
-binding.addFavBtn.setOnClickListener{
-    isFavorite = !isFavorite
-    if (isFavorite) {
-        binding.addFavBtn.setImageResource(R.drawable.red_fav_ic)
-
-        // hat require anotation
-        workspaceDetailsViewModel.AddFavourites(userToken, workSpaceItem!!.id!!)
-    }
-    else{
-        binding.addFavBtn.setImageResource(R.drawable.ic_add_fav)
-    }
-
-
-}
-
-
-
     }
 
 
