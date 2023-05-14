@@ -10,12 +10,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.spc.space.databinding.BookingHistoryRvItemsBinding
 import com.spc.space.databinding.UpcomingBookingsRvItemsBinding
 import com.spc.space.models.bookingsHistory.History
+import com.spc.space.models.canceledBookingsHistory.CanceledHistory
 import com.spc.space.utils.Helper
 
 @RequiresApi(Build.VERSION_CODES.O)
-class BookingsHistoryAdapter : RecyclerView.Adapter<BookingsHistoryAdapter.ViewHolder>() {
+class UpcomingBookingsAdapter : RecyclerView.Adapter<UpcomingBookingsAdapter.ViewHolder>() {
 
-    inner class ViewHolder(private val binding: BookingHistoryRvItemsBinding) :
+    inner class ViewHolder(private val binding: UpcomingBookingsRvItemsBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: History) {
 
@@ -46,7 +47,7 @@ class BookingsHistoryAdapter : RecyclerView.Adapter<BookingsHistoryAdapter.ViewH
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            BookingHistoryRvItemsBinding.inflate(
+            UpcomingBookingsRvItemsBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false

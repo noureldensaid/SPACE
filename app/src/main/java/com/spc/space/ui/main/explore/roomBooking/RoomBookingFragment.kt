@@ -350,10 +350,15 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
         return duration.toMinutes().toDouble() / 60.0
     }
 
+    override fun onStop() {
+        super.onStop()
+        dialog.dismiss()
+    }
 
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+        dialog = Dialog(requireContext())
         dialog.dismiss()
     }
 }

@@ -6,14 +6,15 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.spc.space.data.repository.Repository
-  import com.spc.space.models.workspace.WorkspacesResponse
+import com.spc.space.models.workspace.WorkspacesResponse
+import com.spc.space.utils.Constants.MY_TOKEN
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeFragmentViewModel @Inject constructor(
-    private val repository: Repository
+    private val repository: Repository,
 ) : ViewModel() {
 
     private val _workSpace: MutableLiveData<WorkspacesResponse> = MutableLiveData()

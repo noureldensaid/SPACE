@@ -9,36 +9,36 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.spc.space.R
-import com.spc.space.adapters.CanceledBookingsAdapter
-import com.spc.space.databinding.FragmentCanceledBookingsBinding
+import com.spc.space.adapters.UpcomingBookingsAdapter
+import com.spc.space.databinding.FragmentUpcomingBookingsBinding
 import com.spc.space.ui.DataStoreViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @RequiresApi(Build.VERSION_CODES.O)
 @AndroidEntryPoint
-class CanceledBookingsFragment : Fragment(R.layout.fragment_canceled_bookings) {
+class UpcomingBookingsFragment : Fragment(R.layout.fragment_upcoming_bookings) {
     private val bookingViewModel: BookingsViewModel by viewModels()
     private val dataStoreViewModel: DataStoreViewModel by viewModels()
-    private var _binding: FragmentCanceledBookingsBinding? = null
+    private var _binding: FragmentUpcomingBookingsBinding? = null
     private val binding get() = _binding!!
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = FragmentCanceledBookingsBinding.bind(view)
+        _binding = FragmentUpcomingBookingsBinding.bind(view)
 
         val token = dataStoreViewModel.token.value.toString()
-        val canceledBookingsAdapter = CanceledBookingsAdapter()
+        val upcomingBookingsAdapter = UpcomingBookingsAdapter()
 
-        bookingViewModel.getCanceledBookings(token)
+        bookingViewModel.getBookingsHistory(token)
 
-        binding.canceledRv.apply {
-            adapter = canceledBookingsAdapter
+        binding.upcomingRv.apply {
+            adapter = upcomingBookingsAdapter
         }
 
-        bookingViewModel.canceledHistory.observe(viewLifecycleOwner, Observer { data ->
+        bookingViewModel.bookingsHistory.observe(viewLifecycleOwner, Observer { data ->
             Log.e("size ", data.history?.size.toString());
-            canceledBookingsAdapter.differ.submitList(data.history.reversed())
+            upcomingBookingsAdapter.differ.submitList(data.history.reversed())
         })
     }
 

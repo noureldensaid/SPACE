@@ -7,7 +7,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class BookingHistoryResponse(
     val message: String,
-    val history: List<History>
+    val history: List<History?>
 ) : Parcelable
 
 @Parcelize

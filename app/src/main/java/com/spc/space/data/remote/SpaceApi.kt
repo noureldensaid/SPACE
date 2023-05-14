@@ -6,7 +6,7 @@ import com.spc.space.models.auth.signUp.SignUpRequest
 import com.spc.space.models.auth.signUp.SignUpResponse
 import com.spc.space.models.bookingsHistory.BookingHistoryResponse
 import com.spc.space.models.cancelBooking.CancelBookingsResponse
-import com.spc.space.models.canceledBookingsHistory.CanceledBookingsHistory
+import com.spc.space.models.canceledBookingsHistory.CanceledBookingsResponse
 import com.spc.space.models.createBooking.CreateBookingRequest
 import com.spc.space.models.createBooking.CreateBookingResponse
 import com.spc.space.models.createReviewRequest.CreateReviewRequest
@@ -72,7 +72,7 @@ interface SpaceApi {
     @GET("booking/cancelledBookingsHistoryToUser")
     suspend fun getCanceledBookingsHistory(
         @Header("authorization") userToken: String
-    ): CanceledBookingsHistory
+    ): CanceledBookingsResponse
 
 
     @PUT("favorite/addFavorites/{workspaceId}")

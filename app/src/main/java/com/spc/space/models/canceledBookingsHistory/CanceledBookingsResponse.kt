@@ -5,13 +5,13 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class CanceledBookingsHistory(
-    val history: List<History>,
+data class CanceledBookingsResponse(
+    val history: List<CanceledHistory>,
     val message: String
 ) : Parcelable
 
 @Parcelize
-data class History(
+data class CanceledHistory(
     @SerializedName("_id")
     val id: String,
     val createdAt: String,

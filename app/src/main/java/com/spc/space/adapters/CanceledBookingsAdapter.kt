@@ -7,25 +7,24 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.spc.space.databinding.BookingHistoryRvItemsBinding
-import com.spc.space.databinding.UpcomingBookingsRvItemsBinding
-import com.spc.space.models.bookingsHistory.History
+import com.spc.space.databinding.CanceledBookingsRvItemsBinding
+import com.spc.space.models.canceledBookingsHistory.CanceledHistory
 import com.spc.space.utils.Helper
 
 @RequiresApi(Build.VERSION_CODES.O)
-class BookingsHistoryAdapter : RecyclerView.Adapter<BookingsHistoryAdapter.ViewHolder>() {
+class CanceledBookingsAdapter : RecyclerView.Adapter<CanceledBookingsAdapter.ViewHolder>() {
 
-    inner class ViewHolder(private val binding: BookingHistoryRvItemsBinding) :
+    inner class ViewHolder(private val binding: CanceledBookingsRvItemsBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: History) {
+        fun bind(item: CanceledHistory) {
 
             binding.apply {
 //                item.name?.lowercase()?.capitalize()
                 bookedWorkspaceName.text = "Ws name"
                 bookedRoomName.text = "Room Name"
-                workspacePrice.text = "Total Price: ${item.price?.toInt()} EGP"
-                duration.text = Helper.convertTimeFormat(item.startTime!!)
-                    .toString() + " to " + Helper.convertTimeFormat(item.endTime!!).toString()
+                workspacePrice.text = "Total Price: ${item.price.toInt()} EGP"
+                duration.text = Helper.convertTimeFormat(item.startTime)
+                    .toString() + " to " + Helper.convertTimeFormat(item.endTime).toString()
 
                 date.text = Helper.convertTimeFormatToDate(item.startTime).toString()
 
@@ -33,12 +32,18 @@ class BookingsHistoryAdapter : RecyclerView.Adapter<BookingsHistoryAdapter.ViewH
         }
     }
 
-    private val differCallback = object : DiffUtil.ItemCallback<History>() {
-        override fun areItemsTheSame(oldItem: History, newItem: History): Boolean {
+    private val differCallback = object : DiffUtil.ItemCallback<CanceledHistory>() {
+        override fun areItemsTheSame(
+            oldItem: CanceledHistory,
+            newItem: CanceledHistory
+        ): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: History, newItem: History): Boolean {
+        override fun areContentsTheSame(
+            oldItem: CanceledHistory,
+            newItem: CanceledHistory
+        ): Boolean {
             return oldItem == newItem
         }
     }
@@ -46,7 +51,7 @@ class BookingsHistoryAdapter : RecyclerView.Adapter<BookingsHistoryAdapter.ViewH
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            BookingHistoryRvItemsBinding.inflate(
+            CanceledBookingsRvItemsBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false

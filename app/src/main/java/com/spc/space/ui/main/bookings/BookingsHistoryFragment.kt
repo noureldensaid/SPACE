@@ -1,27 +1,23 @@
 package com.spc.space.ui.main.bookings
 
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.annotation.RequiresApi
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.spc.space.R
 import com.spc.space.adapters.BookingsHistoryAdapter
-import com.spc.space.adapters.HomeAdapter
 import com.spc.space.databinding.FragmentBookingsHistoryBinding
-import com.spc.space.databinding.FragmentHomeBinding
 import com.spc.space.ui.DataStoreViewModel
-import com.spc.space.ui.main.home.HomeFragmentViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
-
+@RequiresApi(Build.VERSION_CODES.O)
 @AndroidEntryPoint
 class BookingsHistoryFragment : Fragment(R.layout.fragment_bookings_history) {
-    private val bookingHistoryViewModel: BookingsHistoryViewModel by viewModels()
+    private val bookingViewModel: BookingsViewModel by viewModels()
     private val dataStoreViewModel: DataStoreViewModel by viewModels()
     private var _binding: FragmentBookingsHistoryBinding? = null
     private val binding get() = _binding!!
@@ -34,25 +30,20 @@ class BookingsHistoryFragment : Fragment(R.layout.fragment_bookings_history) {
         val token = dataStoreViewModel.token.value.toString()
         val bookingsHistoryAdapter = BookingsHistoryAdapter()
 
-        bookingHistoryViewModel.getBookingsHistory(token)
+        bookingViewModel.getBookingsHistory(token)
 
         binding.historyRv.apply {
             adapter = bookingsHistoryAdapter
         }
 
-        bookingHistoryViewModel.bookingsHistory.observe(viewLifecycleOwner, Observer { data ->
-
+        bookingViewModel.bookingsHistory.observe(viewLifecycleOwner, Observer { data ->
             Log.e("size ", data.history?.size.toString());
-            bookingsHistoryAdapter.differ.submitList(data.history)
-
+            bookingsHistoryAdapter.differ.submitList(data.history.reversed())
         })
-
-
-
-
-
     }
 
-
-
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 }

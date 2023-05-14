@@ -2,6 +2,7 @@ package com.spc.space.utils
 
 import android.os.Build
 import androidx.annotation.RequiresApi
+import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.time.format.TextStyle
@@ -33,6 +34,12 @@ object Helper {
         val ampm = if (hour < 12) "am" else "pm"
         val hour12 = if (hour % 12 == 0) 12 else hour % 12
         return String.format("%d:%02d %s", hour12, minute, ampm)
+    }
+
+    fun parseDateToLocalDate(dateTimeString: String): LocalDate {
+        val formatter = DateTimeFormatter.ISO_DATE_TIME
+        val localDateTime = LocalDateTime.parse(dateTimeString, formatter)
+        return localDateTime.toLocalDate()
     }
 
 }
