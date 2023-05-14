@@ -89,7 +89,7 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="@dimen/dimens_medium_16dp"
             android:layout_marginBottom="14dp"
-            android:drawableStart="@drawable/ic_calendar"
+            android:drawableStart="@drawable/ic_clock"
             android:drawablePadding="@dimen/dimens_tiny_4dp"
             android:drawableTint="@color/dark_blue"
             android:ellipsize="end"

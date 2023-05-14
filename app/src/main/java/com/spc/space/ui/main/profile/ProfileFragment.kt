@@ -64,6 +64,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+        dialog = Dialog(requireContext())
         dialog.dismiss()
     }
 

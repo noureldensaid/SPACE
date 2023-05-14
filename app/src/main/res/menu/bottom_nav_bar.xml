@@ -13,7 +13,7 @@
 
     <item
         android:id="@+id/bookingsViewPagerFragment"
-        android:icon="@drawable/ic_bookings"
+        android:icon="@drawable/ic_calendar_nav_bar"
         android:title="@string/bookings" />
 
     <item
