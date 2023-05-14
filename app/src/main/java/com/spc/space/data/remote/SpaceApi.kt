@@ -1,5 +1,7 @@
 package com.spc.space.data.remote
 
+import com.spc.space.models.auth.forgetPassword.ForgetPasswordRequest
+import com.spc.space.models.auth.forgetPassword.ForgetPasswordResponse
 import com.spc.space.models.auth.signIn.SignInRequest
 import com.spc.space.models.auth.signIn.SignInResponse
 import com.spc.space.models.auth.signUp.SignUpRequest
@@ -22,11 +24,19 @@ interface SpaceApi {
     ): SignUpResponse
 
 
-    // sign in
+    // Forget pass
+    @POST("auth/sendCode")
+    suspend fun forgetPassword(
+        @Header("authorization") userToken: String,
+        @Body request: ForgetPasswordRequest
+    ): ForgetPasswordResponse
+
+
     @POST("auth/signIn")
     suspend fun signIn(
         @Body request: SignInRequest
     ): SignInResponse
+
 
     // get all workspaces
     // don't forget to add Bearer__ before passing the token --> Bearer__$token
