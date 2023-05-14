@@ -1,13 +1,17 @@
 package com.spc.space.adapters
 
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.spc.space.databinding.BookingHistoryRvItemsBinding
 import com.spc.space.models.bookingsHistory.History
+import com.spc.space.utils.Helper
 
+@RequiresApi(Build.VERSION_CODES.O)
 class BookingsHistoryAdapter : RecyclerView.Adapter<BookingsHistoryAdapter.ViewHolder>() {
 
     inner class ViewHolder(private val binding: BookingHistoryRvItemsBinding) :
@@ -18,9 +22,11 @@ class BookingsHistoryAdapter : RecyclerView.Adapter<BookingsHistoryAdapter.ViewH
 //                item.name?.lowercase()?.capitalize()
                 bookedWorkspaceName.text = "Ws name"
                 bookedRoomName.text = "Room Name"
-                workspacePrice.text = "${item.price.toInt()} EGP"
-                duration.text = " ${item.duration.toInt()} Hour(s)"
+                workspacePrice.text = "Total Price: ${item.price.toInt()} EGP"
+                duration.text = Helper.convertTimeFormat(item.startTime)
+                    .toString() + " to " + Helper.convertTimeFormat(item.endTime).toString()
 
+                date.text = Helper.convertTimeFormatToDate(item.startTime).toString()
 
             }
         }
