@@ -19,9 +19,9 @@ class CanceledBookingsAdapter : RecyclerView.Adapter<CanceledBookingsAdapter.Vie
         fun bind(item: CanceledHistory) {
 
             binding.apply {
-//                item.name?.lowercase()?.capitalize()
-                bookedWorkspaceName.text = "Ws name"
-                bookedRoomName.text = "Room Name"
+                bookedWorkspaceName.text =
+                    item.room.workspaceId.name.lowercase().trim().capitalize()
+                bookedRoomName.text = item.room.roomName.lowercase().trim().capitalize()
                 workspacePrice.text = "Total Price: ${item.price.toInt()} EGP"
                 duration.text = Helper.convertTimeFormat(item.startTime)
                     .toString() + " to " + Helper.convertTimeFormat(item.endTime).toString()

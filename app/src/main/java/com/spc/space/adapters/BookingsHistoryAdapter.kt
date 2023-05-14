@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.spc.space.databinding.BookingHistoryRvItemsBinding
-import com.spc.space.databinding.UpcomingBookingsRvItemsBinding
 import com.spc.space.models.bookingsHistory.History
 import com.spc.space.utils.Helper
 
@@ -21,8 +20,9 @@ class BookingsHistoryAdapter : RecyclerView.Adapter<BookingsHistoryAdapter.ViewH
 
             binding.apply {
 //                item.name?.lowercase()?.capitalize()
-                bookedWorkspaceName.text = "Ws name"
-                bookedRoomName.text = "Room Name"
+                bookedWorkspaceName.text =
+                    item.room.workspaceId.name.lowercase().trim().capitalize()
+                bookedRoomName.text = item.room.roomName.lowercase().trim().capitalize()
                 workspacePrice.text = "Total Price: ${item.price?.toInt()} EGP"
                 duration.text = Helper.convertTimeFormat(item.startTime!!)
                     .toString() + " to " + Helper.convertTimeFormat(item.endTime!!).toString()
