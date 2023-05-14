@@ -14,7 +14,7 @@ data class WorkspacesResponse(
 data class WorkSpaceItem(
     @SerializedName("_id")
     val id: String? = null,
-    val avgRate: Int,
+    val avgRate: Float?=null,
     val contact: WorkspaceContact,
     val description: String? = null,
     val images: List<String>? = emptyList(),

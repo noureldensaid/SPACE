@@ -27,7 +27,7 @@ class HomeFragmentViewModel @Inject constructor(
                 Log.e("workspace fetched", "getWorkspaces: Great")
             } else Log.e("workspace request", "getData: Failed")
         } catch (ex: Exception) {
-            Log.e("TAG", ex.message.toString());
+            Log.e("TAG123", ex.message.toString());
         }
     }
 }

@@ -27,7 +27,7 @@ class FavouriteAdapter : RecyclerView.Adapter<FavouriteAdapter.ViewHolder>() {
                 workspaceTime.text =
                     Helper.convert24To12(item.schedule.openingTime) + " to " + Helper.convert24To12(
                         item.schedule.closingTime)
-                workspaceRatingBar.rating = item.avgRate.toFloat()
+                workspaceRatingBar.rating = item.avgRate?:0F
 
                 Glide.with(itemView)
                     .load(item.images.firstOrNull())

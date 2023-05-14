@@ -7,11 +7,13 @@ import com.google.gson.GsonBuilder
 import com.spc.space.data.remote.SpaceApi
 import com.spc.space.data.repository.DataStoreRepository
 import com.spc.space.utils.Constants.SPACE_API_BASE_URL
- import dagger.Module
+import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
@@ -22,15 +24,21 @@ import javax.inject.Singleton
 object AppModule {
 
 
-
     // inject retrofit
     @Singleton
     @Provides
     fun provideSpaceApi(): SpaceApi = Retrofit.Builder()
         .baseUrl(SPACE_API_BASE_URL)
-        .addConverterFactory(GsonConverterFactory.create(
-            GsonBuilder().setLenient().create()
-        ))
+        .client(OkHttpClient.Builder().apply {
+            val interceptor =
+                HttpLoggingInterceptor().apply { setLevel(HttpLoggingInterceptor.Level.BODY) }
+            addInterceptor(interceptor)
+        }.build())
+        .addConverterFactory(
+            GsonConverterFactory.create(
+                GsonBuilder().setLenient().create()
+            )
+        )
         .build()
         .create(SpaceApi::class.java)
 

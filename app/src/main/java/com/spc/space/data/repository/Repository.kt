@@ -47,5 +47,6 @@ class Repository @Inject constructor(
     ) =
         spaceApi.createReview("Bearer__$token", workspaceId, createReviewRequest)
 
-
+    suspend fun getReview(token: String,workspaceId: String) =
+        spaceApi.getReview("Bearer__$token",workspaceId)
 }

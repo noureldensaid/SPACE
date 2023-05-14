@@ -16,7 +16,10 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.spc.space.R
 import com.spc.space.databinding.FragmentWorkspaceDetailsBinding
+import com.spc.space.models.createBooking.CreateBookingRequest
+import com.spc.space.models.createReviewRequest.CreateReviewRequest
 import com.spc.space.ui.DataStoreViewModel
+import com.spc.space.ui.RatingViewModel
 import com.spc.space.ui.main.favourites.FavouritesViewModel
 import com.spc.space.ui.main.home.LocationViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,6 +29,7 @@ class WorkspaceDetailsFragment : Fragment(R.layout.fragment_workspace_details) {
     private var _binding: FragmentWorkspaceDetailsBinding? = null
     private val binding get() = _binding!!
     private val workspaceDetailsViewModel: WorkSpaceDetailsViewModel by viewModels()
+    private val ratingViewModel: RatingViewModel by viewModels()
     private val favouritesViewModel: FavouritesViewModel by viewModels()
     private val dataStoreViewModel: DataStoreViewModel by viewModels()
     private val locationViewModel: LocationViewModel by viewModels()
@@ -36,6 +40,8 @@ class WorkspaceDetailsFragment : Fragment(R.layout.fragment_workspace_details) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentWorkspaceDetailsBinding.bind(view)
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.viewModel = ratingViewModel
         // user locations
         var destLat: Double? = 0.0
         var destLng: Double? = 0.0
@@ -63,7 +69,7 @@ class WorkspaceDetailsFragment : Fragment(R.layout.fragment_workspace_details) {
 
                 name.text = it.name
                 workspaceRegion.text = it.location.region
-                workspaceRatingBar.rating = it.avgRate.plus(0.5).toFloat()
+                workspaceRatingBar.rating = it.avgRate?.plus(0.5F) ?: 0F
                 workspaceTime.text =
                     it.schedule.openingTime + " to " + it.schedule.closingTime
             }
@@ -105,6 +111,17 @@ class WorkspaceDetailsFragment : Fragment(R.layout.fragment_workspace_details) {
 
 
             }
+//////////
+            binding.workspaceRatingBar.setOnRatingBarChangeListener { _, rating, _ ->
+                val reviewRequest =
+                    CreateReviewRequest(rating.toInt())
+                Log.e("TAG", "onViewCreated: On RATING CHANGED")
+                ratingViewModel.createReview(userToken, workSpaceItem!!.id!!, reviewRequest)
+            }
+
+            //////////////
+            ratingViewModel.getReview(userToken, workSpaceItem.id!!)
+
         }
     }
 
