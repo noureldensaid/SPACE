@@ -37,7 +37,9 @@ class Repository @Inject constructor(
         spaceApi.removeFromFavorites("Bearer__$token", workspaceId)
 
 
-    suspend fun getFav(token: String) = spaceApi.getFavorites("Bearer__$token")
+    suspend fun getFavorites (token: String)= spaceApi.getFavorites("Bearer__$token")
+
+
 
 
 }

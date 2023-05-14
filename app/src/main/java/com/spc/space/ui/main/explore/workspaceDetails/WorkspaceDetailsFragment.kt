@@ -1,8 +1,10 @@
 package com.spc.space.ui.main.explore.workspaceDetails
 
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -14,6 +16,8 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.spc.space.R
 import com.spc.space.databinding.FragmentWorkspaceDetailsBinding
+import com.spc.space.models.workspace.WorkSpaceItem
+import com.spc.space.ui.DataStoreViewModel
 import com.spc.space.ui.main.home.LocationViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -21,9 +25,16 @@ import dagger.hilt.android.AndroidEntryPoint
 class WorkspaceDetailsFragment : Fragment(R.layout.fragment_workspace_details) {
     private var _binding: FragmentWorkspaceDetailsBinding? = null
     private val binding get() = _binding!!
+    ///
+    private var isFavorite = false
+    /////
+    private val workspaceDetailsViewModel :WorkSpaceDetailsViewModel by viewModels()
+    ///////
+    private val dataStoreViewModel: DataStoreViewModel by viewModels()
     private val locationViewModel: LocationViewModel by viewModels()
     private val args: WorkspaceDetailsFragmentArgs by navArgs()
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentWorkspaceDetailsBinding.bind(view)
@@ -82,6 +93,26 @@ class WorkspaceDetailsFragment : Fragment(R.layout.fragment_workspace_details) {
                 )
             }
         }
+
+        val userToken = dataStoreViewModel.token.value.toString()
+/////////
+binding.addFavBtn.setOnClickListener{
+    isFavorite = !isFavorite
+    if (isFavorite) {
+        binding.addFavBtn.setImageResource(R.drawable.red_fav_ic)
+
+        // hat require anotation
+        workspaceDetailsViewModel.AddFavourites(userToken, workSpaceItem!!.id!!)
+    }
+    else{
+        binding.addFavBtn.setImageResource(R.drawable.ic_add_fav)
+    }
+
+
+}
+
+
+
     }
 
 

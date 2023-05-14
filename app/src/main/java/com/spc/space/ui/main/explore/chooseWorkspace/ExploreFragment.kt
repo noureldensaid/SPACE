@@ -50,6 +50,7 @@ class ExploreFragment : Fragment(R.layout.fragment_explore) {
             data.putParcelable("data", it)
             findNavController().navigate(R.id.action_exploreFragment_to_book_flow, data)
         }
+
     }
 
     override fun onDestroy() {
