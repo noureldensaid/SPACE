@@ -3,6 +3,7 @@ package com.spc.space.ui.main.favourites
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.CheckBox
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -28,6 +29,8 @@ class FavouritesFragment : Fragment(R.layout.fragment_favourites) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentFavouritesBinding.bind(view)
         favouriteAdapter = FavouriteAdapter()
+
+
 
         val token = dataStoreViewModel.token.value.toString()
         favouritesViewModel.getFavorites(token)

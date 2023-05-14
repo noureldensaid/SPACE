@@ -16,12 +16,28 @@
 
         <ImageView
             android:id="@+id/workspace_iv"
-            android:layout_width="150dp"
+            android:layout_width="130dp"
             android:layout_height="150dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/ic_favorite" />
+
+
+        <CheckBox
+            android:id="@+id/ic_fav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:button="@drawable/red_fav_ic"
+            android:padding="24dp"
+            android:scaleX="1.5"
+            android:scaleY="1.5"
+            android:shadowColor="@color/Light_grayish_red"
+            app:buttonTint="@color/orange"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/workspace_name"
