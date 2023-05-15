@@ -62,7 +62,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/dimens_huge_64dp"
         android:fontFamily="@font/lato_bold"
-        android:text="@string/reset_pass"
+        android:text="Submit Problem "
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="@dimen/material_text_subhead_16sp"
