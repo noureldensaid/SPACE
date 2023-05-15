@@ -8,11 +8,13 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import com.spc.space.R
 import com.spc.space.adapters.CanceledBookingsAdapter
 import com.spc.space.databinding.FragmentCanceledBookingsBinding
 import com.spc.space.ui.DataStoreViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @RequiresApi(Build.VERSION_CODES.O)
 @AndroidEntryPoint
@@ -31,14 +33,21 @@ class CanceledBookingsFragment : Fragment(R.layout.fragment_canceled_bookings) {
         val canceledBookingsAdapter = CanceledBookingsAdapter()
 
 
+        lifecycleScope.launch {
+            bookingViewModel.canceledHistory.collect { state ->
+                canceledBookingsAdapter.differ.submitList(state?.history?.reversed())
+            }
+        }
+
+
         binding.canceledRv.apply {
             adapter = canceledBookingsAdapter
         }
-
-        bookingViewModel.canceledHistory.observe(viewLifecycleOwner, Observer { data ->
-            Log.e("size ", data.history?.size.toString());
-            canceledBookingsAdapter.differ.submitList(data.history.reversed())
-        })
+//
+//        bookingViewModel.canceledHistory.observe(viewLifecycleOwner, Observer { data ->
+//            Log.e("size ", data.history?.size.toString());
+//            canceledBookingsAdapter.differ.submitList(data.history.reversed())
+//        })
     }
 
 

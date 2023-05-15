@@ -8,11 +8,13 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import com.spc.space.R
 import com.spc.space.adapters.BookingsHistoryAdapter
 import com.spc.space.databinding.FragmentBookingsHistoryBinding
 import com.spc.space.ui.DataStoreViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @RequiresApi(Build.VERSION_CODES.O)
 @AndroidEntryPoint
@@ -30,14 +32,19 @@ class BookingsHistoryFragment : Fragment(R.layout.fragment_bookings_history) {
         val token = dataStoreViewModel.token.value.toString()
         val bookingsHistoryAdapter = BookingsHistoryAdapter()
 
+
+        lifecycleScope.launch {
+            bookingViewModel.bookingsHistory.collect { state ->
+                bookingsHistoryAdapter.differ.submitList(state?.history?.reversed())
+            }
+        }
+
+
         binding.historyRv.apply {
             adapter = bookingsHistoryAdapter
         }
 
-        bookingViewModel.bookingsHistory.observe(viewLifecycleOwner, Observer { data ->
-            Log.e("size ", data.history?.size.toString());
-            bookingsHistoryAdapter.differ.submitList(data.history.reversed())
-        })
+ 
     }
 
     override fun onDestroy() {
