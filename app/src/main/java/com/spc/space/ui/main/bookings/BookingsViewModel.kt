@@ -84,6 +84,7 @@ class BookingsViewModel @Inject constructor(
             if (response != null) {
                 _bookingsHistory.postValue(response)
                 Log.e("getUpcomingBookings request", "getHistory: Great")
+                Log.e("getUpcomingBookings request size", response.history.size.toString())
                 getFilteredBookingHistory()
             } else Log.e("getUpcomingBookings request", "getHistory: Failed")
         } catch (ex: Exception) {
