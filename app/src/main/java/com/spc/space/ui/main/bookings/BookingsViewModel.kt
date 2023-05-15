@@ -1,24 +1,41 @@
 package com.spc.space.ui.main.bookings
 
+import android.os.Build
 import android.util.Log
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.spc.space.data.repository.DataStoreRepository
 import com.spc.space.data.repository.Repository
 import com.spc.space.models.bookingsHistory.BookingHistoryResponse
+import com.spc.space.models.bookingsHistory.History
 import com.spc.space.models.canceledBookingsHistory.CanceledBookingsResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import java.time.Instant
+import java.time.LocalDateTime
+import java.time.ZoneOffset
+import java.time.format.DateTimeFormatter
 import javax.inject.Inject
 
-
+@RequiresApi(Build.VERSION_CODES.O)
 @HiltViewModel
 class BookingsViewModel @Inject constructor(
-    private val repository: Repository
+    private val repository: Repository,
+    private val dataStoreRepository: DataStoreRepository
 ) : ViewModel() {
 
-    //  private val formatter = DateTimeFormatter.ISO_DATE_TIME
+    init {
+        viewModelScope.launch {
+            val token = dataStoreRepository.getToken().toString()
+            val formatter = DateTimeFormatter.ISO_DATE_TIME
+            getBookingsHistory(token)
+            getCanceledBookings(token)
+            getUpcomingBookings(token)
+        }
+    }
 
     // unfiltered
     private val _bookingsHistory: MutableLiveData<BookingHistoryResponse> = MutableLiveData()
@@ -27,27 +44,28 @@ class BookingsViewModel @Inject constructor(
     private val _canceledHistory: MutableLiveData<CanceledBookingsResponse> = MutableLiveData()
     val canceledHistory: LiveData<CanceledBookingsResponse> = _canceledHistory
 
-//    //filtered
-//    private val _upcomingBookings = MutableStateFlow(emptyList<UpcomingDto>())
-//    val upcomingBookings = _upcomingBookings.asStateFlow()
-//
-//    private val _unFilteredBookings = MutableStateFlow(listOf<History>())
-//    val unFilteredBookings = _unFilteredBookings.asStateFlow()
+    private val _unfilteredBookings: MutableLiveData<List<History>> = MutableLiveData()
+    private val unfilteredBookings: LiveData<List<History>> = _unfilteredBookings
 
 
-    fun getBookingsHistory(token: String) = viewModelScope.launch {
+    private val _upcomingBookings: MutableLiveData<List<History>> = MutableLiveData()
+    val upcomingBookings: LiveData<List<History>> = _upcomingBookings
+
+
+    private fun getBookingsHistory(token: String) = viewModelScope.launch {
         try {
             val response = repository.getBookingsHistory(token)
             if (response != null) {
-                _bookingsHistory.postValue(response)
+                _unfilteredBookings.postValue(response.history)
                 Log.e("Boooking History request", "getHistory: Great")
+                getFilteredBookingHistory()
             } else Log.e("Boooking History request", "getHistory: Failed")
         } catch (ex: Exception) {
             Log.e("TAG", ex.message.toString());
         }
     }
 
-    fun getCanceledBookings(token: String) = viewModelScope.launch {
+    private fun getCanceledBookings(token: String) = viewModelScope.launch {
         try {
             val response = repository.getCanceledBookingsHistory(token)
             if (response != null) {
@@ -60,46 +78,29 @@ class BookingsViewModel @Inject constructor(
     }
 
 
-//    @RequiresApi(Build.VERSION_CODES.O)
-//    private fun filterBookings() {
-//        val today = LocalDate.now().atStartOfDay().toInstant(ZoneOffset.UTC)
-//        val upcomingBookings = unFilteredBookings.filter { booking ->
-//            val eventDate =
-//                LocalDateTime.parse(booking.startTime, formatter).toInstant(ZoneOffset.UTC)
-//            eventDate.isBefore(today) || eventDate == today && !booking.isCancelled
-//        }.map { booking ->
-//            val date = LocalDateTime.parse(booking.startTime, formatter).toLocalDate()
-//            UpcomingDto(
-//                startTime = date.toString(),
-//                endTime = booking.endTime!!,
-//                duration = booking.duration!!,
-//                id = booking.id!!,
-//                isCancelled = booking.isCancelled
-//            )
-//        }
-//        _filteredEvents.value = filteredEvents
-//    }
+    private fun getUpcomingBookings(token: String) = viewModelScope.launch {
+        try {
+            val response = repository.getBookingsHistory(token)
+            if (response != null) {
+                _bookingsHistory.postValue(response)
+                Log.e("getUpcomingBookings request", "getHistory: Great")
+                getFilteredBookingHistory()
+            } else Log.e("getUpcomingBookings request", "getHistory: Failed")
+        } catch (ex: Exception) {
+            Log.e("TAG", ex.message.toString());
+        }
+    }
 
 
-//    fun getUpcomingBookings(token: String) = viewModelScope.launch {
-//        try {
-//            val response = repository.getBookingsHistory(token)
-//            if (response != null) {
-//                val historyList = response.history
-//
-//
-//
-//
-//
-//
-//
-//
-//                Log.e("Boooking History request", "getHistory: Great")
-//            } else Log.e("Boooking History request", "getHistory: Failed")
-//        } catch (ex: Exception) {
-//            Log.e("TAG", ex.message.toString());
-//        }
-//    }
-
-
+    private fun getFilteredBookingHistory() {
+        val currentInstant = Instant.now()
+        val currentDateTime = LocalDateTime.ofInstant(currentInstant, ZoneOffset.UTC)
+        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+        val result = _unfilteredBookings.value?.filter { item ->
+            !item.isCancelled &&
+                    LocalDateTime.parse(item.startTime, formatter)
+                        .isAfter(currentDateTime)
+        } ?: emptyList()
+        _upcomingBookings.postValue(result)
+    }
 }

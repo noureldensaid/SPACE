@@ -20,7 +20,7 @@ data class FavoriteItem(
 data class Favorite(
     @SerializedName("_id")
     val id: String,
-    val avgRate: Int,
+    val avgRate: Float,
     val contact: Contact,
     val description: String,
     val images: List<String>,

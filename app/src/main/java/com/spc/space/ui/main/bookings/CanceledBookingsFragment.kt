@@ -30,7 +30,6 @@ class CanceledBookingsFragment : Fragment(R.layout.fragment_canceled_bookings) {
         val token = dataStoreViewModel.token.value.toString()
         val canceledBookingsAdapter = CanceledBookingsAdapter()
 
-        bookingViewModel.getCanceledBookings(token)
 
         binding.canceledRv.apply {
             adapter = canceledBookingsAdapter

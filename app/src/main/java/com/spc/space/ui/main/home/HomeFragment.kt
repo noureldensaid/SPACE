@@ -29,9 +29,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         val homeAdapter = HomeAdapter()
 
-        val token = dataStoreViewModel.token.value.toString()
-
-        homeFragmentViewModel.getWorkspaces(token)
 
         homeFragmentViewModel.workSpace.observe(viewLifecycleOwner, Observer { data ->
             Log.e("size ", data.workSpace?.size.toString());

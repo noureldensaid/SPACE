@@ -2,7 +2,6 @@ package com.spc.space.ui.main.bookings
 
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
@@ -27,19 +26,23 @@ class UpcomingBookingsFragment : Fragment(R.layout.fragment_upcoming_bookings) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentUpcomingBookingsBinding.bind(view)
 
+
         val token = dataStoreViewModel.token.value.toString()
         val upcomingBookingsAdapter = UpcomingBookingsAdapter()
 
-        bookingViewModel.getBookingsHistory(token)
+
+
+        bookingViewModel.upcomingBookings.observe(viewLifecycleOwner, Observer {
+            upcomingBookingsAdapter.differ.submitList(it.reversed())
+        })
+
+
 
         binding.upcomingRv.apply {
             adapter = upcomingBookingsAdapter
         }
 
-        bookingViewModel.bookingsHistory.observe(viewLifecycleOwner, Observer { data ->
-            Log.e("size ", data.history?.size.toString());
-            upcomingBookingsAdapter.differ.submitList(data.history.reversed())
-        })
+
     }
 
 

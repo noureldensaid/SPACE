@@ -31,7 +31,7 @@ data class Room(
 
 data class WorkspaceId(
     @SerializedName("_id") val id: String,
-    val avgRate: Int,
+    val avgRate: Float,
     val images: List<String>,
     val location: Location,
     val name: String,

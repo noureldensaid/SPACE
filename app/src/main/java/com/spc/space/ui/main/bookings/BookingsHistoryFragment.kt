@@ -30,8 +30,6 @@ class BookingsHistoryFragment : Fragment(R.layout.fragment_bookings_history) {
         val token = dataStoreViewModel.token.value.toString()
         val bookingsHistoryAdapter = BookingsHistoryAdapter()
 
-        bookingViewModel.getBookingsHistory(token)
-
         binding.historyRv.apply {
             adapter = bookingsHistoryAdapter
         }
