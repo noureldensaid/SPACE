@@ -15,6 +15,8 @@ import com.spc.space.models.getReview.GetReviewResponse
 import com.spc.space.models.favs.AddFavoritesResponse
 import com.spc.space.models.favs.DeleteFavoritesResponse
 import com.spc.space.models.favs.GetFavoritesResponse
+import com.spc.space.models.reportProblem.ReportProblemRequest
+import com.spc.space.models.reportProblem.ReportProblemResponse
 import com.spc.space.models.workspace.WorkspacesResponse
 import com.spc.space.models.workspaceRoom.RoomResponse
 import retrofit2.http.*
@@ -108,6 +110,14 @@ interface SpaceApi {
         @Header("authorization") userToken: String,
         @Path("workspaceId") workspaceId: String
     ): GetReviewResponse
+
+
+    @POST("user/UserReportWs/{workspaceId}")
+    suspend fun createReportProblem(
+        @Header("authorization") userToken: String,
+        @Path("workspaceId") workspaceId: String,
+        @Body requestBody: ReportProblemRequest,
+    ): ReportProblemResponse
 
 }
 
