@@ -22,6 +22,7 @@ import com.spc.space.ui.DataStoreViewModel
 import com.spc.space.ui.RatingViewModel
 import com.spc.space.ui.main.favourites.FavouritesViewModel
 import com.spc.space.ui.main.home.LocationViewModel
+import com.spc.space.ui.main.profile.ProfileFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -72,6 +73,16 @@ class WorkspaceDetailsFragment : Fragment(R.layout.fragment_workspace_details) {
                 workspaceRatingBar.rating = it.avgRate?.plus(0.5F) ?: 0F
                 workspaceTime.text =
                     it.schedule.openingTime + " to " + it.schedule.closingTime
+            }
+            ////
+            binding.comment.setOnClickListener {
+                val args = Bundle()
+                args.putParcelable("workspace", workSpaceItem)
+                findNavController().navigate(
+                    R.id.action_workspaceDetailsFragment_to_reportProblemFragment,
+                    args
+                )
+                //findNavController().navigate(WorkspaceDetailsFragmentDirections.actionWorkspaceDetailsFragmentToReportProblemFragment())
             }
             googleMap.setOnClickListener {
                 // directions format =>

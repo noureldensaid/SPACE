@@ -96,6 +96,9 @@
             <action
                 android:id="@+id/action_workspaceDetailsFragment_to_googleMapFragment"
                 app:destination="@id/googleMapFragment" />
+            <action
+                android:id="@+id/action_workspaceDetailsFragment_to_reportProblemFragment"
+                app:destination="@id/reportProblemFragment" />
         </fragment>
         <fragment
             android:id="@+id/roomDetailsFragment"

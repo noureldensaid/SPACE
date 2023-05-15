@@ -22,6 +22,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class FavouritesFragment : Fragment(R.layout.fragment_favourites) {
     private var _binding: FragmentFavouritesBinding? = null
     private val binding get() = _binding!!
+    //private val ratingViewModel: RatingViewModel by viewModels()
     private lateinit var favouriteAdapter: FavouriteAdapter
     private val favouritesViewModel: FavouritesViewModel by viewModels()
     private val dataStoreViewModel: DataStoreViewModel by viewModels()
@@ -69,6 +70,8 @@ class FavouritesFragment : Fragment(R.layout.fragment_favourites) {
             }
         }
         ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(binding.favRv)
+
+
 
     }
 
