@@ -49,6 +49,7 @@
        >
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/enterProblemInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/lato_bold"
@@ -57,7 +58,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_reset_password"
+        android:id="@+id/btn_submit_problem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/dimens_huge_64dp"
