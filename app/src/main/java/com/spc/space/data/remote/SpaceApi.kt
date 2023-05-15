@@ -13,10 +13,10 @@ import com.spc.space.models.createBooking.CreateBookingRequest
 import com.spc.space.models.createBooking.CreateBookingResponse
 import com.spc.space.models.createReviewRequest.CreateReviewRequest
 import com.spc.space.models.createReviewRequest.CreateReviewResponse
-import com.spc.space.models.getReview.GetReviewResponse
 import com.spc.space.models.favs.AddFavoritesResponse
 import com.spc.space.models.favs.DeleteFavoritesResponse
 import com.spc.space.models.favs.GetFavoritesResponse
+import com.spc.space.models.getReview.GetReviewResponse
 import com.spc.space.models.reportProblem.ReportProblemRequest
 import com.spc.space.models.reportProblem.ReportProblemResponse
 import com.spc.space.models.workspace.WorkspacesResponse
@@ -25,19 +25,19 @@ import retrofit2.http.*
 
 interface SpaceApi {
 
-    // sign up
-    @POST("auth/signUp")
-    suspend fun signUp(
-        @Body request: SignUpRequest
-    ): SignUpResponse
-
-
-    // Forget pass
+    // Forget password
     @POST("auth/sendCode")
     suspend fun forgetPassword(
         @Header("authorization") userToken: String,
         @Body request: ForgetPasswordRequest
     ): ForgetPasswordResponse
+
+
+    // sign up
+    @POST("auth/signUp")
+    suspend fun signUp(
+        @Body request: SignUpRequest
+    ): SignUpResponse
 
 
     @POST("auth/signIn")
