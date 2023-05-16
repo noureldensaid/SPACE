@@ -12,7 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.spc.space.R
 import com.spc.space.databinding.FragmentProfileBinding
-import com.spc.space.ui.DataStoreViewModel
+import com.spc.space.ui.main.shared_viewmodels.DataStoreViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -26,7 +26,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         _binding = FragmentProfileBinding.bind(view)
 
         dataStoreViewModel.userName.observe(viewLifecycleOwner, Observer {
-            binding.userName.text = it.toString()
+            binding.userName.text = it.toString().lowercase().capitalize()
         })
 
         binding.apply {

@@ -4,25 +4,24 @@
     <item
         android:id="@+id/homeFragment"
         android:icon="@drawable/ic_home"
-        android:title="@string/home" />
+        android:title="" />
 
     <item
         android:id="@+id/exploreFragment"
         android:icon="@drawable/ic_explore"
-        android:title="@string/explore" />
+        android:title="" />
 
     <item
         android:id="@+id/bookingsViewPagerFragment"
         android:icon="@drawable/ic_calendar_nav_bar"
-        android:title="@string/bookings" />
-
+        android:title="" />
     <item
         android:id="@+id/favouritesFragment"
         android:icon="@drawable/ic_favorite"
-        android:title="@string/favourites" />
+        android:title="" />
     <item
         android:id="@+id/profileFragment"
         android:icon="@drawable/ic_account"
-        android:title="@string/profile" />
+        android:title="" />
 
 </menu>

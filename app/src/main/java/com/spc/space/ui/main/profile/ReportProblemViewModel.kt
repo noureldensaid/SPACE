@@ -13,26 +13,29 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ReportProblemViewModel  @Inject constructor(
+class ReportProblemViewModel @Inject constructor(
     private val repository: Repository
-) : ViewModel(){
+) : ViewModel() {
 
-    var data :MutableLiveData<String> = MutableLiveData()
+    var data: MutableLiveData<String> = MutableLiveData()
 
-     private val _reportProblem:MutableLiveData<ReportProblemResponse> = MutableLiveData()
-     val rProblem:LiveData<ReportProblemResponse> = _reportProblem
+    private val _reportProblem: MutableLiveData<ReportProblemResponse> = MutableLiveData()
+    val rProblem: LiveData<ReportProblemResponse> = _reportProblem
 
-    fun createReportProblem(userToken:String,workspaceId: String,problemRequest: ReportProblemRequest)=
+    fun createReportProblem(
+        userToken: String,
+        workspaceId: String,
+        problemRequest: ReportProblemRequest
+    ) =
         viewModelScope.launch {
             try {
-                val response = repository.createReportProblem(userToken,workspaceId, problemRequest )
-                if (response != null){
+                val response =
+                    repository.createReportProblem(userToken, workspaceId, problemRequest)
+                if (response != null) {
                     _reportProblem.postValue(response)
-                    Log.e("report problem created?","done")
-
-                }else Log.e("report problem created? ","Failed")
-            }catch (ex: Exception)
-            {
+                    Log.e("report problem created?", "done")
+                } else Log.e("report problem created? ", "Failed")
+            } catch (ex: Exception) {
                 Log.e("TAG", ex.message.toString());
             }
         }

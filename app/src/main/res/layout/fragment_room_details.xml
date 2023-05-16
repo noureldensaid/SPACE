@@ -131,6 +131,7 @@
 
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/search_filters_chip_group"
+                style="@style/AmenitiesStyles"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/lato_bold"
@@ -141,6 +142,7 @@
                 app:singleSelection="true">
 
                 <com.google.android.material.chip.Chip
+                    style="@style/AmenitiesStyles"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="false"
@@ -152,9 +154,9 @@
                     app:chipIcon="@drawable/ic_printer" />
 
                 <com.google.android.material.chip.Chip
+                    style="@style/AmenitiesStyles"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@color/off_white"
                     android:clickable="false"
                     android:fontFamily="@font/lato_bold"
                     android:text="Wifi"
@@ -164,9 +166,9 @@
                     app:chipIcon="@drawable/ic_wifi" />
 
                 <com.google.android.material.chip.Chip
+                    style="@style/AmenitiesStyles"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@color/off_white"
                     android:clickable="false"
                     android:fontFamily="@font/lato_bold"
                     android:text="LED screens"
@@ -176,9 +178,9 @@
                     app:chipIcon="@drawable/ic_monitor" />
 
                 <com.google.android.material.chip.Chip
+                    style="@style/AmenitiesStyles"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@color/off_white"
                     android:clickable="false"
                     android:fontFamily="@font/lato_bold"
                     android:text="Pantry"
@@ -188,9 +190,9 @@
                     app:chipIcon="@drawable/ic_pantry" />
 
                 <com.google.android.material.chip.Chip
+                    style="@style/AmenitiesStyles"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@color/white_lilac"
                     android:clickable="false"
                     android:fontFamily="@font/lato_bold"
                     android:text="Projector"
@@ -200,9 +202,9 @@
                     app:chipIcon="@drawable/ic_projector" />
 
                 <com.google.android.material.chip.Chip
+                    style="@style/AmenitiesStyles"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@color/off_white"
                     android:clickable="false"
                     android:fontFamily="@font/lato_bold"
                     android:text="IT Support"
@@ -212,9 +214,9 @@
                     app:chipIcon="@drawable/ic_it" />
 
                 <com.google.android.material.chip.Chip
+                    style="@style/AmenitiesStyles"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@color/off_white"
                     android:clickable="false"
                     android:fontFamily="@font/lato_bold"
                     android:text="Writing Board"

@@ -11,7 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.spc.space.R
 import com.spc.space.databinding.FragmentLottiLoadingBinding
-import com.spc.space.ui.DataStoreViewModel
+import com.spc.space.ui.main.shared_viewmodels.DataStoreViewModel
 import com.spc.space.ui.main.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 

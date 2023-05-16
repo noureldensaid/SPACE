@@ -10,7 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.spc.space.R
 import com.spc.space.databinding.FragmentSignUpBinding
 import com.spc.space.models.auth.signUp.SignUpRequest
-import com.spc.space.ui.DataStoreViewModel
+import com.spc.space.ui.main.shared_viewmodels.DataStoreViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

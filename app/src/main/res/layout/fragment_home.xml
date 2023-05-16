@@ -96,7 +96,7 @@
         app:layout_constraintStart_toStartOf="@id/hot_featured_title"
         app:layout_constraintTop_toBottomOf="@id/hot_featured_title"
         tools:itemCount="2"
-        tools:listitem="@layout/workspace_home_rv_items" />
+         tools:listitem="@layout/workspace_home_rv_items" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

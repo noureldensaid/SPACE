@@ -13,14 +13,15 @@ data class WorkspacesResponse(
 @Parcelize
 data class WorkSpaceItem(
     @SerializedName("_id")
-    val id: String? = null,
-    val avgRate: Float?=null,
+    val id: String,
+    val avgRate: Float? = null,
     val contact: WorkspaceContact,
     val description: String? = null,
     val images: List<String>? = emptyList(),
     val location: WorkspaceLocation,
     val name: String? = null,
     val ownerId: String? = null,
+    var distance: Double? = null,
     val schedule: WorkspaceSchedule,
 ) : Parcelable
 

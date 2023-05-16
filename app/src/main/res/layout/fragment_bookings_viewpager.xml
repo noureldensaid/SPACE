@@ -8,9 +8,10 @@
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
-        android:fontFamily="@font/lato_bold"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:fontFamily="@font/lato_bold" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/bookings_view_pager"

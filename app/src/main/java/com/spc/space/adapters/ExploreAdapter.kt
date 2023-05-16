@@ -25,7 +25,7 @@ class ExploreAdapter : RecyclerView.Adapter<ExploreAdapter.ViewHolder>() {
                 workingHoursText.text = "Working Hours"
                 workspaceTime.text = "${item.schedule.openingTime} to ${item.schedule.closingTime}"
                 workspacePrice.text = "From 20 EGP/HOUR"
-                workspaceRatingBar.rating = item.avgRate?.plus(1)?: 0F
+                workspaceRatingBar.rating = item.avgRate ?: 0.5f
                 Glide.with(itemView)
                     .load(item.images?.firstOrNull())
                     .transform(CenterCrop(), RoundedCorners(24))

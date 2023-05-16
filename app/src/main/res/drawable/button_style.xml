@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="20dp"
     android:shape="rectangle"
-    android:tint="@color/dark_blue"
 
-    android:padding="20dp">
-    <solid android:color="@color/dark_blue"/>
-    <corners android:radius="20dp"/>
+    android:tint="@color/md_theme_light_primary">
+    <solid android:color="@color/md_theme_light_primary" />
+    <corners android:radius="20dp" />
 </shape>

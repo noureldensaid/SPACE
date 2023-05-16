@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import android.os.Build
 import android.os.Bundle
 import android.text.format.DateFormat.is24HourFormat
 import android.util.Log
@@ -12,7 +11,6 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -26,7 +24,7 @@ import com.spc.space.databinding.FragmentRoomBookingBinding
 import com.spc.space.models.createBooking.CreateBookingRequest
 import com.spc.space.models.workspace.WorkSpaceItem
 import com.spc.space.models.workspaceRoom.RoomItem
-import com.spc.space.ui.DataStoreViewModel
+import com.spc.space.ui.main.shared_viewmodels.DataStoreViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.time.Duration
@@ -35,7 +33,6 @@ import java.time.OffsetDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
 
-@RequiresApi(Build.VERSION_CODES.O)
 @AndroidEntryPoint
 class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
     private val dataStoreViewModel: DataStoreViewModel by viewModels()
@@ -311,6 +308,9 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
         val calendar = binding.calendarView
         val forwardIcon = resources.getDrawable(R.drawable.ic_calendar_arrow_forward)
         val previousIcon = resources.getDrawable(R.drawable.ic_calendar_arrow_previous)
+
+
+
         calendar.apply {
             setForwardButtonImage(forwardIcon)
             setPreviousButtonImage(previousIcon)
@@ -350,10 +350,6 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
         return duration.toMinutes().toDouble() / 60.0
     }
 
-    override fun onStop() {
-        super.onStop()
-        dialog.dismiss()
-    }
 
     override fun onDestroy() {
         super.onDestroy()

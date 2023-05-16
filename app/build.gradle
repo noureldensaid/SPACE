@@ -13,7 +13,7 @@ android {
 
     defaultConfig {
         applicationId "com.spc.space"
-        minSdk 24
+        minSdk 26
         targetSdk 33
         versionCode 1
         versionName "1.0"
@@ -94,8 +94,6 @@ dependencies {
     kapt 'com.google.dagger:hilt-compiler:2.45'
     // Glide
     implementation 'com.github.bumptech.glide:glide:4.15.1'
-    // material design
-    implementation 'com.google.android.material:material:1.9.0-alpha02'
     // circular image
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     //lotti animations
@@ -114,6 +112,8 @@ dependencies {
     implementation 'com.applandeo:material-calendar-view:1.9.0-rc03'
     // time range picker
     implementation 'nl.joery.timerangepicker:timerangepicker:1.0.0'
+    //M3
+    implementation 'com.google.android.material:material:1.9.0'
 }
 kapt {
     correctErrorTypes true

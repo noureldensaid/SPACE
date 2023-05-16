@@ -2,6 +2,13 @@ package com.spc.space.utils
 
 import android.os.Build
 import androidx.annotation.RequiresApi
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -40,6 +47,17 @@ object Helper {
         val formatter = DateTimeFormatter.ISO_DATE_TIME
         val localDateTime = LocalDateTime.parse(dateTimeString, formatter)
         return localDateTime.toLocalDate()
+    }
+
+    fun <T> Fragment.collectLatestLifecycleFlow(
+        flow: Flow<T>,
+        collect: suspend (T) -> Unit
+    ) {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                flow.collectLatest(collect)
+            }
+        }
     }
 
 }

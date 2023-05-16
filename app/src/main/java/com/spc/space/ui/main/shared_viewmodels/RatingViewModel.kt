@@ -1,4 +1,4 @@
-package com.spc.space.ui
+package com.spc.space.ui.main.shared_viewmodels
 
 import android.os.Build
 import android.util.Log

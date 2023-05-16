@@ -1,4 +1,4 @@
-package com.spc.space.ui
+package com.spc.space.ui.main.shared_viewmodels
 
 import android.util.Log
 import androidx.lifecycle.LiveData

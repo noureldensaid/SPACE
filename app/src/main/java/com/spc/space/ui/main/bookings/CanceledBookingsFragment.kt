@@ -2,17 +2,15 @@ package com.spc.space.ui.main.bookings
 
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import com.spc.space.R
 import com.spc.space.adapters.CanceledBookingsAdapter
 import com.spc.space.databinding.FragmentCanceledBookingsBinding
-import com.spc.space.ui.DataStoreViewModel
+import com.spc.space.ui.main.shared_viewmodels.DataStoreViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 

@@ -29,17 +29,18 @@
                 android:text="Sporting, Alexandria"
                 android:textColor="@color/dark_blue"
                 android:textSize="@dimen/material_text_subhead_16sp"
-                app:layout_constraintBottom_toTopOf="@id/home_search_tv"
+                app:layout_constraintBottom_toTopOf="@id/search_view"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.SearchView
-                android:id="@+id/home_search_tv"
+                android:id="@+id/search_view"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="@dimen/dimens_medium_16dp"
+                android:layout_marginBottom="@dimen/dimens_medium_16dp"
                 android:background="@drawable/search_background"
                 android:focusable="false"
                 android:inputType="text"
@@ -62,52 +63,50 @@
                 app:layout_constraintBottom_toTopOf="@id/explore_fragment_rv"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/home_search_tv"
+                app:layout_constraintTop_toBottomOf="@id/search_view"
                 app:singleLine="true"
                 app:singleSelection="true">
 
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/popular_chip"
+                    android:id="@+id/all_chip"
                     style="@style/CustomChipStyle"
-                    android:layout_width="80dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/dimens_medium_16dp"
-                    android:checked="true"
                     android:fontFamily="@font/lato_bold"
                     android:padding="@dimen/dimens_large_32dp"
+                    android:saveEnabled="true"
                     android:text="All"
                     android:textAlignment="center"
-                    android:textColor="@color/off_white"
                     android:textSize="@dimen/dimens_medium_16dp"
-                    android:textStyle="bold"
+
                     app:chipCornerRadius="@dimen/dimens_small_8dp" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/nearby_chip"
                     style="@style/CustomChipStyle"
-                    android:layout_width="80dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/dimens_medium_16dp"
                     android:fontFamily="@font/lato_bold"
                     android:padding="@dimen/dimens_large_32dp"
                     android:text="Nearby"
+
                     android:textAlignment="center"
-                    android:textColor="@color/off_white"
                     android:textSize="@dimen/dimens_medium_16dp"
-                    android:textStyle="bold"
                     app:chipCornerRadius="@dimen/dimens_small_8dp" />
 
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/top_rated_chip"
+                    android:id="@+id/popular_chip"
                     style="@style/CustomChipStyle"
-                    android:layout_width="80dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/dimens_medium_16dp"
                     android:fontFamily="@font/lato_bold"
                     android:padding="@dimen/dimens_large_32dp"
                     android:text="Popular"
+
                     android:textAlignment="center"
-                    android:textColor="@color/off_white"
                     android:textSize="@dimen/dimens_medium_16dp"
                     android:textStyle="bold"
                     app:chipCornerRadius="@dimen/dimens_small_8dp" />
@@ -117,9 +116,9 @@
                 android:id="@+id/explore_fragment_rv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                 android:clipToPadding="false"
-                android:paddingBottom="@dimen/dimens_huge_64dp"
+                android:clipToPadding="false"
                 android:paddingHorizontal="@dimen/dimens_small_8dp"
+                android:paddingBottom="@dimen/dimens_huge_64dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

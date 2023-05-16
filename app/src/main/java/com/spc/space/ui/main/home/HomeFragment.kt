@@ -13,13 +13,15 @@ import com.denzcoskun.imageslider.models.SlideModel
 import com.spc.space.R
 import com.spc.space.adapters.HomeAdapter
 import com.spc.space.databinding.FragmentHomeBinding
-import com.spc.space.ui.DataStoreViewModel
+import com.spc.space.ui.main.shared_viewmodels.DataStoreViewModel
+import com.spc.space.utils.Helper.collectLatestLifecycleFlow
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {
     private val homeFragmentViewModel: HomeFragmentViewModel by viewModels()
     private val dataStoreViewModel: DataStoreViewModel by viewModels()
+    lateinit var homeAdapter: HomeAdapter
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
@@ -27,24 +29,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentHomeBinding.bind(view)
 
-        val homeAdapter = HomeAdapter()
-
-
-        homeFragmentViewModel.workSpace.observe(viewLifecycleOwner, Observer { data ->
-            Log.e("size ", data.workSpace?.size.toString());
-            homeAdapter.differ.submitList(data.workSpace)
-        })
-
-
-        dataStoreViewModel.userName.observe(viewLifecycleOwner, Observer {
-            binding.userName.text = "Hello, ${it?.capitalize()}"
-            Log.e("UserName", "onViewCreated: ${it}")
-        })
-
+        homeAdapter = HomeAdapter()
 
         binding.apply {
             homeHotFeaturedRv.apply {
-                setHasFixedSize(true)
                 layoutManager = GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false)
                 adapter = homeAdapter
             }
@@ -55,6 +43,19 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             data.putParcelable("data", it)
             findNavController().navigate(R.id.action_homeFragment_to_book_flow, data)
         }
+
+        collectLatestLifecycleFlow(homeFragmentViewModel.workSpace) { list ->
+            homeAdapter.differ.submitList(list?.sortedByDescending { item ->
+                item.avgRate
+                Log.e("size", "onViewCreated: ${list.size}")
+            })
+        }
+
+        dataStoreViewModel.userName.observe(viewLifecycleOwner, Observer {
+            binding.userName.text = "Hello, ${it?.capitalize()}"
+            Log.e("UserName", "onViewCreated: ${it}")
+        })
+
         setUpImageSlider()
     }
 

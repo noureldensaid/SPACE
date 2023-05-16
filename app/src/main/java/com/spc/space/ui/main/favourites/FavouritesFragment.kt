@@ -14,7 +14,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.spc.space.R
 import com.spc.space.adapters.FavouriteAdapter
 import com.spc.space.databinding.FragmentFavouritesBinding
-import com.spc.space.ui.DataStoreViewModel
+import com.spc.space.ui.main.shared_viewmodels.DataStoreViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @RequiresApi(Build.VERSION_CODES.O)

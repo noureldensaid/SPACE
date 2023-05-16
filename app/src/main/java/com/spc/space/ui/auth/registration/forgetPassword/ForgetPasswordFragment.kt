@@ -10,7 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.spc.space.R
 import com.spc.space.databinding.FragmentForgetPasswordBinding
 import com.spc.space.models.auth.forgetPassword.ForgetPasswordRequest
-import com.spc.space.ui.DataStoreViewModel
+import com.spc.space.ui.main.shared_viewmodels.DataStoreViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

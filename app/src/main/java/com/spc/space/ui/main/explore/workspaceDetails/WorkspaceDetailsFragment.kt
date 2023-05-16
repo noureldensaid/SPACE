@@ -16,15 +16,14 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.spc.space.R
 import com.spc.space.databinding.FragmentWorkspaceDetailsBinding
-import com.spc.space.models.createBooking.CreateBookingRequest
 import com.spc.space.models.createReviewRequest.CreateReviewRequest
-import com.spc.space.ui.DataStoreViewModel
-import com.spc.space.ui.RatingViewModel
 import com.spc.space.ui.main.favourites.FavouritesViewModel
 import com.spc.space.ui.main.home.LocationViewModel
-import com.spc.space.ui.main.profile.ProfileFragmentDirections
+import com.spc.space.ui.main.shared_viewmodels.DataStoreViewModel
+import com.spc.space.ui.main.shared_viewmodels.RatingViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
+@RequiresApi(Build.VERSION_CODES.O)
 @AndroidEntryPoint
 class WorkspaceDetailsFragment : Fragment(R.layout.fragment_workspace_details) {
     private var _binding: FragmentWorkspaceDetailsBinding? = null
@@ -37,7 +36,6 @@ class WorkspaceDetailsFragment : Fragment(R.layout.fragment_workspace_details) {
     private val args: WorkspaceDetailsFragmentArgs by navArgs()
     private var isFavorite = false
 
-    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentWorkspaceDetailsBinding.bind(view)
@@ -77,7 +75,7 @@ class WorkspaceDetailsFragment : Fragment(R.layout.fragment_workspace_details) {
             ////
             binding.comment.setOnClickListener {
                 val args = Bundle()
-                args.putParcelable("workspace", workSpaceItem)
+                args.putString("workspaceId", workSpaceItem.id)
                 findNavController().navigate(
                     R.id.action_workspaceDetailsFragment_to_reportProblemFragment,
                     args

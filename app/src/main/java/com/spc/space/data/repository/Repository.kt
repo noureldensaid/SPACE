@@ -48,11 +48,14 @@ class Repository @Inject constructor(
     ) =
         spaceApi.createReview("Bearer__$token", workspaceId, createReviewRequest)
 
-    suspend fun getReview(token: String,workspaceId: String) =
-        spaceApi.getReview("Bearer__$token",workspaceId)
+    suspend fun getReview(token: String, workspaceId: String) =
+        spaceApi.getReview("Bearer__$token", workspaceId)
 
 
-
-    suspend fun createReportProblem(token: String,workspaceId: String,problemRequest:ReportProblemRequest) =
-        spaceApi.createReportProblem("Bearer__$token",workspaceId,problemRequest)
+    suspend fun createReportProblem(
+        token: String,
+        workspaceId: String,
+        problemRequest: ReportProblemRequest
+    ) =
+        spaceApi.createReportProblem("Bearer__$token", workspaceId, problemRequest)
 }

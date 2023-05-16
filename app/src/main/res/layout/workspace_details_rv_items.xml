@@ -95,16 +95,15 @@
 
         <RatingBar
             android:id="@+id/workspace_ratingBar"
-
             style="?android:attr/ratingBarStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:isIndicator="true"
-            android:numStars="5"
+            android:numStars="7"
             android:paddingHorizontal="@dimen/dimens_medium_16dp"
             android:paddingBottom="@dimen/dimens_tiny_4dp"
             android:progressTint="#ffff8800"
-            android:stepSize="1"
+            android:stepSize="0.5"
             app:layout_constraintBottom_toTopOf="@+id/workspace_price"
             app:layout_constraintStart_toStartOf="@id/workspace_time"
             app:layout_constraintTop_toBottomOf="@+id/workspace_time" />

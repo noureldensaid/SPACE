@@ -10,10 +10,10 @@ data class CanceledHistory(
 //    val createdAt: String,
 //    val dateCreated: String,
     @SerializedName("_id") val id: String,
-    val duration: Int,
+    val duration: Float,
     val endTime: String,
     val isCancelled: Boolean,
-    val price: Int,
+    val price: Float,
     val room: Room,
     val startTime: String,
 )

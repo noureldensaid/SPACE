@@ -16,8 +16,8 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.spc.space.R
 import com.spc.space.databinding.ActivityMainBinding
-import com.spc.space.ui.DataStoreViewModel
 import com.spc.space.ui.main.home.LocationViewModel
+import com.spc.space.ui.main.shared_viewmodels.DataStoreViewModel
 import com.spc.space.utils.Constants.PERMISSION_ID
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -44,7 +44,11 @@ class MainActivity : AppCompatActivity() {
             if (isLocationEnabled()) {
                 locationViewModel.fetchLocation()
             } else {
-                Toast.makeText(this, "Please Turn on Your device WorkspaceLocation", Toast.LENGTH_SHORT)
+                Toast.makeText(
+                    this,
+                    "Please Turn on Your device WorkspaceLocation",
+                    Toast.LENGTH_SHORT
+                )
                     .show()
             }
         } else {
@@ -132,7 +136,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
-
 }
+
 

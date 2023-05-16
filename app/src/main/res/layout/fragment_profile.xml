@@ -87,20 +87,6 @@
         <TextView
             style="@style/viewParent.headerText.settingsMiniTitle"
             android:fontFamily="@font/lato_bold"
-            android:text="Notifications" />
-
-        <androidx.appcompat.widget.SwitchCompat
-            style="@style/settingsText"
-            android:checked="true"
-            android:drawableStart="@drawable/ic_notification_ring"
-            android:drawableTint="@color/dark_blue"
-            android:padding="@dimen/dimens_small_8dp"
-            android:text="Notifications"
-            android:textColor="@color/dark_blue" />
-
-        <TextView
-            style="@style/viewParent.headerText.settingsMiniTitle"
-            android:fontFamily="@font/lato_bold"
             android:text="Regional" />
 
         <TextView
