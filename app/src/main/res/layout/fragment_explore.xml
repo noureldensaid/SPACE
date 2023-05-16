@@ -75,7 +75,7 @@
                     android:layout_marginHorizontal="@dimen/dimens_medium_16dp"
                     android:fontFamily="@font/lato_bold"
                     android:padding="@dimen/dimens_large_32dp"
-                    android:saveEnabled="true"
+                    android:checked="true"
                     android:text="All"
                     android:textAlignment="center"
                     android:textSize="@dimen/dimens_medium_16dp"

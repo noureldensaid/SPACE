@@ -29,8 +29,8 @@ class ExploreFragment : Fragment(R.layout.fragment_explore) {
         locationViewModel.fetchLocation()
 
         exploreFragmentViewModel.filterByDistance(
-            userLat = 31.241266,
-            userLong = 29.956677
+            userLat = locationViewModel.location.value?.latitude ?: 31.241266,
+            userLong = locationViewModel.location.value?.longitude ?: 29.956677
         )
 
         exploreAdapter = ExploreAdapter()
