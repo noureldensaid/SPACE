@@ -151,7 +151,11 @@
         android:id="@+id/bookingDetailsFragment"
         android:name="com.spc.space.ui.main.bookings.BookingDetailsFragment"
         android:label="fragment_booking_details"
-        tools:layout="@layout/fragment_booking_details"/>
+        tools:layout="@layout/fragment_booking_details">
+        <action
+            android:id="@+id/action_bookingDetailsFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/bookingsViewPagerFragment"
         android:name="com.spc.space.ui.main.bookings.BookingsViewPagerFragment"

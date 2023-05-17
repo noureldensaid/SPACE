@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -47,6 +48,8 @@ class BookingDetailsFragment : Fragment(R.layout.fragment_booking_details) {
 
         binding.cancelBookingBtn.setOnClickListener {
             bookingsViewModel.cancelBooking(token, bookingDetails!!.bookingId)
+            findNavController().navigate(R.id.action_bookingDetailsFragment_to_homeFragment)
+
         }
 
 

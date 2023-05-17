@@ -115,7 +115,7 @@ class BookingsViewModel @Inject constructor(
         val currentDateTime = LocalDateTime.ofInstant(currentInstant, ZoneOffset.UTC)
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
         val result = _unfilteredBookings.value?.filter { item ->
-            !item.isCancelled!! &&
+            !item.isCancelled!! ||
                     LocalDateTime.parse(item.startTime, formatter)
                         .isAfter(currentDateTime)
         } ?: emptyList()
