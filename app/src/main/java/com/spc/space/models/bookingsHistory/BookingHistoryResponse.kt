@@ -17,6 +17,7 @@ data class History(
     @SerializedName("_id") val id: String,
     val duration: Float,
     val endTime: String,
+    val dateCreated: String,
     val isCancelled: Boolean? = null,
     val isDone: Boolean? = null,
     val isUpcoming: Boolean? = null,
@@ -24,7 +25,8 @@ data class History(
     val price: Float,
     val room: Room,
     val startTime: String,
-):Parcelable
+) : Parcelable
+
 @Parcelize
 
 data class Room(
@@ -38,7 +40,8 @@ data class Room(
     val type: String,
     @SerializedName("workspaceId")
     val workspace: Workspace
-):Parcelable
+) : Parcelable
+
 @Parcelize
 
 data class Workspace(
@@ -48,7 +51,8 @@ data class Workspace(
     val location: Location,
     val name: String,
     val schedule: Schedule,
-):Parcelable
+) : Parcelable
+
 @Parcelize
 
 data class Location(
@@ -58,7 +62,8 @@ data class Location(
     val longitude: String,
     val region: String,
     val streetName: String
-):Parcelable
+) : Parcelable
+
 @Parcelize
 
 data class Schedule(
@@ -66,6 +71,6 @@ data class Schedule(
     val closingTime: String,
     val holidays: List<String>,
     val openingTime: String
-):Parcelable
+) : Parcelable
 
 

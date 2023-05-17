@@ -24,6 +24,9 @@ class CanceledBookingsAdapter : RecyclerView.Adapter<CanceledBookingsAdapter.Vie
                     .error(R.drawable.error_placeholder)
                     .placeholder(R.drawable.placeholder)
                     .into(bookingCanceledRoomIv)
+
+                bookingCanceledDate.text = Helper.convertTimeFormatToDate(item.dateCreated)
+
                 bookingCanceledWsName.text =
                     item.room.workspace.name.lowercase().trim().capitalize()
                 bookingCanceledRoomName.text = item.room.roomName.lowercase().trim().capitalize()
@@ -34,6 +37,7 @@ class CanceledBookingsAdapter : RecyclerView.Adapter<CanceledBookingsAdapter.Vie
                     if (item.isCancelled) "Canceled" else if (item?.isMissed == true && !item.isCancelled) "Missed"
                     else "Canceled"
             }
+
         }
     }
 

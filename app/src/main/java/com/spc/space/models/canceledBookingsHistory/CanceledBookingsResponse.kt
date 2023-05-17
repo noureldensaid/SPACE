@@ -12,6 +12,7 @@ data class CanceledHistory(
     @SerializedName("_id") val id: String,
     val duration: Float,
     val endTime: String,
+    val dateCreated: String,
     val isCancelled: Boolean,
     val isMissed: Boolean? = null,
     val price: Float,

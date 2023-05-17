@@ -46,11 +46,14 @@ class BookingsHistoryAdapter : RecyclerView.Adapter<BookingsHistoryAdapter.ViewH
                         }
                     }
                 }
-                bookingHistoryWsName.text = item.room?.workspace?.name?.lowercase()?.trim()?.capitalize()
+                bookingHistoryWsName.text =
+                    item.room?.workspace?.name?.lowercase()?.trim()?.capitalize()
                 bookingHistoryRoomName.text = item.room?.roomName?.lowercase()?.trim()?.capitalize()
                 bookingHistoryWsLocation.text = item.room?.workspace?.location?.region.toString()
                 bookingHistoryRoomTime.text = Helper.convertTimeFormat(item.startTime!!)
                     .toString() + " to " + Helper.convertTimeFormat(item.endTime!!).toString()
+
+                bookingCreatedDate.text = Helper.convertTimeFormatToDate(item.dateCreated)
             }
         }
     }

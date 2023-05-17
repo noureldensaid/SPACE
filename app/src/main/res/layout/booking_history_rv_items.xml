@@ -70,14 +70,14 @@
             android:paddingBottom="@dimen/dimens_tiny_4dp"
             android:text="Louran,Alexandria"
             android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/booking_canceled_date"
+            app:layout_constraintBottom_toTopOf="@+id/booking_created_date"
             app:layout_constraintStart_toStartOf="@id/booking_history_ws_name"
             app:layout_constraintTop_toBottomOf="@+id/booking_history_room_name"
             tools:layout_editor_absoluteX="166dp" />
 
 
         <TextView
-            android:id="@+id/booking_canceled_date"
+            android:id="@+id/booking_created_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/ic_calendar_nav_bar"
@@ -113,7 +113,7 @@
             android:visibility="visible"
             app:layout_constraintBottom_toTopOf="@+id/booking_history_status"
             app:layout_constraintStart_toStartOf="@id/booking_history_ws_name"
-            app:layout_constraintTop_toBottomOf="@+id/booking_canceled_date"
+            app:layout_constraintTop_toBottomOf="@+id/booking_created_date"
             tools:layout_editor_absoluteX="166dp" />
 
         <TextView
