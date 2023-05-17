@@ -1,12 +1,15 @@
 package com.spc.space.ui.main.bookings
 
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.spc.space.data.repository.DataStoreRepository
 import com.spc.space.data.repository.Repository
 import com.spc.space.models.bookingsHistory.BookingHistoryResponse
 import com.spc.space.models.bookingsHistory.History
+import com.spc.space.models.cancelBooking.CancelBookingsResponse
 import com.spc.space.models.canceledBookingsHistory.CanceledBookingsResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -23,6 +26,24 @@ class BookingsViewModel @Inject constructor(
     private val repository: Repository,
     private val dataStoreRepository: DataStoreRepository
 ) : ViewModel() {
+
+
+    private val _bookingCanceled: MutableLiveData<CancelBookingsResponse> = MutableLiveData()
+    val bookingCanceled: LiveData<CancelBookingsResponse> = _bookingCanceled
+
+    fun cancelBooking(userToken: String, bookingId: String) =
+        viewModelScope.launch {
+            try {
+                val response = repository.cancelBooking(userToken, bookingId)
+                if (response != null) {
+                    _bookingCanceled.postValue(response)
+                    Log.e("booking canceled ? ", response.message)
+                } else Log.e("booking canceled ? ", response.message)
+            } catch (ex: Exception) {
+                Log.e("ERROR", ex.message.toString());
+            }
+        }
+
 
     private val _bookingsHistory: MutableStateFlow<BookingHistoryResponse?> =
         MutableStateFlow(null)
@@ -94,7 +115,7 @@ class BookingsViewModel @Inject constructor(
         val currentDateTime = LocalDateTime.ofInstant(currentInstant, ZoneOffset.UTC)
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
         val result = _unfilteredBookings.value?.filter { item ->
-            !item.isCancelled!! ||
+            !item.isCancelled!! &&
                     LocalDateTime.parse(item.startTime, formatter)
                         .isAfter(currentDateTime)
         } ?: emptyList()

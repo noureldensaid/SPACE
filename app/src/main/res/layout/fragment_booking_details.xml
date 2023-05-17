@@ -229,7 +229,7 @@
 
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_select_date"
+                android:id="@+id/cancel_booking_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/dimens_large_32dp"
