@@ -1,48 +1,55 @@
 package com.spc.space.models.bookingsHistory
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
+
 
 data class BookingHistoryResponse(
     val message: String,
     val history: List<History>
 )
 
+@Parcelize
 data class History(
 //    val createdAt: String,
 //    val dateCreated: String,
     @SerializedName("_id") val id: String,
     val duration: Float,
     val endTime: String,
-    val isCancelled: Boolean,
+    val isCancelled: Boolean? = null,
+    val isDone: Boolean? = null,
+    val isUpcoming: Boolean? = null,
+    val isMissed: Boolean? = null,
     val price: Float,
     val room: Room,
     val startTime: String,
-)
+):Parcelable
+@Parcelize
 
 data class Room(
-    @SerializedName("_id") val id: String,
+    @SerializedName("_id")
+    val id: String,
     val price: Int,
+    val capacity: Int,
     val roomImages: List<String>,
     val roomName: String,
     val roomNumber: String,
     val type: String,
-    val workspaceId: WorkspaceId
-)
+    @SerializedName("workspaceId")
+    val workspace: Workspace
+):Parcelable
+@Parcelize
 
-data class WorkspaceId(
+data class Workspace(
     @SerializedName("_id") val id: String,
     val avgRate: Float,
     val images: List<String>,
     val location: Location,
     val name: String,
     val schedule: Schedule,
-)
-
-data class Contact(
-    val email: List<String>,
-    val phone: List<Int>,
-    val socialMedia: List<String>
-)
+):Parcelable
+@Parcelize
 
 data class Location(
     val buildingNumber: String,
@@ -51,13 +58,14 @@ data class Location(
     val longitude: String,
     val region: String,
     val streetName: String
-)
+):Parcelable
+@Parcelize
 
 data class Schedule(
     @SerializedName("_id") val id: String,
     val closingTime: String,
     val holidays: List<String>,
     val openingTime: String
-)
+):Parcelable
 
 

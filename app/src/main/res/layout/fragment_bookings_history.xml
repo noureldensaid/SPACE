@@ -28,12 +28,14 @@
                 android:layout_marginTop="@dimen/dimens_medium_16dp"
                 android:clipToPadding="false"
                 android:orientation="vertical"
-                android:paddingBottom="@dimen/dimens_huge_64dp"
+                android:paddingBottom="72dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
                 tools:listitem="@layout/booking_history_rv_items" />
 
 

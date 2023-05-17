@@ -1,36 +1,40 @@
 package com.spc.space.adapters
 
-import android.os.Build
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.spc.space.databinding.BookingHistoryRvItemsBinding
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.spc.space.R
 import com.spc.space.databinding.UpcomingBookingsRvItemsBinding
 import com.spc.space.models.bookingsHistory.History
-import com.spc.space.models.canceledBookingsHistory.CanceledHistory
 import com.spc.space.utils.Helper
 
-@RequiresApi(Build.VERSION_CODES.O)
 class UpcomingBookingsAdapter : RecyclerView.Adapter<UpcomingBookingsAdapter.ViewHolder>() {
 
     inner class ViewHolder(private val binding: UpcomingBookingsRvItemsBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: History) {
-
+            itemView.setOnClickListener { onItemClickListener?.invoke(item) }
             binding.apply {
-//                item.name?.lowercase()?.capitalize()
-                bookedWorkspaceName.text = "Ws name"
-                bookedRoomName.text = "Room Name"
-                workspacePrice.text = "Total Price: ${item.price?.toInt()} EGP"
-                duration.text = Helper.convertTimeFormat(item.startTime!!)
+                Glide.with(itemView)
+                    .load(item.room.roomImages.firstOrNull())
+                    .transform(CenterCrop(), RoundedCorners(24))
+                    .error(R.drawable.error_placeholder)
+                    .placeholder(R.drawable.placeholder)
+                    .into(bookingRoomIv)
+                bookingWsName.text =
+                    item.room.workspace?.name?.lowercase()?.trim()?.capitalize()
+                bookingRoomName.text = item.room.roomName.lowercase().trim().capitalize()
+                bookingWsLocation.text = item.room.workspace?.location?.region.toString()
+                bookingRoomTime.text = Helper.convertTimeFormat(item.startTime!!)
                     .toString() + " to " + Helper.convertTimeFormat(item.endTime!!).toString()
-
-                date.text = Helper.convertTimeFormatToDate(item.startTime).toString()
-
+                bookingStatus.text = "Upcoming"
             }
+
         }
     }
 
@@ -54,6 +58,8 @@ class UpcomingBookingsAdapter : RecyclerView.Adapter<UpcomingBookingsAdapter.Vie
             )
         )
     }
+
+    var onItemClickListener: ((History) -> Unit)? = null
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = differ.currentList[position]

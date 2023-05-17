@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/dimens_small_8dp"
-    app:cardCornerRadius="@dimen/dimens_large_24dp"
+    app:cardCornerRadius="@dimen/dimens_medium_16dp"
     app:cardElevation="@dimen/dimens_tiny_4dp"
     app:cardUseCompatPadding="true">
 
@@ -13,97 +13,123 @@
         android:layout_height="wrap_content"
         android:background="@drawable/custom_border">
 
+        <ImageView
+            android:id="@+id/booking_room_iv"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_favorite" />
 
         <TextView
-            android:id="@+id/booked_workspace_name"
+            android:id="@+id/booking_ws_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/dimens_medium_16dp"
-            android:layout_marginStart="@dimen/dimens_medium_16dp"
             android:ellipsize="end"
             android:fontFamily="@font/lato_black"
-            android:maxLines="2"
-            android:text="WorkSpace"
+            android:maxLines="1"
+            android:paddingHorizontal="@dimen/dimens_medium_16dp"
+            android:paddingBottom="@dimen/dimens_tiny_4dp"
+            android:text="0 space"
+            android:textAllCaps="false"
             android:textColor="@color/dark_blue"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/booked_room_name"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_goneMarginStart="@dimen/dimens_small_8dp" />
+            app:layout_constraintBottom_toTopOf="@+id/booking_room_name"
+            app:layout_constraintStart_toEndOf="@+id/booking_room_iv"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/booked_room_name"
+            android:id="@+id/booking_room_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/dimens_medium_16dp"
             android:ellipsize="end"
             android:fontFamily="@font/lato_bold"
-            android:maxLines="1"
-            android:text="Room"
-            android:textColor="@android:color/black"
-            android:textSize="@dimen/material_text_title_20sp"
-            app:layout_constraintBottom_toTopOf="@id/workspace_price"
-            app:layout_constraintStart_toStartOf="@id/booked_workspace_name"
-            app:layout_constraintTop_toBottomOf="@id/booked_workspace_name" />
+            android:maxLines="2"
+            android:paddingHorizontal="@dimen/dimens_medium_16dp"
+            android:paddingBottom="@dimen/dimens_tiny_4dp"
+            android:text="Room 1"
+            android:textColor="@color/dark_blue"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/booking_ws_location"
+            app:layout_constraintStart_toStartOf="@id/booking_ws_name"
+            app:layout_constraintTop_toBottomOf="@+id/booking_ws_name"
+            tools:layout_editor_absoluteX="166dp" />
 
 
         <TextView
-            android:id="@+id/duration"
+            android:id="@+id/booking_ws_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/dimens_medium_16dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/lato_regular"
+            android:maxLines="2"
+            android:paddingHorizontal="@dimen/dimens_medium_16dp"
+            android:paddingBottom="@dimen/dimens_tiny_4dp"
+            android:text="Louran,Alexandria"
+            android:textColor="@color/md_grey_900"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/booking_date"
+            app:layout_constraintStart_toStartOf="@id/booking_ws_name"
+            app:layout_constraintTop_toBottomOf="@+id/booking_room_name"
+            tools:layout_editor_absoluteX="166dp" />
+
+
+        <TextView
+            android:id="@+id/booking_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_calendar_nav_bar"
+            android:drawablePadding="@dimen/dimens_tiny_4dp"
+            android:drawableTint="@color/md_grey_800"
+            android:fontFamily="@font/lato_regular"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/dimens_medium_16dp"
+            android:paddingBottom="@dimen/dimens_tiny_4dp"
+            android:text="24 May 2023"
+            android:textColor="@color/md_grey_900"
+            android:textSize="@dimen/material_text_subhead_16sp"
+            app:layout_constraintBottom_toTopOf="@+id/booking_room_time"
+            app:layout_constraintStart_toStartOf="@id/booking_ws_name"
+            app:layout_constraintTop_toBottomOf="@+id/booking_ws_location" />
+
+        <TextView
+            android:id="@+id/booking_room_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:drawableStart="@drawable/ic_clock"
             android:drawablePadding="@dimen/dimens_tiny_4dp"
-            android:drawableTint="@color/dark_blue"
+            android:drawableTint="@color/md_grey_800"
             android:ellipsize="end"
             android:fontFamily="@font/lato_regular"
             android:gravity="center_vertical"
             android:maxLines="1"
+            android:paddingHorizontal="@dimen/dimens_medium_16dp"
+            android:paddingBottom="@dimen/dimens_tiny_4dp"
             android:text="09:30 to 19:00"
-            android:textColor="@color/black"
+            android:textColor="@color/md_grey_900"
             android:textSize="@dimen/material_text_subhead_16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/date" />
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@+id/booking_status"
+            app:layout_constraintStart_toStartOf="@id/booking_ws_name"
+            app:layout_constraintTop_toBottomOf="@+id/booking_date"
+            tools:layout_editor_absoluteX="166dp" />
 
         <TextView
-            android:id="@+id/workspace_price"
+            android:id="@+id/booking_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/dimens_medium_16dp"
             android:fontFamily="@font/lato_bold"
-            android:text="Total price: 70 EGP"
-            android:textColor="@color/dark_blue"
+            android:paddingHorizontal="@dimen/dimens_medium_16dp"
+            android:paddingBottom="@dimen/dimens_tiny_4dp"
+            android:text="Canceled"
+            android:textColor="@color/md_green_900"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/booked_room_name"
-            app:layout_constraintTop_toBottomOf="@id/booked_room_name" />
-
-        <TextView
-            android:id="@+id/date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/dimens_medium_16dp"
-            android:layout_marginEnd="@dimen/dimens_medium_16dp"
-            android:layout_marginBottom="14dp"
-            android:drawableStart="@drawable/ic_clock"
-            android:drawablePadding="@dimen/dimens_tiny_4dp"
-            android:drawableTint="@color/dark_blue"
-            android:ellipsize="end"
-            android:fontFamily="@font/lato_regular"
-            android:gravity="center_vertical"
-            android:maxLines="1"
-            android:text="15-6-2023"
-            android:textColor="@color/black"
-            android:textSize="@dimen/material_text_subhead_16sp"
-            app:layout_constraintBottom_toTopOf="@+id/duration"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/duration"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
+            app:layout_constraintStart_toStartOf="@id/booking_room_time"
+            app:layout_constraintTop_toBottomOf="@id/booking_room_time" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

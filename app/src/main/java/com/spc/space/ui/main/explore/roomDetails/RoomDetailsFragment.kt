@@ -12,6 +12,7 @@ import com.spc.space.R
 import com.spc.space.databinding.FragmentRoomDetailsBinding
 import com.spc.space.models.workspace.WorkSpaceItem
 import com.spc.space.models.workspaceRoom.RoomItem
+import com.spc.space.utils.Helper
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -36,8 +37,9 @@ class RoomDetailsFragment : Fragment(R.layout.fragment_room_details) {
                     .placeholder(R.drawable.placeholder)
                     .into(chosenRoomIv)
 
-                roomOpenTime.text =
-                    "${wsData?.schedule?.openingTime} to ${wsData?.schedule?.closingTime}"
+//                roomOpenTime.text == Helper.convertTimeFormat(wsData?.schedule!!.openingTime!!)
+//                    .toString() + " to " + Helper.convertTimeFormat(wsData.schedule.closingTime!!)
+
                 chosenRoomName.text = roomData.roomName?.lowercase()?.capitalize()
                 roomCapacity.text = "${roomData.capacity.toString()} guests"
                 roomType.text = roomData.type?.capitalize()

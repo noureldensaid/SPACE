@@ -1,8 +1,6 @@
 package com.spc.space.ui.main.bookings
 
-import android.os.Build
 import android.util.Log
-import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.spc.space.data.repository.DataStoreRepository
@@ -20,7 +18,6 @@ import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
 import javax.inject.Inject
 
-@RequiresApi(Build.VERSION_CODES.O)
 @HiltViewModel
 class BookingsViewModel @Inject constructor(
     private val repository: Repository,
@@ -97,7 +94,7 @@ class BookingsViewModel @Inject constructor(
         val currentDateTime = LocalDateTime.ofInstant(currentInstant, ZoneOffset.UTC)
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
         val result = _unfilteredBookings.value?.filter { item ->
-            !item.isCancelled &&
+            !item.isCancelled!! ||
                     LocalDateTime.parse(item.startTime, formatter)
                         .isAfter(currentDateTime)
         } ?: emptyList()

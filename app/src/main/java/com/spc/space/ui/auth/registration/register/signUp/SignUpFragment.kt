@@ -30,11 +30,12 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
             signUpBtn.setOnClickListener {
                 val username = usernameEt.editText?.text.toString().trim()
                 val email = emailEt.editText?.text.toString().trim()
+                val phone = phoneEt.editText?.text.toString().trim()
                 val password = passwordEt.editText?.text.toString().trim()
                 val confirmPassword = confirmPasswordEt.editText?.text.toString().trim()
 
-                if (username.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty() && confirmPassword.isNotEmpty()) {
-                    val request = SignUpRequest(username, email, password, confirmPassword)
+                if (username.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty() && confirmPassword.isNotEmpty() && phone.isNotEmpty()) {
+                    val request = SignUpRequest(username, email, phone, password, confirmPassword)
                     signUpViewModel.signUp(request)
                 }
             }

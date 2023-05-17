@@ -11,6 +11,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.spc.space.R
 import com.spc.space.databinding.WorkspaceDetailsRvItemsBinding
 import com.spc.space.models.workspace.WorkSpaceItem
+import com.spc.space.utils.Helper
 
 class ExploreAdapter : RecyclerView.Adapter<ExploreAdapter.ViewHolder>() {
     inner class ViewHolder(private val binding: WorkspaceDetailsRvItemsBinding) :
@@ -25,7 +26,7 @@ class ExploreAdapter : RecyclerView.Adapter<ExploreAdapter.ViewHolder>() {
                 workingHoursText.text = "Working Hours"
                 workspaceTime.text = "${item.schedule.openingTime} to ${item.schedule.closingTime}"
                 workspacePrice.text = "From 20 EGP/HOUR"
-                workspaceRatingBar.rating = item.avgRate ?: 0.5f
+                workspaceRatingBar.rating = item.avgRate ?: 0.0f
                 Glide.with(itemView)
                     .load(item.images?.firstOrNull())
                     .transform(CenterCrop(), RoundedCorners(24))

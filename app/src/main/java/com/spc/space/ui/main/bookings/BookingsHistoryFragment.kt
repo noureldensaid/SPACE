@@ -11,10 +11,10 @@ import com.spc.space.R
 import com.spc.space.adapters.BookingsHistoryAdapter
 import com.spc.space.databinding.FragmentBookingsHistoryBinding
 import com.spc.space.ui.main.shared_viewmodels.DataStoreViewModel
+import com.spc.space.utils.Helper.collectLatestLifecycleFlow
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
-@RequiresApi(Build.VERSION_CODES.O)
 @AndroidEntryPoint
 class BookingsHistoryFragment : Fragment(R.layout.fragment_bookings_history) {
     private val bookingViewModel: BookingsViewModel by viewModels()
@@ -31,10 +31,8 @@ class BookingsHistoryFragment : Fragment(R.layout.fragment_bookings_history) {
         val bookingsHistoryAdapter = BookingsHistoryAdapter()
 
 
-        lifecycleScope.launch {
-            bookingViewModel.bookingsHistory.collect { state ->
-                bookingsHistoryAdapter.differ.submitList(state?.history?.reversed())
-            }
+        collectLatestLifecycleFlow(bookingViewModel.unfilteredBookings) { list ->
+            bookingsHistoryAdapter.differ.submitList(list)
         }
 
 

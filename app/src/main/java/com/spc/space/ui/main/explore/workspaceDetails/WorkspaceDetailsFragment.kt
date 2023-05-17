@@ -23,7 +23,6 @@ import com.spc.space.ui.main.shared_viewmodels.DataStoreViewModel
 import com.spc.space.ui.main.shared_viewmodels.RatingViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
-@RequiresApi(Build.VERSION_CODES.O)
 @AndroidEntryPoint
 class WorkspaceDetailsFragment : Fragment(R.layout.fragment_workspace_details) {
     private var _binding: FragmentWorkspaceDetailsBinding? = null

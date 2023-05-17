@@ -37,18 +37,9 @@ class ExploreFragment : Fragment(R.layout.fragment_explore) {
 
         binding.exploreFragmentRv.apply { adapter = exploreAdapter }
 
-        // var workspacesList = emptyList<WorkSpaceItem>()
-
-//        var popularList = emptyList<WorkSpaceItem>()
-//        var nearbyList = emptyList<WorkSpaceItem>()
-
-        //  var searchResultsList = emptyList<WorkSpaceItem>()
-
         collectLatestLifecycleFlow(exploreFragmentViewModel.searchResults) { list ->
             exploreAdapter.differ.submitList(list)
         }
-
-
 
         binding.popularChip.apply {
             setOnClickListener {
@@ -75,17 +66,13 @@ class ExploreFragment : Fragment(R.layout.fragment_explore) {
             setOnClickListener {
                 collectLatestLifecycleFlow(exploreFragmentViewModel.nearbyList) { list ->
                     exploreAdapter.differ.submitList(list)
-                    Log.e("distance", "onViewCreated: ${list[1].distance.toString()}")
                 }
             }
         }
 
-
         locationViewModel.place.observe(viewLifecycleOwner, Observer {
             binding.userLocation.text = it
         })
-
-
 
         exploreAdapter.onItemClickListener = {
             val data = Bundle()
@@ -95,7 +82,6 @@ class ExploreFragment : Fragment(R.layout.fragment_explore) {
 
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                //  exploreFragmentViewModel.searchByNameOrRegion(query?.trim() ?: "")
                 return false
             }
 
@@ -105,16 +91,6 @@ class ExploreFragment : Fragment(R.layout.fragment_explore) {
             }
         })
 
-
-//        binding.searchView.setOnCloseListener {
-//            collectLatestLifecycleFlow(exploreFragmentViewModel.workSpace) { list ->
-//                exploreAdapter.differ.submitList(list?.sortedByDescending { item ->
-//                    Log.e("size ", list.size.toString())
-//                    item.avgRate
-//                })
-//            }
-//            false
-//        }
 
     }
 

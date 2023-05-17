@@ -42,7 +42,11 @@
         android:id="@+id/favouritesFragment"
         android:name="com.spc.space.ui.main.favourites.FavouritesFragment"
         android:label="fragment_favourites"
-        tools:layout="@layout/fragment_favourites" />
+        tools:layout="@layout/fragment_favourites" >
+        <action
+            android:id="@+id/action_favouritesFragment_self"
+            app:destination="@id/favouritesFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.spc.space.ui.main.profile.ProfileFragment"
@@ -61,11 +65,6 @@
 
     </fragment>
 
-    <fragment
-        android:id="@+id/bookingsViewPagerFragment"
-        android:name="com.spc.space.ui.main.bookings.BookingsViewPagerFragment"
-        android:label="fragment_bookings_viewpager"
-        tools:layout="@layout/fragment_bookings_viewpager" />
     <navigation
         android:id="@+id/book_flow"
         app:startDestination="@id/workspaceDetailsFragment">
@@ -145,17 +144,21 @@
                 app:popUpTo="@id/main_nav_graph"
                 app:popUpToInclusive="true" />
         </fragment>
-        <fragment
-            android:id="@+id/failedBookingFragment"
-            android:name="com.spc.space.ui.main.bookings.FailedBookingFragment"
-            android:label="fragment_failed_booking"
-            tools:layout="@layout/fragment_failed_booking">
-            <action
-                android:id="@+id/action__failed_booking_to_main_nav_graph"
-                app:destination="@id/main_nav_graph"
-                app:popUpTo="@id/main_nav_graph"
-                app:popUpToInclusive="true" />
-        </fragment>
+
 
     </navigation>
+    <fragment
+        android:id="@+id/bookingDetailsFragment"
+        android:name="com.spc.space.ui.main.bookings.BookingDetailsFragment"
+        android:label="fragment_booking_details"
+        tools:layout="@layout/fragment_booking_details"/>
+    <fragment
+        android:id="@+id/bookingsViewPagerFragment"
+        android:name="com.spc.space.ui.main.bookings.BookingsViewPagerFragment"
+        android:label="fragment_bookings_viewpager"
+        tools:layout="@layout/fragment_bookings_viewpager" >
+        <action
+            android:id="@+id/action_bookingsViewPagerFragment_to_bookingDetailsFragment"
+            app:destination="@id/bookingDetailsFragment" />
+    </fragment>
 </navigation>

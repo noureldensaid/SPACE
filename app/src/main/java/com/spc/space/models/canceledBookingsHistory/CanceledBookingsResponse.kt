@@ -13,6 +13,7 @@ data class CanceledHistory(
     val duration: Float,
     val endTime: String,
     val isCancelled: Boolean,
+    val isMissed: Boolean? = null,
     val price: Float,
     val room: Room,
     val startTime: String,
@@ -25,10 +26,11 @@ data class Room(
     val roomName: String,
     val roomNumber: String,
     val type: String,
-    val workspaceId: WorkspaceId
+    @SerializedName("workspaceId")
+    val workspace: Workspace
 )
 
-data class WorkspaceId(
+data class Workspace(
     @SerializedName("_id") val id: String,
     val avgRate: Float,
     val images: List<String>,

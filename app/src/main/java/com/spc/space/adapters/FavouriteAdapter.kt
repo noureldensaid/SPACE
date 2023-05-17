@@ -15,7 +15,6 @@ import com.spc.space.databinding.FavouriteRvItemBinding
 import com.spc.space.models.favs.Favorite
 import com.spc.space.utils.Helper
 
-@RequiresApi(Build.VERSION_CODES.O)
 class FavouriteAdapter : RecyclerView.Adapter<FavouriteAdapter.ViewHolder>() {
     inner class ViewHolder(private val binding: FavouriteRvItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -27,7 +26,7 @@ class FavouriteAdapter : RecyclerView.Adapter<FavouriteAdapter.ViewHolder>() {
                 workspaceTime.text =
                     Helper.convert24To12(item.schedule.openingTime) + " to " + Helper.convert24To12(
                         item.schedule.closingTime)
-                workspaceRatingBar.rating = item.avgRate?:0F
+                workspaceRatingBar.rating = item.avgRate?:0.0F
 
                 Glide.with(itemView)
                     .load(item.images.firstOrNull())

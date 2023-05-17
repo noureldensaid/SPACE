@@ -73,25 +73,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/dimens_medium_16dp"
-                    android:fontFamily="@font/lato_bold"
-                    android:padding="@dimen/dimens_large_32dp"
                     android:checked="true"
-                    android:text="All"
-                    android:textAlignment="center"
-                    android:textSize="@dimen/dimens_medium_16dp"
-
-                    app:chipCornerRadius="@dimen/dimens_small_8dp" />
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/nearby_chip"
-                    style="@style/CustomChipStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/dimens_medium_16dp"
                     android:fontFamily="@font/lato_bold"
                     android:padding="@dimen/dimens_large_32dp"
-                    android:text="Nearby"
-
+                    android:text="All"
                     android:textAlignment="center"
                     android:textSize="@dimen/dimens_medium_16dp"
                     app:chipCornerRadius="@dimen/dimens_small_8dp" />
@@ -105,11 +90,24 @@
                     android:fontFamily="@font/lato_bold"
                     android:padding="@dimen/dimens_large_32dp"
                     android:text="Popular"
-
                     android:textAlignment="center"
                     android:textSize="@dimen/dimens_medium_16dp"
                     android:textStyle="bold"
                     app:chipCornerRadius="@dimen/dimens_small_8dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/nearby_chip"
+                    style="@style/CustomChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dimens_medium_16dp"
+                    android:fontFamily="@font/lato_bold"
+                    android:padding="@dimen/dimens_large_32dp"
+                    android:text="Nearby"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/dimens_medium_16dp"
+                    app:chipCornerRadius="@dimen/dimens_small_8dp" />
+
             </com.google.android.material.chip.ChipGroup>
 
             <androidx.recyclerview.widget.RecyclerView

@@ -6,7 +6,9 @@ import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.spc.space.R
 import com.spc.space.adapters.CanceledBookingsAdapter
 import com.spc.space.databinding.FragmentCanceledBookingsBinding
@@ -32,8 +34,10 @@ class CanceledBookingsFragment : Fragment(R.layout.fragment_canceled_bookings) {
 
 
         lifecycleScope.launch {
-            bookingViewModel.canceledHistory.collect { state ->
-                canceledBookingsAdapter.differ.submitList(state?.history?.reversed())
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                bookingViewModel.canceledHistory.collect { state ->
+                    canceledBookingsAdapter.differ.submitList(state?.history?.reversed())
+                }
             }
         }
 

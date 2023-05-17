@@ -15,7 +15,6 @@ import java.time.format.DateTimeFormatter
 import java.time.format.TextStyle
 import java.util.*
 
-@RequiresApi(Build.VERSION_CODES.O)
 object Helper {
 
     fun convertTimeFormat(timeStr: String): String {
