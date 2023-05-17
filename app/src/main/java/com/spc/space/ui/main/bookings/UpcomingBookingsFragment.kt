@@ -14,6 +14,7 @@ import com.spc.space.adapters.UpcomingBookingsAdapter
 import com.spc.space.databinding.FragmentUpcomingBookingsBinding
 import com.spc.space.models.upcomingBookings.UpcomingBookings
 import com.spc.space.ui.main.shared_viewmodels.DataStoreViewModel
+import com.spc.space.utils.Helper
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -59,8 +60,8 @@ class UpcomingBookingsFragment : Fragment(R.layout.fragment_upcoming_bookings) {
                 wsName = it.room.workspace.name,
                 roomImg = it.room.roomImages.firstOrNull()!!,
                 region = it.room.workspace.location.region,
-                duration = it.duration.toInt(),
-                price = it.room.roomName,
+                duration = it.duration.toString(),
+                price = it.room.price.toString(),
                 startTime = it.startTime,
                 endTime = it.endTime,
                 capacity = it.room.capacity

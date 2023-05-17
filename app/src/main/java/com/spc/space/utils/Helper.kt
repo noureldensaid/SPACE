@@ -1,6 +1,8 @@
 package com.spc.space.utils
 
+import android.graphics.Paint
 import android.os.Build
+import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
@@ -57,6 +59,11 @@ object Helper {
                 flow.collectLatest(collect)
             }
         }
+    }
+
+
+    fun TextView.underline() {
+        paintFlags = paintFlags or Paint.UNDERLINE_TEXT_FLAG
     }
 
 }

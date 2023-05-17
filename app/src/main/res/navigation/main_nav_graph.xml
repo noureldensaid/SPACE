@@ -117,9 +117,7 @@
             tools:layout="@layout/fragment_room_booking">
             <action
                 android:id="@+id/action_roomBookingFragment_to_successBookingFragment"
-                app:destination="@id/successBookingFragment" />
-            <action
-                android:id="@+id/action_roomBookingFragment_pop_including_book_flow"
+                app:destination="@id/successBookingFragment"
                 app:popUpTo="@id/book_flow"
                 app:popUpToInclusive="true" />
         </fragment>
@@ -141,7 +139,7 @@
             <action
                 android:id="@+id/action_successBookingFragment_to_main_nav_graph"
                 app:destination="@id/main_nav_graph"
-                app:popUpTo="@id/main_nav_graph"
+                app:popUpTo="@id/book_flow"
                 app:popUpToInclusive="true" />
         </fragment>
 
@@ -154,7 +152,9 @@
         tools:layout="@layout/fragment_booking_details">
         <action
             android:id="@+id/action_bookingDetailsFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/main_nav_graph"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/bookingsViewPagerFragment"

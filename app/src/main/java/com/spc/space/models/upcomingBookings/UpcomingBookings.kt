@@ -13,7 +13,7 @@ data class UpcomingBookings(
     val capacity: Int,
     val startTime: String,
     val endTime: String,
-    val duration: Int,
+    val duration: String,
     val price: String,
 ) : Parcelable
 

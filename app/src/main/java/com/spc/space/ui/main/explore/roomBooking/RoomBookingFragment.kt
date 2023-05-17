@@ -2,15 +2,11 @@ package com.spc.space.ui.main.explore.roomBooking
 
 import android.annotation.SuppressLint
 import android.app.Dialog
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.text.format.DateFormat.is24HourFormat
 import android.util.Log
 import android.view.View
-import android.widget.Button
 import android.widget.EditText
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -121,69 +117,13 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
                 Log.e("start", addTwoHours(startTime))
                 Log.e("end", addTwoHours(endTime))
                 Log.e("roomId", "onViewCreated: $roomId")
-
-                roomBookingViewModel.booking.observe(viewLifecycleOwner, Observer {
-                    when (it.message) {
-                        "Done" -> {
-                            // show dialog and show price if YES save booking details and navigate
-                            confirmBooking(
-                                convertTimeTo24Hour(time1),
-                                convertTimeTo24Hour(time2),
-                            )
-                        }
-                    }
-                })
+                findNavController().navigate(R.id.action_roomBookingFragment_to_successBookingFragment)
             } else {
                 Log.e("wrong range", "onViewCreated: wrong range")
             }
         } else {
             roomBookingViewModel.validBooking.value = false
         }
-    }
-
-
-    @SuppressLint("MissingInflatedId")
-    private fun confirmBooking(startTime: String, endTime: String) {
-        val roomData = arguments?.getParcelable<RoomItem>("roomData")
-        val dialogBinding = layoutInflater.inflate(R.layout.confirm_booking_dialog, null)
-
-        dialog = Dialog(requireContext())
-        dialog.setContentView(dialogBinding)
-        dialog.setCancelable(false)
-        dialog.setCanceledOnTouchOutside(false)
-
-        val duration = calculateDuration(startTime, endTime).toInt()
-        dialogBinding.findViewById<TextView>(R.id.message_body_price)
-            .setText("Total price = ${roomData?.price?.toInt()?.times(duration)?.toInt()} L.E")
-        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-
-        val btnYes = dialogBinding.findViewById<Button>(R.id.btnYes).setOnClickListener {
-            dialog.dismiss()
-            findNavController().navigate(R.id.action_roomBookingFragment_to_successBookingFragment)
-        }
-        val btnNo = dialogBinding.findViewById<Button>(R.id.btnNo).setOnClickListener {
-            dialog.dismiss()
-            cancelBooking()
-            findNavController().navigate(R.id.action_roomBookingFragment_pop_including_book_flow)
-            dialog.dismiss()
-        }
-        dialog.show()
-    }
-
-    private fun cancelBooking() {
-        val bookingId = roomBookingViewModel.booking.value?.addedBooking?.id.toString()
-        val token = dataStoreViewModel.token.value.toString()
-        roomBookingViewModel.cancelBooking(token, bookingId)
-        roomBookingViewModel.bookingCanceled.observe(viewLifecycleOwner, Observer {
-            if (it != null) {
-                when (it.message) {
-                    "Cancelled" -> {
-                        Log.e("Cancelled", "confirmBooking: Cancelled")
-                    }
-                }
-            }
-        })
-        dialog.dismiss()
     }
 
     private fun isBookingValid(

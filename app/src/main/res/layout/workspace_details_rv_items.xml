@@ -43,7 +43,6 @@
 
         <TextView
             android:id="@+id/workspace_location"
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ellipsize="end"
@@ -83,11 +82,11 @@
             android:fontFamily="@font/lato_regular"
             android:gravity="center_vertical"
             android:maxLines="1"
-            android:paddingHorizontal="@dimen/dimens_medium_16dp"
+            android:paddingHorizontal="@dimen/dimens_small_8dp"
             android:paddingBottom="@dimen/dimens_tiny_4dp"
             android:text="09:30 to 19:00"
             android:textColor="@color/md_grey_800"
-            android:textSize="@dimen/material_text_subhead_16sp"
+            android:textSize="15sp"
             app:layout_constraintBottom_toTopOf="@+id/workspace_ratingBar"
             app:layout_constraintStart_toStartOf="@id/working_hours_text"
             app:layout_constraintTop_toBottomOf="@+id/working_hours_text" />

@@ -24,7 +24,10 @@ class ExploreAdapter : RecyclerView.Adapter<ExploreAdapter.ViewHolder>() {
                 workspaceName.text = item.name?.lowercase()?.capitalize()
                 workspaceLocation.text = "${item.location.region},${item.location.city}"
                 workingHoursText.text = "Working Hours"
-                workspaceTime.text = "${item.schedule.openingTime} to ${item.schedule.closingTime}"
+                workspaceTime.text = Helper.convert24To12(
+                    item.schedule.openingTime.toString().trim()
+                ) + " to " + Helper.convert24To12(item.schedule.closingTime.toString().trim())
+
                 workspacePrice.text = "From 20 EGP/HOUR"
                 workspaceRatingBar.rating = item.avgRate ?: 0.0f
                 Glide.with(itemView)

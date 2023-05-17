@@ -21,6 +21,8 @@ import com.spc.space.ui.main.favourites.FavouritesViewModel
 import com.spc.space.ui.main.home.LocationViewModel
 import com.spc.space.ui.main.shared_viewmodels.DataStoreViewModel
 import com.spc.space.ui.main.shared_viewmodels.RatingViewModel
+import com.spc.space.utils.Helper
+import com.spc.space.utils.Helper.underline
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -68,8 +70,13 @@ class WorkspaceDetailsFragment : Fragment(R.layout.fragment_workspace_details) {
                 name.text = it.name
                 workspaceRegion.text = it.location.region
                 workspaceRatingBar.rating = it.avgRate?.plus(0.5F) ?: 0F
-                workspaceTime.text =
-                    it.schedule.openingTime + " to " + it.schedule.closingTime
+                comment.underline()
+                workspaceTime.text =Helper.convert24To12(
+                    it.schedule.openingTime.toString().trim()
+                ) + " to " + Helper.convert24To12(it.schedule.closingTime.toString().trim())
+
+
+
             }
             ////
             binding.comment.setOnClickListener {

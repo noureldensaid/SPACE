@@ -1,6 +1,7 @@
 package com.spc.space.ui.main.explore.roomDetails
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -28,7 +29,7 @@ class RoomDetailsFragment : Fragment(R.layout.fragment_room_details) {
         val wsData = arguments?.getParcelable<WorkSpaceItem>("wsData")
 
         binding.apply {
-            if (roomData != null) {
+            if (roomData != null && wsData != null) {
                 Glide.with(view)
                     .load(roomData.roomImages?.firstOrNull())
                     .transition(DrawableTransitionOptions.withCrossFade())
@@ -37,13 +38,18 @@ class RoomDetailsFragment : Fragment(R.layout.fragment_room_details) {
                     .placeholder(R.drawable.placeholder)
                     .into(chosenRoomIv)
 
-//                roomOpenTime.text == Helper.convertTimeFormat(wsData?.schedule!!.openingTime!!)
-//                    .toString() + " to " + Helper.convertTimeFormat(wsData.schedule.closingTime!!)
+                roomTimeRange.text == "a7a"
+
+
+                Log.e("schedule", wsData.schedule.closingTime.toString().trim())
 
                 chosenRoomName.text = roomData.roomName?.lowercase()?.capitalize()
                 roomCapacity.text = "${roomData.capacity.toString()} guests"
                 roomType.text = roomData.type?.capitalize()
                 roomPricePerHour.text = "From ${roomData.price}/Hour"
+                roomTimeRange.text = Helper.convert24To12(
+                    wsData.schedule.openingTime.toString().trim()
+                ) + " to " + Helper.convert24To12(wsData.schedule.closingTime.toString().trim())
 
 
             }

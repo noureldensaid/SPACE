@@ -32,7 +32,7 @@ class BookingsHistoryFragment : Fragment(R.layout.fragment_bookings_history) {
 
 
         collectLatestLifecycleFlow(bookingViewModel.unfilteredBookings) { list ->
-            bookingsHistoryAdapter.differ.submitList(list)
+            bookingsHistoryAdapter.differ.submitList(list?.reversed())
         }
 
 
