@@ -36,7 +36,6 @@ class UpcomingBookingsAdapter : RecyclerView.Adapter<UpcomingBookingsAdapter.Vie
                     .toString() + " to " + Helper.convertTimeFormat(item.endTime!!).toString()
                 bookingStatus.text = "Upcoming"
             }
-
         }
     }
 

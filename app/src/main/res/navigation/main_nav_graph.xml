@@ -20,11 +20,6 @@
         android:label="Edit Profile"
         tools:layout="@layout/fragment_edit_profile" />
     <fragment
-        android:id="@+id/changePasswordFragment"
-        android:name="com.spc.space.ui.main.profile.ChangePassword"
-        android:label="change password"
-        tools:layout="@layout/fragment_change_password" />
-    <fragment
         android:id="@+id/reportProblemFragment"
         android:name="com.spc.space.ui.main.profile.ReportProblem"
         android:label="Report Problem"
@@ -56,11 +51,11 @@
             android:id="@+id/action_profileFragment_to_editProfileFragment"
             app:destination="@id/editProfileFragment" />
         <action
-            android:id="@+id/action_profileFragment_to_changePasswordFragment"
-            app:destination="@id/changePasswordFragment" />
-        <action
             android:id="@+id/action_profileFragment_to_reportProblemFragment"
             app:destination="@id/reportProblemFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_updatePasswordFragment"
+            app:destination="@id/updatePasswordFragment" />
 
 
     </fragment>
@@ -165,4 +160,9 @@
             android:id="@+id/action_bookingsViewPagerFragment_to_bookingDetailsFragment"
             app:destination="@id/bookingDetailsFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/updatePasswordFragment"
+        android:name="com.spc.space.ui.main.profile.UpdatePasswordFragment"
+        android:label="fragment_update_password"
+        tools:layout="@layout/fragment_update_password" />
 </navigation>

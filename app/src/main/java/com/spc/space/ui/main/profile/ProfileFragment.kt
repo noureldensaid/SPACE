@@ -34,7 +34,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToEditProfileFragment())
             }
             changePasswordText.setOnClickListener {
-                findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToChangePasswordFragment())
+                findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToUpdatePasswordFragment())
             }
             reportProblem.setOnClickListener {
                 findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToReportProblemFragment())

@@ -13,8 +13,6 @@ import androidx.navigation.fragment.findNavController
 import com.spc.space.R
 import com.spc.space.databinding.FragmentChangePasswordBinding
 import com.spc.space.models.auth.changePassword.ChangePasswordRequest
-import com.spc.space.models.auth.forgetPassword.ForgetPasswordRequest
-import com.spc.space.ui.auth.registration.forgetPassword.ForgetPasswordViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -22,7 +20,7 @@ class ChangePasswordFragment : Fragment(R.layout.fragment_change_password) {
     private var _binding: FragmentChangePasswordBinding? = null
     private val binding get() = _binding!!
     private val changePasswordViewModel: ChangePasswordViewModel by viewModels()
-    var OTPCode: String = ""
+    var otpCode: String = ""
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentChangePasswordBinding.bind(view)
@@ -64,10 +62,10 @@ class ChangePasswordFragment : Fragment(R.layout.fragment_change_password) {
                         enteredOtp.append(editText.text.toString())
                     }
                     if (isValidOtp(enteredOtp.toString())) {
-                        setVisibiltyChangePassData()
-                        setVisibiltyOtpGone()
-                      OTPCode= enteredOtp.toString()
-                        Log.e("OTPCode", "afterTextChanged: ${OTPCode}" )
+                        setVisibilityChangePassData()
+                        setVisibilityOtpGone()
+                        otpCode= enteredOtp.toString()
+                        Log.e("OTPCode", "afterTextChanged: $otpCode" )
 
                     }
                 }
@@ -118,7 +116,7 @@ class ChangePasswordFragment : Fragment(R.layout.fragment_change_password) {
         binding.btnResetPassword.setOnClickListener {
             val email = binding.editTextEmail.editText?.text.toString().trim()
             val newPassword = binding.editTextNewPassword.editText?.text.toString().trim()
-            val request = ChangePasswordRequest(email, newPassword,OTPCode)
+            val request = ChangePasswordRequest(email, newPassword,otpCode)
             changePasswordViewModel.changePassword(request)
         }
 
@@ -129,7 +127,7 @@ class ChangePasswordFragment : Fragment(R.layout.fragment_change_password) {
         return otp.length == 6
     }
 
-    fun setVisibiltyChangePassData(){
+    fun setVisibilityChangePassData(){
         binding.newPasswordTv.visibility=View.VISIBLE
         binding.enterNewPassTv.visibility=View.VISIBLE
         binding.editTextEmail.visibility=View.VISIBLE
@@ -141,7 +139,7 @@ class ChangePasswordFragment : Fragment(R.layout.fragment_change_password) {
         binding.btnResetPassword.visibility=View.VISIBLE
     }
 
-    fun setVisibiltyOtpGone(){
+    fun setVisibilityOtpGone(){
         binding.tvEnterVerrificationCode.visibility=View.GONE
         binding.linearLayoutOtp.visibility=View.GONE
     }

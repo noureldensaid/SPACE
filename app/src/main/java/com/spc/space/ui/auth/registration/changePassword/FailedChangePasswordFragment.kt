@@ -6,9 +6,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.spc.space.R
 import com.spc.space.databinding.FragmentFailedChangePasswordBinding
-import com.spc.space.databinding.FragmentSuccessNewPassBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class FailedChangePasswordFragment : Fragment(R.layout.fragment_failed_change_password) {
     private var _binding: FragmentFailedChangePasswordBinding? = null
     private val binding get() = _binding!!
