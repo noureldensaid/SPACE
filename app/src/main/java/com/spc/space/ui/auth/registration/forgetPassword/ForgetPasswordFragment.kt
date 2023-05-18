@@ -44,7 +44,7 @@ class ForgetPasswordFragment : Fragment(R.layout.fragment_forget_password) {
         forgetPasswordViewModel.forgetPassResponse.observe(viewLifecycleOwner, Observer { forgetPassResponse ->
                 when (forgetPassResponse.message) {
                     "Done, please check your email" -> {
-                        findNavController().navigate(R.id.action_forgetPasswordFragment_to_OtpFragment)
+                        findNavController().navigate(R.id.action_forgetPasswordFragment_to_changePasswordFragment)
                     }
                     "User didn't register yet" -> {
                         Toast.makeText(

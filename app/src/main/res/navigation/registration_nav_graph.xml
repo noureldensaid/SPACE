@@ -29,19 +29,10 @@
         android:label="fragment_forget_password"
         tools:layout="@layout/fragment_forget_password">
         <action
-            android:id="@+id/action_forgetPasswordFragment_to_OtpFragment"
-            app:destination="@id/OtpFragment" />
-        <action
             android:id="@+id/action_forgetPasswordFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/OtpFragment"
-        android:name="com.spc.space.ui.auth.registration.forgetPassword.OtpFragment"
-        android:label="fragment_o_t_p"
-        tools:layout="@layout/fragment_otp">
         <action
-            android:id="@+id/action_OtpFragment_to_changePasswordFragment"
+            android:id="@+id/action_forgetPasswordFragment_to_changePasswordFragment"
             app:destination="@id/changePasswordFragment" />
     </fragment>
     <fragment
@@ -52,6 +43,12 @@
         <action
             android:id="@+id/action_changePasswordFragment_to_successNewPassFragment"
             app:destination="@id/successNewPassFragment" />
+        <action
+            android:id="@+id/action_changePasswordFragment_to_forgetPasswordFragment"
+            app:destination="@id/forgetPasswordFragment" />
+        <action
+            android:id="@+id/action_changePasswordFragment_to_failedChangePasswordFragment"
+            app:destination="@id/failedChangePasswordFragment" />
     </fragment>
     <fragment
         android:id="@+id/successNewPassFragment"
@@ -78,6 +75,15 @@
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_loginFragment_to_forgetPasswordFragment"
+            app:destination="@id/forgetPasswordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/failedChangePasswordFragment"
+        android:name="com.spc.space.ui.auth.registration.changePassword.FailedChangePasswordFragment"
+        android:label="fragment_failed_change_password"
+        tools:layout="@layout/fragment_failed_change_password" >
+        <action
+            android:id="@+id/action_failedChangePasswordFragment_to_forgetPasswordFragment"
             app:destination="@id/forgetPasswordFragment" />
     </fragment>
 </navigation>
