@@ -7,6 +7,7 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import com.spc.space.data.remote.SpaceApi
+import com.spc.space.models.auth.changePassword.ChangePasswordRequest
 import com.spc.space.models.auth.forgetPassword.ForgetPasswordRequest
 import com.spc.space.models.auth.signIn.SignInRequest
 import com.spc.space.models.auth.signUp.SignUpRequest
@@ -25,4 +26,10 @@ class AuthRepository @Inject constructor(
 
     suspend fun forgetPassword(token: String,request: ForgetPasswordRequest)
     = spaceApi.forgetPassword(token,request)
+
+    suspend fun changePassword(request: ChangePasswordRequest)
+            = spaceApi.changePassword(request)
+
+
+
 }

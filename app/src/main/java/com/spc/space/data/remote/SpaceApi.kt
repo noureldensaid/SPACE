@@ -1,5 +1,7 @@
 package com.spc.space.data.remote
 
+import com.spc.space.models.auth.changePassword.ChangePasswordRequest
+import com.spc.space.models.auth.changePassword.ChangePasswordRespone
 import com.spc.space.models.auth.forgetPassword.ForgetPasswordRequest
 import com.spc.space.models.auth.forgetPassword.ForgetPasswordResponse
 import com.spc.space.models.auth.signIn.SignInRequest
@@ -25,12 +27,22 @@ import retrofit2.http.*
 
 interface SpaceApi {
 
+   //change pass
+    @POST("auth/forgetPassword")
+    suspend fun changePassword(
+        @Body request: ChangePasswordRequest
+    ):ChangePasswordRespone
+
+
     // Forget password
     @POST("auth/sendCode")
     suspend fun forgetPassword(
         @Header("authorization") userToken: String,
         @Body request: ForgetPasswordRequest
     ): ForgetPasswordResponse
+
+
+
 
 
     // sign up

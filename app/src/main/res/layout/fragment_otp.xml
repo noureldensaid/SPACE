@@ -17,7 +17,8 @@
         app:layout_constraintBottom_toTopOf="@+id/linearLayout_otp"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout_otp"
         app:layout_constraintStart_toStartOf="@+id/linearLayout_otp"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="visible"/>
 
     <LinearLayout
         android:id="@+id/linearLayout_otp"
@@ -27,7 +28,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="visible">
 
         <EditText
             android:id="@+id/otp_edit_text_1"
