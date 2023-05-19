@@ -54,7 +54,8 @@ class BookingDetailsFragment : Fragment(R.layout.fragment_booking_details) {
                 chosenRoomName.text = bookingDetails.roomName
                 roomLocation.text = bookingDetails.region.toString()
                 duration.text = bookingDetails.duration.toString() + " hour(s)"
-                bookingPrice.text = bookingDetails.price.toString() + " EGP"
+                bookingPrice.text =
+                    bookingDetails.price.times(bookingDetails.duration).toInt().toString()+ " EGP"
                 bookingTime.text = Helper.convertTimeFormat(
                     bookingDetails.startTime.toString().trim()
                 ) + " to " + Helper.convertTimeFormat(bookingDetails.endTime.toString().trim())

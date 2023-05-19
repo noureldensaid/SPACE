@@ -60,8 +60,8 @@ class UpcomingBookingsFragment : Fragment(R.layout.fragment_upcoming_bookings) {
                 wsName = it.room.workspace.name,
                 roomImg = it.room.roomImages.firstOrNull()!!,
                 region = it.room.workspace.location.region,
-                duration = it.duration.toString(),
-                price = it.room.price.toString(),
+                duration = it.duration,
+                price = it.room.price,
                 startTime = it.startTime,
                 endTime = it.endTime,
                 capacity = it.room.capacity
