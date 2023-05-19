@@ -16,7 +16,6 @@ import kotlinx.coroutines.launch
 import java.time.LocalDate
 import javax.inject.Inject
 
-@RequiresApi(Build.VERSION_CODES.O)
 @HiltViewModel
 class RoomBookingViewModel @Inject constructor(
     private val repository: Repository
@@ -25,28 +24,33 @@ class RoomBookingViewModel @Inject constructor(
     private val _bookingCanceled: MutableLiveData<CancelBookingsResponse> = MutableLiveData()
     val bookingCanceled: LiveData<CancelBookingsResponse> = _bookingCanceled
 
-    var date: MutableLiveData<String> = MutableLiveData()
+    // var date: MutableLiveData<String> = MutableLiveData("")
 
     var validBooking: MutableLiveData<Boolean> = MutableLiveData(true)
 
     private val _booking: MutableLiveData<CreateBookingResponse> = MutableLiveData()
     val booking: LiveData<CreateBookingResponse> = _booking
 
-    init {
-        getTodayDate()
-    }
 
 
-    private fun getTodayDate() {
-        viewModelScope.launch {
-            val currentDate = LocalDate.now()
-            val y = currentDate.year
-            val m = currentDate.monthValue
-            val d = currentDate.dayOfMonth
-            date.postValue(String.format("%04d-%02d-%02d", y, m, d))
-            Log.e("date", "getTodayDate: ${date.value}")
-        }
-    }
+
+//    private fun getTodayDate() {
+//        viewModelScope.launch {
+//            val currentDate = LocalDate.now()
+//            val y = currentDate.year
+//            val m = currentDate.monthValue
+//            val d = currentDate.dayOfMonth
+//            date.postValue(String.format("%04d-%02d-%02d", y, m, d))
+//            Log.e("date", "getTodayDate: ${date.value}")
+//        }
+//    }
+
+//     fun setNewDate(newDate: String) {
+//        viewModelScope.launch {
+//            date.postValue(newDate)
+//            Log.e("newDate", "getTodayDate: ${date.value}")
+//        }
+//    }
 
 
     fun createBooking(userToken: String, bookingRequest: CreateBookingRequest) =
@@ -64,7 +68,8 @@ class RoomBookingViewModel @Inject constructor(
                         null
                     )
                 )
-                Log.e("TAG", ex.message.toString());
+                Log.e("Error booking", ex.message.toString());
+                Log.e("_booking ", _booking.value?.message.toString());
             }
         }
 

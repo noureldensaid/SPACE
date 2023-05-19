@@ -53,7 +53,7 @@ class BookingsHistoryAdapter : RecyclerView.Adapter<BookingsHistoryAdapter.ViewH
                 bookingHistoryRoomTime.text = Helper.convertTimeFormat(item.startTime!!)
                     .toString() + " to " + Helper.convertTimeFormat(item.endTime!!).toString()
 
-                bookingCreatedDate.text = Helper.convertTimeFormatToDate(item.dateCreated)
+                bookingCreatedDate.text = Helper.convertTimeFormatToDate(item.startTime)
             }
         }
     }

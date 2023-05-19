@@ -25,7 +25,7 @@ class CanceledBookingsAdapter : RecyclerView.Adapter<CanceledBookingsAdapter.Vie
                     .placeholder(R.drawable.placeholder)
                     .into(bookingCanceledRoomIv)
 
-                bookingCanceledDate.text = Helper.convertTimeFormatToDate(item.dateCreated)
+                bookingCanceledDate.text = Helper.convertTimeFormatToDate(item.startTime)
 
                 bookingCanceledWsName.text =
                     item.room.workspace.name.lowercase().trim().capitalize()

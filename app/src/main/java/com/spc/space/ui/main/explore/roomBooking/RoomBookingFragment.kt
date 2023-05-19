@@ -24,6 +24,7 @@ import com.spc.space.ui.main.shared_viewmodels.DataStoreViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.time.Duration
+import java.time.LocalDate
 import java.time.LocalTime
 import java.time.OffsetDateTime
 import java.time.format.DateTimeFormatter
@@ -36,6 +37,7 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
     private var _binding: FragmentRoomBookingBinding? = null
     private val binding get() = _binding!!
     private lateinit var dialog: Dialog
+    var todaysDate: String = ""
 
     //  HTTP 400  -> room is already booked
 
@@ -50,6 +52,8 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
         setupCalender()
         setupTimePicker(binding.checkInEt)
         setupTimePicker(binding.checkOutEt)
+        getTodayDate()
+        getSelectedDay()
 
         roomBookingViewModel.booking.observe(viewLifecycleOwner, Observer {
             if (it != null) {
@@ -94,20 +98,21 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
                 wsOpenTime!!,
                 wsCloseTime!!
             ) // time 1 > open time && time 2 < close
-            roomBookingViewModel.date.observe(viewLifecycleOwner, Observer { date ->
-                val checkInTime = parseTime(time1)
-                val checkOutTime = parseTime(time2)
-                startTime = date.toString() + 'T' + checkInTime
-                endTime = date.toString() + 'T' + checkOutTime
-                isTimeCorrect = isTimeAfter(time1, time2)
-            })
+            //getSelectedDay()
+
+            Log.e("date", "makeBooking: $todaysDate ")
+            val checkInTime = parseTime(time1)
+            val checkOutTime = parseTime(time2)
+            startTime = todaysDate.toString() + 'T' + checkInTime
+            endTime = todaysDate.toString() + 'T' + checkOutTime
+            isTimeCorrect = isTimeAfter(time1, time2)
+
         } else {
             roomBookingViewModel.validBooking.value = false
         }
 
         // time is correct and checkIn > ws open time
         if (isTimeCorrect) {
-            getSelectedDay()
             val roomId = roomData?.id!!
             val bookingRequest =
                 CreateBookingRequest(roomId, addTwoHours(startTime), addTwoHours(endTime))
@@ -169,6 +174,7 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
         return outputDateTime.format(outputFormat)
     }
 
+
     private fun parseTime(time: String): String {
         val inputFormat = SimpleDateFormat("h:mm a", Locale.US)
         val outputFormat = SimpleDateFormat("HH:mm:ssZ", Locale.US)
@@ -184,8 +190,10 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
                 val month = calendar.get(Calendar.MONTH) + 1
                 val day = calendar.get(Calendar.DAY_OF_MONTH)
                 val selectedDate = String.format("%04d-%02d-%02d", year, month, day)
-                roomBookingViewModel.date.value = selectedDate
-                Log.e("vm New date", "onViewCreated:${roomBookingViewModel.date.value} ")
+                todaysDate = selectedDate
+                Log.e("selected date", "onViewCreated:${selectedDate} ")
+                Log.e("vm New date", "onViewCreated:${todaysDate} ")
+
             }
         })
     }
@@ -290,6 +298,14 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
         return duration.toMinutes().toDouble() / 60.0
     }
 
+    private fun getTodayDate() {
+        val currentDate = LocalDate.now()
+        val y = currentDate.year
+        val m = currentDate.monthValue
+        val d = currentDate.dayOfMonth
+        todaysDate = (String.format("%04d-%02d-%02d", y, m, d))
+        Log.e("new date", "getTodayDatehere: $todaysDate")
+    }
 
     override fun onDestroy() {
         super.onDestroy()

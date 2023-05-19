@@ -27,7 +27,7 @@ class UpcomingBookingsAdapter : RecyclerView.Adapter<UpcomingBookingsAdapter.Vie
                     .placeholder(R.drawable.placeholder)
                     .into(bookingRoomIv)
 
-                bookingDate.text = Helper.convertTimeFormatToDate(item.dateCreated)
+                bookingDate.text = Helper.convertTimeFormatToDate(item.startTime)
                 bookingWsName.text =
                     item.room.workspace?.name?.lowercase()?.trim()?.capitalize()
                 bookingRoomName.text = item.room.roomName.lowercase().trim().capitalize()
