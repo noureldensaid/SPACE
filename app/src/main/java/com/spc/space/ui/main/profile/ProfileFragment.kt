@@ -18,6 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
     private val dataStoreViewModel: DataStoreViewModel by viewModels()
+    private val profileViewModel: ProfileViewModel by viewModels()
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
     private lateinit var dialog: Dialog
@@ -25,13 +26,22 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentProfileBinding.bind(view)
 
-        dataStoreViewModel.userName.observe(viewLifecycleOwner, Observer {
-            binding.userName.text = it.toString().lowercase().capitalize()
+        val user = profileViewModel.user.value?.user
+//        val args = Bundle().apply {
+//            putParcelable("userData", user)
+//        }
+
+        profileViewModel.user.observe(viewLifecycleOwner, Observer {
+            binding.userName.text = it.user.userName.toString().lowercase().capitalize()
         })
+
 
         binding.apply {
             editProfileText.setOnClickListener {
-                findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToEditProfileFragment())
+                findNavController().navigate(
+                    R.id.action_profileFragment_to_editProfileFragment,
+
+                )
             }
             changePasswordText.setOnClickListener {
                 findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToUpdatePasswordFragment())

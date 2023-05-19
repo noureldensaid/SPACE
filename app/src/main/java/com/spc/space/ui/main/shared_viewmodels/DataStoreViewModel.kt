@@ -21,11 +21,14 @@ class DataStoreViewModel @Inject constructor(
     private val _userName: MutableLiveData<String?> = MutableLiveData()
     val userName: LiveData<String?> = _userName
 
+    private val _userPic: MutableLiveData<String?> = MutableLiveData()
+    val userPic: LiveData<String?> = _userPic
+
 
     init {
         getToken()
         getUserName()
-    }
+     }
 
     fun saveUserName(userName: String) {
         viewModelScope.launch {

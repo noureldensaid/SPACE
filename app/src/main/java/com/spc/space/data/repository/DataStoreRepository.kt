@@ -8,8 +8,10 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import com.spc.space.models.auth.signUp.SignUpResponse
 import com.spc.space.utils.Constants.USER_INFO
+import com.spc.space.utils.Constants.USER_PIC
 import com.spc.space.utils.Constants.USER_TOKEN
 import kotlinx.coroutines.flow.first
+import java.net.URI
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -39,6 +41,9 @@ class DataStoreRepository @Inject constructor(
             null
         }
     }
+
+
+
 
     suspend fun saveUserName(value: String) {
         val preferencesKey = stringPreferencesKey(USER_INFO)

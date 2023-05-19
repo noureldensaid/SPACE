@@ -21,17 +21,21 @@ import com.spc.space.models.favs.GetFavoritesResponse
 import com.spc.space.models.getReview.GetReviewResponse
 import com.spc.space.models.reportProblem.ReportProblemRequest
 import com.spc.space.models.reportProblem.ReportProblemResponse
+import com.spc.space.models.updateProfilePic.UpdateProfilePicResponse
+import com.spc.space.models.userdata.UserDataResponse
 import com.spc.space.models.workspace.WorkspacesResponse
 import com.spc.space.models.workspaceRoom.RoomResponse
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.http.*
 
 interface SpaceApi {
 
-   //change pass
+    //change pass
     @POST("auth/forgetPassword")
     suspend fun changePassword(
         @Body request: ChangePasswordRequest
-    ):ChangePasswordRespone
+    ): ChangePasswordRespone
 
 
     // Forget password
@@ -40,9 +44,6 @@ interface SpaceApi {
         @Header("authorization") userToken: String,
         @Body request: ForgetPasswordRequest
     ): ForgetPasswordResponse
-
-
-
 
 
     // sign up
@@ -56,6 +57,11 @@ interface SpaceApi {
     suspend fun signIn(
         @Body request: SignInRequest
     ): SignInResponse
+
+    @GET("user/getUserProfile")
+    suspend fun getUserData(
+        @Header("authorization") userToken: String,
+    ): UserDataResponse
 
 
     // get all workspaces
@@ -140,6 +146,22 @@ interface SpaceApi {
         @Path("workspaceId") workspaceId: String,
         @Body requestBody: ReportProblemRequest,
     ): ReportProblemResponse
+
+    @PUT("user/profilePic")
+    suspend fun updateProfilePic(
+        @Header("authorization") userToken: String,
+        @Body image: RequestBody
+    ): UpdateProfilePicResponse
+
+//    @Multipart
+//    @PUT("updateProfile/{userId}")
+//    fun updateProfile(
+//        @Path("userId") userId: String,
+//        @Header("Authorization") authToken: String,
+//        @Part image: MultipartBody.Part?,
+//        @QueryMap data: Map<String, String>
+//    ): UpdateProfilePicResponse
+
 
 }
 

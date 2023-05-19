@@ -102,7 +102,7 @@ dependencies {
     implementation 'com.github.denzcoskun:ImageSlideshow:0.1.0'
     //  preferences DataStore
     implementation "androidx.datastore:datastore-preferences:1.0.0"
-     // On boarding dots
+    // On boarding dots
     implementation 'com.tbuonomo:dotsindicator:4.3'
     // fused location provider
     implementation 'com.google.android.gms:play-services-location:21.0.1'
@@ -114,6 +114,10 @@ dependencies {
     implementation 'nl.joery.timerangepicker:timerangepicker:1.0.0'
     //M3
     implementation 'com.google.android.material:material:1.9.0'
+    //photo picker
+    implementation 'androidx.activity:activity-ktx:1.7.1'
+    implementation 'androidx.fragment:fragment-ktx:1.5.7'
+
 }
 kapt {
     correctErrorTypes true
