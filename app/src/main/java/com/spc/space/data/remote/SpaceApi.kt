@@ -21,6 +21,8 @@ import com.spc.space.models.favs.GetFavoritesResponse
 import com.spc.space.models.getReview.GetReviewResponse
 import com.spc.space.models.reportProblem.ReportProblemRequest
 import com.spc.space.models.reportProblem.ReportProblemResponse
+import com.spc.space.models.updatePassword.UpdatePasswordRequest
+import com.spc.space.models.updatePassword.UpdatePasswordResponse
 import com.spc.space.models.workspace.WorkspacesResponse
 import com.spc.space.models.workspaceRoom.RoomResponse
 import retrofit2.http.*
@@ -140,6 +142,13 @@ interface SpaceApi {
         @Path("workspaceId") workspaceId: String,
         @Body requestBody: ReportProblemRequest,
     ): ReportProblemResponse
+
+    @PATCH("user/updatePassword")
+    suspend fun updatePassword(
+        @Header("authorization") userToken: String,
+        @Body requestBody: UpdatePasswordRequest,
+
+    ):UpdatePasswordResponse
 
 }
 

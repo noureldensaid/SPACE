@@ -4,6 +4,7 @@ import com.spc.space.data.remote.SpaceApi
 import com.spc.space.models.createBooking.CreateBookingRequest
 import com.spc.space.models.createReviewRequest.CreateReviewRequest
 import com.spc.space.models.reportProblem.ReportProblemRequest
+import com.spc.space.models.updatePassword.UpdatePasswordRequest
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -55,7 +56,11 @@ class Repository @Inject constructor(
     suspend fun createReportProblem(
         token: String,
         workspaceId: String,
-        problemRequest: ReportProblemRequest
-    ) =
+        problemRequest: ReportProblemRequest) =
         spaceApi.createReportProblem("Bearer__$token", workspaceId, problemRequest)
+
+    suspend fun updatePassword(
+        token: String,
+        updatePasswordRequest: UpdatePasswordRequest)=
+        spaceApi.updatePassword("Bearer__$token",updatePasswordRequest)
 }
