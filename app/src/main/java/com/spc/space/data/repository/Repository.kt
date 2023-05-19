@@ -8,6 +8,7 @@ import com.spc.space.models.updateProfilePic.UpdateProfilePicRequest
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import java.io.File
+import com.spc.space.models.updatePassword.UpdatePasswordRequest
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -17,9 +18,6 @@ class Repository @Inject constructor(
 ) {
     suspend fun getWorkspaces(token: String) =
         spaceApi.getWorkspaces("Bearer__$token")
-
-    suspend fun getUserData(token: String) =
-        spaceApi.getUserData("Bearer__$token")
 
     suspend fun getRoomsForWorkspace(workspaceId: String) =
         spaceApi.getRoomsForWorkspace(workspaceId)
@@ -65,10 +63,4 @@ class Repository @Inject constructor(
         problemRequest: ReportProblemRequest
     ) =
         spaceApi.createReportProblem("Bearer__$token", workspaceId, problemRequest)
-
-
-    suspend fun updateProfilePic(token: String, image:RequestBody) =
-        spaceApi.updateProfilePic("Bearer__$token", image)
-
-
 }
