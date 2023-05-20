@@ -25,7 +25,7 @@ class ProfileViewModel @Inject constructor(
         viewModelScope.launch {
             val token = dataStoreRepository.getToken().toString()
             getUserData(token)
-        }
+         }
     }
 
     private fun getUserData(userToken: String) =

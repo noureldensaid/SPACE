@@ -23,19 +23,24 @@ import com.spc.space.models.reportProblem.ReportProblemRequest
 import com.spc.space.models.reportProblem.ReportProblemResponse
 import com.spc.space.models.updatePassword.UpdatePasswordRequest
 import com.spc.space.models.updatePassword.UpdatePasswordResponse
+import com.spc.space.models.updateProfile.UpdateProfileRequest
+import com.spc.space.models.updateProfile.UpdateProfileResponse
+import com.spc.space.models.updateProfilePic.UpdateProfilePicRequest
 import com.spc.space.models.updateProfilePic.UpdateProfilePicResponse
 import com.spc.space.models.userdata.UserDataResponse
 import com.spc.space.models.workspace.WorkspacesResponse
 import com.spc.space.models.workspaceRoom.RoomResponse
+import okhttp3.RequestBody
+import retrofit2.Response
 import retrofit2.http.*
 
 interface SpaceApi {
 
-   //change pass
+    //change pass
     @POST("auth/forgetPassword")
     suspend fun changePassword(
         @Body request: ChangePasswordRequest
-    ):ChangePasswordRespone
+    ): ChangePasswordRespone
 
 
     // Forget password
@@ -46,7 +51,12 @@ interface SpaceApi {
     ): ForgetPasswordResponse
 
 
+    @PATCH("user/updatePassword")
+    suspend fun updatePassword(
+        @Header("authorization") userToken: String,
+        @Body requestBody: UpdatePasswordRequest,
 
+        ): UpdatePasswordResponse
 
 
     // sign up
@@ -144,6 +154,39 @@ interface SpaceApi {
         @Path("workspaceId") workspaceId: String,
         @Body requestBody: ReportProblemRequest,
     ): ReportProblemResponse
+
+    @GET("user/getUserProfile")
+    suspend fun getUserData(
+        @Header("authorization") userToken: String,
+    ): UserDataResponse
+
+
+    @PUT("user/profilePic")
+    suspend fun updateProfilePic(
+        @Header("authorization") userToken: String,
+        @Body image:  RequestBody
+    ): UpdateProfilePicResponse
+
+
+    @PUT("user/updateProfile/{userId}")
+    suspend fun updateUserProfile(
+        @Path("userId") userId: String,
+        @Header("authorization") token: String,
+        @Body request: UpdateProfileRequest
+    ): UpdateProfileResponse
+
+
+
+
+//    @Multipart
+//    @PUT("updateProfile/{userId}")
+//    fun updateProfile(
+//        @Path("userId") userId: String,
+//        @Header("Authorization") authToken: String,
+//        @Part image: MultipartBody.Part?,
+//        @QueryMap data: Map<String, String>
+//    ): UpdateProfilePicResponse
+
 
 }
 

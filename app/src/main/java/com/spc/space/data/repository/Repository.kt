@@ -4,11 +4,9 @@ import com.spc.space.data.remote.SpaceApi
 import com.spc.space.models.createBooking.CreateBookingRequest
 import com.spc.space.models.createReviewRequest.CreateReviewRequest
 import com.spc.space.models.reportProblem.ReportProblemRequest
-import com.spc.space.models.updateProfilePic.UpdateProfilePicRequest
-import okhttp3.MultipartBody
-import okhttp3.RequestBody
-import java.io.File
 import com.spc.space.models.updatePassword.UpdatePasswordRequest
+import com.spc.space.models.updateProfile.UpdateProfileRequest
+import okhttp3.RequestBody
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -63,4 +61,24 @@ class Repository @Inject constructor(
         problemRequest: ReportProblemRequest
     ) =
         spaceApi.createReportProblem("Bearer__$token", workspaceId, problemRequest)
+
+
+    suspend fun updatePassword(
+        token: String,
+        updatePasswordRequest: UpdatePasswordRequest
+    ) =
+        spaceApi.updatePassword("Bearer__$token", updatePasswordRequest)
+
+    suspend fun updateProfilePic(token: String, image: RequestBody) =
+        spaceApi.updateProfilePic("Bearer__$token", image)
+
+
+    suspend fun getUserData(token: String) =
+        spaceApi.getUserData("Bearer__$token")
+
+    suspend fun updateUserProfile(token: String, userId: String, req: UpdateProfileRequest) =
+        spaceApi.updateUserProfile("Bearer__$token", userId, req)
+
+
 }
+

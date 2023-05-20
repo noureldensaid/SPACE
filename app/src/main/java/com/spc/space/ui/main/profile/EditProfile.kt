@@ -1,15 +1,11 @@
 package com.spc.space.ui.main.profile
 
 import android.Manifest
-import android.annotation.SuppressLint
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.database.Cursor
 import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -23,16 +19,12 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.spc.space.R
 import com.spc.space.databinding.FragmentEditProfileBinding
+import com.spc.space.models.updateProfile.UpdateProfileRequest
+import com.spc.space.ui.auth.AuthActivity
 import com.spc.space.ui.main.shared_viewmodels.DataStoreViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.MultipartBody
-import okhttp3.RequestBody
-import java.io.File
-import java.io.InputStream
 
 
 @AndroidEntryPoint
@@ -42,7 +34,6 @@ class EditProfile : Fragment(R.layout.fragment_edit_profile) {
     private val editProfileViewModel: EditProfileViewModel by viewModels()
     private val dataStoreViewModel: DataStoreViewModel by viewModels()
     private val profileViewModel: ProfileViewModel by viewModels()
-    var imgLink: Uri? = null
 
     // Permission launcher for requesting storage permission
     private val requestPermissionLauncher =
@@ -65,20 +56,19 @@ class EditProfile : Fragment(R.layout.fragment_edit_profile) {
                 val data: Intent? = result.data
                 val imageUri: Uri? = data?.data
                 if (imageUri != null) {
+                    dataStoreViewModel.saveUri(imageUri)
+                    Log.e("imageUri", ": $imageUri")
                     // Load the selected image into the profileCircleImageView using Glide
                     Glide.with(this)
                         .load(imageUri)
                         .into(binding.profilePicture)
-                    imgLink = imageUri
                 }
             }
         }
 
-    @SuppressLint("Recycle")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentEditProfileBinding.bind(view)
-
 
         val token = dataStoreViewModel.token.value.toString()
         // Navigate up when the backIc is clicked
@@ -86,16 +76,25 @@ class EditProfile : Fragment(R.layout.fragment_edit_profile) {
             findNavController().navigateUp()
         }
 
-        profileViewModel.user.observe(viewLifecycleOwner, Observer {
-            binding.apply {
-                Glide.with(view)
-                    .load(it.user.profilePic)
-                    .transition(DrawableTransitionOptions.withCrossFade())
-                    .transform(CenterCrop(), RoundedCorners(24))
-                    .error(R.drawable.ic_dummy_user)
-                    .placeholder(R.drawable.ic_dummy_user)
-                    .into(binding.profilePicture)
-            }
+        binding.apply {
+            profileViewModel.user.observe(viewLifecycleOwner, Observer {
+                if (it.user != null) {
+                    profileUserName.editText?.hint = it.user.userName.toString().capitalize()
+                    profileUserPhone.editText?.hint = "0" + it.user.phone.toString().capitalize()
+                    profileUserEmail.editText?.hint = it.user.email.toString().capitalize()
+                }
+            })
+        }
+
+
+        dataStoreViewModel.userPic.observe(viewLifecycleOwner, Observer {
+            Glide.with(view)
+                .load(it)
+                .transform(CenterCrop(), RoundedCorners(24))
+                .error(R.drawable.ic_dummy_user)
+                .placeholder(R.drawable.ic_dummy_user)
+                .into(binding.profilePicture)
+            Log.e("TAG", "onViewCreated: $it ")
         })
 
         // Open the photo picker when the profileCircleImageView is clicked
@@ -104,68 +103,51 @@ class EditProfile : Fragment(R.layout.fragment_edit_profile) {
         }
 
 
-        binding.profileUserNameTv.setOnClickListener {
-//            Toast.makeText(
-//                requireContext(),
-//                imgLink.,
-//                Toast.LENGTH_SHORT
-//            ).show()
-        }
+        val oldUsername =
+            profileViewModel.user.value?.user?.userName.toString().lowercase().capitalize().trim()
+        val oldEmail =
+            profileViewModel.user.value?.user?.email.toString().lowercase().capitalize().trim()
+
+        val oldPhone =
+            profileViewModel.user.value?.user?.phone.toString().lowercase().capitalize().trim()
+
+        Log.e("oldUsername", oldUsername)
 
         binding.saveBtn.setOnClickListener {
-            if (token.isNotEmpty() && imgLink != null) {
-                val file: File? = uriToFile(requireContext(), imgLink!!)
-                if (file != null) {
+            binding.apply {
+                val username = profileUserName.editText?.text.toString().trim()
+                val email = profileUserEmail.editText?.text.toString().trim()
+                val phone = profileUserPhone.editText?.text.toString().trim()
+                val userId = profileViewModel.user.value?.user?.id.toString()
 
-//                     val requestFile = file.asRequestBody("image/*".toMediaTypeOrNull())
-//                    val multipartBody = MultipartBody.Part.createFormData("image", file.name, requestFile)
+                if (username.isNotEmpty() && email.isNotEmpty() && phone.isNotEmpty()
+                    && token.isNotEmpty() && userId.isNotEmpty()
+                ) {
+                    if (!oldPhone.equals(phone) && !oldUsername.equals(username) && !oldEmail.equals(
+                            email
+                        )
+                    ) {
+                        if (isPhoneNumberValid(phone) && isEmailValid(email)) {
+                            Log.e("username", username)
+                            Log.e("oldUsername", oldUsername)
+                            editProfileViewModel.updateUserProfile(
+                                token, userId, UpdateProfileRequest(
+                                    username = username,
+                                    phone = phone,
+                                    email = email
+                                )
+                            )
+                            // navigate to sign in
+                            dataStoreViewModel.clearToken()
+                            activity?.finish()
+                            startActivity(Intent(activity, AuthActivity::class.java))
+                        }
+                    }
+                }
 
-
-//                    val requestFile = file.asRequestBody("image/*".toMediaTypeOrNull())
-//                    val formData = MultipartBody.Builder()
-//                        .setType(MultipartBody.FORM)
-//                        .addFormDataPart("image", file.name, requestFile)
-//                        .build()
-
-
-                    val mediaType = "image/jpg".toMediaTypeOrNull()
-                    val inputStream: InputStream? = context?.contentResolver?.openInputStream(
-                        imgLink!!
-                    )
-                    val data: ByteArray? = inputStream?.readBytes()
-
-
-                    val requestBody1 = RequestBody.create(mediaType, data!!)
-                    Log.d("TAG", "requestBody: " + requestBody1.toString())
-                    val requestBody2 = MultipartBody.Builder()
-                        .setType(MultipartBody.FORM)
-                        .addFormDataPart("image", "t.jpg", requestBody1)
-                        .build()
-                    Log.d("TAG", "requestBody: " + requestBody2.toString())
-
-
-////                    uploadProfilePic(token, file)
-//                    val requestFile = file.asRequestBody("image/*".toMediaTypeOrNull())
-//                    val imagePart =
-//                        MultipartBody.Part.createFormData("image", file.name, requestFile)
-
-                    editProfileViewModel.updateUserProfilePic(
-                        token,
-                        requestBody2,
-                    )
-                 }
             }
         }
 
-        binding.apply {
-            profileViewModel.user.observe(viewLifecycleOwner, Observer {
-                if (it.user != null) {
-                    profileUserName.editText?.setText(it.user.userName.toString())
-                    profileUserPhone.editText?.setText("0" + it.user.phone.toString())
-                    profileUserEmail.editText?.setText(it.user.email.toString())
-                }
-            })
-        }
 
         binding.dismissBtn.setOnClickListener {
             binding.apply {
@@ -175,26 +157,6 @@ class EditProfile : Fragment(R.layout.fragment_edit_profile) {
             }
         }
 
-    }
-
-//    private fun uploadProfilePic(token: String, img: File) {
-//        editProfileViewModel.updateUserProfilePic(token, img)
-//
-//    }
-
-    private fun uriToFile(context: Context, uri: Uri): File? {
-        val projection = arrayOf(MediaStore.MediaColumns.DATA)
-        val cursor: Cursor? = context.contentResolver.query(uri, projection, null, null, null)
-        cursor?.use {
-            if (it.moveToFirst()) {
-                val columnIndex = it.getColumnIndexOrThrow(MediaStore.MediaColumns.DATA)
-                val filePath = it.getString(columnIndex)
-                if (filePath != null) {
-                    return File(filePath)
-                }
-            }
-        }
-        return null
     }
 
     private fun checkPermissionAndPickPhoto() {
@@ -247,8 +209,20 @@ class EditProfile : Fragment(R.layout.fragment_edit_profile) {
         }
     }
 
+    fun isPhoneNumberValid(phoneNumber: String): Boolean {
+        val phoneRegex = Regex("^01[0-9]{9}\$")
+        return phoneNumber.matches(phoneRegex)
+    }
+
+    fun isEmailValid(email: String): Boolean {
+        val emailRegex = Regex("^\\w+([.-]?\\w+)*@\\w+([.-]?\\w+)*(\\.\\w{2,3})+\$")
+        return email.matches(emailRegex)
+    }
+
+
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
     }
+
 }

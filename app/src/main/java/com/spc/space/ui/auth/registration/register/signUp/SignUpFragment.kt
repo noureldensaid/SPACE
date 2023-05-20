@@ -28,8 +28,8 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
         //  get sign up data the wrap it in sign up request
         binding.apply {
             signUpBtn.setOnClickListener {
-                val username = usernameEt.editText?.text.toString().trim()
-                val email = emailEt.editText?.text.toString().trim()
+                val username = usernameEt.editText?.text.toString().lowercase().trim()
+                val email = emailEt.editText?.text.toString().lowercase().trim()
                 val phone = phoneEt.editText?.text.toString().trim()
                 val password = passwordEt.editText?.text.toString().trim()
                 val confirmPassword = confirmPasswordEt.editText?.text.toString().trim()

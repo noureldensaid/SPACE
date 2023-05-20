@@ -1,5 +1,6 @@
 package com.spc.space.ui.main.shared_viewmodels
 
+import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -28,7 +29,8 @@ class DataStoreViewModel @Inject constructor(
     init {
         getToken()
         getUserName()
-     }
+        getUri()
+    }
 
     fun saveUserName(userName: String) {
         viewModelScope.launch {
@@ -67,6 +69,32 @@ class DataStoreViewModel @Inject constructor(
             dataStoreRepository.clearToken()
             Log.e("Clear token", "clearToken:  ${_token.value} ")
             _token.value = null
+        }
+    }
+
+    fun saveUri(uri: Uri?) {
+        viewModelScope.launch {
+            dataStoreRepository.saveUri(uri)
+        }
+    }
+
+    private fun getUri() {
+        viewModelScope.launch {
+            try {
+                val uri = dataStoreRepository.getUri()
+                if (uri != null) _userPic.value = uri
+                else _userPic.value = null
+            } catch (e: Exception) {
+                Log.e(" uri error", "validateToken: Invalid uri")
+            }
+        }
+    }
+
+    fun clearUri() {
+        viewModelScope.launch {
+            dataStoreRepository.clearUri()
+            Log.e("Clear uri", "clear:  ${_userPic.value} ")
+            _userPic.value = null
         }
     }
 

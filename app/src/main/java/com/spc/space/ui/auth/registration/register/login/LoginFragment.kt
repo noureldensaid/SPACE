@@ -11,8 +11,8 @@ import androidx.navigation.fragment.findNavController
 import com.spc.space.R
 import com.spc.space.databinding.FragmentLoginBinding
 import com.spc.space.models.auth.signIn.SignInRequest
-import com.spc.space.ui.main.shared_viewmodels.DataStoreViewModel
 import com.spc.space.ui.main.MainActivity
+import com.spc.space.ui.main.shared_viewmodels.DataStoreViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -54,26 +54,18 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         //  get sign up data the wrap it in sign up request
         binding.apply {
             signInBtn.setOnClickListener {
-                val email = emailEt.editText?.text.toString().trim()
-                val username = usernameEt.editText?.text.toString().trim()
+                val email = emailEt.editText?.text.toString().lowercase().trim()
                 val password = passwordEt.editText?.text.toString().trim()
-                if (email.isNotEmpty() && username.isNotEmpty() && password.isNotEmpty()) {
+                if (email.isNotEmpty() && password.isNotEmpty()) {
                     val request = SignInRequest(email, password)
                     loginViewModel.signIn(request)
-                    dataStoreViewModel.saveUserName(username)
                 }
             }
         }
 
-
-
-
-
         binding.forgotPasswordTv.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_forgetPasswordFragment)
         }
-
-
     }
 
     override fun onDestroy() {

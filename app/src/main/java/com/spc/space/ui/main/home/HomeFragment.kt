@@ -13,6 +13,7 @@ import com.denzcoskun.imageslider.models.SlideModel
 import com.spc.space.R
 import com.spc.space.adapters.HomeAdapter
 import com.spc.space.databinding.FragmentHomeBinding
+import com.spc.space.ui.main.profile.ProfileViewModel
 import com.spc.space.ui.main.shared_viewmodels.DataStoreViewModel
 import com.spc.space.utils.Helper.collectLatestLifecycleFlow
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,6 +22,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {
     private val homeFragmentViewModel: HomeFragmentViewModel by viewModels()
     private val dataStoreViewModel: DataStoreViewModel by viewModels()
+    private val profileViewModel: ProfileViewModel by viewModels()
     lateinit var homeAdapter: HomeAdapter
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
@@ -51,8 +53,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             })
         }
 
-        dataStoreViewModel.userName.observe(viewLifecycleOwner, Observer {
-            binding.userName.text = "Hello, ${it?.capitalize()}"
+        profileViewModel.user.observe(viewLifecycleOwner, Observer {
+            binding.userName.text = "Hello, ${it?.user?.userName.toString().trim().capitalize()}"
             Log.e("UserName", "onViewCreated: ${it}")
         })
 

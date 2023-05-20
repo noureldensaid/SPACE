@@ -1,22 +1,20 @@
-package com.spc.space.models.userdata
+package com.spc.space.models.updateProfile
 
-import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import kotlinx.parcelize.Parcelize
 
-@Parcelize
-data class UserDataResponse(
+data class UpdateProfileResponse(
     val message: String,
-    val user: SavedUser
-) : Parcelable
+    val updatedUser: UpdatedUser
+)
 
-@Parcelize
-data class SavedUser(
+data class UpdatedUser(
     @SerializedName("_id")
     val id: String,
+    val confirmEmail: Boolean,
+    val createdAt: String,
     val email: String,
     val password: String,
     val phone: Int,
     val profilePic: String,
     val userName: String
-) : Parcelable
+)
