@@ -4,123 +4,113 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/dimens_small_8dp"
     app:cardCornerRadius="@dimen/dimens_large_24dp"
     app:cardElevation="@dimen/dimens_tiny_4dp"
     app:cardUseCompatPadding="true">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/custom_border">
+        android:background="@drawable/custom_border"
+        android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/workspace_iv"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="130dp"
+            android:layout_height="140dp"
+            android:scaleType="fitCenter"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/ic_favorite" />
 
-        <TextView
-            android:id="@+id/workspace_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:fontFamily="@font/lato_black"
-            android:maxLines="2"
-            android:paddingHorizontal="@dimen/dimens_medium_16dp"
-            android:paddingTop="@dimen/dimens_small_8dp"
-            android:paddingBottom="@dimen/dimens_tiny_4dp"
-            android:text="WorkSpace"
-            android:textColor="@color/dark_blue"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/workspace_location"
-            app:layout_constraintStart_toEndOf="@id/workspace_iv"
-            app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/workspace_location"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:fontFamily="@font/lato_regular"
-            android:maxLines="1"
-            android:paddingHorizontal="@dimen/dimens_medium_16dp"
-            android:paddingBottom="@dimen/dimens_tiny_4dp"
-            android:text="Celopatra,Alexandria"
-            android:textColor="@color/dark_blue"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/working_hours_text"
-            app:layout_constraintStart_toStartOf="@id/workspace_name"
-            app:layout_constraintTop_toBottomOf="@+id/workspace_name" />
-
-        <TextView
-            android:id="@+id/working_hours_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/lato_regular"
-            android:paddingHorizontal="@dimen/dimens_medium_16dp"
-            android:paddingBottom="@dimen/dimens_tiny_4dp"
-            android:text="@string/working_hours"
-            android:textColor="@color/md_grey_800"
-            android:textSize="@dimen/material_text_subhead_16sp"
-            app:layout_constraintBottom_toTopOf="@+id/workspace_time"
-            app:layout_constraintStart_toStartOf="@id/workspace_location"
-            app:layout_constraintTop_toBottomOf="@+id/workspace_location" />
-
-        <TextView
-            android:id="@+id/workspace_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_clock"
-            android:drawablePadding="@dimen/dimens_tiny_4dp"
-            android:drawableTint="@color/md_grey_800"
-            android:ellipsize="end"
-            android:fontFamily="@font/lato_regular"
-            android:gravity="center_vertical"
-            android:maxLines="1"
-            android:paddingHorizontal="@dimen/dimens_small_8dp"
-            android:paddingBottom="@dimen/dimens_tiny_4dp"
-            android:text="09:30 to 19:00"
-            android:textColor="@color/md_grey_800"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toTopOf="@+id/workspace_ratingBar"
-            app:layout_constraintStart_toStartOf="@id/working_hours_text"
-            app:layout_constraintTop_toBottomOf="@+id/working_hours_text" />
-
-        <RatingBar
-            android:id="@+id/workspace_ratingBar"
-            style="?android:attr/ratingBarStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:isIndicator="true"
-            android:numStars="7"
-            android:paddingHorizontal="@dimen/dimens_medium_16dp"
-            android:paddingBottom="@dimen/dimens_tiny_4dp"
-            android:progressTint="#ffff8800"
-            android:stepSize="0.5"
-            app:layout_constraintBottom_toTopOf="@+id/workspace_price"
-            app:layout_constraintStart_toStartOf="@id/workspace_time"
-            app:layout_constraintTop_toBottomOf="@+id/workspace_time" />
-
-        <TextView
-            android:id="@+id/workspace_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/lato_bold"
-            android:paddingHorizontal="@dimen/dimens_medium_16dp"
-            android:paddingBottom="@dimen/dimens_small_8dp"
-            android:text="From 20 EGP/HOUR"
-            android:textColor="@color/dark_blue"
-            android:textSize="16sp"
-            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="@dimen/dimens_small_8dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@id/workspace_ratingBar"
-            app:layout_constraintTop_toBottomOf="@+id/workspace_ratingBar" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/workspace_iv"
+            app:layout_constraintTop_toTopOf="parent">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/workspace_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/lato_black"
+                android:maxLines="2"
+                android:paddingBottom="@dimen/dimens_tiny_4dp"
+                android:text="WorkSpace"
+                android:textColor="@color/dark_blue"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/workspace_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/lato_regular"
+                android:maxLines="1"
+                android:paddingBottom="@dimen/dimens_tiny_4dp"
+                android:text="Celopatra,Alexandria"
+                android:textColor="@color/dark_blue"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/working_hours_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato_regular"
+                android:text="@string/working_hours"
+                android:textColor="@color/md_grey_800"
+                android:textSize="@dimen/material_text_menu_14sp" />
+
+            <TextView
+                android:id="@+id/workspace_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_clock"
+                android:drawablePadding="@dimen/dimens_tiny_4dp"
+                android:drawableTint="@color/dark_blue"
+                android:ellipsize="end"
+                android:fontFamily="@font/lato_regular"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:paddingBottom="@dimen/dimens_tiny_4dp"
+                android:text="09:30 to 19:00"
+                android:textColor="@color/dark_blue"
+                android:textSize="14sp" />
+
+            <RatingBar
+                android:id="@+id/workspace_ratingBar"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:isIndicator="true"
+                android:numStars="5"
+                android:paddingBottom="@dimen/dimens_tiny_4dp"
+                android:progressTint="#ffff8800"
+                android:stepSize="0.5" />
+
+            <TextView
+                android:id="@+id/workspace_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato_bold"
+                android:text="From 20 EGP/HOUR"
+                android:textColor="@color/dark_blue"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
+    </LinearLayout>
 
 </androidx.cardview.widget.CardView>

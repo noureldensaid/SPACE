@@ -28,7 +28,7 @@ class ReportProblem : Fragment(R.layout.fragment_report_problem) {
 
 
         //val workSpaceItem = args.data
-        val workspaceId = requireArguments().getString("workspaceId")
+        val workspaceId = requireArguments().getString("workspaceId") ?: "64571537c4c24946ffe9f89a"
         val token = dataStoreViewModel.token.value.toString()
         binding.backIc.setOnClickListener {
             findNavController().navigateUp()
