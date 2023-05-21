@@ -91,7 +91,7 @@
         android:id="@+id/home_hot_featured_rv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="84dp"
+        android:paddingBottom="120dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/hot_featured_title"
         app:layout_constraintTop_toBottomOf="@id/hot_featured_title"

@@ -23,7 +23,6 @@ class ExploreAdapter : RecyclerView.Adapter<ExploreAdapter.ViewHolder>() {
             binding.apply {
                 workspaceName.text = item.name?.lowercase()?.capitalize()
                 workspaceLocation.text = "${item.location.region},${item.location.city}"
-                workingHoursText.text = "Working Hours"
                 workspaceTime.text = Helper.convert24To12(
                     item.schedule.openingTime.toString().trim()
                 ) + " to " + Helper.convert24To12(item.schedule.closingTime.toString().trim())

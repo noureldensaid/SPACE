@@ -23,18 +23,16 @@
                 android:id="@+id/favourite_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/dimens_medium_16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginBottom="@dimen/dimens_medium_16dp"
                 android:fontFamily="@font/lato_bold"
                 android:text="Favourites"
                 android:textColor="@color/dark_blue"
                 android:textSize="@dimen/material_text_display1_34sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/fav_rv"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
 
 
             <androidx.recyclerview.widget.RecyclerView
@@ -42,6 +40,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/dimens_small_8dp"
+                android:layout_marginTop="@dimen/dimens_large_24dp"
                 android:clipToPadding="false"
                 android:orientation="vertical"
                 android:paddingBottom="@dimen/dimens_large_32dp"
@@ -54,8 +53,6 @@
 
 
     </ScrollView>
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

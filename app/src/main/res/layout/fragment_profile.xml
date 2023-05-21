@@ -37,6 +37,7 @@
         </RelativeLayout>
 
         <TextView
+            android:layout_marginTop="48dp"
             style="@style/viewParent.headerText.settingsMiniTitle"
             android:fontFamily="@font/lato_bold"
             android:text="Profile" />

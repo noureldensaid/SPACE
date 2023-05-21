@@ -21,19 +21,19 @@ class FavouriteAdapter : RecyclerView.Adapter<FavouriteAdapter.ViewHolder>() {
         // ashel al goz2 bta3  clickk
         fun bind(item: Favorite) {
             binding.apply {
-                workspaceName.text = item.name?.lowercase()?.capitalize()
-                workspaceLocation.text = "${item.location.region}, ${item.location.city}"
-                workspaceTime.text =
+                favWorkspaceName.text = item.name?.lowercase()?.capitalize()
+                favWorkspaceLocation.text = "${item.location.region}, ${item.location.city}"
+                favWorkspaceTime.text =
                     Helper.convert24To12(item.schedule.openingTime) + " to " + Helper.convert24To12(
                         item.schedule.closingTime)
-                workspaceRatingBar.rating = item.avgRate?:0.0F
+                favWorkspaceRatingBar.rating = item.avgRate?:0.0F
 
                 Glide.with(itemView)
                     .load(item.images.firstOrNull())
                     .transform(CenterCrop(), RoundedCorners(24))
                     .error(R.drawable.error_placeholder)
                     .placeholder(R.drawable.placeholder)
-                    .into(workspaceIv)
+                    .into(favImg)
             }
 
         }
