@@ -1,10 +1,8 @@
 package com.spc.space.ui.main.explore.workspaceDetails
 
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -68,13 +66,12 @@ class WorkspaceDetailsFragment : Fragment(R.layout.fragment_workspace_details) {
                     .into(workspaceIv)
 
                 name.text = it.name
-                workspaceRegion.text = it.location.region
+                workspaceRegion.text = it.location.region + ", ${ it.location.city?.capitalize().toString()}"
                 workspaceRatingBar.rating = it.avgRate?.plus(0.5F) ?: 0F
                 comment.underline()
-                workspaceTime.text =Helper.convert24To12(
+                workspaceTime.text = Helper.convert24To12(
                     it.schedule.openingTime.toString().trim()
                 ) + " to " + Helper.convert24To12(it.schedule.closingTime.toString().trim())
-
 
 
             }

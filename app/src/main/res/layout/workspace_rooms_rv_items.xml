@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="@dimen/dimens_medium_16dp"
-    app:cardElevation="@dimen/dimens_tiny_4dp"
+    android:layout_marginVertical="@dimen/dimens_tiny_4dp"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="0dp"
     app:cardUseCompatPadding="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -38,7 +39,7 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/room_type"
             app:layout_constraintStart_toEndOf="@+id/room_iv"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/room_type"

@@ -61,8 +61,8 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="@dimen/dimens_medium_16dp"
             android:fontFamily="@font/lato_bold"
-            android:text="@string/working_hours"
-            android:textColor="@color/black"
+            android:text="Opens today"
+            android:textColor="@color/md_green_700"
             android:textSize="@dimen/material_text_subhead_16sp"
             app:layout_constraintStart_toStartOf="@id/workspace_region"
             app:layout_constraintTop_toBottomOf="@id/workspace_region"
@@ -101,7 +101,7 @@
             style="?android:attr/ratingBarStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-             android:layout_marginVertical="@dimen/dimens_medium_16dp"
+            android:layout_marginVertical="@dimen/dimens_medium_16dp"
             android:isIndicator="false"
             android:numStars="5"
             android:padding="@dimen/dimens_small_8dp"
@@ -112,7 +112,6 @@
             app:layout_constraintTop_toBottomOf="@+id/addFav_btn" />
 
         <TextView
-            android:visibility="gone"
             android:id="@+id/workspace_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -121,6 +120,7 @@
             android:textColor="@color/dark_blue"
             android:textSize="16sp"
             android:textStyle="bold"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="@+id/workspace_time"
             app:layout_constraintEnd_toEndOf="@+id/addFav_btn"
             app:layout_constraintTop_toTopOf="@+id/workspace_time" />
@@ -162,7 +162,6 @@
             android:layout_marginVertical="@dimen/dimens_medium_16dp"
             android:fontFamily="@font/lato_bold"
             android:text="Report"
-
             android:textColor="@color/md_theme_light_error"
             android:textSize="@dimen/dimens_medium_16dp"
             app:layout_constraintStart_toStartOf="@+id/workspace_time"

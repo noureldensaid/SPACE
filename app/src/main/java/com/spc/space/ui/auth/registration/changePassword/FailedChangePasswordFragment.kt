@@ -20,5 +20,11 @@ class FailedChangePasswordFragment : Fragment(R.layout.fragment_failed_change_pa
         binding.btnTryAgain.setOnClickListener {
             findNavController().navigate(R.id.action_failedChangePasswordFragment_to_forgetPasswordFragment)
         }
+
+        binding.lottieFailedAnim.apply {
+            loop(true)
+            playAnimation()
+        }
+
     }
 }

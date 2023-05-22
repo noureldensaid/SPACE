@@ -67,8 +67,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="@dimen/dimens_medium_16dp"
                 android:fontFamily="@font/lato_regular"
-                android:text="@string/working_hours"
-                android:textColor="@color/dark_blue"
+                android:text="Opens today"
+                android:textColor="@color/md_green_700"
                 android:textSize="@dimen/material_text_subhead_16sp"
                 app:layout_constraintStart_toStartOf="@id/room_type"
                 app:layout_constraintTop_toBottomOf="@id/room_type" />

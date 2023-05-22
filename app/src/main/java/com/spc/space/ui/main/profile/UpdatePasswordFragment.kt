@@ -41,6 +41,7 @@ class UpdatePasswordFragment : Fragment(R.layout.fragment_update_password) {
                     newCPassword = confirmNewPassword
                 )
                 updatePasswordViewModel.updatePassword(token, updatePasswordRequest)
+                findNavController().navigateUp()
             }
         }
 

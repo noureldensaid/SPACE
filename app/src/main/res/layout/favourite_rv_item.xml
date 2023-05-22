@@ -59,8 +59,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/lato_regular"
-                android:text="@string/working_hours"
-                android:textColor="@color/md_grey_800"
+                android:text="Opens today"
+                android:textColor="@color/md_green_600"
                 android:textSize="@dimen/material_text_menu_14sp" />
 
             <TextView

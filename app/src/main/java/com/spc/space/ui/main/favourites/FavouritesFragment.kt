@@ -19,13 +19,10 @@ import com.spc.space.ui.main.shared_viewmodels.DataStoreViewModel
 import com.spc.space.utils.SwipeToDeleteCallback
 import dagger.hilt.android.AndroidEntryPoint
 
-@RequiresApi(Build.VERSION_CODES.O)
 @AndroidEntryPoint
 class FavouritesFragment : Fragment(R.layout.fragment_favourites) {
     private var _binding: FragmentFavouritesBinding? = null
     private val binding get() = _binding!!
-
-    //private val ratingViewModel: RatingViewModel by viewModels()
     private val favouritesViewModel: FavouritesViewModel by viewModels()
     private val dataStoreViewModel: DataStoreViewModel by viewModels()
     private lateinit var favouriteAdapter: FavouriteAdapter
@@ -47,33 +44,6 @@ class FavouritesFragment : Fragment(R.layout.fragment_favourites) {
             favouriteAdapter.differ.submitList(data.favoriteItems.favorites)
         })
 
-//        val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(
-//            ItemTouchHelper.UP or ItemTouchHelper.DOWN,
-//            ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
-//        ) {
-//            override fun onMove(
-//                recyclerView: RecyclerView,
-//                viewHolder: RecyclerView.ViewHolder,
-//                target: RecyclerView.ViewHolder
-//            ): Boolean {
-//                return true
-//            }
-//
-//
-//            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-//                val position = viewHolder.adapterPosition
-//                val workSpaceItem = favouriteAdapter.differ.currentList[position]
-//                favouritesViewModel.removeFromFavorites(token, workSpaceItem.id)
-//                Snackbar.make(view!!, "Workspace removed", Snackbar.LENGTH_LONG)
-//                    .apply {
-//                        setAction("UNDO") {
-//                            favouritesViewModel.addFavourites(token, workSpaceItem.id)
-//                        }
-//                    }.show()
-//            }
-//        }
-//        ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(binding.favRv)
-//
         enableSwipeToDeleteAndUndo()
 
     }

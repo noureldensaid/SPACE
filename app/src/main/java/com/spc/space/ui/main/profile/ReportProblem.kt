@@ -34,7 +34,10 @@ class ReportProblem : Fragment(R.layout.fragment_report_problem) {
             findNavController().navigateUp()
         }
 
-
+        binding.feedbackImage.apply {
+            loop(true)
+            playAnimation()
+        }
 
 
         binding.btnSubmitProblem.setOnClickListener {
@@ -44,6 +47,7 @@ class ReportProblem : Fragment(R.layout.fragment_report_problem) {
                 Log.e("report message", msg)
                 Log.e("ws ID", workspaceId.toString())
                 reportProblemViewModel.createReportProblem(token, workspaceId, reportProblemRequest)
+                findNavController().navigateUp()
             }
             // Toast.makeText(activity, "Submit successfully", Toast.LENGTH_LONG).show()
         }

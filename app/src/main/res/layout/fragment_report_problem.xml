@@ -13,21 +13,24 @@
         android:layout_margin="10dp"
         android:src="@drawable/back"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        />
 
-    <ImageView
+    <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/feedback_image"
-        android:layout_width="300dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="92dp"
-        android:src="@drawable/feedback"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_gravity="center"
+        android:background="#fff"
+        app:layout_constraintBottom_toTopOf="@id/enterProblem"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/back_ic"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/lottie_failed" />
 
-        app:layout_constraintTop_toBottomOf="@id/back_ic" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/enterProblem"
@@ -35,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/dimens_large_24dp"
         android:layout_marginTop="20dp"
-         android:hint="Enter your problem"
+        android:hint="What happend ? "
         app:boxBackgroundColor="@color/baby_blue"
         app:boxCornerRadiusBottomEnd="@dimen/dimens_small_8dp"
         app:boxCornerRadiusBottomStart="@dimen/dimens_small_8dp"
@@ -43,15 +46,16 @@
         app:boxCornerRadiusTopStart="@dimen/dimens_small_8dp"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="@dimen/dimens_tiny_4dp"
+        app:layout_constraintBottom_toTopOf="@id/btn_submit_problem"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/feedback_image">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/enterProblemInfo"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dimens_100dp"
-            android:gravity="top"
+            android:layout_height="200dp"
             android:fontFamily="@font/lato_bold"
+            android:gravity="top"
             android:inputType="text" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -62,7 +66,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/dimens_huge_64dp"
         android:fontFamily="@font/lato_bold"
-        android:text="Submit Problem "
+        android:text="Submit"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="@dimen/material_text_subhead_16sp"
