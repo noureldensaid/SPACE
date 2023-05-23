@@ -65,6 +65,7 @@ class WorkspaceDetailsFragment : Fragment(R.layout.fragment_workspace_details) {
                     .placeholder(R.drawable.placeholder)
                     .into(workspaceIv)
 
+                phoneNum.text = "+20 ${it.contact.phone?.firstOrNull().toString()}"
                 name.text = it.name
                 workspaceRegion.text = it.location.region + ", ${ it.location.city?.capitalize().toString()}"
                 workspaceRatingBar.rating = it.avgRate?.plus(0.5F) ?: 0F

@@ -11,164 +11,206 @@
             type="com.spc.space.ui.main.shared_viewmodels.RatingViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.main.explore.workspaceDetails.WorkspaceDetailsFragment">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/workspace_iv"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:src="@drawable/error_placeholder"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/dimens_medium_16dp"
-            android:layout_marginStart="@dimen/dimens_medium_16dp"
-            android:ellipsize="end"
-            android:fontFamily="@font/lato_bold"
-            android:maxLines="2"
-            android:text="WorkSpace"
-            android:textColor="@color/dark_blue"
-            android:textSize="@dimen/material_text_title_20sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/workspace_iv" />
-
-        <TextView
-            android:id="@+id/workspace_region"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/dimens_medium_16dp"
-            android:ellipsize="end"
-            android:fontFamily="@font/lato_bold"
-            android:maxLines="2"
-            android:text="Celopatra,Alexandria"
-            android:textColor="@color/dark_blue"
-            android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@id/name"
-            app:layout_constraintTop_toBottomOf="@id/name" />
-
-        <TextView
-            android:id="@+id/working_hours_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/dimens_medium_16dp"
-            android:fontFamily="@font/lato_bold"
-            android:text="Opens today"
-            android:textColor="@color/md_green_700"
-            android:textSize="@dimen/material_text_subhead_16sp"
-            app:layout_constraintStart_toStartOf="@id/workspace_region"
-            app:layout_constraintTop_toBottomOf="@id/workspace_region"
-            tools:layout_editor_absoluteY="309dp" />
-
-        <TextView
-            android:id="@+id/workspace_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/dimens_small_8dp"
-            android:drawableStart="@drawable/ic_clock"
-            android:drawablePadding="@dimen/dimens_tiny_4dp"
-            android:drawableTint="@color/black"
-            android:fontFamily="@font/lato_bold"
-            android:gravity="center"
-            android:text="09:30 to 19:00"
-            android:textColor="@color/black"
-            android:textSize="@dimen/material_text_subhead_16sp"
-            app:layout_constraintStart_toStartOf="@id/working_hours_text"
-            app:layout_constraintTop_toBottomOf="@id/working_hours_text" />
-
-        <ImageButton
-            android:id="@+id/addFav_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/dimens_medium_16dp"
-            android:background="@null"
-            android:padding="@dimen/dimens_small_8dp"
-            android:src="@drawable/ic_add_fav"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/name" />
-
-        <RatingBar
-            android:id="@+id/workspace_ratingBar"
-            style="?android:attr/ratingBarStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/dimens_medium_16dp"
-            android:isIndicator="false"
-            android:numStars="5"
-            android:padding="@dimen/dimens_small_8dp"
-            android:progressTint="#ffff8800"
-            android:rating="@{viewModel.rattingForWs.avgRating}"
-            android:stepSize="0.5"
-            app:layout_constraintEnd_toEndOf="@id/addFav_btn"
-            app:layout_constraintTop_toBottomOf="@+id/addFav_btn" />
-
-        <TextView
-            android:id="@+id/workspace_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/lato_bold"
-            android:text="From 20 EGP/HOUR"
-            android:textColor="@color/dark_blue"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@+id/workspace_time"
-            app:layout_constraintEnd_toEndOf="@+id/addFav_btn"
-            app:layout_constraintTop_toTopOf="@+id/workspace_time" />
-
-        <ImageView
-            android:id="@+id/google_map"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_marginHorizontal="@dimen/dimens_medium_16dp"
-            android:layout_marginBottom="@dimen/dimens_medium_16dp"
-            android:background="@drawable/map_corners"
-            android:elevation="@dimen/dimens_tiny_4dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/gpss"
-            app:layout_constraintBottom_toTopOf="@id/pick_room_btn"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/comment" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/pick_room_btn"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="64dp"
-            android:layout_marginBottom="@dimen/dimens_small_8dp"
-            android:padding="@dimen/dimens_medium_16dp"
-            android:text="Explore"
-            android:textAllCaps="false"
-            android:textSize="@dimen/material_text_subhead_16sp"
-            app:cornerRadius="@dimen/dimens_large_24dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            tools:context=".ui.main.explore.workspaceDetails.WorkspaceDetailsFragment">
 
-        <TextView
-            android:id="@+id/comment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/dimens_medium_16dp"
-            android:fontFamily="@font/lato_bold"
-            android:text="Report"
-            android:textColor="@color/md_theme_light_error"
-            android:textSize="@dimen/dimens_medium_16dp"
-            app:layout_constraintStart_toStartOf="@+id/workspace_time"
-            app:layout_constraintTop_toBottomOf="@+id/workspace_time" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageView
+                android:id="@+id/workspace_iv"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@drawable/error_placeholder"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/dimens_medium_16dp"
+                android:layout_marginStart="@dimen/dimens_medium_16dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/lato_bold"
+                android:maxLines="2"
+                android:text="WorkSpace"
+                android:textColor="@color/dark_blue"
+                android:textSize="@dimen/material_text_title_20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/workspace_iv" />
+
+            <TextView
+                android:id="@+id/workspace_region"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/dimens_medium_16dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/lato_bold"
+                android:maxLines="2"
+                android:text="Celopatra,Alexandria"
+                android:textColor="@color/dark_blue"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@id/name"
+                app:layout_constraintTop_toBottomOf="@id/name" />
+
+            <TextView
+                android:id="@+id/phone_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/dimens_medium_16dp"
+                android:drawableStart="@drawable/ic_call"
+                android:drawablePadding="@dimen/dimens_small_8dp"
+                android:ellipsize="end"
+                android:fontFamily="@font/lato_bold"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="0101010101"
+                android:textColor="@color/dark_blue"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/workspace_region"
+                app:layout_constraintTop_toBottomOf="@+id/workspace_region" />
+
+            <TextView
+                android:id="@+id/working_hours_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/dimens_medium_16dp"
+                android:fontFamily="@font/lato_bold"
+                android:text="Opens today"
+                android:textColor="@color/md_green_700"
+                android:textSize="@dimen/material_text_subhead_16sp"
+                app:layout_constraintStart_toStartOf="@id/phone_num"
+                app:layout_constraintTop_toBottomOf="@id/phone_num"
+                tools:layout_editor_absoluteY="309dp" />
+
+            <TextView
+                android:id="@+id/workspace_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/dimens_small_8dp"
+                android:drawableStart="@drawable/ic_clock"
+                android:drawablePadding="@dimen/dimens_tiny_4dp"
+                android:drawableTint="@color/black"
+                android:fontFamily="@font/lato_bold"
+                android:gravity="center"
+                android:text="09:30 to 19:00"
+                android:textColor="@color/black"
+                android:textSize="@dimen/material_text_subhead_16sp"
+                app:layout_constraintStart_toStartOf="@id/working_hours_text"
+                app:layout_constraintTop_toBottomOf="@id/working_hours_text" />
+
+            <ImageButton
+                android:id="@+id/addFav_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dimens_medium_16dp"
+                android:background="@null"
+                android:padding="@dimen/dimens_small_8dp"
+                android:src="@drawable/ic_add_fav"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/name" />
+
+            <RatingBar
+                android:id="@+id/workspace_ratingBar"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/dimens_medium_16dp"
+                android:isIndicator="false"
+                android:numStars="5"
+                android:padding="@dimen/dimens_small_8dp"
+                android:progressTint="#ffff8800"
+                android:rating="@{viewModel.rattingForWs.avgRating}"
+                android:stepSize="0.5"
+                app:layout_constraintEnd_toEndOf="@id/addFav_btn"
+                app:layout_constraintTop_toBottomOf="@+id/addFav_btn" />
+
+            <TextView
+                android:id="@+id/workspace_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato_bold"
+                android:text="From 20 EGP/HOUR"
+                android:textColor="@color/dark_blue"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/workspace_time"
+                app:layout_constraintEnd_toEndOf="@+id/addFav_btn"
+                app:layout_constraintTop_toTopOf="@+id/workspace_time" />
+
+            <RelativeLayout
+                android:id="@+id/google_map"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_marginHorizontal="@dimen/dimens_medium_16dp"
+                android:layout_marginTop="@dimen/dimens_medium_16dp"
+                android:layout_marginBottom="@dimen/dimens_medium_16dp"
+                app:layout_constraintBottom_toTopOf="@id/pick_room_btn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/workspace_time">
+
+                <ImageView
+                    android:id="@+id/img"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/map_corners"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/gpss" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="@dimen/dimens_medium_16dp"
+                    android:layout_marginTop="@dimen/dimens_medium_16dp"
+                    android:layout_marginEnd="@dimen/dimens_medium_16dp"
+                    android:layout_marginBottom="@dimen/dimens_tiny_4dp"
+                    android:drawableStart="@drawable/ic_google_map"
+                    android:drawablePadding="@dimen/dimens_tiny_4dp"
+                    android:fontFamily="@font/lato_regular"
+                    android:gravity="center"
+                    android:text="View Location in maps" />
+
+            </RelativeLayout>
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/pick_room_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="64dp"
+                android:text="Explore"
+                android:textAllCaps="false"
+                android:textSize="@dimen/material_text_subhead_16sp"
+                app:cornerRadius="@dimen/dimens_large_24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/google_map" />
+
+            <TextView
+                android:id="@+id/comment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/dimens_medium_16dp"
+                android:fontFamily="@font/lato_bold"
+                android:text="Report"
+                android:textColor="@color/md_theme_light_error"
+                android:textSize="@dimen/dimens_medium_16dp"
+                app:layout_constraintEnd_toEndOf="@+id/workspace_ratingBar"
+                app:layout_constraintStart_toStartOf="@+id/workspace_ratingBar"
+                app:layout_constraintTop_toBottomOf="@+id/workspace_ratingBar" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>
-
-
-
-

@@ -23,12 +23,12 @@ import com.spc.space.models.workspaceRoom.RoomItem
 import com.spc.space.ui.main.shared_viewmodels.DataStoreViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
-import java.time.Duration
 import java.time.LocalDate
 import java.time.LocalTime
 import java.time.OffsetDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
+import kotlin.math.abs
 
 @AndroidEntryPoint
 class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
@@ -59,21 +59,31 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
             if (it != null) {
                 when (it.message) {
                     "Room is currently booked" -> {
-                        binding.tvCheckTimeErr.text = "Room is currently busy"
+                        binding.tvCheckTimeErr.text = "*Room is currently busy"
                         binding.tvCheckTimeErr.visibility = View.VISIBLE
                     }
-
                 }
             }
         })
         roomBookingViewModel.validBooking.observe(viewLifecycleOwner, Observer {
             if (it == false) {
-                binding.tvCheckTimeErr.text = "Invalid booking range"
+                binding.tvCheckTimeErr.text = "*Invalid booking range"
                 binding.tvCheckTimeErr.visibility = View.VISIBLE
             } else {
                 binding.tvCheckTimeErr.visibility = View.GONE
             }
         })
+
+        roomBookingViewModel.showPrice.observe(viewLifecycleOwner, Observer {
+            val start = binding.checkInEt.text.toString()
+            val end = binding.checkOutEt.text.toString()
+            if (start.isNotEmpty() && end.isNotEmpty() && it == true) {
+                val duration = abs(calculateDuration(start, end))
+                binding.priceEt.editText?.setText("${duration.times(roomData?.price!!)} EGP")
+            }
+        })
+
+
 
         binding.btnConfirmBookings.setOnClickListener {
             makeBooking(wsData, roomData, userToken)
@@ -122,7 +132,16 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
                 Log.e("start", addTwoHours(startTime))
                 Log.e("end", addTwoHours(endTime))
                 Log.e("roomId", "onViewCreated: $roomId")
-                findNavController().navigate(R.id.action_roomBookingFragment_to_successBookingFragment)
+                val response = roomBookingViewModel.booking.value?.message
+                when (response) {
+                    "Done" -> {
+                        findNavController().navigate(R.id.action_roomBookingFragment_to_successBookingFragment)
+                    }
+                    else -> {
+                        binding.tvCheckTimeErr.text = "*Room is currently busy"
+                        binding.tvCheckTimeErr.visibility = View.VISIBLE
+                    }
+                }
             } else {
                 Log.e("wrong range", "onViewCreated: wrong range")
             }
@@ -155,6 +174,17 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
 
     private fun LocalTime.isBeforeOrEqual(other: LocalTime): Boolean {
         return this == other || this.isBefore(other)
+    }
+
+    private fun calculateDuration(startTime: String, endTime: String): Double {
+        val format = SimpleDateFormat("hh:mm a", Locale.ENGLISH)
+        val startDate = format.parse(startTime)
+        val endDate = format.parse(endTime)
+
+        val durationMillis = endDate.time - startDate.time
+        val durationHours = durationMillis / (1000.0 * 60 * 60)
+
+        return durationHours
     }
 
     private fun convertTimeTo24Hour(time12: String): String {
@@ -211,7 +241,9 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
             openTimePicker { chosenTime ->
                 editText.setText(chosenTime)
                 editText.hint = ""
+                roomBookingViewModel.showPrice.value = true
             }
+
         }
     }
 
@@ -291,12 +323,12 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
         return disabledDays
     }
 
-    private fun calculateDuration(startTime: String, endTime: String): Double {
-        val start = LocalTime.parse(startTime)
-        val end = LocalTime.parse(endTime)
-        val duration = Duration.between(start, end)
-        return duration.toMinutes().toDouble() / 60.0
-    }
+//    private fun calculateDuration(startTime: String, endTime: String): Double {
+//        val start = LocalTime.parse(startTime)
+//        val end = LocalTime.parse(endTime)
+//        val duration = Duration.between(start, end)
+//        return duration.toMinutes().toDouble() / 60.0
+//    }
 
     private fun getTodayDate() {
         val currentDate = LocalDate.now()

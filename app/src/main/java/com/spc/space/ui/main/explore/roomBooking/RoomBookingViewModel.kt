@@ -1,8 +1,6 @@
 package com.spc.space.ui.main.explore.roomBooking
 
-import android.os.Build
 import android.util.Log
-import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -13,7 +11,6 @@ import com.spc.space.models.createBooking.CreateBookingRequest
 import com.spc.space.models.createBooking.CreateBookingResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import java.time.LocalDate
 import javax.inject.Inject
 
 @HiltViewModel
@@ -24,14 +21,12 @@ class RoomBookingViewModel @Inject constructor(
     private val _bookingCanceled: MutableLiveData<CancelBookingsResponse> = MutableLiveData()
     val bookingCanceled: LiveData<CancelBookingsResponse> = _bookingCanceled
 
-    // var date: MutableLiveData<String> = MutableLiveData("")
+    var showPrice: MutableLiveData<Boolean> = MutableLiveData(false)
 
     var validBooking: MutableLiveData<Boolean> = MutableLiveData(true)
 
     private val _booking: MutableLiveData<CreateBookingResponse> = MutableLiveData()
     val booking: LiveData<CreateBookingResponse> = _booking
-
-
 
 
 //    private fun getTodayDate() {

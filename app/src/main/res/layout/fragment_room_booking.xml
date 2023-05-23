@@ -87,9 +87,11 @@
                 android:layout_marginTop="@dimen/dimens_medium_16dp"
                 android:background="@drawable/check_time_picker_background"
                 android:focusable="false"
+                android:fontFamily="@font/lato_bold"
                 android:gravity="center"
                 android:hint="Check in"
                 android:textAlignment="center"
+                android:textColor="@color/dark_blue"
                 app:boxBackgroundColor="@color/baby_blue"
                 app:boxCornerRadiusBottomEnd="@dimen/dimens_small_8dp"
                 app:boxCornerRadiusBottomStart="@dimen/dimens_small_8dp"
@@ -107,8 +109,10 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/check_time_picker_background"
                 android:focusable="false"
+                android:fontFamily="@font/lato_bold"
                 android:hint="Check out"
                 android:textAlignment="center"
+                android:textColor="@color/dark_blue"
                 app:boxBackgroundColor="@color/baby_blue"
                 app:boxCornerRadiusBottomEnd="@dimen/dimens_small_8dp"
                 app:boxCornerRadiusBottomStart="@dimen/dimens_small_8dp"
@@ -132,8 +136,9 @@
                 android:textColor="#DD2F23"
                 android:visibility="gone"
                 app:layout_constraintBottom_toTopOf="@id/apply_promo"
-                app:layout_constraintStart_toStartOf="@id/checkIn_et"
+                app:layout_constraintStart_toStartOf="@+id/apply_promo"
                 app:layout_constraintTop_toBottomOf="@id/checkIn_et"
+                app:layout_constraintVertical_bias="0.363"
                 tools:visibility="visible" />
 
             <TextView
@@ -146,6 +151,7 @@
                 android:text="Apply Promocode"
                 android:textColor="@color/dark_blue"
                 android:textSize="18sp"
+                android:visibility="gone"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/checkIn_et" />
 
@@ -173,11 +179,12 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="150dp"
                     android:layout_height="match_parent"
-                    android:fontFamily="@font/lato_regular"
+                    android:fontFamily="@font/lato_black"
                     android:gravity="center"
                     android:hint="SPACE50"
                     android:maxLines="1"
-                    android:textColor="@color/gray" />
+                    android:textColor="@color/dark_blue"
+                    android:visibility="gone" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -186,21 +193,20 @@
                 android:id="@+id/price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dimens_small_8dp"
-                android:layout_marginEnd="@dimen/dimens_small_8dp"
                 android:fontFamily="@font/lato_bold"
                 android:text="Total Price"
+                android:layout_marginTop="@dimen/dimens_large_32dp"
                 android:textColor="@color/dark_blue"
                 android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="@+id/apply_promo"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/apply_promo" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_check_time_err"
+                tools:layout_editor_absoluteY="130dp" />
 
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/price_et"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:focusable="false"
                 android:textAlignment="center"
@@ -212,20 +218,20 @@
                 app:boxStrokeColor="@color/pastel_blue"
                 app:boxStrokeWidth="0dp"
                 app:boxStrokeWidthFocused="1dp"
-                app:layout_constraintBottom_toBottomOf="@+id/promo_code"
                 app:layout_constraintEnd_toEndOf="@+id/price"
-                app:layout_constraintTop_toTopOf="@+id/promo_code">
+                app:layout_constraintStart_toStartOf="@+id/price"
+                app:layout_constraintTop_toBottomOf="@+id/price">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="100dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
-                    android:fontFamily="@font/lato_regular"
+                    android:fontFamily="@font/lato_black"
                     android:gravity="center"
-                    android:hint="0 EGP"
                     android:maxLines="1"
-                    android:textColor="@color/gray" />
+                    android:text="0 EGP"
+                    android:textColor="@color/dark_blue" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
