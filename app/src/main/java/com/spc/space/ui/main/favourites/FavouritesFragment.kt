@@ -1,11 +1,9 @@
 package com.spc.space.ui.main.favourites
 
 import android.graphics.Color
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -40,8 +38,16 @@ class FavouritesFragment : Fragment(R.layout.fragment_favourites) {
         binding.favRv.apply { adapter = favouriteAdapter }
 
         favouritesViewModel.favourites.observe(viewLifecycleOwner, Observer { data ->
-            Log.e("size", data.favoriteItems.favorites.size.toString())
-            favouriteAdapter.differ.submitList(data.favoriteItems.favorites)
+            if (data.favoriteItems.favorites.isEmpty()) {
+                binding.emptyList.visibility = View.VISIBLE
+                binding.favRv.visibility = View.INVISIBLE
+
+            } else {
+                Log.e("size", data.favoriteItems.favorites.size.toString())
+                favouriteAdapter.differ.submitList(data.favoriteItems.favorites)
+                binding.favRv.visibility = View.VISIBLE
+                binding.emptyList.visibility = View.INVISIBLE
+            }
         })
 
         enableSwipeToDeleteAndUndo()
@@ -55,6 +61,8 @@ class FavouritesFragment : Fragment(R.layout.fragment_favourites) {
                     val position = viewHolder.adapterPosition
                     val item = favouriteAdapter.differ.currentList[position]
                     favouritesViewModel.removeFromFavorites(token, item.id)
+                    binding.emptyList.visibility = View.VISIBLE
+                    binding.favRv.visibility = View.INVISIBLE
                     val snackbar = Snackbar
                         .make(
                             view!!,
@@ -64,6 +72,8 @@ class FavouritesFragment : Fragment(R.layout.fragment_favourites) {
                     snackbar.setAction("UNDO") {
                         favouritesViewModel.addFavourites(token, item.id)
                         favouritesViewModel.getFavorites(token)
+                        binding.favRv.visibility = View.VISIBLE
+                        binding.emptyList.visibility = View.INVISIBLE
                     }
                     snackbar.setActionTextColor(Color.YELLOW)
                     snackbar.show()

@@ -20,6 +20,18 @@
             android:layout_height="wrap_content">
 
 
+            <ImageView
+                android:id="@+id/emptyList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/dimens_small_8dp"
+                android:src="@drawable/empty_list"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/history_rv"
                 android:layout_width="match_parent"

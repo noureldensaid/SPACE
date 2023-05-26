@@ -32,7 +32,16 @@ class BookingsHistoryFragment : Fragment(R.layout.fragment_bookings_history) {
 
 
         collectLatestLifecycleFlow(bookingViewModel.unfilteredBookings) { list ->
-            bookingsHistoryAdapter.differ.submitList(list?.reversed())
+            if (list?.size==0) {
+                binding.emptyList.visibility = View.VISIBLE
+                binding.historyRv.visibility = View.INVISIBLE
+            } else {
+                bookingsHistoryAdapter.differ.submitList(list?.reversed())
+                binding.emptyList.visibility = View.INVISIBLE
+                binding.historyRv.visibility = View.VISIBLE
+
+            }
+
         }
 
 
@@ -40,7 +49,7 @@ class BookingsHistoryFragment : Fragment(R.layout.fragment_bookings_history) {
             adapter = bookingsHistoryAdapter
         }
 
- 
+
     }
 
     override fun onDestroy() {

@@ -47,7 +47,14 @@ class UpcomingBookingsFragment : Fragment(R.layout.fragment_upcoming_bookings) {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 bookingViewModel.upcomingBookings.collect { state ->
-                    upcomingBookingsAdapter.differ.submitList(state.reversed())
+                    if (state.isEmpty()) {
+                        binding.emptyList.visibility = View.VISIBLE
+                        binding.upcomingRv.visibility = View.INVISIBLE
+                    } else {
+                        upcomingBookingsAdapter.differ.submitList(state.reversed())
+                        binding.emptyList.visibility = View.INVISIBLE
+                        binding.upcomingRv.visibility = View.VISIBLE
+                    }
                 }
             }
         }
