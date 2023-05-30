@@ -41,8 +41,8 @@ class WorkspaceDetailsFragment : Fragment(R.layout.fragment_workspace_details) {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = ratingViewModel
         // user locations
-        var destLat: Double? = 0.0
-        var destLng: Double? = 0.0
+        var destLat: Double? = 31.239694492326176
+        var destLng: Double? = 29.96026481128687
         // workspace data
         val workSpaceItem = args.data
 
@@ -50,9 +50,9 @@ class WorkspaceDetailsFragment : Fragment(R.layout.fragment_workspace_details) {
 
         locationViewModel.fetchLocation()
         locationViewModel.location.observe(viewLifecycleOwner, Observer {
-            destLat = it?.latitude
-            destLng = it?.longitude
-            Log.e("location", "$destLat -- $destLng")
+//            destLat = it?.latitude
+//            destLng = it?.longitude
+//            Log.e("location", "$destLat -- $destLng")
         })
 
         binding.apply {

@@ -137,7 +137,7 @@ class RoomBookingFragment : Fragment(R.layout.fragment_room_booking) {
                     "Done" -> {
                         findNavController().navigate(R.id.action_roomBookingFragment_to_successBookingFragment)
                     }
-                    else -> {
+                    "Room is currently booked" -> {
                         binding.tvCheckTimeErr.text = "*Room is currently busy"
                         binding.tvCheckTimeErr.visibility = View.VISIBLE
                     }

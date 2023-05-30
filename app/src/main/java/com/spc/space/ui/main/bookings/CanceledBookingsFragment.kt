@@ -36,14 +36,7 @@ class CanceledBookingsFragment : Fragment(R.layout.fragment_canceled_bookings) {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 bookingViewModel.canceledHistory.collect { state ->
-                    if (state?.history?.size==0) {
-                        binding.emptyList.visibility = View.VISIBLE
-                        binding.canceledRv.visibility = View.INVISIBLE
-                    } else {
-                        canceledBookingsAdapter.differ.submitList(state?.history?.reversed())
-                        binding.emptyList.visibility = View.INVISIBLE
-                        binding.canceledRv.visibility = View.VISIBLE
-                    }
+                    canceledBookingsAdapter.differ.submitList(state?.history?.reversed())
                 }
             }
         }

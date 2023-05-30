@@ -29,8 +29,10 @@ class ExploreFragment : Fragment(R.layout.fragment_explore) {
         locationViewModel.fetchLocation()
 
         exploreFragmentViewModel.filterByDistance(
-            userLat = locationViewModel.location.value?.latitude ?: 31.241266,
-            userLong = locationViewModel.location.value?.longitude ?: 29.956677
+//            userLat = locationViewModel.location.value?.latitude ?: 31.241266,
+//            userLong = locationViewModel.location.value?.longitude ?: 29.956677
+            userLat = 31.23968883739219,
+            userLong = 29.96026481128687
         )
 
         exploreAdapter = ExploreAdapter()
@@ -71,7 +73,8 @@ class ExploreFragment : Fragment(R.layout.fragment_explore) {
         }
 
         locationViewModel.place.observe(viewLifecycleOwner, Observer {
-            binding.userLocation.text = it
+            //  binding.userLocation.text = it
+            binding.userLocation.text = "Gleem, Alexandria"
         })
 
         exploreAdapter.onItemClickListener = {
