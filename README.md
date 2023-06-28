@@ -32,8 +32,8 @@ Sign up screen in our application ask user for his Username, Email ,Phone Number
 
 Booking Lifecycle
 
- <img src="https://github.com/noureldensaid/SPACE/assets/93207605/d13dfbe4-5dbd-4808-a7a7-6227ed0267a5"  />
-
+ <img src="https://github.com/noureldensaid/SPACE/assets/93207605/d99894d2-9dcc-4804-ace8-30d5e8e195e2"  />
+ 
 
 
 4.Cancel Booking
