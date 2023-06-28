@@ -44,9 +44,9 @@ Our application allow user to canceled booking , when user click on cancel booki
 
 5.Explore WorkSpace Location on map 
 
- <img src="https://github.com/noureldensaid/SPACE/assets/93207605/1989bb41-a765-4a36-ad20-4e43e050c81e"  />
+ <img src="https://github.com/noureldensaid/SPACE/assets/93207605/a179d94d-c4b3-4cc1-88aa-bccf322867d9"  />
  
-
+ 
 Our application ask user to access his location , when user allow system to access so the user     will be able to see workspace in google maps and see distance between user and workspace so that it will help user to choose nearest workspace and find workspace location easily 
 
 6.Forget Password
