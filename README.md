@@ -1,8 +1,4 @@
-<h1 align="center">SPACE</h1>
-
-<p align="center">  
-🔥 SPACE 
-</p>
+<h1 align="center">🔥 SPACE</h1>
 <p align="left">• A native Android mobile app using (Kotlin). </p>
 <p align="left">• The application addresses the challenge of finding suitable workspaces by providing users with detailed information about the
 nearest and highly-rated options that meet their specific needs.</p>
