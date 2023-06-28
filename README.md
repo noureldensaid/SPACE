@@ -3,16 +3,16 @@
 1.Registeration 
 
 
-<img src="https://github.com/noureldensaid/SPACE/assets/93207605/842dfb02-36a1-47fa-9c54-7764c8748a79"  />
-
+<img src="https://github.com/noureldensaid/SPACE/assets/93207605/b2a790d9-2349-4a7f-96cf-21eabe42e203"  />
+ 
 
 Sign up screen in our application ask user for his Username, Email ,Phone Number, Password  and Confirm Password. After sign up user can tap the ‘Already have an account’. The system then will take user’s data and authenticate it from database, if verified user will be signed in and directed to the home page. The first thing that user see in home page location permission that enable our application to access user location.
 
 
 
 2. Home & Explore Workspaces
- <img src="https://github.com/noureldensaid/SPACE/assets/93207605/03debba3-0bd8-419c-ac27-4f6e9750565e"  />
-
+ <img src="https://github.com/noureldensaid/SPACE/assets/93207605/6889d117-caa4-4921-b5a4-10bd50f246f6"  />
+ 
 
 Home page display hot feature Workspaces . when user click on workspace, system will navigate user to workspace details screen and it allow user to add workspace to his favorites , give rate to workspace , it also allow  user to report problem.
 
