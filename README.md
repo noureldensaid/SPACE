@@ -30,6 +30,12 @@ Sign up screen in our application ask user for his Username, Email ,Phone Number
 user after choose room select date by click on select date button ,and  select check in and check out time then user can book when click on checkout button.
 
 
+Booking Lifecycle
+
+ <img src="https://github.com/noureldensaid/SPACE/assets/93207605/d13dfbe4-5dbd-4808-a7a7-6227ed0267a5"  />
+
+
+
 4.Cancel Booking
 
  <img src="https://github.com/noureldensaid/SPACE/assets/93207605/aa1c22e8-8d74-4a5d-9567-a1b50363e7d8"  />
