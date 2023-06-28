@@ -56,14 +56,13 @@ Our application allow user to canceled booking , when user click on cancel booki
 Our application ask user to access his location , when user allow system to access so the user     will be able to see workspace in google maps and see distance between user and workspace so that it will help user to choose nearest workspace and find workspace location easily 
 
 6.Forget Password
- <img src="https://github.com/noureldensaid/SPACE/assets/93207605/77459c07-a471-4db0-9876-4538f8d91bbf"  />
- 
+ <img src="https://github.com/noureldensaid/SPACE/assets/93207605/10ef4f5d-1dda-4a6c-b9aa-a62c2e5104fd"  />
                                                                                                                                                                                                                                                                     
 if user forget his password our application allow him to reset password easily by enter his email 
 and he will receive validation code then user can be able to reset new password.
 
 
 7.User profile and reporting
-<img src="https://github.com/noureldensaid/SPACE/assets/93207605/4599ebf7-4abb-40f6-afd9-294ab094c3d9"  />
-
+<img src="https://github.com/noureldensaid/SPACE/assets/93207605/9d9cbaad-2026-43da-9c7a-1943984fbce8"  />
+ 
  user can update his data or report a problem
