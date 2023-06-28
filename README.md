@@ -1,4 +1,23 @@
-# SPACE
+<h1 align="center">SPACE</h1>
+
+<p align="center">  
+🔥 SPACE 
+</p>
+<p align="left">• A native Android mobile app using (Kotlin). </p>
+<p align="left">• The application addresses the challenge of finding suitable workspaces by providing users with detailed information about the
+nearest and highly-rated options that meet their specific needs.</p>
+<p align="left">• Effectively organized and managed the workspace booking process for a seamless user experience.</p>
+<p align="left">• Utilized GPS technology to suggest the closest workspaces based on user location.</p>
+<p align="left">• Showcased amenities and real images of workspaces to build user trust and enable informed decision-making.</p>
+<p align="left">• Optimized users’ time and reduced costs by avoiding overcrowded workspaces.</p>
+<p align="left">• Showcased amenities and real images of workspaces to build user trust and enable informed decision-making.</p>
+<p align="left">• Facilitated reservations and increased bookings for lesser-known workspaces.</p>
+<p align="left">• Streamlined the booking process and implemented efficient room management capabilities for workspace owners.
+</p>
+<p align="left">• Used technologies: MVVM, LiveData, View Binding, Navigation Component, Kotlin Coroutines, Kotlin Flows, Retrofit2, Dagger Hilt,Room Database, Datastore Preferences, User Location, Media Permissions and Glide.
+</p>
+
+
 
 1.Registeration 
 
