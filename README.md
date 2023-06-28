@@ -1,5 +1,8 @@
 <h1 align="center"> ✔️ SPACE </h1>
+
+<p align="right">
 <a href="https://www.canva.com/design/DAFhwp7_DRI/wIpJrdicYHpP_MJr22pthA/edit?utm_content=DAFhwp7_DRI&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton">View Demo</a>
+</p>
 
 <p align="left">• Developed a native Android mobile application using Kotlin to address the challenge of finding suitable workspaces.</p>
 <p align="left">• Implemented features that provide users with detailed information about the nearest and highly-rated workspaces, tailored to their specific needs.</p>
