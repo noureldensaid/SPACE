@@ -22,8 +22,8 @@ Sign up screen in our application ask user for his Username, Email ,Phone Number
 
 3.Booking
 
- <img src="https://github.com/noureldensaid/SPACE/assets/93207605/4c911e0a-83f8-48b0-a75e-b5fce1edebd0"  />
-
+ <img src="https://github.com/noureldensaid/SPACE/assets/93207605/2b49bf0d-d245-4db8-87b1-75393f0df862"  />
+ 
 user choose suitable room form workspace’s rooms , when user click on specific room ,
       room details screen will be displayed .
 
