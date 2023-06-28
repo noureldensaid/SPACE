@@ -32,8 +32,8 @@ Sign up screen in our application ask user for his Username, Email ,Phone Number
 
 4.Cancel Booking
 
- <img src="https://github.com/noureldensaid/SPACE/assets/93207605/1f453ac7-b610-4c81-8171-a81c6c4cb586"  />
-
+ <img src="https://github.com/noureldensaid/SPACE/assets/93207605/aa1c22e8-8d74-4a5d-9567-a1b50363e7d8"  />
+ 
 
 
 When user click on booking icon , user can be able to see upcoming booking , canceled booking and  history booking.
@@ -44,8 +44,8 @@ Our application allow user to canceled booking , when user click on cancel booki
 
 5.Explore WorkSpace Location on map 
 
- <img src="https://github.com/noureldensaid/SPACE/assets/93207605/68d9077d-fb73-4ff5-a1e1-a3bcc6250950"  />
-
+ <img src="https://github.com/noureldensaid/SPACE/assets/93207605/1989bb41-a765-4a36-ad20-4e43e050c81e"  />
+ 
 
 Our application ask user to access his location , when user allow system to access so the user     will be able to see workspace in google maps and see distance between user and workspace so that it will help user to choose nearest workspace and find workspace location easily 
 
